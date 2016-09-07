@@ -1,0 +1,30 @@
+<?php
+namespace wajox\yii2base\services\web;
+
+class AddressByIp
+{
+    const STATUS_FAILED = 'fail';
+    const GEODECODER_URL  = 'http://ip-api.com/json/';
+
+    public static function getDetailed($ip)
+    {
+        $geo = self::get($ip);
+
+        if ($geo == null) {
+            return;
+        }
+
+        return $geo->country.', '.$geo->regionName.', '.$geo->city;
+    }
+
+    public static function get($ip)
+    {
+        $geo = json_decode(file_get_contents(self::GEODECODER_URL.$ip));
+
+        if ($geo->status == self::STATUS_FAILED) {
+            return;
+        }
+
+        return $geo;
+    }
+}
