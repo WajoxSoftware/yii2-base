@@ -1,0 +1,14 @@
+{
+    "name": "wajox/yii2base",
+    "description": "Yii2 Base Application",
+    "type": "library",
+    "license": "BSD",
+    "authors": [
+        {
+            "name": "Ildar Usmanov",
+            "email": "wajox@mail.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
