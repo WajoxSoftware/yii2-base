@@ -1,5 +1,5 @@
 <?php
-namespace app\traits;
+namespace wajox\yii2base\traits;
 
 trait StatusAtTrait
 {
