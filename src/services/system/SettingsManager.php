@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\services\settings;
+namespace wajox\yii2base\services\system;
 
 use yii\base\Component;
 use wajox\yii2base\models\SettingOption;
