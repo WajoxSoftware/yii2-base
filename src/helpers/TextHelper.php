@@ -1,5 +1,4 @@
 <?php
-
 namespace wajox\yii2base\helpers;
 
 class TextHelper

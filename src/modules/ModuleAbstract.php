@@ -1,5 +1,5 @@
 <?php
-namespace app\modules;
+namespace wajox\yii2base\modules;
 
 abstract class ModuleAbstract extends \yii\base\Module
 {

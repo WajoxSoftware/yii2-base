@@ -1,5 +1,4 @@
 <?php
-
 namespace wajox\yii2base\controllers;
 
 use yii\web\Controller;

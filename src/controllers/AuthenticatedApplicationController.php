@@ -1,12 +1,11 @@
 <?php
-
 namespace \wajox\yii2base\controllers;
 
 use yii\filters\AccessControl;
 
 abstract class AuthenticatedApplicationController extends ApplicationController
 {
-    public $settingsControllerClassName = 'SettingsController';
+    public $settingsControllerClassName = 'app\modules\account\controllers\SettingsController';
 
     public function behaviors()
     {
