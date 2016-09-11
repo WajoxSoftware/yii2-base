@@ -1,5 +1,5 @@
 <?php
-namespace \wajox\yii2base\controllers;
+namespace wajox\yii2base\controllers;
 
 use yii\filters\AccessControl;
 
