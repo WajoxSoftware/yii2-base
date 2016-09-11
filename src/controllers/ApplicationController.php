@@ -177,6 +177,6 @@ class ApplicationController extends Controller
 
     public function getListingViewType($listingViewType)
     {
-        return \wajox\yii2base\components\helpers\ViewTypesHelper::getViewType($listingViewType);
+        return \wajox\yii2base\helpers\ViewTypesHelper::getViewType($listingViewType);
     }
 }
