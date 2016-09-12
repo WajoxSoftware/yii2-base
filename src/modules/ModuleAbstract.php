@@ -3,7 +3,8 @@ namespace wajox\yii2base\modules;
 
 abstract class ModuleAbstract extends \yii\base\Module
 {
-
+    use wajox\yii2base\traits\DiContainerTrait;
+    
     public $hasSessionController = false;
     public $hasRegistrationController = false;
 

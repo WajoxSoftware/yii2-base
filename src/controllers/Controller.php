@@ -4,8 +4,10 @@ namespace wajox\yii2base\controllers;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class ApplicationController extends Controller
+class Controller extends Controller
 {
+    use wajox\yii2base\traits\DiContainerTrait;
+
     const REQUEST_TYPE_QUERY_PARAM = 'suffix';
     const REQUEST_TYPE_JS = '.js';
     const REQUEST_TYPE_JSON = '.json';

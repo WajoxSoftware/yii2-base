@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\services\mail;
 
-use yii\base\Component;
+use wajox\yii2base\components\base\Component;
 
 abstract class SenderAdapterAbstract extends Component
 {

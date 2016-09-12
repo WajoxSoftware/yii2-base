@@ -3,7 +3,7 @@ namespace wajox\yii2base\controllers;
 
 use yii\filters\AccessControl;
 
-abstract class AuthenticatedApplicationController extends ApplicationController
+abstract class AuthenticatedController extends ApplicationController
 {
     public $settingsControllerClassName = 'app\modules\account\controllers\SettingsController';
 

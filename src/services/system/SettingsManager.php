@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\services\system;
 
-use yii\base\Component;
+use wajox\yii2base\components\base\Component;
 use wajox\yii2base\models\SettingOption;
 
 class SettingsManager extends Component
@@ -87,7 +87,7 @@ class SettingsManager extends Component
         $model = $this->find($key);
 
         if ($model == null) {
-            $model = \Yii::createObject(SettingOption::className());
+            $model = $this->createObject(SettingOption::className());
         }
 
         $model->type_id = $typeId;

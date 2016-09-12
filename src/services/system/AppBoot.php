@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\services\system;
 
-use yii\base\Component;
+use wajox\yii2base\components\base\Component;
 
 class AppBoot extends Component
 {
