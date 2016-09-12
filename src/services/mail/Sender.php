@@ -38,7 +38,7 @@ class Sender extends Component
         parse_str(\Yii::$app->settings->get('app_mail_adapter_params'), $adapterParams);
         $adapterParams['from'] =  \Yii::$app->settings->get('app_mail_adapter_from');
 
-        $adapter = new $adapterClass($adapterParams);
+        $adapter = \Yii::createObject($adapterClass, [$adapterParams]);
 
         $this->setAdapter($adapter);
     }

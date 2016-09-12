@@ -87,7 +87,7 @@ class SettingsManager extends Component
         $model = $this->find($key);
 
         if ($model == null) {
-            $model = new SettingOption();
+            $model = \Yii::createObject(SettingOption::className());
         }
 
         $model->type_id = $typeId;

@@ -42,9 +42,7 @@ class UploadedFile extends \yii\db\ActiveRecord
                 'attribute' => 'file',
                 'filePath' => '@webroot/uploads/uploaded_files/[[pk]].[[extension]]',
                 'fileUrl' => '@web/uploads/uploaded_files/[[pk]].[[extension]]',
-
             ],
-
         ];
     }
 

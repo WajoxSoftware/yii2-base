@@ -106,7 +106,7 @@ class UploadsManager
     public function getUser()
     {
         if (empty($this->user)) {
-            throw new Exception('user not defined');
+            throw new \Exception('user not defined');
         }
 
         return $this->user;
@@ -166,10 +166,10 @@ class UploadsManager
     protected function buildModel($type)
     {
         if ($type == FileTypes::TYPE_ID_IMAGE) {
-            return new UploadedImageModel();
+            return \Yii::createObject(UploadedImageModel::className());
         }
 
-        return new UploadedFileModel();
+        return \Yii::createObject(UploadedFileModel::className());
     }
 
     protected function updateStatusId($ids, $statusId)
