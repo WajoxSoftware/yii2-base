@@ -4,8 +4,9 @@ namespace wajox\yii2base\services\uploads;
 use wajox\yii2base\models\UploadedFile as UploadedFileModel;
 use wajox\yii2base\models\UploadedImage as UploadedImageModel;
 use yii\web\UploadedFile;
+use wajox\yii2base\components\base\Object;
 
-class UploadsManager
+class UploadsManager extends Object
 {
     public $user = null;
     public $status_id = null;
@@ -166,15 +167,15 @@ class UploadsManager
     protected function buildModel($type)
     {
         if ($type == FileTypes::TYPE_ID_IMAGE) {
-            return \Yii::createObject(UploadedImageModel::className());
+            return $this->createObject(UploadedImageModel::className());
         }
 
-        return \Yii::createObject(UploadedFileModel::className());
+        return $this->createObject(UploadedFileModel::className());
     }
 
     protected function updateStatusId($ids, $statusId)
     {
-        \Yii::$app->db->createCommand()->update(
+        $this->getApp()->db->createCommand()->update(
             UploadedFileModel::tableName(),
             ['status_id' => $statusId],
             [

@@ -19,7 +19,7 @@ abstract class SenderAdapterAbstract extends Component
     public function render($view, $params = [], $html = true)
     {
         $viewFile = '@app/mail/'.$view.($html == true ? '_html' : '_text');
-        $content = \Yii::$app->getView()->render($viewFile, $params, $this);
+        $content = $this->getApp()->getView()->render($viewFile, $params, $this);
 
         return $this->renderContent($content, $html);
     }
@@ -28,6 +28,6 @@ abstract class SenderAdapterAbstract extends Component
     {
         $layout = $html == true ? $this->layout_html : $this->layout_text;
 
-        return \Yii::$app->getView()->render($layout, ['content' => $content], $this);
+        return $this->getApp()->getView()->render($layout, ['content' => $content], $this);
     }
 }

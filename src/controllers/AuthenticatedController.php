@@ -34,7 +34,7 @@ abstract class AuthenticatedController extends ApplicationController
         }
 
         if (!$this->isValidUser($user)) {
-            \Yii::$app->user->logout();
+            $this->getApp()->user->logout();
             $this->signInRedirect();
 
             return false;

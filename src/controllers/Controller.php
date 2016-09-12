@@ -6,7 +6,9 @@ use yii\web\NotFoundHttpException;
 
 class Controller extends Controller
 {
+    use wajox\yii2base\traits\AppTrait;
     use wajox\yii2base\traits\DiContainerTrait;
+    use wajox\yii2base\traits\I18nTrait;
 
     const REQUEST_TYPE_QUERY_PARAM = 'suffix';
     const REQUEST_TYPE_JS = '.js';
@@ -24,7 +26,7 @@ class Controller extends Controller
 
     public function getRequestType()
     {
-        return \Yii::$app->request->getQueryParam(
+        return $this->getApp()->request->getQueryParam(
             self::REQUEST_TYPE_QUERY_PARAM,
             self::REQUEST_TYPE_HTML
         );
@@ -101,7 +103,7 @@ class Controller extends Controller
     {
         $this->layout = false;
 
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+        $this->getApp()->response->format = \yii\web\Response::FORMAT_RAW;
 
         return parent::render($template.'_json', $data);
     }
@@ -110,7 +112,7 @@ class Controller extends Controller
     {
         $this->layout = false;
 
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_XML;
+        $this->getApp()->response->format = \yii\web\Response::FORMAT_XML;
 
         return parent::render($template.'_xml', $data);
     }
@@ -124,7 +126,7 @@ class Controller extends Controller
     {
         $this->layout = false;
 
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+        $this->getApp()->response->format = \yii\web\Response::FORMAT_RAW;
 
         return parent::render($template.'_txt', $data);
     }
@@ -170,11 +172,11 @@ class Controller extends Controller
 
     public function getUser()
     {
-        if (\Yii::$app->user->isGuest) {
+        if ($this->getApp()->user->isGuest) {
             return false;
         }
 
-        return \Yii::$app->user->identity;
+        return $this->getApp()->user->identity;
     }
 
     public function getListingViewType($listingViewType)

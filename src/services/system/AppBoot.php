@@ -14,8 +14,8 @@ class AppBoot extends Component
 
     protected function initAppSettings()
     {
-        $theme = \Yii::$app->settings->get('app_theme', 'base');
-        $indexUrl = \Yii::$app->settings->get('app_index_url', 'site/index');
+        $theme = $this->getApp()->settings->get('app_theme', 'base');
+        $indexUrl = $this->getApp()->settings->get('app_index_url', 'site/index');
 
         $this->setupAppTheme($theme);
         $this->setupAppIndexUrl($indexUrl);
@@ -23,10 +23,10 @@ class AppBoot extends Component
 
     protected function setupAppTheme($theme)
     {
-        \Yii::$app->view->theme->basePath = '@themes/' . $theme;
-        \Yii::$app->view->theme->baseUrl = '@themes/' . $theme;
+        $this->getApp()->view->theme->basePath = '@themes/' . $theme;
+        $this->getApp()>view->theme->baseUrl = '@themes/' . $theme;
 
-        \Yii::$app->view->theme->pathMap = [
+        $this->getApp()->view->theme->pathMap = [
                 '@app/views' => [
                         '@themes/' . $theme . '/views',
                         '@themes/' . self::APP_BASE_THEME . '/views',
@@ -49,7 +49,7 @@ class AppBoot extends Component
 
     protected function setupAppIndexUrl($indexUrl)
     {
-        \Yii::$app->urlManager->addRules(['/' => $indexUrl], false);
+        $this->getApp()->urlManager->addRules(['/' => $indexUrl], false);
     }
 
     protected function add($model)
