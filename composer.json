@@ -24,7 +24,6 @@
         "vlucas/phpdotenv": "*",
         "yiisoft/yii2-gii": "*",
         "fxp/composer-asset-plugin": "^1.0",
-        "deployer/deployer": "^3.2",
         "kartik-v/yii2-widgets": "dev-master"
     },
     "autoload": {
