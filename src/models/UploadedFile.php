@@ -3,7 +3,7 @@ namespace wajox\yii2base\models;
 
 use wajox\yii2base\services\uploads\FileTypes;
 
-class UploadedFile extends wajox\yii2base\components\db\ActiveRecord
+class UploadedFile extends \wajox\yii2base\components\db\ActiveRecord
 {
     public static function tableName()
     {

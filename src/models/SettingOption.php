@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\models;
 
-class SettingOption extends wajox\yii2base\components\db\ActiveRecord
+class SettingOption extends \wajox\yii2base\components\db\ActiveRecord
 {
     const TYPE_ID_STRING = 100;
     const TYPE_ID_INTEGER = 200;
