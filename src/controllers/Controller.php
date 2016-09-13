@@ -1,10 +1,9 @@
 <?php
 namespace wajox\yii2base\controllers;
 
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class Controller extends Controller
+class Controller extends \yii\web\Controller
 {
     use \wajox\yii2base\traits\AppTrait;
     use \wajox\yii2base\traits\DiContainerTrait;
