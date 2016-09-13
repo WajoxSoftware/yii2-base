@@ -3,9 +3,9 @@ namespace wajox\yii2base\modules;
 
 abstract class ModuleAbstract extends \yii\base\Module
 {
-    use wajox\yii2base\traits\AppTrait;
-    use wajox\yii2base\traits\DiContainerTrait;
-    use wajox\yii2base\traits\I18nTrait;
+    use \wajox\yii2base\traits\AppTrait;
+    use \wajox\yii2base\traits\DiContainerTrait;
+    use \wajox\yii2base\traits\I18nTrait;
 
     public $hasSessionController = false;
     public $hasRegistrationController = false;
