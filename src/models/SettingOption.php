@@ -1,9 +1,7 @@
 <?php
 namespace wajox\yii2base\models;
 
-use Yii;
-
-class SettingOption extends \yii\db\ActiveRecord
+class SettingOption extends wajox\yii2base\components\db\ActiveRecord
 {
     const TYPE_ID_STRING = 100;
     const TYPE_ID_INTEGER = 200;
@@ -30,9 +28,9 @@ class SettingOption extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'key' => Yii::t('app/attributes', 'Setting Option Key'),
-            'val' => Yii::t('app/attributes', 'Setting Option Value'),
-            'type_id' => Yii::t('app/attributes', 'Setting Option Type ID'),
+            'key' => $this->t('app/attributes', 'Setting Option Key'),
+            'val' => $this->t('app/attributes', 'Setting Option Value'),
+            'type_id' => $this->t('app/attributes', 'Setting Option Type ID'),
         ];
     }
 

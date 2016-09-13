@@ -1,10 +1,9 @@
 <?php
 namespace wajox\yii2base\models;
 
-use Yii;
 use wajox\yii2base\services\uploads\FileTypes;
 
-class UploadedFile extends \yii\db\ActiveRecord
+class UploadedFile extends wajox\yii2base\components\db\ActiveRecord
 {
     public static function tableName()
     {
@@ -24,13 +23,13 @@ class UploadedFile extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app/attributes', 'ID'),
-            'file' => Yii::t('app/attributes', 'File'),
-            'size' => Yii::t('app/attributes', 'Size'),
-            'user_id' => Yii::t('app/attributes', 'User ID'),
-            'type_id' => Yii::t('app/attributes', 'Type'),
-            'status_id' => Yii::t('app/attributes', 'Status'),
-            'created_at' => Yii::t('app/attributes', 'Created At'),
+            'id' => $this->t('app/attributes', 'ID'),
+            'file' => $this->t('app/attributes', 'File'),
+            'size' => $this->t('app/attributes', 'Size'),
+            'user_id' => $this->t('app/attributes', 'User ID'),
+            'type_id' => $this->t('app/attributes', 'Type'),
+            'status_id' => $this->t('app/attributes', 'Status'),
+            'created_at' => $this->t('app/attributes', 'Created At'),
         ];
     }
 
