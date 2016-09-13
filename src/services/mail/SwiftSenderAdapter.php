@@ -16,7 +16,7 @@ class SwiftSenderAdapter extends SenderAdapterAbstract
     {
         $from = isset($optinos['from']) ? $options['from'] : $this->from;
 
-        $message = \Yii::$app->swiftMailer->compose([
+        $message = $this->getApp()->swiftMailer->compose([
                 'html' => $template.'_html',
                 'text' => $template.'_text',
               ], $data)

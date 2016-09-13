@@ -2,7 +2,7 @@
 namespace wajox\yii2base\services\system;
 
 use yii\base\Event;
-use yii\base\Object;
+use wajox\yii2base\components\base\Object;
 
 class EventsManager extends Object
 {
@@ -24,7 +24,7 @@ class EventsManager extends Object
 
     public function addHandler($className, $params = [])
     {
-        $handler = new $className($params);
+        $handler = $this->createObject($className, [$params]);
         $handler->bindEvents($this);
     }
 

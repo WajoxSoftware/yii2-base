@@ -3,6 +3,9 @@ namespace wajox\yii2base\modules;
 
 abstract class ModuleAbstract extends \yii\base\Module
 {
+    use wajox\yii2base\traits\AppTrait;
+    use wajox\yii2base\traits\DiContainerTrait;
+    use wajox\yii2base\traits\I18nTrait;
 
     public $hasSessionController = false;
     public $hasRegistrationController = false;
@@ -17,13 +20,13 @@ abstract class ModuleAbstract extends \yii\base\Module
     {
         $this->controllerNamespace = 'app\modules\\'.$this->id.'\controllers';
         $this->layout = 'profile';
-        \Yii::$app->user->loginUrl = ['/'.$this->id.'/session'];
+        $this->getApp()->user->loginUrl = ['/'.$this->id.'/session'];
     }
 
     public function getModuleHomeBreadcrumbs()
     {
         return [
-            'label' => \Yii::t('app/'.$this->id, 'Module Home'),
+            'label' => $this->t('app/'.$this->id, 'Module Home'),
             'url' => ['/'.$this->id],
         ];
     }

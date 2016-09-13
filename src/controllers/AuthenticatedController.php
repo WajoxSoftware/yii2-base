@@ -3,7 +3,7 @@ namespace wajox\yii2base\controllers;
 
 use yii\filters\AccessControl;
 
-abstract class AuthenticatedApplicationController extends ApplicationController
+abstract class AuthenticatedController extends ApplicationController
 {
     public $settingsControllerClassName = 'app\modules\account\controllers\SettingsController';
 
@@ -34,7 +34,7 @@ abstract class AuthenticatedApplicationController extends ApplicationController
         }
 
         if (!$this->isValidUser($user)) {
-            \Yii::$app->user->logout();
+            $this->getApp()->user->logout();
             $this->signInRedirect();
 
             return false;
