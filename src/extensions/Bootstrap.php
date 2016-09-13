@@ -1,21 +1,23 @@
 <?php
-namespace wajox\yii2base\services\system;
+namespace wajox\yii2base\extensions;
 
+use yii\base\Application;
+use yii\base\BootstrapInterface;
 use wajox\yii2base\components\base\Component;
 
-class AppBoot extends Component
+class Bootstrap extends Component implements BootstrapInterface
 {
     const APP_BASE_THEME = 'base';
 
-    public function __construct()
+    public function bootstrap(Application $app)
     {
-        $this->initAppSettings();
+        $this->initAppSettings($app);
     }
 
-    protected function initAppSettings()
+    protected function initAppSettings(Application $app)
     {
-        $theme = $this->getApp()->settings->get('app_theme', 'base');
-        $indexUrl = $this->getApp()->settings->get('app_index_url', 'site/index');
+        $theme = $app->settings->get('app_theme', 'base');
+        $indexUrl = $app->settings->get('app_index_url', 'site/index');
 
         $this->setupAppTheme($theme);
         $this->setupAppIndexUrl($indexUrl);
@@ -23,10 +25,10 @@ class AppBoot extends Component
 
     protected function setupAppTheme($theme)
     {
-        $this->getApp()->view->theme->basePath = '@themes/' . $theme;
-        $this->getApp()>view->theme->baseUrl = '@themes/' . $theme;
+        $app->view->theme->basePath = '@themes/' . $theme;
+        $app->view->theme->baseUrl = '@themes/' . $theme;
 
-        $this->getApp()->view->theme->pathMap = [
+        $app->view->theme->pathMap = [
                 '@app/views' => [
                         '@themes/' . $theme . '/views',
                         '@themes/' . self::APP_BASE_THEME . '/views',
@@ -49,7 +51,7 @@ class AppBoot extends Component
 
     protected function setupAppIndexUrl($indexUrl)
     {
-        $this->getApp()->urlManager->addRules(['/' => $indexUrl], false);
+        $app->urlManager->addRules(['/' => $indexUrl], false);
     }
 
     protected function add($model)
