@@ -6,9 +6,9 @@ use yii\web\NotFoundHttpException;
 
 class Controller extends Controller
 {
-    use wajox\yii2base\traits\AppTrait;
-    use wajox\yii2base\traits\DiContainerTrait;
-    use wajox\yii2base\traits\I18nTrait;
+    use \wajox\yii2base\traits\AppTrait;
+    use \wajox\yii2base\traits\DiContainerTrait;
+    use \wajox\yii2base\traits\I18nTrait;
 
     const REQUEST_TYPE_QUERY_PARAM = 'suffix';
     const REQUEST_TYPE_JS = '.js';
