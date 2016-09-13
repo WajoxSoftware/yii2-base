@@ -9,12 +9,12 @@ class Bootstrap extends Component implements BootstrapInterface
 {
     const APP_BASE_THEME = 'base';
 
-    public function bootstrap(Application $app)
+    public function bootstrap($app)
     {
         $this->initAppSettings($app);
     }
 
-    protected function initAppSettings(Application $app)
+    protected function initAppSettings($app)
     {
         $theme = $app->settings->get('app_theme', 'base');
         $indexUrl = $app->settings->get('app_index_url', 'site/index');
