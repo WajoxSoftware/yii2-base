@@ -2,8 +2,9 @@
 namespace wajox\yii2base\services\web;
 
 use yii\helpers\Url;
+use wajox\yii2base\components\base\Object;
 
-class UrlConverter
+class UrlConverter extends Object
 {
     const INTERNAL_SCHEMA = 'app';
     const INTERNAL_PATH_HOST = 'path.rq';

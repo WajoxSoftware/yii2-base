@@ -1,7 +1,9 @@
 <?php
 namespace wajox\yii2base\services\web;
 
-class HttpReferer
+use wajox\yii2base\components\base\Object;
+
+class HttpReferer extends Object
 {
     const REFERER_TYPE_DIRECT = 100;
     const REFERER_TYPE_GOOGLE_SEARCH = 101;

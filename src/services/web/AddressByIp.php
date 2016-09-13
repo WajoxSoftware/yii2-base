@@ -1,7 +1,9 @@
 <?php
 namespace wajox\yii2base\services\web;
 
-class AddressByIp
+use wajox\yii2base\components\base\Object;
+
+class AddressByIp extends Object
 {
     const STATUS_FAILED = 'fail';
     const GEODECODER_URL  = 'http://ip-api.com/json/';
