@@ -10,7 +10,7 @@ trait DiContainerTrait
 
     public function getDependency($class, $params = [], $config = [] )
     {
-        return $this->getContainer()-.get($class, $params, $config);
+        return $this->getContainer()->get($class, $params, $config);
     }
 
     public function setDependency($class, $definition = [], $params = [])
