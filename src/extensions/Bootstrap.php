@@ -19,11 +19,11 @@ class Bootstrap extends Component implements BootstrapInterface
         $theme = $app->settings->get('app_theme', 'base');
         $indexUrl = $app->settings->get('app_index_url', 'site/index');
 
-        $this->setupAppTheme($theme);
-        $this->setupAppIndexUrl($indexUrl);
+        $this->setupAppTheme($theme, $app);
+        $this->setupAppIndexUrl($indexUrl, $app);
     }
 
-    protected function setupAppTheme($theme)
+    protected function setupAppTheme($theme, $app)
     {
         $app->view->theme->basePath = '@themes/' . $theme;
         $app->view->theme->baseUrl = '@themes/' . $theme;
@@ -49,7 +49,7 @@ class Bootstrap extends Component implements BootstrapInterface
             ];
     }
 
-    protected function setupAppIndexUrl($indexUrl)
+    protected function setupAppIndexUrl($indexUrl, $app)
     {
         $app->urlManager->addRules(['/' => $indexUrl], false);
     }
