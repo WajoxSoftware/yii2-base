@@ -3,27 +3,27 @@ namespace wajox\yii2base\traits;
 
 trait DiContainerTrait
 {
-    public function getContainer()
+    public static function getContainer()
     {
         return \Yii::$container;
     }
 
-    public function getDependency($class, $params = [], $config = [] )
+    public static function getDependency($class, $params = [], $config = [])
     {
-        return $this->getContainer()->get($class, $params, $config);
+        return self::getContainer()->get($class, $params, $config);
     }
 
-    public function setDependency($class, $definition = [], $params = [])
+    public static function setDependency($class, $definition = [], $params = [])
     {
-        return $this->getContainer()->set($class, $definition, $params);
+        return self::getContainer()->set($class, $definition, $params);
     }
 
-    public function createObject($type, $params = [])
+    public static function createObject($type, $params = [])
     {
         return \Yii::createObject($type, $params);
     }
 
-    public function configure($object, $properties)
+    public static function configure($object, $properties)
     {
         return \Yii::configure($object, $properties);
     }

@@ -3,13 +3,23 @@ namespace wajox\yii2base\traits;
 
 trait AppTrait
 {
-    public function getApp()
+    public static function getApp()
     {
         return \Yii::$app;
     }
 
-    public function getService($id, $throwException = true )
+    public static function getAppRequest()
     {
-    	return \Yii::$app->get($id, $throwException);
+        return \Yii::$app->request;
+    }
+
+    public static function getAppUser()
+    {
+        return \Yii::$app->user;
+    }
+
+    public static function getService($id, $throwException = true)
+    {
+        return \Yii::$app->get($id, $throwException);
     }
 }
