@@ -20,7 +20,7 @@ class m150327_020005_create_uploaded_files_table extends Migration
             'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
 
-        $this->addForeignKey("FK_uploaded_file_user_id", "{{%uploaded_file}}", "user_id", "{{%user}}", "id", 'CASCADE');
+        //$this->addForeignKey("FK_uploaded_file_user_id", "{{%uploaded_file}}", "user_id", "{{%user}}", "id", 'CASCADE');
     }
 
     public function down()
