@@ -20,11 +20,11 @@
         "2amigos/yii2-date-picker-widget" : "~1.0",
         "2amigos/yii2-date-time-picker-widget" : "~1.0",
         "yandex-money/yandex-money-sdk-php": "3.0.*",
-        "lingualeo/expert-sender-api": "*",
         "vlucas/phpdotenv": "*",
         "yiisoft/yii2-gii": "*",
         "fxp/composer-asset-plugin": "^1.0",
-        "kartik-v/yii2-widgets": "dev-master"
+        "kartik-v/yii2-widgets": "dev-master",
+        "picodi-lab/expertsender-api-client": "*"
     },
     "autoload": {
         "psr-4": {

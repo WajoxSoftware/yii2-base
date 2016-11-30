@@ -1,10 +1,8 @@
 <?php
 namespace wajox\yii2base\services\mail;
 
-use LinguaLeo\ExpertSender\ExpertSender;
-use LinguaLeo\ExpertSender\Request\AddUserToList;
-use LinguaLeo\ExpertSender\Entities\Receiver;
-use LinguaLeo\ExpertSender\Entities\Snippet;
+use PicodiLab\Expertsender\ExpertsenderApi;
+use PicodiLab\Expertsender\Mapper\Subscriber;
 
 class ExpertSenderAdapter extends SenderAdapterAbstract
 {
@@ -22,20 +20,26 @@ class ExpertSenderAdapter extends SenderAdapterAbstract
         $this->apiKey = $params['api_key'];
         $this->transactional_id = $params['transactional_id'];
         $this->base_list_id = $params['base_list_id'];
-        $this->apiSender = new ExpertSender($this->endpointUrl, $this->apiKey);
+        $this->apiSender = new new ExpertSenderApi($this->apiKey);
     }
 
     public function sendTransactional($to, $subject, $content_text, $content_html)
     {
         $this->addSubscriber($to, $to);
 
-        $snippets = [];
-        $snippets[] = new Snippet('subject', $subject);
-        $snippets[] = new Snippet('content_text', $content_text, true);
-        $snippets[] = new Snippet('content_html', $content_html, true);
-        $receiver = new Receiver($to);
+        $params = [
+            'subject' => $subject,
+            'content_text' => $content_text,
+            'content_html' => $content_html,
+        ];
 
-        return $this->apiSender->sendTransactional($this->transactional_id, $receiver, $snippets);
+        return $this->apiSender()
+            ->Messages()
+            ->sendTransactionalMessage(
+                $to,
+                $params,
+                $this->transactional_id
+            );
     }
 
     public function send($to, $subject, $template, $data = [], $options = [])
@@ -60,31 +64,36 @@ class ExpertSenderAdapter extends SenderAdapterAbstract
 
     public function getLists()
     {
-        return [];
+        return $this->apiSender->Lists()->get();
     }
 
     public function createList($title)
     {
-        return;
+        return $this->apiSender->Lists()->create($title);
     }
 
     public function deleteUserFromList($email, $listId)
     {
-        $apiResult = $this->apiSender->deleteUser($email, $listId);
+        $this->apiSender->Subscribers()->deleteSubscriber($email, $listId);
+    }
 
-        return $apiResult->isOk();
+    public function getSubscriber($email)
+    {
+        return $this->apiSender->Subscribers()->get($email);
     }
 
     public function addUserToList($data)
     {
-        $request = new AddUserToList();
-        $request->setListId($data['list_id'])
-            ->setEmail($data['email'])
-            ->setName($data['name'])
-            ->freeze();
+        $names = explode(' ', $data['name']);
 
-        $apiResult = $this->apiSender->addUserToList($request);
+        $subscriber = new Subscriber(
+            $data['email'],
+            [
+                'firstname' => array_shift($names),
+                'lastname' => array_shift($names),
+            ]
+        );
 
-        return $apiResult->isOk();
+        $this->apiSender->Subscribers()->add($subscriber, $listId);
     }
 }
