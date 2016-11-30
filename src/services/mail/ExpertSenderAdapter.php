@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\services\mail;
 
-use PicodiLab\Expertsender\ExpertsenderApi;
+use PicodiLab\Expertsender\ExpertSenderApi;
 use PicodiLab\Expertsender\Mapper\Subscriber;
 
 class ExpertSenderAdapter extends SenderAdapterAbstract
