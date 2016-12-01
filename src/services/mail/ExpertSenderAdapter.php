@@ -35,7 +35,7 @@ class ExpertSenderAdapter extends SenderAdapterAbstract
             'content_html' => $content_html,
         ];
 
-        return $this->apiSender()
+        return $this->apiSender
             ->Messages()
             ->sendTransactionalMessage(
                 $to,
