@@ -6,6 +6,8 @@ use PicodiLab\Expertsender\Mapper\Subscriber;
 
 class ExpertSenderAdapter extends SenderAdapterAbstract
 {
+    const OUTPUT_FORMAT = 'ARRAY';
+
     public $from = null;
     public $endpointUrl = null;
     public $apiKey = null;
@@ -64,22 +66,32 @@ class ExpertSenderAdapter extends SenderAdapterAbstract
 
     public function getLists()
     {
-        return $this->apiSender->Lists()->get();
+        return $this->apiSender
+            ->Lists()
+            ->setOutputFormat(self::OUTPUT_FORMAT)
+            ->get();
     }
 
     public function createList($title)
     {
-        return $this->apiSender->Lists()->create($title);
+        return $this->apiSender
+            ->Lists()
+            ->create($title);
     }
 
     public function deleteUserFromList($email, $listId)
     {
-        $this->apiSender->Subscribers()->deleteSubscriber($email, $listId);
+        $this->apiSender
+            ->Subscribers()
+            ->deleteSubscriber($email, $listId);
     }
 
     public function getSubscriber($email)
     {
-        return $this->apiSender->Subscribers()->get($email);
+        return $this->apiSender
+            ->Subscribers()
+            ->setOutputFormat(self::OUTPUT_FORMAT)
+            ->get($email);
     }
 
     public function addUserToList($data)
