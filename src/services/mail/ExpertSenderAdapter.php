@@ -48,9 +48,7 @@ class ExpertSenderAdapter extends SenderAdapterAbstract
     {
         $content_text = $this->render($template, $data, false);//'<![CDATA[' . $this->render($template, $data, true) . ']]>';
         $content_html = $this->render($template, $data, true);//'<![CDATA[' . $this->render($template, $data, true) . ']]>';
-        $apiResult = $this->sendTransactional($to, $subject, $content_text, $content_html);
-
-        return $apiResult->isOk();
+        return $this->sendTransactional($to, $subject, $content_text, $content_html);
     }
 
     public function addSubscriber($email, $name)
