@@ -37,7 +37,7 @@ class ExpertSenderAdapter extends SenderAdapterAbstract
 
         return $this->apiSender
             ->Messages()
-            ->sendTransactionalMessage(
+            ->sendTransactinalMessage(
                 $to,
                 $params,
                 $this->transactional_id
