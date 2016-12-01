@@ -106,6 +106,6 @@ class ExpertSenderAdapter extends SenderAdapterAbstract
             ]
         );
 
-        $this->apiSender->Subscribers()->add($subscriber, $listId);
+        $this->apiSender->Subscribers()->add($subscriber, $data['list_id']);
     }
 }
