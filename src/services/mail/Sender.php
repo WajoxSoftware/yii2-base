@@ -1,56 +1,16 @@
 <?php
 namespace wajox\yii2base\services\mail;
 
-use wajox\yii2base\components\base\Component;
+use wajox\yii2base\services\base\BaseAdapterManager;
 
-class Sender extends Component
+class Sender extends BaseAdapterManager
 {
-    protected $adapter;
-
     public function __construct()
-    {
-        $this->initAdapter();
-    }
-
-    public function send($to, $subject, $template, $data = [], $options = [])
-    {
-        return $this->getAdapter()->send($to, $subject, $template, $data, $options);
-    }
-
-    public function addSubscriber($email, $name)
-    {
-        return $this->getAdapter()->addSubscriber($email, $name);
-    }
-
-    public function addUserToList($data)
-    {
-        return $this->getAdapter()->addUserToList($data);
-    }
-
-    public function deleteUserFromList($email, $listId)
-    {
-        return $this->getAdapter()->deleteUserFromList($email, $listId);
-    }
-
-    protected function initAdapter()
     {
         $adapterClass = $this->getApp()->settings->get('app_mail_adapter_class');
         parse_str($this->getApp()->settings->get('app_mail_adapter_params'), $adapterParams);
         $adapterParams['from'] =  $this->getApp()->settings->get('app_mail_adapter_from');
 
-        $adapter = $this->createObject($adapterClass, [$adapterParams]);
-
-        $this->setAdapter($adapter);
-    }
-
-    protected function setAdapter($adapter)
-    {
-        $this->adapter = $adapter;
-
-        return $this;
-    }
-    protected function getAdapter()
-    {
-        return $this->adapter;
+        $this->createAdapter($adapterClass, $adapterParams);
     }
 }
