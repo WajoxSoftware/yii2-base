@@ -86,9 +86,6 @@ class Bootstrap extends Component implements BootstrapInterface
                         $baseThemePath . '/widgets',
                     ],
             ];
-
-
-        //print_r($app->view->theme->pathMap);
     }
 
     protected function setupAppIndexUrl($indexUrl, $app)
