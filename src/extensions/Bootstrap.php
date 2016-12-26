@@ -4,6 +4,7 @@ namespace wajox\yii2base\extensions;
 use yii\base\Application;
 use yii\base\BootstrapInterface;
 use yii\i18n\PhpMessageSource;
+use yii\console\Application as ConsoleApplication;
 use wajox\yii2base\components\base\Component;
 
 class Bootstrap extends Component implements BootstrapInterface
@@ -23,6 +24,7 @@ class Bootstrap extends Component implements BootstrapInterface
         $this->setupAppTheme($theme, $app);
         $this->setupAppIndexUrl($indexUrl, $app);
         $this->initI18n($app);
+        $this->initControllersMap($app);
     }
 
     protected function setupAppTheme($theme, $app)
@@ -72,5 +74,34 @@ class Bootstrap extends Component implements BootstrapInterface
                 'sourceLanguage' => 'en-US'
             ];
         }
+    }
+
+    protected function initControllersMap($app)
+    {
+        if ($app instanceof ConsoleApplication) {
+            $app->controllerMap => [
+                'good-letter-emails' => 'wajox\yii2base\commands\GoodLetterEmailsController',
+                'mailer' => 'wajox\yii2base\commands\MailerController',
+                'orders' => 'wajox\yii2base\commands\OrdersController',
+                'partners' => 'wajox\yii2base\commands\PartnersController',
+                'rbac' => 'wajox\yii2base\commands\RbacController',
+                'sender-settings' => 'wajox\yii2base\commands\SenderSettingsController',
+                'settings' => 'wajox\yii2base\commands\SettingsController',
+                'uploaded-files' => 'wajox\yii2base\commands\UploadedFilesController',
+                'user-notifications' => 'wajox\yii2base\commands\UserNotificationsController',
+                'users' => 'wajox\yii2base\commands\UsersController',
+            ];
+
+            return;
+        }
+
+        $app->controllerMap => [
+            'site' => 'wajox\yii2base\controllers\SiteController',
+            'confirmation' => 'wajox\yii2base\controllers\ConfirmationController',
+            'content-nodes' => 'wajox\yii2base\controllers\ContentNodesController',
+            'password' => 'wajox\yii2base\controllers\PasswordController',
+            'subscribes' => 'wajox\yii2base\controllers\SubscribesController',
+            'traffic-streams' => 'wajox\yii2base\controllers\TrafficStreamsController',
+        ];
     }
 }
