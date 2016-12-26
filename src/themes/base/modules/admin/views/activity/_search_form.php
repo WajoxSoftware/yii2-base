@@ -14,7 +14,7 @@ $userApiUrl = \yii\helpers\Url::toRoute(['/api/users', 'suffix' => '.json'], tru
         <div class="col-md-6">
             <?= $form->field($model, 'user_id')->widget(Select2::classname(), [
                     'initValueText' => $model->userName,
-                    'options' => ['placeholder' => \Yii::t('app', 'Select')],
+                    'options' => ['placeholder' => \Yii::t('app/general', 'Select')],
                     'pluginOptions' => [
                         'debug' => true,
                         'allowClear' => true,
@@ -31,7 +31,7 @@ $userApiUrl = \yii\helpers\Url::toRoute(['/api/users', 'suffix' => '.json'], tru
         <div class="col-md-6">
             <?= $form->field($model, 'referal_user_id')->widget(Select2::classname(), [
                     'initValueText' => $model->referalUserName,
-                    'options' => ['placeholder' => \Yii::t('app', 'Select')],
+                    'options' => ['placeholder' => \Yii::t('app/general', 'Select')],
                     'pluginOptions' => [
                         'multiple' => false,
                         'allowClear' => true,
@@ -50,7 +50,7 @@ $userApiUrl = \yii\helpers\Url::toRoute(['/api/users', 'suffix' => '.json'], tru
     <div class="row">
         <div class="col-md-12">
             <?= $form->field($model, 'action_type_id')
-                    ->dropDownList($model::getActionTypeIdList(), ['prompt' => \Yii::t('app', 'Select')]); ?>
+                    ->dropDownList($model::getActionTypeIdList(), ['prompt' => \Yii::t('app/general', 'Select')]); ?>
         </div>
     </div>
 

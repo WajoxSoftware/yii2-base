@@ -38,7 +38,7 @@ $metaDescription = \Yii::$app->settings->get('app_meta_description');
 <?php $this->beginBody() ?>
 <div id="wrapper-loading">
   <p class="loading-icon"><i class="fa fa-circle-o-notch fa-spin fa-fw fa-3x" aria-hidden="true"></i></p>
-  <p class="loading-hint"><?= \Yii::t('app', 'Loading...'); ?></p>
+  <p class="loading-hint"><?= \Yii::t('app/general', 'Loading...'); ?></p>
 </div>
 
 <div id="wrapper"<?php if (isset($sidebarWidgetOptions)): ?> class="with-sidebar"<?php endif; ?> style="display: none;">

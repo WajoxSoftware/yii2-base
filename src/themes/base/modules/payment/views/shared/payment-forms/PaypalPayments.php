@@ -21,7 +21,7 @@ use yii\helpers\Url;
       <input name="return" type="hidden" value="<?= Url::toRoute(['/payment/callbacks', 'method' => 'PaypalPayments', 'action' => 'success'], true) ?>" />
       <input name="cancel_return" type="hidden" value="<?= Url::toRoute(['/payment/callbacks', 'method' => 'PaypalPayments', 'action' => 'fail'], true) ?>" />
       <input name="notify_url" type="hidden" value="<?= Url::toRoute(['/payment/callbacks', 'method' => 'PaypalPayments'], true) ?>" />
-      <input type="submit" value="<?= \Yii::t('app', 'Pay') ?>" class="btn btn-primary"/>
+      <input type="submit" value="<?= \Yii::t('app/general', 'Pay') ?>" class="btn btn-primary"/>
     </form>
   </div>
 </div>

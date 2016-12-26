@@ -23,12 +23,12 @@ class GoodLetterEmail extends \wajox\yii2base\components\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => \Yii::t('app', 'ID'),
-            'good_email_id' => \Yii::t('app', 'Good Email ID'),
-            'order_id' => \Yii::t('app', 'Order ID'),
-            'status_id' => \Yii::t('app', 'Status ID'),
-            'send_at' => \Yii::t('app', 'Send At'),
-            'scheduled_at' => \Yii::t('app', 'Scheduled At'),
+            'id' => \Yii::t('app/general', 'ID'),
+            'good_email_id' => \Yii::t('app/general', 'Good Email ID'),
+            'order_id' => \Yii::t('app/general', 'Order ID'),
+            'status_id' => \Yii::t('app/general', 'Status ID'),
+            'send_at' => \Yii::t('app/general', 'Send At'),
+            'scheduled_at' => \Yii::t('app/general', 'Scheduled At'),
         ];
     }
 

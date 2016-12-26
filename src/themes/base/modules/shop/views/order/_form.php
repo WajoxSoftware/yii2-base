@@ -50,7 +50,7 @@ use yii\bootstrap\ActiveForm;
 
     <div class="row">
       <div class="col-md-3 col-md-offset-9">
-        <?= Html::submitButton(\Yii::t('app', 'Order'), ['class' => 'btn btn-primary col-md-12']) ?>
+        <?= Html::submitButton(\Yii::t('app/general', 'Order'), ['class' => 'btn btn-primary col-md-12']) ?>
       </div>
     </div>
 <?php ActiveForm::end(); ?>

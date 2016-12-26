@@ -6,7 +6,7 @@ $this->params['breadcrumbs'][] = ['label' => \Yii::t('app/admin', 'Nav Customers
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->params['pageControls']['items'][] = [
-  'title' => \Yii::t('app', 'Edit'),
+  'title' => \Yii::t('app/general', 'Edit'),
   'url' => ['update', 'id' => $model->id, 'suffix' => '.js'],
   'icon' => 'fa-pencil',
   'class' => 'js-remote-link',

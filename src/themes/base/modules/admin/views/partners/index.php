@@ -6,7 +6,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->render('_tabs', ['current' => 'index']);
 $this->params['pageControls']['items'][] = [
   'url' => ['create'],
-  'title' => \Yii::t('app', 'Add'),
+  'title' => \Yii::t('app/general', 'Add'),
   'icon' => 'fa-plus',
 ];
 

@@ -2,7 +2,7 @@
 
 use yii\helpers\Url;
 
-$this->title = \Yii::t('app', 'Update Balance');
+$this->title = \Yii::t('app/general', 'Update Balance');
 $this->params['breadcrumbs'][] = ['label' => \Yii::t('app/profile', 'Nav Bills'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 

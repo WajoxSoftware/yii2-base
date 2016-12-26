@@ -19,7 +19,7 @@ use wajox\yii2base\models\Bill;
     <div class="row">
         <div class="col-md-12">
             <?= $form->field($model, 'status_id')
-                    ->dropDownList(Bill::getStatusIdList(), ['prompt' => \Yii::t('app', 'Select')]); ?>
+                    ->dropDownList(Bill::getStatusIdList(), ['prompt' => \Yii::t('app/general', 'Select')]); ?>
 
         </div>
     </div>

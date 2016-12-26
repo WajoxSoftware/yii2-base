@@ -27,7 +27,7 @@ $formFieldsView = $formViewsMap[$model->typeId];
         <div class="col-md-12">
             <?= $form->field($model, 'layout')->dropDownList(
                 ContentNode::getLayoutsList(),
-                ['prompt' => \Yii::t('app', 'Select')]
+                ['prompt' => \Yii::t('app/general', 'Select')]
             ); ?>
         </div>
     </div>
@@ -48,15 +48,15 @@ $formFieldsView = $formViewsMap[$model->typeId];
 
     <div class="form-group text-right">
 
-        <?= Html::a(\Yii::t('app', 'Delete'), ['delete', 'id' => $modelNode->id], [
+        <?= Html::a(\Yii::t('app/general', 'Delete'), ['delete', 'id' => $modelNode->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => \Yii::t('app', 'Are you sure you want to delete this item?'),
+                'confirm' => \Yii::t('app/general', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>
 
-          <?= Html::submitButton(\Yii::t('app', 'Update'), ['class' => 'btn btn-primary']) ?>
+          <?= Html::submitButton(\Yii::t('app/general', 'Update'), ['class' => 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

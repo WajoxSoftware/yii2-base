@@ -4,20 +4,20 @@ use wajox\yii2base\models\Good;
 
 $this->params['pageControls']['items'][] = [
   'url' => $model->getModel()->orderUrl,
-  'title' => \Yii::t('app', 'View'),
+  'title' => \Yii::t('app/general', 'View'),
   'icon' => 'fa-eye',
 ];
 
 $this->params['pageControls']['items'][] = [
   'url' => ['draft', 'id' => $model->getModel()->id, 'cloneMode' => true],
-  'title' => \Yii::t('app', 'Clone'),
+  'title' => \Yii::t('app/general', 'Clone'),
   'icon' => 'fa-copy',
 ];
 
 if (!$model->getModel()->isActive && !$model->getModel()->isDraft) {
     $this->params['pageControls']['items'][] = [
       'url' => ['status', 'id' => $model->getModel()->id, 'statusId' => Good::STATUS_ID_ACTIVE],
-      'title' => \Yii::t('app', 'Enable'),
+      'title' => \Yii::t('app/general', 'Enable'),
       'icon' => 'fa-plus',
     ];
 }
@@ -25,7 +25,7 @@ if (!$model->getModel()->isActive && !$model->getModel()->isDraft) {
 if (!$model->getModel()->isInactive && !$model->getModel()->isDraft) {
     $this->params['pageControls']['items'][] = [
       'url' => ['status', 'id' => $model->getModel()->id, 'statusId' => Good::STATUS_ID_INACTIVE] ,
-      'title' => \Yii::t('app', 'Disable'),
+      'title' => \Yii::t('app/general', 'Disable'),
       'icon' => 'fa-minus',
     ];
 }
@@ -33,7 +33,7 @@ if (!$model->getModel()->isInactive && !$model->getModel()->isDraft) {
 if (!$model->getModel()->isArchive && !$model->getModel()->isDraft) {
     $this->params['pageControls']['items'][] = [
       'url' => ['status', 'id' => $model->getModel()->id, 'statusId' => Good::STATUS_ID_ARCHIVE] ,
-      'title' => \Yii::t('app', 'Archivate'),
+      'title' => \Yii::t('app/general', 'Archivate'),
       'icon' => 'fa-plus',
     ];
 }
@@ -63,6 +63,6 @@ if (!$model->getModel()->isArchive && !$model->getModel()->isDraft) {
   <div>
     <?php $orderUrl = Url::toRoute($model->getModel()->orderUrl) ?>
     <label><?= \Yii::t('app/attributes', 'Url') ?>:</label>
-    <a href="<?= $orderUrl ?>" class="btn btn-default btn-xs" target="_blank"><?= \Yii::t('app', 'View') ?></a>
+    <a href="<?= $orderUrl ?>" class="btn btn-default btn-xs" target="_blank"><?= \Yii::t('app/general', 'View') ?></a>
   </div>
 </div>

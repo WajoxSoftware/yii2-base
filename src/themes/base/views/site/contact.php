@@ -7,7 +7,7 @@ use yii\captcha\Captcha;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model wajox\yii2base\models\ContactForm */
 
-$this->title = \Yii::t('app', 'Page Contacts');
+$this->title = \Yii::t('app/general', 'Page Contacts');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php if (\Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
             <div class="alert alert-success">
-                <?= \Yii::t('app', 'Send successfully') ?>
+                <?= \Yii::t('app/general', 'Send successfully') ?>
             </div>
 
             <?php else: ?>
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
                 ]) ?>
                 <div class="form-group row">
-                    <?= Html::submitButton(\Yii::t('app', 'Send'), ['class' => 'btn btn-primary col-md-12 col-xs-12', 'name' => 'contact-button']) ?>
+                    <?= Html::submitButton(\Yii::t('app/general', 'Send'), ['class' => 'btn btn-primary col-md-12 col-xs-12', 'name' => 'contact-button']) ?>
                 </div>
             <?php ActiveForm::end(); ?>
 

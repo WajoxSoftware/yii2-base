@@ -62,7 +62,7 @@ use wajox\yii2base\services\users\PrivacySettingsManager;
 	<div class="row">
 	    <div class="col-md-12">
 	        <div class="form-group">
-	            <?= Html::submitButton(\Yii::t('app', 'Save'), ['class' => 'btn btn-primary btn-block']) ?>
+	            <?= Html::submitButton(\Yii::t('app/general', 'Save'), ['class' => 'btn btn-primary btn-block']) ?>
 	        </div>
 	    </div>
 

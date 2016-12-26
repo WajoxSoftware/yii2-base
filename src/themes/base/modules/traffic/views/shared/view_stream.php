@@ -24,7 +24,7 @@ $this->params['pageControls']['items'][] = [
     'id' => $stream->id,
     'suffix' => '.js',
   ],
-  'title' => \Yii::t('app', 'Add {model}', [
+  'title' => \Yii::t('app/general', 'Add {model}', [
     'model' => \Yii::t('app/models', 'TrafficStreamPrice'),
   ]),
   'icon' => 'fa-plus',
@@ -36,7 +36,7 @@ $this->params['pageControls']['items'][] = [
     'id' => $stream->id,
     'suffix' => '.js',
   ],
-  'title' => \Yii::t('app', 'Add {model}', [
+  'title' => \Yii::t('app/general', 'Add {model}', [
     'model' => \Yii::t('app/models', 'TrafficStreamImage'),
   ]),
   'icon' => 'fa-plus',

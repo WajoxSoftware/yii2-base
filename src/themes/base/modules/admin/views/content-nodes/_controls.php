@@ -21,13 +21,13 @@ if ($parentNode != null && $parentNode->type_id == ContentNode::TYPE_ID_CATALOG)
 
 if ($parentNode != null) {
     $this->params['pageControls']['items'][] = [
-        'title' => \Yii::t('app', 'View'),
+        'title' => \Yii::t('app/general', 'View'),
         'url' => $parentNode->pageUrl,
         'icon' => 'fa-eye',
       ];
 
     $this->params['pageControls']['items'][] = [
-        'title' => \Yii::t('app', 'Edit'),
+        'title' => \Yii::t('app/general', 'Edit'),
         'url' => ['update', 'id' => $parentNode->id],
         'icon' => 'fa-pencil',
       ];

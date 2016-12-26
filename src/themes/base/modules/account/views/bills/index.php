@@ -6,7 +6,7 @@ $this->title = \Yii::t('app/profile', 'Nav Bills');
 $this->params['breadcrumbs'][] = $this->title;
 $this->render('_tabs', ['current' => 'index']);
 $this->params['pageControls']['items'][] = [
-  'title' => \Yii::t('app', 'Update Balance'),
+  'title' => \Yii::t('app/general', 'Update Balance'),
   'url' => ['create'],
   'icon' => 'fa-plus',
 ];

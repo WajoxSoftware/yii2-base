@@ -11,7 +11,7 @@ use wajox\yii2base\models\TrafficStream;
         <div class="col-md-6">
             <?= $form->field($builder->getModel(), 'status_id')->dropDownList(
                     TrafficStream::getStatusIdList(),
-                    ['prompt' => \Yii::t('app', 'Select')]
+                    ['prompt' => \Yii::t('app/general', 'Select')]
                 ); ?>
         </div>
 
@@ -25,7 +25,7 @@ use wajox\yii2base\models\TrafficStream;
             <div class="col-md-12">
                 <?= $form->field($builder->getModelGood(), 'good_id')->dropDownList(
                         $builder->getModel()->goodsList(),
-                        ['prompt' => \Yii::t('app', 'Select')]
+                        ['prompt' => \Yii::t('app/general', 'Select')]
                     ); ?>
             </div>
         </div>

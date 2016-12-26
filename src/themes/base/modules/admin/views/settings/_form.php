@@ -50,7 +50,7 @@ use yii\bootstrap\ActiveForm;
 
 
 <div class="form-group">
-    <?= Html::submitButton(\Yii::t('app', 'Save'), ['class' => 'btn btn-primary btn-block']) ?>
+    <?= Html::submitButton(\Yii::t('app/general', 'Save'), ['class' => 'btn btn-primary btn-block']) ?>
 </div>
 
 

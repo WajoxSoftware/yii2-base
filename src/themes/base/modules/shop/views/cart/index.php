@@ -25,6 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="row">
 	<div class="col-md-4 col-md-offset-4">
-		<a href="<?= Url::toRoute(['/shop/order/create', 'cart' => $cart['json']]); ?>"><?= \Yii::t('app', 'Make Order') ?></a>
+		<a href="<?= Url::toRoute(['/shop/order/create', 'cart' => $cart['json']]); ?>"><?= \Yii::t('app/general', 'Make Order') ?></a>
 	</div>
 </div>

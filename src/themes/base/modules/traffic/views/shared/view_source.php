@@ -19,7 +19,7 @@ if (!$source->hasStreams && !$source->hasParentSource) {
       'parentId' => $source->id,
       'suffix' => '.js',
     ],
-    'title' => \Yii::t('app', 'Add {model}', [
+    'title' => \Yii::t('app/general', 'Add {model}', [
       'model' => \Yii::t('app/models', 'TrafficSource'),
     ]),
     'icon' => 'fa-plus',
@@ -34,7 +34,7 @@ if (!$source->hasSources || $source->hasParentSource) {
       'id' => $source->id,
       'suffix' => '.js',
     ],
-    'title' => \Yii::t('app', 'Add {model}', [
+    'title' => \Yii::t('app/general', 'Add {model}', [
       'model' => \Yii::t('app/models', 'TrafficStream'),
     ]),
     'icon' => 'fa-plus',

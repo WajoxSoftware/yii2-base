@@ -28,7 +28,7 @@ use yii\bootstrap\ActiveForm;
         <div class="col-md-12">
             <?= $form->field($model, 'action_type_id')->dropDownList(
                             $model::getActionTypeIdList(),
-                            ['prompt' => \Yii::t('app', 'Select')]
+                            ['prompt' => \Yii::t('app/general', 'Select')]
                         ); ?>
         </div>
     </div>

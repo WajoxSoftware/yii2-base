@@ -2,7 +2,7 @@
     'model' => $model,
     'good' => $good,
     'goodImage' => $goodImage,
-    'modal_title' => \Yii::t('app', 'Add {model}', ['model' => \Yii::t('app/models', 'GoodImage')]),
+    'modal_title' => \Yii::t('app/general', 'Add {model}', ['model' => \Yii::t('app/models', 'GoodImage')]),
 ])) ?>
 
 <?php if ($success): ?>

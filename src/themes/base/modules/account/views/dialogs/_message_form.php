@@ -20,7 +20,7 @@ use yii\bootstrap\ActiveForm;
 <div class="row">
     <div class="col-md-12">
         <div class="form-group text-right">
-            <?= Html::submitButton(\Yii::t('app', 'Send'), ['class' => 'btn btn-default']) ?>
+            <?= Html::submitButton(\Yii::t('app/general', 'Send'), ['class' => 'btn btn-default']) ?>
         </div>
     </div>
 </div>

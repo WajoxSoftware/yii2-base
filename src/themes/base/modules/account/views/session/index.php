@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 
-$this->title = \Yii::t('app', 'Sign In');
+$this->title = \Yii::t('app/general', 'Sign In');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-header"><?= Html::encode($this->title) ?></div>

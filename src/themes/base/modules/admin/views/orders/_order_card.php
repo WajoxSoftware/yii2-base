@@ -52,13 +52,13 @@ use yii\helpers\Url;
         <span>
           <?= $model->status ?>
           <?php if ($model->isNew): ?>
-            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'paid', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-success"><?= \Yii::t('app', 'Pay') ?></a>
+            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'paid', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-success"><?= \Yii::t('app/general', 'Pay') ?></a>
 
-            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'cancelled', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-danger"><?= \Yii::t('app', 'Cancel') ?></a>
+            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'cancelled', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-danger"><?= \Yii::t('app/general', 'Cancel') ?></a>
           <?php endif; ?>
 
           <?php if ($model->isPaid): ?>
-            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'returnMoney', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-danger"><?= \Yii::t('app', 'Return') ?></a>
+            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'returnMoney', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-danger"><?= \Yii::t('app/general', 'Return') ?></a>
           <?php endif; ?>
         </span>
     </div>
@@ -70,20 +70,20 @@ use yii\helpers\Url;
         <span>
           <?= $model->deliveryStatus ?>
           <?php if ($model->isDeliveryWaiting): ?>
-            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'prepared', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-success"><?= \Yii::t('app', 'Prepare') ?></a>
+            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'prepared', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-success"><?= \Yii::t('app/general', 'Prepare') ?></a>
           <?php endif; ?>
 
           <?php if ($model->isPrepared): ?>
-            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'send', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-success"><?= \Yii::t('app', 'Send') ?></a>
+            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'send', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-success"><?= \Yii::t('app/general', 'Send') ?></a>
           <?php endif; ?>
 
           <?php if ($model->isSend): ?>
-            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'delivered', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-success"><?= \Yii::t('app', 'Deliver') ?></a>
-            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'undelivered', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-danger"><?= \Yii::t('app', 'Undeliver') ?></a>
+            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'delivered', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-success"><?= \Yii::t('app/general', 'Deliver') ?></a>
+            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'undelivered', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-danger"><?= \Yii::t('app/general', 'Undeliver') ?></a>
           <?php endif; ?>
 
           <?php if ($model->isDelivered || $model->isUndelivered): ?>
-            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'returned', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-danger"><?= \Yii::t('app', 'Return') ?></a>
+            <a href="<?= Url::toRoute(['/admin/order-statuses/create', 'status' => 'returned', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-danger"><?= \Yii::t('app/general', 'Return') ?></a>
           <?php endif; ?>
         </span>
     </div>

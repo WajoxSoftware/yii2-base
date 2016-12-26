@@ -88,12 +88,12 @@ class StatisticFilterForm extends Model
     public static function getIntervalsList()
     {
         return [
-            self::INTERVAL_CUSTOM => \Yii::t('app', 'Custom'),
-            self::INTERVAL_TODAY => \Yii::t('app', 'Today'),
-            self::INTERVAL_YESTERDAY => \Yii::t('app', 'Yesterday'),
-            self::INTERVAL_WEEK => \Yii::t('app', 'Week'),
-            self::INTERVAL_MONTH => \Yii::t('app', 'Month'),
-            self::INTERVAL_ALL => \Yii::t('app', 'All'),
+            self::INTERVAL_CUSTOM => \Yii::t('app/general', 'Custom'),
+            self::INTERVAL_TODAY => \Yii::t('app/general', 'Today'),
+            self::INTERVAL_YESTERDAY => \Yii::t('app/general', 'Yesterday'),
+            self::INTERVAL_WEEK => \Yii::t('app/general', 'Week'),
+            self::INTERVAL_MONTH => \Yii::t('app/general', 'Month'),
+            self::INTERVAL_ALL => \Yii::t('app/general', 'All'),
         ];
     }
 

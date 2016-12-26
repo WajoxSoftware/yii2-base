@@ -15,7 +15,7 @@ class PasswordController extends \wajox\yii2base\controllers\Controller
             $success = true;
             $this->getApp()->session->setFlash(
                 'success',
-                \Yii::t('app', 'Confirmation email was sent')
+                \Yii::t('app/general', 'Confirmation email was sent')
             );
         }
 

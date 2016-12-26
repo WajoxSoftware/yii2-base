@@ -20,7 +20,7 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
             $model = $this->getSubscribesManager()->subscribeGuest($request->post, $emailList);
             $success = $model->isNewRecord;
             if ($success) {
-                $this->getApp()->session->setFlash('success', \Yii::t('app', 'You subscribed successfully'));
+                $this->getApp()->session->setFlash('success', \Yii::t('app/general', 'You subscribed successfully'));
             }
         }
 
@@ -36,7 +36,7 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
 
         $this->getSubscribesManager()->unsubscribe($email, $emailList);
 
-        $this->getApp()->session->setFlash('success', \Yii::t('app', 'You unsubscribed successfully'));
+        $this->getApp()->session->setFlash('success', \Yii::t('app/general', 'You unsubscribed successfully'));
 
         return $this->render('delete');
     }

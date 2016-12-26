@@ -80,7 +80,7 @@ class TrafficTunnelListing extends Component
         ];
 
         $this->back = null;
-        $this->sources = [['title' => \Yii::t('app', 'All')]];
+        $this->sources = [['title' => \Yii::t('app/general', 'All')]];
     }
 
     protected function loadPartner()

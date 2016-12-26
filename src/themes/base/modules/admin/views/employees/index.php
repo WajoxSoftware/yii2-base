@@ -3,7 +3,7 @@ $this->title = \Yii::t('app/admin', 'Nav Employees');
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['pageControls']['items'][] = [
   'url' => ['create'],
-  'title' => \Yii::t('app', 'Add'),
+  'title' => \Yii::t('app/general', 'Add'),
   'icon' => 'fa-plus',
 ];
 

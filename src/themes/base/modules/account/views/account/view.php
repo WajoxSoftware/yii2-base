@@ -6,7 +6,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 if ($writeMessageAccess) {
     $this->params['pageControls']['items'][] = [
-    'title' => \Yii::t('app', 'Write'),
+    'title' => \Yii::t('app/general', 'Write'),
     'url' => [
         '/profile/dialogs/create',
         'userIds' => $model->id,
@@ -17,7 +17,7 @@ if ($writeMessageAccess) {
 
 if ($contactsManager->canSendRequestTo($model)) {
     $this->params['pageControls']['items'][] = [
-    'title' => \Yii::t('app', 'Send Contact Request'),
+    'title' => \Yii::t('app/general', 'Send Contact Request'),
     'url' => [
         '/profile/contact-requests/create',
         'id' => $model->id,

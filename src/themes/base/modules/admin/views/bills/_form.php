@@ -34,7 +34,7 @@ use yii\bootstrap\ActiveForm;
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <?= Html::submitButton(\Yii::t('app', 'Update Balance'), ['class' => 'btn btn-success pull-right']) ?>
+                        <?= Html::submitButton(\Yii::t('app/general', 'Update Balance'), ['class' => 'btn btn-success pull-right']) ?>
                     </div>
                 </div>
             </div>

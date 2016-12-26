@@ -28,7 +28,7 @@ if ($model->good_id == 0) {
         <div class="col-md-10">
             <?= $form->field($model, 'type_id')->dropDownList(
               $typeIdList,
-              ['prompt' => \Yii::t('app', 'Select')]
+              ['prompt' => \Yii::t('app/general', 'Select')]
             ); ?>
         </div>
     </div>

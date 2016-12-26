@@ -20,7 +20,7 @@ use yii\helpers\Url;
       <input type="hidden" name="successUrl" value="<?= Url::toRoute(['/payment/callbacks', 'method' => 'RbkMoneyPayments', 'action' => 'success']) ?>">
       <input type="hidden" name="failUrl" value="<?= Url::toRoute(['/payment/callbacks', 'method' => 'RbkMoneyPayments', 'action' => 'fail']) ?>">
 
-      <input type="submit" value="<?= \Yii::t('app', 'Pay') ?>" class="btn btn-primary"/>
+      <input type="submit" value="<?= \Yii::t('app/general', 'Pay') ?>" class="btn btn-primary"/>
     </form>
   </div>
 </div>

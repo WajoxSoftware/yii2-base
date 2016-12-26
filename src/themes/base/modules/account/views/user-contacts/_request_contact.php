@@ -18,12 +18,12 @@ use yii\helpers\Url;
                 <p>
                     <a href="<?= Url::toRoute(['/account/contact-requests/update', 'id' => $model->id, 'suffix' => '.js']); ?>" class="btn btn-default btn-xs js-remote-link">
                         <i class="fa fa-user-plus"></i>
-                        <?= \Yii::t('app', 'Approve Contact Request') ?>
+                        <?= \Yii::t('app/general', 'Approve Contact Request') ?>
                     </a>
 
                     <a href="<?= Url::toRoute(['/account/contact-requests/delete', 'id' => $model->id, 'suffix' => '.js']); ?>" class="btn btn-default btn-xs js-remote-link">
                         <i class="fa fa-user-times"></i>
-                        <?= \Yii::t('app', 'Cancel Contact Request') ?>
+                        <?= \Yii::t('app/general', 'Cancel Contact Request') ?>
                     </a>
                 </p>
             </div>

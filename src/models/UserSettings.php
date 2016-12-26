@@ -20,7 +20,7 @@ class UserSettings extends \wajox\yii2base\components\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => \Yii::t('app', 'ID'),
+            'id' => \Yii::t('app/general', 'ID'),
             'view_profile' => \Yii::t('app/attributes', 'User Profile Access View Profile'),
             'search_profile' => \Yii::t('app/attributes', 'User Profile Access Search Profile'),
             'add_profile' => \Yii::t('app/attributes', 'User Profile Access Add Profile'),

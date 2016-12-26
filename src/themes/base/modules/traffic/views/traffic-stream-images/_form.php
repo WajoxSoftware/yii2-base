@@ -13,7 +13,7 @@ use yii\bootstrap\ActiveForm;
         <br/>
 
         <button class="btn btn-block js-select-file">
-            <?= \Yii::t('app', 'Select') ?>
+            <?= \Yii::t('app/general', 'Select') ?>
         </button>
 
         <div class="hide">

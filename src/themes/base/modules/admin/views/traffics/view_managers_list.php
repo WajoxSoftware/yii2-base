@@ -8,7 +8,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $this->params['pageControls']['items'][] = [
   'url' => ['/admin/traffic-managers/create'],
-  'title' => \Yii::t('app', 'Add'),
+  'title' => \Yii::t('app/general', 'Add'),
   'icon' => 'fa-plus',
 ];
 

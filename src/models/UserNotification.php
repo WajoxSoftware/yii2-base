@@ -49,11 +49,11 @@ class UserNotification extends \wajox\yii2base\components\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => \Yii::t('app', 'ID'),
-            'user_id' => \Yii::t('app', 'User ID'),
-            'content' => \Yii::t('app', 'Content'),
-            'status_id' => \Yii::t('app', 'Status'),
-            'created_at' => \Yii::t('app', 'Created At'),
+            'id' => \Yii::t('app/general', 'ID'),
+            'user_id' => \Yii::t('app/general', 'User ID'),
+            'content' => \Yii::t('app/general', 'Content'),
+            'status_id' => \Yii::t('app/general', 'Status'),
+            'created_at' => \Yii::t('app/general', 'Created At'),
         ];
     }
 

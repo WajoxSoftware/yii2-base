@@ -13,7 +13,7 @@ use wajox\yii2base\helpers\FormHelper;
         <div class="col-md-12">
             <?= $form->field($model, 'api_id')->dropDownList(
               SubscribeListsHelper::getListsList(),
-              ['prompt' => \Yii::t('app', 'Select')]
+              ['prompt' => \Yii::t('app/general', 'Select')]
             ); ?>
         </div>
     </div>

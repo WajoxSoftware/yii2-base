@@ -16,7 +16,7 @@ $this->params['pageControls']['items'][] = [
     'id' => $model->id,
     'suffix' => '.js',
   ],
-  'title' => \Yii::t('app', 'Update'),
+  'title' => \Yii::t('app/general', 'Update'),
   'icon' => 'fa-plus',
   'class' => 'js-remote-link',
 ];
@@ -27,7 +27,7 @@ $this->params['pageControls']['items'][] = [
     'id' => $model->id,
     'suffix' => '.js',
   ],
-  'title' => \Yii::t('app', 'Add {model}', [
+  'title' => \Yii::t('app/general', 'Add {model}', [
     'model' => \Yii::t('app/models', 'TrafficTunnelStep'),
   ]),
   'icon' => 'fa-plus',
@@ -37,7 +37,7 @@ $this->params['pageControls']['items'][] = [
 if ($listing->back) {
     $this->params['pageControls']['items'][] = [
     'url' => array_merge(['view', 'id' => $model->id], $listing->back),
-    'title' => \Yii::t('app', 'Back'),
+    'title' => \Yii::t('app/general', 'Back'),
     'icon' => 'fa-plus',
     'class' => 'js-arrow-left',
   ];
@@ -71,5 +71,5 @@ if ($listing->back) {
     ?>
   </div>
 <?php else: ?>
-    <center><?= \Yii::t('app', 'No data') ?></center>
+    <center><?= \Yii::t('app/general', 'No data') ?></center>
 <?php endif; ?>

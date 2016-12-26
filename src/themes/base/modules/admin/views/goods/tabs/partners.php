@@ -1,6 +1,6 @@
 <?php
 $this->params['pageControls']['items'][] = [
-  'title' => \Yii::t('app', 'Add'),
+  'title' => \Yii::t('app/general', 'Add'),
   'url' => ['/admin/good-partner-program-links/create', 'id' => $model->getModel()->id, 'suffix' => '.js'],
   'icon' => 'fa-plus',
   'class' => 'js-remote-link',

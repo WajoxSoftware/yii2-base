@@ -128,9 +128,9 @@ use dosamigos\datepicker\DatePicker;
 
     <div class="row">
         <div class="col-md-12 text-center">
-            <?= Html::submitButton(\Yii::t('app', 'Sign Up'), ['class' => 'btn btn-primary btn-block', 'name' => 'signup-button']) ?>
+            <?= Html::submitButton(\Yii::t('app/general', 'Sign Up'), ['class' => 'btn btn-primary btn-block', 'name' => 'signup-button']) ?>
 
-            <a href="<?= Url::toRoute(['/partner/session']) ?>" class="js-sign-in-button"><?= \Yii::t('app', 'Already Have Account?') ?></a>
+            <a href="<?= Url::toRoute(['/partner/session']) ?>" class="js-sign-in-button"><?= \Yii::t('app/general', 'Already Have Account?') ?></a>
         </div>
     </div>
 

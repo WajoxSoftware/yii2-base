@@ -12,10 +12,10 @@ use yii\helpers\Url;
 	  <div class="col-md-3">
 	  	  <div class="btn-group" role="group">
 		    <a href="<?= Url::toRoute(['/admin/traffic-managers/update', 'id' => $model->id]) ?>" class="btn btn-xs btn-default">
-		      <i class="fa fa-pencil"><?= \Yii::t('app', 'Edit') ?></i>
+		      <i class="fa fa-pencil"><?= \Yii::t('app/general', 'Edit') ?></i>
 		    </a>
 		    <a href="<?= Url::toRoute(['/admin/traffic-managers/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
-		      <i class="fa fa-trash"><?= \Yii::t('app', 'Delete') ?></i>
+		      <i class="fa fa-trash"><?= \Yii::t('app/general', 'Delete') ?></i>
 		    </a>
 		  </div>
 	  </div>

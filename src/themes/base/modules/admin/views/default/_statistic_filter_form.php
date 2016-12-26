@@ -14,7 +14,7 @@ use yii\bootstrap\ActiveForm;
         <?= $form->field($model, 'interval')->dropDownList(
             $model::getIntervalsList(),
             [
-              'prompt' => \Yii::t('app', 'Select'),
+              'prompt' => \Yii::t('app/general', 'Select'),
               'data-role' => 'relative-field',
               'data-target' => '#custom-interval-fields',
               'data-condition' => 'custom',

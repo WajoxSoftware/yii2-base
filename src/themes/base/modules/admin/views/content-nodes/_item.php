@@ -13,8 +13,8 @@ use yii\helpers\Url;
             <div class="media-body" >
                <a  href="<?= Url::toRoute(['index', 'id' => $model->id]) ?>"><?= $model->title ?></a><br/>
                <small class="text-muted">
-                    <a  href="<?= Url::toRoute(['index', 'id' => $model->id]) ?>"><?= \Yii::t('app', 'View') ?></a> |
-                    <a  href="<?= Url::toRoute(['update', 'id' => $model->id]) ?>"><?= \Yii::t('app', 'Edit') ?></a> |
+                    <a  href="<?= Url::toRoute(['index', 'id' => $model->id]) ?>"><?= \Yii::t('app/general', 'View') ?></a> |
+                    <a  href="<?= Url::toRoute(['update', 'id' => $model->id]) ?>"><?= \Yii::t('app/general', 'Edit') ?></a> |
                     <?= $model->type ?> |
                     <?= $model->createdDateTime ?>
                </small>

@@ -44,13 +44,13 @@ use yii\helpers\Url;
       <div class="btn-group" role="group">
         <a href="#" class="btn btn-xs btn-default" data-subaccount-link-generator="true" data-link-template="<?= $model->getUrl('[subaccount_tag]') ?>">
             <i class="fa fa-link"></i>
-            <?= \Yii::t('app', 'Generate link') ?>
+            <?= \Yii::t('app/general', 'Generate link') ?>
         </a>
         <a href="<?= Url::toRoute(['/traffic/traffic-streams/update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
-          <i class="fa fa-pencil"><?= \Yii::t('app', 'Edit') ?></i>
+          <i class="fa fa-pencil"><?= \Yii::t('app/general', 'Edit') ?></i>
         </a>
         <a href="<?= Url::toRoute(['/traffic/traffic-streams/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
-          <i class="fa fa-trash"><?= \Yii::t('app', 'Delete') ?></i>
+          <i class="fa fa-trash"><?= \Yii::t('app/general', 'Delete') ?></i>
         </a>
       </div>
     </div>

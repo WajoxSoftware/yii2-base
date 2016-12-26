@@ -21,16 +21,16 @@ $hasRegistrationController = \Yii::$app->controller->module->hasRegistrationCont
 ])->checkbox() ?>
 
 <div class="form-group">
-    <?= Html::submitButton(\Yii::t('app', 'Sign In'), ['class' => 'btn btn-primary btn-block', 'name' => 'login-button']) ?>
+    <?= Html::submitButton(\Yii::t('app/general', 'Sign In'), ['class' => 'btn btn-primary btn-block', 'name' => 'login-button']) ?>
 </div>
 <div class="form-group">
     <div class="col-md-12 text-center">
         <p>
           <?php if ($hasRegistrationController): ?>
-          <a href="<?= Url::toRoute('/' . $moduleId . '/registration') ?>" class="js-sign-up-button"><?= \Yii::t('app', 'Sign Up') ?></a>
+          <a href="<?= Url::toRoute('/' . $moduleId . '/registration') ?>" class="js-sign-up-button"><?= \Yii::t('app/general', 'Sign Up') ?></a>
           /
           <?php endif; ?>
-          <a href="<?= Url::toRoute('/password') ?>"><?= \Yii::t('app', 'Forgot Password?') ?></a>
+          <a href="<?= Url::toRoute('/password') ?>"><?= \Yii::t('app/general', 'Forgot Password?') ?></a>
         </p>
     </div>
 </div>

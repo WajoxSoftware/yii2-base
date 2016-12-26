@@ -15,7 +15,7 @@ class SettingsController extends ApplicationController
         $request = $this->getApp()->request;
 
         if (!$this->getUser()->isConfirmed()) {
-            $this->getApp()->session->setFlash('error', \Yii::t('app', 'E-mail not confirmed'));
+            $this->getApp()->session->setFlash('error', \Yii::t('app/general', 'E-mail not confirmed'));
         }
 
         $modelUser = $this->updateUser($request);
@@ -60,7 +60,7 @@ class SettingsController extends ApplicationController
         $manager = $this->getUsersManager();
         $manager->sendConfirmationEmail($user);
 
-        $this->getApp()->session->setFlash('success', \Yii::t('app', 'Confirmation email was sent'));
+        $this->getApp()->session->setFlash('success', \Yii::t('app/general', 'Confirmation email was sent'));
 
         return $this->redirect(['index']);
     }
@@ -73,7 +73,7 @@ class SettingsController extends ApplicationController
             && $model->load($request->post())
             && $model->save()
         ) {
-            $this->getApp()->session->setFlash('success', \Yii::t('app', 'User settings was saved'));
+            $this->getApp()->session->setFlash('success', \Yii::t('app/general', 'User settings was saved'));
         }
 
         return $model;
@@ -93,7 +93,7 @@ class SettingsController extends ApplicationController
         }
 
         if ($success) {
-            $this->getApp()->session->setFlash('success', \Yii::t('app', 'User settings was saved'));
+            $this->getApp()->session->setFlash('success', \Yii::t('app/general', 'User settings was saved'));
         }
 
         return $model;
@@ -106,7 +106,7 @@ class SettingsController extends ApplicationController
             && $model->load($request->post())
             && $model->process()
         ) {
-            $this->getApp()->session->setFlash('success', \Yii::t('app', 'Password was changed'));
+            $this->getApp()->session->setFlash('success', \Yii::t('app/general', 'Password was changed'));
         }
 
         return $model;
@@ -124,7 +124,7 @@ class SettingsController extends ApplicationController
             $user->avatar_file_id = $model->id;
 
             if ($user->save()) {
-                $this->getApp()->session->setFlash('success', \Yii::t('app', 'User settings was saved'));
+                $this->getApp()->session->setFlash('success', \Yii::t('app/general', 'User settings was saved'));
             }
         }
 

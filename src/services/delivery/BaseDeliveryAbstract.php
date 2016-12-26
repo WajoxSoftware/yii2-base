@@ -23,7 +23,7 @@ abstract class BaseDeliveryAbstract extends Object
 
     public function getTitle()
     {
-        return \Yii::t('app', 'Delivery Method '.$this->getClassShort());
+        return \Yii::t('app/general', 'Delivery Method '.$this->getClassShort());
     }
 
     public function getSettings()

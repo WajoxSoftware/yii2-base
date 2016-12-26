@@ -29,7 +29,7 @@ $this->render('@app/modules/account/views/shared/_tabs', ['current' => 'networks
                         </strong><br/>
                         <small class="text-muted">
                             <?= $model->provider ?> |
-                            <a href="<?= Url::toRoute(['delete', 'id' => $model->id]) ?>"><?= \Yii::t('app', 'Delete') ?></a>
+                            <a href="<?= Url::toRoute(['delete', 'id' => $model->id]) ?>"><?= \Yii::t('app/general', 'Delete') ?></a>
                         </small>
                         <hr />
 

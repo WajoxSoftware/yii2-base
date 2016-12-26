@@ -26,56 +26,56 @@ class DateTimeHelper
     public static function getIntervalStepsList()
     {
         return [
-            self::STEP_HOUR => \Yii::t('app', 'Time Step Hour'),
-            self::STEP_DAY => \Yii::t('app', 'Time Step Day'),
-            self::STEP_WEEK => \Yii::t('app', 'Time Step Week'),
-            self::STEP_MONTH => \Yii::t('app', 'Time Step Month'),
-            self::STEP_ALL => \Yii::t('app', 'Time Step All'),
+            self::STEP_HOUR => \Yii::t('app/general', 'Time Step Hour'),
+            self::STEP_DAY => \Yii::t('app/general', 'Time Step Day'),
+            self::STEP_WEEK => \Yii::t('app/general', 'Time Step Week'),
+            self::STEP_MONTH => \Yii::t('app/general', 'Time Step Month'),
+            self::STEP_ALL => \Yii::t('app/general', 'Time Step All'),
         ];
     }
 
     public static function getIntervalsList()
     {
         return [
-            self::INTERVAL_CUSTOM => \Yii::t('app', 'Custom'),
-            self::INTERVAL_TODAY => \Yii::t('app', 'Today'),
-            self::INTERVAL_YESTERDAY => \Yii::t('app', 'Yesterday'),
-            self::INTERVAL_WEEK => \Yii::t('app', 'Week'),
-            self::INTERVAL_MONTH => \Yii::t('app', 'Month'),
-            self::INTERVAL_HALFYEAR => \Yii::t('app', 'Halfyear'),
-            self::INTERVAL_YEAR => \Yii::t('app', 'Year'),
-            self::INTERVAL_ALL => \Yii::t('app', 'All'),
+            self::INTERVAL_CUSTOM => \Yii::t('app/general', 'Custom'),
+            self::INTERVAL_TODAY => \Yii::t('app/general', 'Today'),
+            self::INTERVAL_YESTERDAY => \Yii::t('app/general', 'Yesterday'),
+            self::INTERVAL_WEEK => \Yii::t('app/general', 'Week'),
+            self::INTERVAL_MONTH => \Yii::t('app/general', 'Month'),
+            self::INTERVAL_HALFYEAR => \Yii::t('app/general', 'Halfyear'),
+            self::INTERVAL_YEAR => \Yii::t('app/general', 'Year'),
+            self::INTERVAL_ALL => \Yii::t('app/general', 'All'),
         ];
     }
 
     public static function getMonthsList()
     {
         return [
-                \Yii::t('app', 'Month Jan'),
-                \Yii::t('app', 'Month Feb'),
-                \Yii::t('app', 'Month Mar'),
-                \Yii::t('app', 'Month Apr'),
-                \Yii::t('app', 'Month May'),
-                \Yii::t('app', 'Month Jun'),
-                \Yii::t('app', 'Month Jul'),
-                \Yii::t('app', 'Month Aug'),
-                \Yii::t('app', 'Month Sep'),
-                \Yii::t('app', 'Month Oct'),
-                \Yii::t('app', 'Month Nov'),
-                \Yii::t('app', 'Month Dec'),
+                \Yii::t('app/general', 'Month Jan'),
+                \Yii::t('app/general', 'Month Feb'),
+                \Yii::t('app/general', 'Month Mar'),
+                \Yii::t('app/general', 'Month Apr'),
+                \Yii::t('app/general', 'Month May'),
+                \Yii::t('app/general', 'Month Jun'),
+                \Yii::t('app/general', 'Month Jul'),
+                \Yii::t('app/general', 'Month Aug'),
+                \Yii::t('app/general', 'Month Sep'),
+                \Yii::t('app/general', 'Month Oct'),
+                \Yii::t('app/general', 'Month Nov'),
+                \Yii::t('app/general', 'Month Dec'),
             ];
     }
 
     public static function getWeekDaysList()
     {
         return [
-                \Yii::t('app', 'Week Day Mon'),
-                \Yii::t('app', 'Week Day Tue'),
-                \Yii::t('app', 'Week Day Wed'),
-                \Yii::t('app', 'Week Day Thu'),
-                \Yii::t('app', 'Week Day Fri'),
-                \Yii::t('app', 'Week Day Sat'),
-                \Yii::t('app', 'Week Day Sun'),
+                \Yii::t('app/general', 'Week Day Mon'),
+                \Yii::t('app/general', 'Week Day Tue'),
+                \Yii::t('app/general', 'Week Day Wed'),
+                \Yii::t('app/general', 'Week Day Thu'),
+                \Yii::t('app/general', 'Week Day Fri'),
+                \Yii::t('app/general', 'Week Day Sat'),
+                \Yii::t('app/general', 'Week Day Sun'),
             ];
     }
 
@@ -153,17 +153,17 @@ class DateTimeHelper
         $timeSize = $current - $timestamp;
 
         if ($timeSize < 60) {
-            return \Yii::t('app', 'Time Right Now');
+            return \Yii::t('app/general', 'Time Right Now');
         }
 
         if ($timeSize < 3600) {
-            return \Yii::t('app', 'Time {minutes} Ago', [
+            return \Yii::t('app/general', 'Time {minutes} Ago', [
                     'minutes' => intval($timeSize / 60),
                 ]);
         }
 
         if ($timeSize < 3600 * 3) {
-            return \Yii::t('app', 'Time {hours} Ago', [
+            return \Yii::t('app/general', 'Time {hours} Ago', [
                     'hours' => intval($timeSize / 3600),
                 ]);
         }
@@ -176,11 +176,11 @@ class DateTimeHelper
         $timestamp = $timestamp ?: time();
 
         if (date('dmY') == date('dmY', $timestamp)) {
-            return \Yii::t('app', 'Date Today');
+            return \Yii::t('app/general', 'Date Today');
         }
 
         if (date('dmY', strtotime('-1 day')) == date('dmY', $timestamp)) {
-            return \Yii::t('app', 'Date Yesterday');
+            return \Yii::t('app/general', 'Date Yesterday');
         }
 
         if (date('Y') == date('Y', $timestamp)) {
@@ -335,7 +335,7 @@ class DateTimeHelper
 
         if ($stepType == self::STEP_ALL) {
             $steps[] = [
-                'title' => \Yii::t('app', 'All'),
+                'title' => \Yii::t('app/general', 'All'),
                 'startAt' => $startAt,
                 'finishAt' => $finishAt,
             ];
@@ -405,7 +405,7 @@ class DateTimeHelper
         }
 
         $steps[] = [
-            'title' => \Yii::t('app', 'All'),
+            'title' => \Yii::t('app/general', 'All'),
             'startAt' => $startAt,
             'finishAt' => $finishAt,
         ];

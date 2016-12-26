@@ -17,7 +17,7 @@ $email_lists = ArrayHelper::map(EmailList::find()->all(), 'id', 'title');
             <?= $form->field($model, 'email_list_id')
                 ->dropDownList(
                     $email_lists,
-                    ['prompt' => \Yii::t('app', 'Select')]
+                    ['prompt' => \Yii::t('app/general', 'Select')]
                 ); ?>
         </div>
     </div>

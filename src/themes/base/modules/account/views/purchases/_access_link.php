@@ -7,6 +7,6 @@
 		<?= $model->description ?>
 	</div>
 	<div class="media-controls">
-		<a href="<?= $model->fileUrl ?>"><?= \Yii::t('app', 'Follow this link') ?></a>
+		<a href="<?= $model->fileUrl ?>"><?= \Yii::t('app/general', 'Follow this link') ?></a>
 	</div>
 </div>

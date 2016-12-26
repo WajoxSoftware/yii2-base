@@ -12,7 +12,7 @@
       <input type=hidden name="OutSum" value="<?= $amount ?>">
       <input type=hidden name="InvId" value="<?= $bill_id ?>">
       <input type=hidden name="SignatureValue" value="<?= $crc ?>">
-      <input type="submit" value="<?= \Yii::t('app', 'Pay') ?>" class="btn btn-primary"/>
+      <input type="submit" value="<?= \Yii::t('app/general', 'Pay') ?>" class="btn btn-primary"/>
     </form>
   </div>
 </div>

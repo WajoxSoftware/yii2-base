@@ -12,7 +12,7 @@ use yii\bootstrap\ActiveForm;
             <div class="col-md-6">
                 <?= $form->field($model, 'status_id')->dropDownList(
                                 $model::getStatusIdList(),
-                                ['prompt' => \Yii::t('app', 'Select')]
+                                ['prompt' => \Yii::t('app/general', 'Select')]
                             ); ?>
             </div>
 

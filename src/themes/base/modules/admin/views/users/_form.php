@@ -53,7 +53,7 @@ use wajox\yii2base\models\User;
             <?= $form->field($model, 'referal_user_id')
                 ->dropDownList(
                     ArrayHelper::map(User::find()->all(), 'id', 'name'),
-                    ['prompt' => \Yii::t('app', 'Select')]
+                    ['prompt' => \Yii::t('app/general', 'Select')]
                 ); ?>
         </div>
 
@@ -67,17 +67,17 @@ use wajox\yii2base\models\User;
             <div class="form-group text-right">
                 <?php if (!$model->isNewRecord): ?>
 
-                    <?= Html::a(\Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
+                    <?= Html::a(\Yii::t('app/general', 'Delete'), ['delete', 'id' => $model->id], [
                         'class' => 'btn btn-danger',
                         'data' => [
-                            'confirm' => \Yii::t('app', 'Are you sure you want to delete this item?'),
+                            'confirm' => \Yii::t('app/general', 'Are you sure you want to delete this item?'),
                             'method' => 'post',
                         ],
                     ]) ?>
 
                 <?php endif; ?>
 
-                <?= Html::submitButton($model->isNewRecord ? \Yii::t('app', 'Create') : \Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                <?= Html::submitButton($model->isNewRecord ? \Yii::t('app/general', 'Create') : \Yii::t('app/general', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@ use wajox\yii2base\models\Order;
     <div class="row">
         <div class="col-md-12">
             <?= $form->field($model, 'status_id')
-                    ->dropDownList(Order::getStatusIdList(), ['prompt' => \Yii::t('app', 'Select')]); ?>
+                    ->dropDownList(Order::getStatusIdList(), ['prompt' => \Yii::t('app/general', 'Select')]); ?>
 
         </div>
     </div>
@@ -28,7 +28,7 @@ use wajox\yii2base\models\Order;
     <div class="row">
         <div class="col-md-12">
             <?= $form->field($model, 'delivery_status_id')
-                    ->dropDownList(Order::getDeliveryStatusIdList(), ['prompt' => \Yii::t('app', 'Select')]); ?>
+                    ->dropDownList(Order::getDeliveryStatusIdList(), ['prompt' => \Yii::t('app/general', 'Select')]); ?>
 
         </div>
     </div>

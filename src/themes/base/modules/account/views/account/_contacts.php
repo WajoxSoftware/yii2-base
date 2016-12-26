@@ -7,5 +7,5 @@
 		<?php endforeach; ?>
 	</ul>
 <?php else: ?>
-	<?= \Yii::t('app', 'No data'); ?>
+	<?= \Yii::t('app/general', 'No data'); ?>
 <?php endif; ?>

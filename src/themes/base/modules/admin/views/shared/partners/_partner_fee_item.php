@@ -25,13 +25,13 @@ use yii\helpers\Url;
       <div class="btn-group" role="group">
         <?php if ($model->isNew || $model->isCancelled): ?>
           <a href="<?= Url::toRoute(['/admin/partner-fees/confirm', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
-            <?= \Yii::t('app', 'Confirm') ?>
+            <?= \Yii::t('app/general', 'Confirm') ?>
           </a>
         <?php endif; ?>
 
         <?php if ($model->isNew): ?>
           <a href="<?= Url::toRoute(['/admin/partner-fees/cancel', 'id' => $model->id, 'suffix' => '.js']) ?>"  class="btn btn-xs btn-default js-remote-link">
-            <?= \Yii::t('app', 'Cancel') ?>
+            <?= \Yii::t('app/general', 'Cancel') ?>
           </a>
         <?php endif; ?>
       </div>

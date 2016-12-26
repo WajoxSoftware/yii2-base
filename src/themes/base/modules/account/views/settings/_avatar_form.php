@@ -11,15 +11,15 @@ use yii\helpers\Url;
     <br/>
 
     <button class="btn btn-block js-select-file">
-        <?= \Yii::t('app', 'Select') ?>
+        <?= \Yii::t('app/general', 'Select') ?>
     </button>
 
     <button type="submit" class="btn btn-primary btn-block">
-        <?= \Yii::t('app', 'Upload') ?>
+        <?= \Yii::t('app/general', 'Upload') ?>
     </button>
 
     <a href="<?= Url::toRoute(['delete-avatar']) ?>" class="btn btn-block">
-        <?= \Yii::t('app', 'Delete') ?>
+        <?= \Yii::t('app/general', 'Delete') ?>
     </a>
 
     <div class="hide">

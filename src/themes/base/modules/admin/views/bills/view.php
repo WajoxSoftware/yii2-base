@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Url;
 
-$this->title = \Yii::t('app', 'View');
+$this->title = \Yii::t('app/general', 'View');
 $this->params['breadcrumbs'][] = ['label' => \Yii::t('app/admin', 'Nav Bills'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -31,13 +31,13 @@ $this->params['breadcrumbs'][] = $this->title;
           <?= $model->status ?>
           <?php if (!$model->isWithOrder): ?>
             <?php if ($model->isNew): ?>
-              <a href="<?= Url::toRoute(['pay', 'id' => $model->id]) ?>" class="btn btn-xs btn-success"><?= \Yii::t('app', 'Pay') ?></a>
+              <a href="<?= Url::toRoute(['pay', 'id' => $model->id]) ?>" class="btn btn-xs btn-success"><?= \Yii::t('app/general', 'Pay') ?></a>
 
-              <a href="<?= Url::toRoute(['cancel', 'id' => $model->id]) ?>" class="btn btn-xs btn-danger"><?= \Yii::t('app', 'Cancel') ?></a>
+              <a href="<?= Url::toRoute(['cancel', 'id' => $model->id]) ?>" class="btn btn-xs btn-danger"><?= \Yii::t('app/general', 'Cancel') ?></a>
             <?php endif; ?>
 
             <?php if ($model->isPaid): ?>
-              <a href="<?= Url::toRoute(['return', 'id' => $model->id]) ?>" class="btn btn-xs btn-danger"><?= \Yii::t('app', 'Return') ?></a>
+              <a href="<?= Url::toRoute(['return', 'id' => $model->id]) ?>" class="btn btn-xs btn-danger"><?= \Yii::t('app/general', 'Return') ?></a>
             <?php endif; ?>
           <?php endif; ?>
         </span>

@@ -8,6 +8,6 @@ use yii\helpers\Url;
   </div>
 
   <div class="col-md-4">
-    <a class="btn btn-primary" href="<?= Url::toRoute(['/payment/callbacks', 'method' => 'EAutopayPayments', 'action' => 'waiting']) ?>"><?= \Yii::t('app', 'Send') ?></a>
+    <a class="btn btn-primary" href="<?= Url::toRoute(['/payment/callbacks', 'method' => 'EAutopayPayments', 'action' => 'waiting']) ?>"><?= \Yii::t('app/general', 'Send') ?></a>
   </div>
 </div>

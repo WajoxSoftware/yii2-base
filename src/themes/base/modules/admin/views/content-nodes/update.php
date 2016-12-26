@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $this->params['pageControls']['items'][] = [
   'url' => $modelNode->pageUrl,
-  'title' => \Yii::t('app', 'View'),
+  'title' => \Yii::t('app/general', 'View'),
   'icon' => 'fa-eye',
 ];
 ?>

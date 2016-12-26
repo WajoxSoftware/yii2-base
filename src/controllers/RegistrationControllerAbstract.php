@@ -31,7 +31,7 @@ abstract class RegistrationControllerAbstract extends \wajox\yii2base\controller
         $model = $this->getRegistrationForm();
         if ($model->load($this->getApp()->request->post())) {
             if ($user = $model->signup()) {
-                $this->getApp()->session->setFlash('success', \Yii::t('app', 'Registration email was sent'));
+                $this->getApp()->session->setFlash('success', \Yii::t('app/general', 'Registration email was sent'));
 
                 $this->getUsersManagr()->signedUp($user);
 

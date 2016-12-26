@@ -17,7 +17,7 @@ echo GridView::widget([
             'template' => '{view}',
             'buttons' => [
                 'view' => function ($url, $model, $key) {
-                    return Html::a(\Yii::t('app', 'View'), Url::toRoute(['view', 'id' => $model->id]));
+                    return Html::a(\Yii::t('app/general', 'View'), Url::toRoute(['view', 'id' => $model->id]));
                 },
             ],
         ],

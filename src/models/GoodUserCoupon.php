@@ -90,13 +90,13 @@ class GoodUserCoupon extends \wajox\yii2base\components\db\ActiveRecord
             return $this->partner->fullName;
         }
 
-        return \Yii::t('app', 'All');
+        return \Yii::t('app/general', 'All');
     }
 
     public function getFinishDate()
     {
         if ($this->finish_at == 0) {
-            return \Yii::t('app', 'Unlimited');
+            return \Yii::t('app/general', 'Unlimited');
         }
 
         return date(self::DATETIME_FORMAT, $this->finish_at);
@@ -105,7 +105,7 @@ class GoodUserCoupon extends \wajox\yii2base\components\db\ActiveRecord
     public function getStartDate()
     {
         if ($this->start_at == 0) {
-            return \Yii::t('app', 'Unlimited');
+            return \Yii::t('app/general', 'Unlimited');
         }
 
         return date(self::DATETIME_FORMAT, $this->start_at);

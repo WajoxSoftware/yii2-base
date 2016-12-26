@@ -19,7 +19,7 @@ $goodsApiUrl = \yii\helpers\Url::toRoute(['/api/goods', 'suffix' => '.json'], tr
                 <?= $form->field($model, 'partnerId')->dropDownList(
                     \wajox\yii2base\helpers\GoodPartnersHelper::getPartnersList(),
                     [
-                          'prompt' => \Yii::t('app', 'Select'),
+                          'prompt' => \Yii::t('app/general', 'Select'),
                     ]
                 ); ?>
             </div>
@@ -35,7 +35,7 @@ $goodsApiUrl = \yii\helpers\Url::toRoute(['/api/goods', 'suffix' => '.json'], tr
             <div class="row">
                 <div class="col-md-12">
                     <?= $form->field($model, 'startDateTime')->widget(DateTimePicker::classname(), [
-                            'options' => ['placeholder' => \Yii::t('app', 'Select')],
+                            'options' => ['placeholder' => \Yii::t('app/general', 'Select')],
                             'pluginOptions' => [
                                 'autoclose' => true,
                             ],
@@ -48,7 +48,7 @@ $goodsApiUrl = \yii\helpers\Url::toRoute(['/api/goods', 'suffix' => '.json'], tr
         <div class="row">
             <div class="col-md-12">
                  <?= $form->field($model, 'finishDateTime')->widget(DateTimePicker::classname(), [
-                            'options' => ['placeholder' => \Yii::t('app', 'Select')],
+                            'options' => ['placeholder' => \Yii::t('app/general', 'Select')],
                             'pluginOptions' => [
                                 'autoclose' => true,
                             ],
@@ -63,7 +63,7 @@ $goodsApiUrl = \yii\helpers\Url::toRoute(['/api/goods', 'suffix' => '.json'], tr
                     <?= $form->field($model, 'finishTypeId')->dropDownList(
                         $model::getFinishTypeIdList(),
                         [
-                          'prompt' => \Yii::t('app', 'Select'),
+                          'prompt' => \Yii::t('app/general', 'Select'),
                           'data-role' => 'relative-field',
                           'data-target' => '#redirect-field;#redirect-good-field;#finished-message-field',
                           'data-condition' => implode(';', [
@@ -86,7 +86,7 @@ $goodsApiUrl = \yii\helpers\Url::toRoute(['/api/goods', 'suffix' => '.json'], tr
                 <div class="col-md-12">
                     <?= $form->field($model, 'redirectGoodId')->widget(Select2::classname(), [
                             'initValueText' => $model->redirectGoodTitle,
-                            'options' => ['placeholder' => \Yii::t('app', 'Select')],
+                            'options' => ['placeholder' => \Yii::t('app/general', 'Select')],
                             'pluginOptions' => [
                                 'debug' => true,
                                 'allowClear' => true,

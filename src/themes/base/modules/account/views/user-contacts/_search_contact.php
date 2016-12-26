@@ -17,11 +17,11 @@ use yii\helpers\Url;
             </div>
             <p>
                 <?php if (isset($sentRequests[$model->id])): ?>
-                    <span class="text-muted"><?= \Yii::t('app', 'Contact Request Sent') ?></span>
+                    <span class="text-muted"><?= \Yii::t('app/general', 'Contact Request Sent') ?></span>
                 <?php else: ?>
                     <a href="<?= Url::toRoute(['/account/contact-requests/create', 'id' => $model->id, 'suffix' => '.js']); ?>" class="btn btn-default btn-xs js-remote-link">
                         <i class="fa fa-user-plus"></i>
-                        <?= \Yii::t('app', 'Send Contact Request') ?>
+                        <?= \Yii::t('app/general', 'Send Contact Request') ?>
                     </a>
                 <?php endif; ?>
             </p>

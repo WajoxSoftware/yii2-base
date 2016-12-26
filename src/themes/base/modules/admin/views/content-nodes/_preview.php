@@ -19,15 +19,15 @@ $modelFile = $model->previewImage ?: new \wajox\yii2base\models\UploadedImage();
     <br/>
 
     <button class="btn btn-block js-select-file">
-        <?= \Yii::t('app', 'Select') ?>
+        <?= \Yii::t('app/general', 'Select') ?>
     </button>
 
     <button type="submit" class="btn btn-primary btn-block">
-        <?= \Yii::t('app', 'Upload') ?>
+        <?= \Yii::t('app/general', 'Upload') ?>
     </button>
 
     <a href="<?= Url::toRoute(['/admin/content-node-previews/delete', 'nodeId' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-block">
-        <?= \Yii::t('app', 'Delete') ?>
+        <?= \Yii::t('app/general', 'Delete') ?>
     </a>
 
     <div class="hide">

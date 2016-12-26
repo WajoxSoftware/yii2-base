@@ -20,7 +20,7 @@ $trafficStreamsApiUrl = \yii\helpers\Url::toRoute(['/api/user-traffic-streams', 
         <?= $form->field($model, 'interval')->dropDownList(
             DateTimeHelper::getIntervalsList(),
             [
-              'prompt' => \Yii::t('app', 'Select'),
+              'prompt' => \Yii::t('app/general', 'Select'),
               'data-role' => 'relative-field',
               'data-target' => '#custom-interval-fields',
               'data-condition' => 'custom',
@@ -61,7 +61,7 @@ $trafficStreamsApiUrl = \yii\helpers\Url::toRoute(['/api/user-traffic-streams', 
         <?= $form->field($model, 'stepType')->dropDownList(
             DateTimeHelper::getIntervalStepsList(),
             [
-              'prompt' => \Yii::t('app', 'Select'),
+              'prompt' => \Yii::t('app/general', 'Select'),
             ]
         ); ?>
     </div>
@@ -87,7 +87,7 @@ $trafficStreamsApiUrl = \yii\helpers\Url::toRoute(['/api/user-traffic-streams', 
     <div class="col-md-12">
         <?= $form->field($model, 'partnerOfferId')->widget(Select2::classname(), [
                 'initValueText' => $model->partnerOfferTitle,
-                'options' => ['placeholder' => \Yii::t('app', 'Select')],
+                'options' => ['placeholder' => \Yii::t('app/general', 'Select')],
                 'pluginOptions' => [
                     'multiple' => false,
                     'allowClear' => true,
@@ -107,7 +107,7 @@ $trafficStreamsApiUrl = \yii\helpers\Url::toRoute(['/api/user-traffic-streams', 
     <div class="col-md-12">
         <?= $form->field($model, 'trafficStreamId')->widget(Select2::classname(), [
                 'initValueText' => $model->trafficStreamTitle,
-                'options' => ['placeholder' => \Yii::t('app', 'Select')],
+                'options' => ['placeholder' => \Yii::t('app/general', 'Select')],
                 'pluginOptions' => [
                     'multiple' => false,
                     'allowClear' => true,

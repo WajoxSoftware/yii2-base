@@ -1,7 +1,7 @@
 <?php $modal_content = rawurlencode($this->render('_modal', [
     'model' => $model,
     'modelStatus' => $modelStatus,
-    'modal_title' => \Yii::t('app', 'Update {model}', ['model' => \Yii::t('app/models', 'OrderStatus')]),
+    'modal_title' => \Yii::t('app/general', 'Update {model}', ['model' => \Yii::t('app/models', 'OrderStatus')]),
 ])) ?>
 
 <?php if ($success): ?>

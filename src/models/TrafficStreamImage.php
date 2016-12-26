@@ -22,9 +22,9 @@ class TrafficStreamImage extends \wajox\yii2base\components\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => \Yii::t('app', 'ID'),
-            'traffic_stream_id' => \Yii::t('app', 'Traffic Stream ID'),
-            'uploaded_image_id' => \Yii::t('app', 'Uploaded Image ID'),
+            'id' => \Yii::t('app/general', 'ID'),
+            'traffic_stream_id' => \Yii::t('app/general', 'Traffic Stream ID'),
+            'uploaded_image_id' => \Yii::t('app/general', 'Uploaded Image ID'),
         ];
     }
 

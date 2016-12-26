@@ -2,12 +2,12 @@
 use wajox\yii2widgets\collapsiblewidget\CollapsibleWidget;
 use yii\helpers\Url;
 
-$this->title = \Yii::t('app', 'View');
+$this->title = \Yii::t('app/general', 'View');
 $this->params['breadcrumbs'][] = ['label' => \Yii::t('app/admin', 'Nav Orders'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->params['pageControls']['items'][] = [
-  'title' => \Yii::t('app', 'Edit {model}', ['model' => \Yii::t('app/models', 'Customer')]),
+  'title' => \Yii::t('app/general', 'Edit {model}', ['model' => \Yii::t('app/models', 'Customer')]),
   'url' => ['/admin/customers/update', 'id' => $model->customer->id, 'suffix' => '.js'],
   'icon' => 'fa-pencil',
   'class' => 'js-remote-link',
@@ -18,7 +18,7 @@ $this->params['pageControls']['items'][] = [
   <?= $this->render('_order_card', ['model' => $model]) ?>
 
   <?= CollapsibleWidget::widget([
-      'title' => \Yii::t('app', 'Edit'),
+      'title' => \Yii::t('app/general', 'Edit'),
       'render' => '@app/modules/admin/views/orders/_form',
       'data' => ['model' => $model],
   ]); ?>

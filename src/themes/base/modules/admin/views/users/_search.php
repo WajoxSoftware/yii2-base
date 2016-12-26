@@ -37,7 +37,7 @@ use wajox\yii2base\models\User;
 
         <div class="col-md-6">
             <?= $form->field($model, 'role')
-                ->dropDownList(User::getUsersRoleList(), ['prompt' => \Yii::t('app', 'Select')]); ?>
+                ->dropDownList(User::getUsersRoleList(), ['prompt' => \Yii::t('app/general', 'Select')]); ?>
         </div>
     </div>
 

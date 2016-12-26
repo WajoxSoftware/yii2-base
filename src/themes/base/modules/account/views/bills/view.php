@@ -2,18 +2,18 @@
 
 use yii\helpers\Url;
 
-$this->title = \Yii::t('app', 'View {model}', ['model' => \Yii::t('app/models', 'Bill')]);
+$this->title = \Yii::t('app/general', 'View {model}', ['model' => \Yii::t('app/models', 'Bill')]);
 $this->params['breadcrumbs'][] = ['label' => \Yii::t('app/profile', 'Nav Bills'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 if ($model->isNew) {
     $this->params['pageControls']['items'][] = [
-      'title' => \Yii::t('app', 'Pay'),
+      'title' => \Yii::t('app/general', 'Pay'),
       'url' => ['/payment/default/index', 'id' => $model->id],
       'icon' => 'fa-credit-card',
     ];
     $this->params['pageControls']['items'][] = [
-      'title' => \Yii::t('app', 'Cancel'),
+      'title' => \Yii::t('app/general', 'Cancel'),
       'url' => ['cancel', 'id' => $model->id],
       'icon' => 'fa-close',
     ];

@@ -34,9 +34,9 @@ foreach ($model->subscribes as $subscribe) {
 * Compute statistics
 ***/
 
-$clicks_stat = ['count' => 0, 'first' => \Yii::t('app', 'No data'), 'last' => \Yii::t('app', 'No data')];
-$subscribes_stat = ['count' => 0, 'first' => \Yii::t('app', 'No data'), 'last' => \Yii::t('app', 'No data')];
-$orders_stat = ['count' => 0, 'sum' => 0.0, 'first' => \Yii::t('app', 'No data'), 'last' => \Yii::t('app', 'No data')];
+$clicks_stat = ['count' => 0, 'first' => \Yii::t('app/general', 'No data'), 'last' => \Yii::t('app/general', 'No data')];
+$subscribes_stat = ['count' => 0, 'first' => \Yii::t('app/general', 'No data'), 'last' => \Yii::t('app/general', 'No data')];
+$orders_stat = ['count' => 0, 'sum' => 0.0, 'first' => \Yii::t('app/general', 'No data'), 'last' => \Yii::t('app/general', 'No data')];
 
 $subscribes_stat['count'] = $model->getSubscribes()->count();
 
@@ -132,13 +132,13 @@ if ($orders_stat['count'] > 0) {
             <p><i class="fa fa-bar-chart"></i> &nbsp; Подписки</p>
             <p>
                 <?= $subscribes_stat['count'] ?> подписок
-                | <?= \Yii::t('app', 'First time') ?>: <?= $subscribes_stat['first'] ?>
-                | <?= \Yii::t('app', 'Last time') ?>: <?= $subscribes_stat['last'] ?>
+                | <?= \Yii::t('app/general', 'First time') ?>: <?= $subscribes_stat['first'] ?>
+                | <?= \Yii::t('app/general', 'Last time') ?>: <?= $subscribes_stat['last'] ?>
             </p>
             <p><i class="fa fa-bar-chart"></i> &nbsp; Покупки</p>
             <p><?= $orders_stat['count'] ?> покупок на сумму <?= $orders_stat['sum'] ?> P
-                | <?= \Yii::t('app', 'First time') ?>: <?= $orders_stat['first'] ?>
-                | <?= \Yii::t('app', 'Last time') ?>: <?= $orders_stat['last'] ?>
+                | <?= \Yii::t('app/general', 'First time') ?>: <?= $orders_stat['first'] ?>
+                | <?= \Yii::t('app/general', 'Last time') ?>: <?= $orders_stat['last'] ?>
             </p>
         </div>
     </div>

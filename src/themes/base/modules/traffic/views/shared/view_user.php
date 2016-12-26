@@ -7,7 +7,7 @@ $this->params['pageControls']['items'][] = [
       'id' => $user->id,
       'suffix' => '.js',
     ],
-    'title' => \Yii::t('app', 'Add {model}', [
+    'title' => \Yii::t('app/general', 'Add {model}', [
       'model' => \Yii::t('app/models', 'TrafficSource'),
     ]),
     'icon' => 'fa-plus',

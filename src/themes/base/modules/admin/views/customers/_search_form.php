@@ -15,7 +15,7 @@ use yii\bootstrap\ActiveForm;
         <div class="col-md-3">
             <?= $form->field($model, 'status_id')->dropDownList(
             $model::getStatusIdsList(),
-            ['prompt' => \Yii::t('app', 'Select')]
+            ['prompt' => \Yii::t('app/general', 'Select')]
           ); ?>
         </div>
 

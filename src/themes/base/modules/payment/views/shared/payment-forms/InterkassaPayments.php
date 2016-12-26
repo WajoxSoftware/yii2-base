@@ -10,7 +10,7 @@
       <input type="hidden" name="ik_cur" value="RUB" />
       <input type="hidden" name="ik_am" value="<?= $amount ?>" />
       <input type="hidden" name="ik_desc" value="<?= $description ?>" />
-      <input type="submit" value="<?= \Yii::t('app', 'Pay') ?>" class="btn btn-primary"/>
+      <input type="submit" value="<?= \Yii::t('app/general', 'Pay') ?>" class="btn btn-primary"/>
     </form>
   </div>
 </div>

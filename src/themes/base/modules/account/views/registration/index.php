@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 
-$this->title = \Yii::t('app', 'Sign Up');
+$this->title = \Yii::t('app/general', 'Sign Up');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

@@ -17,7 +17,7 @@ use yii\helpers\Url;
                 <p>
                     <a href="<?= Url::toRoute(['/account/user-contacts/delete', 'id' => $model->id, 'suffix' => '.js']); ?>" class="btn btn-default btn-xs js-remote-link">
                         <i class="fa fa-user-times"></i>
-                        <?= \Yii::t('app', 'Delete') ?>
+                        <?= \Yii::t('app/general', 'Delete') ?>
                     </a>
                 </p>
             </div>

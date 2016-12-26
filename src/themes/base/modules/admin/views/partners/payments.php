@@ -12,7 +12,7 @@ $this->render('_tabs_partner', [
 
 $this->params['pageControls']['items'][] = [
   'url' => ['/admin/partner-payments/create', 'id' => $model->user->id, 'suffix' => '.js'],
-  'title' => \Yii::t('app', 'Make Payment'),
+  'title' => \Yii::t('app/general', 'Make Payment'),
   'icon' => 'fa-plus',
   'class' => 'js-remote-link',
 ];

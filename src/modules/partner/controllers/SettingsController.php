@@ -25,7 +25,7 @@ class SettingsController extends ApplicationController
 
             $success = $model->save();
             if ($success) {
-                $message = \Yii::t('app', 'User settings was saved');
+                $message = \Yii::t('app/general', 'User settings was saved');
                 $this->getApp()->session->setFlash('success', $message);
             }
         }

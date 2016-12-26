@@ -5,7 +5,7 @@ $this->params['pageTabs'] = [
   'items' => [
     'index' => [
       'url' => ['index'],
-      'title' => \Yii::t('app', 'Profile Dialogs List'),
+      'title' => \Yii::t('app/general', 'Profile Dialogs List'),
     ],
   ],
 ];

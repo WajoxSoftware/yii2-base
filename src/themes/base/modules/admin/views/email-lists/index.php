@@ -5,7 +5,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->render('@app/modules/admin/views/shared/mailing/_tabs', ['current' => 'email-lists']);
 $this->params['pageControls']['items'][] = [
   'url' => ['create', 'suffix' => '.js'],
-  'title' => \Yii::t('app', 'Add'),
+  'title' => \Yii::t('app/general', 'Add'),
   'icon' => 'fa-plus',
   'class' => 'js-remote-link',
 ];

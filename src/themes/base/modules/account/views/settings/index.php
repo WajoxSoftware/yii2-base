@@ -18,7 +18,7 @@ $this->render('@app/modules/account/views/shared/_tabs', ['current' => 'settings
     <?php if (!$modelUser->isConfirmed()): ?>
         <div class="form-group-addon">
             <a href="<?= Url::toRoute(['/account/settings/resend-confirmation']) ?>"  class="btn btn-warning btn-xs">
-               <?= \Yii::t('app', 'Confirm') ?>
+               <?= \Yii::t('app/general', 'Confirm') ?>
             </a>
         </div>
     <?php endif; ?>

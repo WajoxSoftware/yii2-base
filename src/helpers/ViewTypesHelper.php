@@ -10,9 +10,9 @@ class ViewTypesHelper
     public static function getViewTypesList()
     {
         return [
-            self::VIEW_TYPE_TABLE => \Yii::t('app', 'View Type Table'),
-            self::VIEW_TYPE_CARD => \Yii::t('app', 'View Type Card'),
-            self::VIEW_TYPE_LIST => \Yii::t('app', 'View Type List'),
+            self::VIEW_TYPE_TABLE => \Yii::t('app/general', 'View Type Table'),
+            self::VIEW_TYPE_CARD => \Yii::t('app/general', 'View Type Card'),
+            self::VIEW_TYPE_LIST => \Yii::t('app/general', 'View Type List'),
         ];
     }
 

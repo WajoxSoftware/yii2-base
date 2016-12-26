@@ -48,7 +48,7 @@ class UserActionLogSearch extends UserActionLog
             return $titles[$this->action_type_id];
         }
 
-        return \Yii::t('app', 'All');
+        return \Yii::t('app/general', 'All');
     }
 
     public function getReferalUserName()

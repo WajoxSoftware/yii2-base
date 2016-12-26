@@ -15,7 +15,7 @@
       <input name="customerNumber" value="<?= $customer_id ?>" type="hidden"/>
       <!-- optional fields -->
       <input name="orderNumber" value="<?= $bill_id ?>" type="hidden"/>
-      <input type="submit" value="<?= \Yii::t('app', 'Pay') ?>" class="btn btn-primary"/>
+      <input type="submit" value="<?= \Yii::t('app/general', 'Pay') ?>" class="btn btn-primary"/>
     </form>
   </div>
 </div>

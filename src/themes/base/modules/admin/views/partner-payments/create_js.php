@@ -4,7 +4,7 @@
 $modal_content = rawurlencode($this->render('_modal', [
     'model' => $model,
     'model_user' => $model_user,
-    'modal_title' => \Yii::t('app', 'Add'),
+    'modal_title' => \Yii::t('app/general', 'Add'),
 ])) ?>
 
 <?php if ($success): ?>

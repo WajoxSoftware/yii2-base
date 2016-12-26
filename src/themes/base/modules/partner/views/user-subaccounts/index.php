@@ -4,7 +4,7 @@ use yii\helpers\Url;
 $this->title = \Yii::t('app/partner', 'Nav Subaccounts');
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['pageControls']['items'][] = [
-  'title' => \Yii::t('app', 'Add'),
+  'title' => \Yii::t('app/general', 'Add'),
   'url' => ['/partner/user-subaccounts/create', 'suffix' => '.js'],
   'icon' => 'fa-plus',
   'class' => 'js-remote-link',

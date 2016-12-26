@@ -19,8 +19,8 @@ class DialogMembers extends \wajox\yii2base\components\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => \Yii::t('app', 'ID'),
-            'users_ids' => \Yii::t('app', 'Users Ids'),
+            'id' => \Yii::t('app/general', 'ID'),
+            'users_ids' => \Yii::t('app/general', 'Users Ids'),
         ];
     }
 }

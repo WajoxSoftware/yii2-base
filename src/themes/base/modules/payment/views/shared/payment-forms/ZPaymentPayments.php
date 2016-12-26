@@ -13,7 +13,7 @@
       <input type="hidden" name="LMI_PAYMENT_NO" value="<?= $bill_id ?>">
       <input type="hidden" name="LMI_PAYMENT_DESC" value="<?= $description ?>">
       <input type="hidden" name="CLIENT_MAIL" value="<?= $customer_email ?>">
-      <input type="submit" value="<?= \Yii::t('app', 'Pay') ?>" class="btn btn-primary"/>
+      <input type="submit" value="<?= \Yii::t('app/general', 'Pay') ?>" class="btn btn-primary"/>
     </form>
   </div>
 </div>
