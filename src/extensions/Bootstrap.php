@@ -113,7 +113,7 @@ class Bootstrap extends Component implements BootstrapInterface
             'class'    => PhpMessageSource::className(),
             'basePath' => __DIR__ . '/../messages',
             'fileMap' => [
-                'app/general' => 'app.php',
+                'app/general' => 'general.php',
                 'app/notifications' => 'notifications.php',
                 'app/models' => 'models.php',
                 'app/attributes' => 'attributes.php',
