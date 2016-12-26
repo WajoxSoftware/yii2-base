@@ -105,11 +105,26 @@ class Bootstrap extends Component implements BootstrapInterface
 
     protected function initI18n($app)
     {
-        if (!isset($app->get('i18n')->translations['app*'])) {
-            $app->get('i18n')->translations['app*'] = [
+        if (!isset($app->i18n->translations['app*'])) {
+            $app->i18n->translations['app*'] = [
                 'class'    => PhpMessageSource::className(),
                 'basePath' => __DIR__ . '/messages',
-                'sourceLanguage' => 'en-US'
+                'fileMap' => [
+                    'app' => 'app.php',
+                    'app/notifications' => 'notifications.php',
+                    'app/models' => 'models.php',
+                    'app/attributes' => 'attributes.php',
+                    'app/account' => 'account.php',
+                    'app/admin' => 'admin.php',
+                    'app/dialogs' => 'dialogs.php',
+                    'app/partner' => 'partner.php',
+                    'app/payment' => 'payment.php',
+                    'app/profile' => 'profile.php',
+                    'app/shop' => 'shop.php',
+                    'app/trafficmanager' => 'trafficmanager.php',
+                    'app/validation' => 'validation.php',
+                    'app/error' => 'error.php',
+                ],
             ];
         }
     }
