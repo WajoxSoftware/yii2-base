@@ -1,5 +1,5 @@
 <?php
-namespace app\assets;
+namespace wajox\yii2base\assets;
 
 use yii\web\AssetBundle;
 
