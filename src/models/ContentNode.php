@@ -8,7 +8,7 @@ class ContentNode extends \wajox\yii2base\components\db\ActiveRecord
     const DEFAULT_PREVIEW_PATH = '@noImagePath';
     const DEFAULT_FILE_PATH = '@noImagePath';
 
-    const VIEW_ROUTE = '/content-nodes/view';
+    const VIEW_ROUTE = '/content/default/view';
 
     const TYPE_ID_CATALOG = 101;
     const TYPE_ID_PAGE = 201;

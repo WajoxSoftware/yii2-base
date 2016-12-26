@@ -1,14 +1,14 @@
 <?php
 namespace wajox\yii2base\commands;
 
-use Yii;
 use yii\console\Controller;
+use wajox\yii2base\rbac\TrafficStreamAuthorRule;
 
 class RbacController extends Controller
 {
     public function actionInit()
     {
-        $auth = Yii::$app->authManager;
+        $auth = \Yii::$app->authManager;
         $auth->removeAll(); //удаляем старые данные
         //Создадим для примера права для доступа к админке
         //$dashboard = $auth->createPermission('dashboard');

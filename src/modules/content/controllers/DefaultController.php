@@ -9,6 +9,8 @@ class ContentNodesController extends \wajox\yii2base\controllers\Controller
 {
     public function actionView($url)
     {
+        $this->layout = "//main";
+        
         $model = $this->findModel($url);
 
         $dataProvider = $this->creteObject(ActiveDataProvider::className(), [

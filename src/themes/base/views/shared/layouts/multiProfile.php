@@ -25,7 +25,7 @@ if ($user->isAdmin) {
           ['url' => Url::toRoute('/admin'), 'title' => \Yii::t('app/admin', 'Nav Home'), 'icon' => 'fa-dashboard'],
           ['url' => Url::toRoute('/admin/employees'), 'title' => \Yii::t('app/admin', 'Nav Employees'), 'icon' => 'fa-university'],
           ['url' => Url::toRoute('/admin/users'), 'title' => \Yii::t('app/admin', 'Nav Users'), 'icon' => 'fa-users'],
-          ['url' => Url::toRoute('/admin/content-nodes'), 'title' => \Yii::t('app/admin', 'Nav Content Nodes'), 'icon' => 'fa-newspaper-o'],
+          ['url' => Url::toRoute('/content/admin/nodes'), 'title' => \Yii::t('app/admin', 'Nav Content Nodes'), 'icon' => 'fa-newspaper-o'],
           ['url' => Url::toRoute('/admin/goods'), 'title' => \Yii::t('app/admin', 'Nav Goods'), 'icon' => 'fa-shopping-basket'],
           ['url' => Url::toRoute('/admin/customers'), 'title' => \Yii::t('app/admin', 'Nav Customers'), 'icon' => 'fa-mobile-phone'],
           ['url' => Url::toRoute('/admin/orders'), 'title' => \Yii::t('app/admin', 'Nav Orders'), 'icon' => 'fa-shopping-cart'],
