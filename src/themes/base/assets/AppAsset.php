@@ -6,7 +6,7 @@ use yii\web\AssetBundle;
 
 class AppAsset extends AssetBundle
 {
-    public $sourcePath = '@themes/base/assets-src';
+    public $sourcePath = '@wajox/yii2base/themes/base/assets-src';
 
     public $css = [
         'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css',

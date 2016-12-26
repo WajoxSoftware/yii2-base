@@ -5,7 +5,7 @@ use yii\web\AssetBundle;
 
 class ProfileAsset extends AssetBundle
 {
-    public $sourcePath = '@themes/base/assets-src';
+    public $sourcePath = '@wajox/yii2base/themes/base/assets-src';
 
     public $css = [
         'css/messages.css',

@@ -21,36 +21,74 @@ class Bootstrap extends Component implements BootstrapInterface
         $theme = $app->settings->get('app_theme', 'base');
         $indexUrl = $app->settings->get('app_index_url', 'site/index');
 
+        $this->setupAliases();
         $this->setupAppTheme($theme, $app);
         $this->setupAppIndexUrl($indexUrl, $app);
         $this->initI18n($app);
         $this->initControllersMap($app);
     }
 
+    protected function setupAliases()
+    {
+        \Yii::setAlias('@wajox/yii2base', '@vendor/wajox/yii2base/src');
+    }
+
     protected function setupAppTheme($theme, $app)
     {
-        $app->view->theme->basePath = '@themes/' . $theme;
-        $app->view->theme->baseUrl = '@themes/' . $theme;
+        $themesPath = 'themes/';
+        $themesUrl = '@themes/';
+        $baseThemePath = '@wajox/yii2base/themes/' . self::APP_BASE_THEME;
+
+        if ($theme === self::APP_BASE_THEME) {
+            $themesPath = '@wajox/yii2base/themes/';
+            $themesUrl = '@wajox/yii2base/themes/';
+        }
+
+        $app->view->theme->basePath = $themesPath . $theme;
+        $app->view->theme->baseUrl = $themesUrl . $theme;
 
         $app->view->theme->pathMap = [
+                //external
                 '@app/views' => [
                         '@themes/' . $theme . '/views',
-                        '@themes/' . self::APP_BASE_THEME . '/views',
+                        $baseThemePath . '/views',
                     ],
                 '@app/modules' => [
-
                         '@themes/' . $theme . '/modules',
-                        '@themes/' . self::APP_BASE_THEME. '/modules',
+                        $baseThemePath . '/modules',
                     ],
                 '@app/mail' => [
                         '@themes/' . $theme . '/mail',
-                        '@themes/' . self::APP_BASE_THEME . '/mail',
+                        $baseThemePath . '/mail',
+                        '@wajox/yii2base/mail',
                     ],
                 '@app/widgets' => [
                         '@themes/' . $theme . '/widgets',
-                        '@themes/' . self::APP_BASE_THEME . '/widgets',
+                        $baseThemePath . '/widgets',
+                    ],
+
+                // internal
+                '@wajox/yii2base/views' => [
+                        '@themes/' . $theme . '/views',
+                        $baseThemePath . '/views',
+                    ],
+                '@wajox/yii2base/modules' => [
+                        '@themes/' . $theme . '/modules',
+                        $baseThemePath . '/modules',
+                    ],
+                '@wajox/yii2base/mail' => [
+                        '@themes/' . $theme . '/mail',
+                        $baseThemePath . '/mail',
+                        '@wajox/yii2base/mail',
+                    ],
+                '@wajox/yii2base/widgets' => [
+                        '@themes/' . $theme . '/widgets',
+                        $baseThemePath . '/widgets',
                     ],
             ];
+
+
+        //print_r($app->view->theme->pathMap);
     }
 
     protected function setupAppIndexUrl($indexUrl, $app)
@@ -79,7 +117,7 @@ class Bootstrap extends Component implements BootstrapInterface
     protected function initControllersMap($app)
     {
         if ($app instanceof ConsoleApplication) {
-            $app->controllerMap => [
+            $app->controllerMap = [
                 'good-letter-emails' => 'wajox\yii2base\commands\GoodLetterEmailsController',
                 'mailer' => 'wajox\yii2base\commands\MailerController',
                 'orders' => 'wajox\yii2base\commands\OrdersController',
@@ -95,7 +133,7 @@ class Bootstrap extends Component implements BootstrapInterface
             return;
         }
 
-        $app->controllerMap => [
+        $app->controllerMap = [
             'site' => 'wajox\yii2base\controllers\SiteController',
             'confirmation' => 'wajox\yii2base\controllers\ConfirmationController',
             'content-nodes' => 'wajox\yii2base\controllers\ContentNodesController',

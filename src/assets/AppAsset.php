@@ -5,7 +5,7 @@ use yii\web\AssetBundle;
 
 class AppAsset extends AssetBundle
 {
-    public $sourcePath = '@assets';
+    public $sourcePath = '@wajox/yii2base/assets-src';
 
     public $css = [];
 
