@@ -28,9 +28,9 @@ class SettingOption extends \wajox\yii2base\components\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'key' => $this->t('app/attributes', 'Setting Option Key'),
-            'val' => $this->t('app/attributes', 'Setting Option Value'),
-            'type_id' => $this->t('app/attributes', 'Setting Option Type ID'),
+            'key' => \Yii::t('app/attributes', 'Setting Option Key'),
+            'val' => \Yii::t('app/attributes', 'Setting Option Value'),
+            'type_id' => \Yii::t('app/attributes', 'Setting Option Type ID'),
         ];
     }
 

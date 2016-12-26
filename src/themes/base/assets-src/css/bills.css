@@ -1,0 +1,40 @@
+.bill-item {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-width: 0 0 1px 0;
+  border-color: #ccc;
+  border-style: solid;
+  display: block;
+  cursor: pointer;
+  margin: 0;
+}
+
+.bill-item:hover {
+  background: #eee !important;
+}
+
+.bill-item .sum {
+  color: #D2322D;
+}
+
+.bill-item .destination {
+  font-weight: bold;
+  color: #333;
+}
+
+.bill-item .date {
+  color: #777;
+  font-style: italic;
+}
+
+.bill-item.bill-status-new {
+  background: #efe;
+}
+
+.bill-item.bill-status-payed {
+  background: #fff;
+}
+
+.bill-item.bill-status-cancelled {
+  background: #fee;
+}

@@ -23,25 +23,27 @@ class UploadedFile extends \wajox\yii2base\components\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => $this->t('app/attributes', 'ID'),
-            'file' => $this->t('app/attributes', 'File'),
-            'size' => $this->t('app/attributes', 'Size'),
-            'user_id' => $this->t('app/attributes', 'User ID'),
-            'type_id' => $this->t('app/attributes', 'Type'),
-            'status_id' => $this->t('app/attributes', 'Status'),
-            'created_at' => $this->t('app/attributes', 'Created At'),
+            'id' => \Yii::t('app/attributes', 'ID'),
+            'file' => \Yii::t('app/attributes', 'File'),
+            'size' => \Yii::t('app/attributes', 'Size'),
+            'user_id' => \Yii::t('app/attributes', 'User ID'),
+            'type_id' => \Yii::t('app/attributes', 'Type'),
+            'status_id' => \Yii::t('app/attributes', 'Status'),
+            'created_at' => \Yii::t('app/attributes', 'Created At'),
         ];
     }
 
     public function behaviors()
     {
+        $uploadsDir = \Yii::$app->params['uploadsDir'];
         return [
             [
                 'class' => '\yiidreamteam\upload\FileUploadBehavior',
                 'attribute' => 'file',
-                'filePath' => '@webroot/uploads/uploaded_files/[[pk]].[[extension]]',
-                'fileUrl' => '@web/uploads/uploaded_files/[[pk]].[[extension]]',
+                'filePath' => '@uploadsPath/uploaded_files/[[pk]].[[extension]]',
+                'fileUrl' => '@uploadsUrl/uploaded_files/[[pk]].[[extension]]',
             ],
+
         ];
     }
 

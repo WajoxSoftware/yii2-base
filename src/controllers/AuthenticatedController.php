@@ -5,7 +5,7 @@ use yii\filters\AccessControl;
 
 abstract class AuthenticatedController extends Controller
 {
-    public $settingsControllerClassName = 'app\modules\account\controllers\SettingsController';
+    public $settingsControllerClassName = 'wajox\yii2base\modules\account\controllers\SettingsController';
 
     public function behaviors()
     {

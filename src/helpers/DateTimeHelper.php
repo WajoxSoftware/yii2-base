@@ -1,4 +1,5 @@
 <?php
+
 namespace wajox\yii2base\helpers;
 
 class DateTimeHelper

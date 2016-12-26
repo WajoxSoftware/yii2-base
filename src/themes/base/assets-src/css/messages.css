@@ -1,0 +1,48 @@
+.message-item {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-width: 0 0 1px 0;
+  border-color: #ccc;
+  border-style: solid;
+  display: block;
+  cursor: pointer;
+  margin: 0;
+}
+
+.message-item:hover {
+  background: #eee !important;
+}
+
+.message-item .name {
+  color: #D2322D;
+}
+
+.message-item .subject {
+  font-weight: bold;
+  color: #333;
+}
+
+.message-item .short {
+  color: #777;
+}
+
+.message-item .date {
+  color: #777;
+  font-style: italic;
+}
+
+.message-item.message-status-new {
+  background: #efe;
+}
+
+.message-item.message-status-read {
+  background: #fff;
+}
+
+.message-item.message-status-spam {
+  background: #ffe;
+}
+
+.message-item.message-status-deleted {
+  background: #fee;
+}

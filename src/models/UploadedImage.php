@@ -22,10 +22,10 @@ class UploadedImage extends UploadedFile
                  'class' => '\yiidreamteam\upload\ImageUploadBehavior',
                  'attribute' => 'file',
                  'thumbs' => ['thumb' => ['width' => 100, 'height' => 100]],
-                 'filePath' => '@webroot/uploads/uploaded_files/[[pk]].[[extension]]',
-                 'fileUrl' => '@web/uploads/uploaded_files/[[pk]].[[extension]]',
-                 'thumbPath' => '@webroot/uploads/uploaded_files/thumbnail_[[pk]].[[extension]]',
-                 'thumbUrl' => '@web/uploads/uploaded_files/thumbnail_[[pk]].[[extension]]',
+                 'filePath' => '@uploadsPath/uploaded_files/[[pk]].[[extension]]',
+                 'fileUrl' => '@uploadsUrl/uploaded_files/[[pk]].[[extension]]',
+                 'thumbPath' => '@uploadsPath/uploaded_files/thumbnail_[[pk]].[[extension]]',
+                 'thumbUrl' => '@uploadsUrl/uploaded_files/thumbnail_[[pk]].[[extension]]',
             ],
         ];
     }
