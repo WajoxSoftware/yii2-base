@@ -3,6 +3,7 @@ namespace wajox\yii2base\extensions;
 
 use yii\base\Application;
 use yii\base\BootstrapInterface;
+use yii\i18n\PhpMessageSource;
 use wajox\yii2base\components\base\Component;
 
 class Bootstrap extends Component implements BootstrapInterface
@@ -59,5 +60,16 @@ class Bootstrap extends Component implements BootstrapInterface
         $this->items[$model->key] = $model;
 
         return $this;
+    }
+
+    protected function initI18n($app)
+    {
+        if (!isset($app->get('i18n')->translations['app*'])) {
+            $app->get('i18n')->translations['app*'] = [
+                'class'    => PhpMessageSource::className(),
+                'basePath' => __DIR__ . '/messages',
+                'sourceLanguage' => 'en-US'
+            ];
+        }
     }
 }
