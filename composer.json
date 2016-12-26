@@ -15,6 +15,7 @@
         "yiisoft/yii2": "*",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
+        "yiidoc/yii2-redactor": "*",
         "yii-dream-team/yii2-upload-behavior": "*",
         "baibaratsky/yii2-serialized-attributes-behavior": "*",
         "2amigos/yii2-date-picker-widget" : "~1.0",
@@ -24,7 +25,8 @@
         "yiisoft/yii2-gii": "*",
         "fxp/composer-asset-plugin": "^1.0",
         "kartik-v/yii2-widgets": "dev-master",
-        "picodi-lab/expertsender-api-client": "*"
+        "picodi-lab/expertsender-api-client": "*",
+        "wajox/yii2widgets": "dev-master"
     },
     "autoload": {
         "psr-4": {
