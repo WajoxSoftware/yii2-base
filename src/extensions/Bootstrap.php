@@ -108,7 +108,7 @@ class Bootstrap extends Component implements BootstrapInterface
         if (!isset($app->i18n->translations['app*'])) {
             $app->i18n->translations['app*'] = [
                 'class'    => PhpMessageSource::className(),
-                'basePath' => __DIR__ . '/messages',
+                'basePath' => __DIR__ . '/../messages',
                 'fileMap' => [
                     'app' => 'app.php',
                     'app/notifications' => 'notifications.php',
