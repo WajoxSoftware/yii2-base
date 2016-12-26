@@ -109,7 +109,7 @@ abstract class BasePaymentsAbstract extends Object
 
     public function detachGood($good)
     {
-        GoodDeliveryMethod::deleteAll([
+        GoodPaymentMethod::deleteAll([
             'good_id' => $good->id,
             'payment_method' => $this->getId(),
         ]);
