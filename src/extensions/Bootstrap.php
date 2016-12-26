@@ -22,6 +22,7 @@ class Bootstrap extends Component implements BootstrapInterface
 
         $this->setupAppTheme($theme, $app);
         $this->setupAppIndexUrl($indexUrl, $app);
+        $this->initI18n($app);
     }
 
     protected function setupAppTheme($theme, $app)
