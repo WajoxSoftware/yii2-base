@@ -4,8 +4,9 @@ namespace wajox\yii2base\services\shop;
 
 use wajox\yii2base\models\GoodCategory;
 use wajox\yii2base\helpers\TextHelper;
+use wajox\yii2base\components\base\Object;
 
-class GoodCategoriesBuilder
+class GoodCategoriesBuilder extends Object
 {
     protected $goodCategory = null;
     protected $parentCategoryId = null;
