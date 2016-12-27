@@ -13,7 +13,7 @@ class DefaultController extends \wajox\yii2base\controllers\Controller
 
         $model = $this->findModel($url);
 
-        $dataProvider = $this->creteObject(ActiveDataProvider::className(), [
+        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
             ['query' => $model->getContentNodes()],
         ]);
 

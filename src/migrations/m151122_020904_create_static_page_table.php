@@ -29,7 +29,7 @@ class m151122_020904_create_static_page_table extends Migration
         $this->createIndex('url', '{{%content_node}}', 'url', true);
 
         $this->addForeignKey("FK_content_node_user_id", "{{%content_node}}", "user_id", "{{%user}}", "id", 'SET NULL');
-        $this->addForeignKey("FK_content_node_parent_id", "{{%content_node}}", "parent_node_id", "{{%content_node}}", "id", 'CASCADE');
+        //$this->addForeignKey("FK_content_node_parent_id", "{{%content_node}}", "parent_node_id", "{{%content_node}}", "id", 'CASCADE');
         $this->addForeignKey("FK_content_node_image_id", "{{%content_node}}", "preview_image_id", "{{%uploaded_file}}", "id", 'SET NULL');
     }
 
