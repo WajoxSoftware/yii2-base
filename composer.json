@@ -26,7 +26,8 @@
         "fxp/composer-asset-plugin": "^1.0",
         "kartik-v/yii2-widgets": "dev-master",
         "picodi-lab/expertsender-api-client": "*",
-        "wajox/yii2widgets": "dev-master"
+        "wajox/yii2widgets": "dev-master",
+        "wajox/y2modcms": "dev-master"
     },
     "autoload": {
         "psr-4": {
