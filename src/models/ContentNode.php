@@ -18,8 +18,8 @@ class ContentNode extends \wajox\yii2base\components\db\ActiveRecord
     const STATUS_ID_ARCHIVE = 300;
 
     const LAYOUT_EMPTY = 'empty';
-    const LAYOUT_MAIN = 'main';
-    const LAYOUT_NARROW = 'narrow';
+    const LAYOUT_MAIN = '//main';
+    const LAYOUT_NARROW = '//narrow';
 
     public static function tableName()
     {
