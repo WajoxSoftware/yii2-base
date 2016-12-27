@@ -1,7 +1,7 @@
 <?php
-namespace wajox\yii2base\services\content;
+namespace wajox\yii2base\modules\content\services;
 
-use wajox\yii2base\models\ContentNode;
+use wajox\yii2base\modules\content\models\ContentNode;
 use wajox\yii2base\services\uploads\UploadsManager;
 use wajox\yii2base\components\base\Object;
 

@@ -1,7 +1,7 @@
 <?php
-namespace wajox\yii2base\services\content\builders;
+namespace wajox\yii2base\modules\content\services\builders;
 
-use wajox\yii2base\models\ContentNode;
+use wajox\yii2base\modules\content\models\ContentNode;
 use wajox\yii2base\helpers\TextHelper;
 use wajox\yii2base\components\base\Object;
 

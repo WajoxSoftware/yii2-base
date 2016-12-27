@@ -1,9 +1,9 @@
 <?php
 namespace wajox\yii2base\modules\content\controllers\admin;
 
-use wajox\yii2base\models\ContentNode;
+use wajox\yii2base\modules\content\models\ContentNode;
 use wajox\yii2base\models\UploadedImage;
-use wajox\yii2base\services\content\ContentNodesManager;
+use wajox\yii2base\modules\content\services\content\ContentNodesManager;
 use wajox\yii2base\modules\admin\controllers\ApplicationController;
 use yii\web\NotFoundHttpException;
 

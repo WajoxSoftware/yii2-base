@@ -1,7 +1,9 @@
 <?php
-namespace wajox\yii2base\models\form\content;
+namespace wajox\yii2base\models\form;
 
-class CatalogForm extends ContentNodeFormAbstract
+use wajox\yii2base\modules\content\models\ContentNode;
+
+class PageForm extends ContentNodeFormAbstract
 {
     public $content_html;
 
@@ -33,6 +35,6 @@ class CatalogForm extends ContentNodeFormAbstract
 
     public function getTypeId()
     {
-        return \wajox\yii2base\models\ContentNode::TYPE_ID_CATALOG;
+        return ContentNode::TYPE_ID_PAGE;
     }
 }

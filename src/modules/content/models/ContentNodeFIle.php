@@ -1,5 +1,7 @@
 <?php
-namespace wajox\yii2base\models;
+namespace wajox\yii2base\modules\content\models;
+
+use wajox\yii2base\models\UploadedFile;
 
 class ContentNodeFIle extends \wajox\yii2base\components\db\ActiveRecord
 {

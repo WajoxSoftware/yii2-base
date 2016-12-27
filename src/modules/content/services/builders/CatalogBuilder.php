@@ -1,7 +1,7 @@
 <?php
-namespace wajox\yii2base\services\content\builders;
+namespace wajox\yii2base\modules\content\services\builders;
 
-use wajox\yii2base\models\form\content\CatalogForm;
+use wajox\yii2base\modules\content\models\form\CatalogForm;
 
 class CatalogBuilder extends ContentNodeBuilderAbstract
 {

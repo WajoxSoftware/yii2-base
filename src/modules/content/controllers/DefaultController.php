@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\modules\content\controllers;
 
-use wajox\yii2base\models\ContentNode;
+use wajox\yii2base\modules\content\models\ContentNode;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 

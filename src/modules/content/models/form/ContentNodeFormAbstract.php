@@ -1,8 +1,8 @@
 <?php
-namespace wajox\yii2base\models\form\content;
+namespace wajox\yii2base\modules\content\models\form;
 
 use wajox\yii2base\components\base\Model;
-use wajox\yii2base\models\ContentNode;
+use wajox\yii2base\modules\content\models\ContentNode;
 
 abstract class ContentNodeFormAbstract extends Model
 {
