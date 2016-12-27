@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Url;
-use wajox\yii2base\models\ContentNode;
+use wajox\yii2base\modules\content\models\ContentNode;
 
 $parentNodeId = $parentNode == null ? 0 : $parentNode->id;
 $availableTypes = [
