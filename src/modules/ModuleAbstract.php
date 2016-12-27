@@ -18,8 +18,8 @@ abstract class ModuleAbstract extends \yii\base\Module
 
     protected function initModule()
     {
-        $this->controllerNamespace = 'wajox\yii2base\modules\\'.$this->id.'\controllers';
-        $this->layout = 'profile';
+        // $this->controllerNamespace = 'wajox\yii2base\modules\\'.$this->id.'\controllers';
+        // $this->layout = 'profile';
         $this->getApp()->user->loginUrl = ['/'.$this->id.'/session'];
     }
 
