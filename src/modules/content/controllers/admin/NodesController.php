@@ -3,11 +3,11 @@ namespace wajox\yii2base\modules\admin\controllers;
 
 use wajox\yii2base\models\ContentNode;
 use wajox\yii2base\services\content\ContentNodesManager;
-use wajox\yii2base\modules\admin\ApplicationController;
+use wajox\yii2base\modules\admin\controllers\ApplicationController;
 use yii\web\NotFoundHttpException;
 use yii\data\ActiveDataProvider;
 
-class ContentNodesController extends ApplicationController
+class NodesController extends ApplicationController
 {
     public function actionIndex($id = 0)
     {

@@ -7,7 +7,7 @@ use wajox\yii2base\services\content\ContentNodesManager;
 use wajox\yii2base\modules\admin\controllers\ApplicationController;
 use yii\web\NotFoundHttpException;
 
-class ContentNodePreviewsController extends ApplicationController
+class PreviewsController extends ApplicationController
 {
     public function actionCreate($nodeId)
     {

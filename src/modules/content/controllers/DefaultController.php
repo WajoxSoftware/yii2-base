@@ -5,12 +5,12 @@ use wajox\yii2base\models\ContentNode;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 
-class ContentNodesController extends \wajox\yii2base\controllers\Controller
+class DefaultController extends \wajox\yii2base\controllers\Controller
 {
     public function actionView($url)
     {
         $this->layout = "//main";
-        
+
         $model = $this->findModel($url);
 
         $dataProvider = $this->creteObject(ActiveDataProvider::className(), [
