@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\controllers;
+namespace wajox\yii2base\modules\content\controllers;
 
 use wajox\yii2base\models\ContentNode;
 use yii\data\ActiveDataProvider;

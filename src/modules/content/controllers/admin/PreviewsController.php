@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\modules\admin\controllers;
+namespace wajox\yii2base\modules\content\controllers\admin;
 
 use wajox\yii2base\models\ContentNode;
 use wajox\yii2base\models\UploadedImage;
