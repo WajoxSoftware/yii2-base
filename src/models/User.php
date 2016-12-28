@@ -405,7 +405,7 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
     public function getDialogs()
     {
         return $this->hasOne(Dialog::className(), ['id' => 'dialog_id'])
-            ->viaTable(DialogUser::tableName(), ['user_id' => 'id']);
+            ->viaClass(DialogUser::className(), ['user_id' => 'id']);
     }
 
     public function getNameWithEmail()

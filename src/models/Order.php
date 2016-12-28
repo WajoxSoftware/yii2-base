@@ -159,7 +159,7 @@ class Order extends \wajox\yii2base\components\db\ActiveRecord
     public function getGoods()
     {
         return $this->hasMany(Good::className(), ['id' => 'good_id'])
-        ->viaTable(OrderGood::tableName(), ['order_id' => 'id']);
+        ->viaClass(OrderGood::className(), ['order_id' => 'id']);
     }
 
     public function getBill()

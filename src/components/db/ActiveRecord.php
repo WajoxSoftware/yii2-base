@@ -14,4 +14,20 @@ class ActiveRecord extends \yii\db\ActiveRecord
         	[get_called_class()]
         );
     }
+
+    public function hasOne($class, $link)
+    {
+        return parent::hasOne(
+            $this->getDepencency($class),
+            $link
+        );
+    }
+
+    public function hasMany($class, $link)
+    {
+        return parent::hasMany(
+            $this->getDepencency($class),
+            $link
+        );
+    }
 }

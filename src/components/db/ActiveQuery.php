@@ -9,4 +9,13 @@ class ActiveQuery extends \yii\db\ActiveQuery
 	{
 		return $this->where(['id' => $id]);
 	}
+
+    public function viaClass($className, $link, callable $callable = null)
+    {
+    	return $this->viaTable(
+    		$className::tableName(),
+    		$link,
+    		$callable
+    	);
+    }
 }

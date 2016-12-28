@@ -51,7 +51,7 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
     public function getGood()
     {
         return $this->hasOne(Good::className(), ['id' => 'good_id'])
-        ->viaTable(TrafficStreamGood::tableName(), ['traffic_stream_id' => 'id']);
+        ->viaClass(TrafficStreamGood::className(), ['traffic_stream_id' => 'id']);
     }
 
     public function getTrafficCompany()
@@ -77,13 +77,13 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
     public function getManager()
     {
         return $this->hasOne(TrafficManager::className(), ['user_id' => 'id'])
-        ->viaTable(User::tableName(), ['id' => 'user_id']);
+        ->viaClass(User::tableName(), ['id' => 'user_id']);
     }
 
     public function getPartner()
     {
         return $this->hasOne(Partner::className(), ['user_id' => 'id'])
-        ->viaTable(User::tableName(), ['id' => 'user_id']);
+        ->viaClass(User::className(), ['id' => 'user_id']);
     }
 
     public function getPrices()

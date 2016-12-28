@@ -229,7 +229,7 @@ class Good extends \wajox\yii2base\components\db\ActiveRecord
     public function getEmailLists()
     {
         return $this->hasMany(EmailList::className(), ['id' => 'email_list_id'])
-        ->viaTable(GoodEmailList::tableName(), ['good_id' => 'id']);
+        ->viaClass(GoodEmailList::className(), ['good_id' => 'id']);
     }
 
     public function getGoodEmailLists()
