@@ -10,7 +10,7 @@ class UserEventHandler extends EventHandlerAbstract
     public function bindEvents($eventsManager)
     {
         $eventsManager->on(User::className(), UserEvent::EVENT_SIGN_IN, function ($event) {
-           \Yii::$app->userActionLogs->log(UserActionLog::TYPE_ID_SIGN_IN, $event->user, $event->user);
+            \Yii::$app->userActionLogs->log(UserActionLog::TYPE_ID_SIGN_IN, $event->user, $event->user);
         });
 
         $eventsManager->on(User::className(), UserEvent::EVENT_SIGN_OUT, function ($event) {

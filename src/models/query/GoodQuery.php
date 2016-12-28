@@ -14,7 +14,7 @@ class GoodQuery extends ActiveQuery
 
     public function byCategoryId($categoryId)
     {
-    	return $this->where([
+        return $this->where([
             'category_id' => intval($categoryId),
         ]);
     }

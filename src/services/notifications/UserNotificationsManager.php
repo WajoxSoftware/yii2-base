@@ -54,7 +54,7 @@ class UserNotificationsManager extends Object
     {
         $this
             ->getRepository()
-            ->update((
+            ->update(
                 UserNotification::classNameName(),
                 ['status_id' => UserNotification::STATUS_ID_READ],
                 [

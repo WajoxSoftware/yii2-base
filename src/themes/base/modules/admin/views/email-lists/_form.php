@@ -3,6 +3,7 @@ use yii\bootstrap\ActiveForm;
 use wajox\yii2base\helpers\SubscribeListsHelper;
 use wajox\yii2base\models\EmailList;
 use wajox\yii2base\helpers\FormHelper;
+
 ?>
 
 <div class="email-list-form">

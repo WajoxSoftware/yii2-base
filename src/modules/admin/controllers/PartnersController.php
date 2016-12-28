@@ -191,7 +191,7 @@ class PartnersController extends ApplicationController
         return $this->render('update', [
             'model' => $builder->getModel(),
             'modelUser' => $builder->getUser(),
-        ]);  
+        ]);
     }
 
     public function actionDelete($id)

@@ -12,11 +12,11 @@ class MailerController extends Controller
 
     public function actionSend()
     {
-    	print_r(\Yii::$app->mailer->sendTransactional(
-    		'wajox@mail.ru',
-    		'Test',
-    		'Text',
-    		'<b>Html</b>'
-    	));
+        print_r(\Yii::$app->mailer->sendTransactional(
+            'wajox@mail.ru',
+            'Test',
+            'Text',
+            '<b>Html</b>'
+        ));
     }
 }

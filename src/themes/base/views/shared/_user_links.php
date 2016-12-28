@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+
 $moduleId = \Yii::$app->controller->module->id;
 
 $hasSessionController = false;

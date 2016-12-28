@@ -107,7 +107,7 @@ class OrderStatusesController extends ApplicationController
 
     protected function returnMoneyStatus($model)
     {
-       return $this->getBillsManager()->returned($model->bill);
+        return $this->getBillsManager()->returned($model->bill);
     }
 
     protected function preparedStatus($model)

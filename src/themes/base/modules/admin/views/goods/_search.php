@@ -25,19 +25,19 @@ use yii\bootstrap\ActiveForm;
 
     <?= $form->field($model, 'status') ?>
 
-    <?php // echo $form->field($model, 'photo') ?>
+    <?php // echo $form->field($model, 'photo')?>
 
-    <?php // echo $form->field($model, 'title') ?>
+    <?php // echo $form->field($model, 'title')?>
 
-    <?php // echo $form->field($model, 'short_description') ?>
+    <?php // echo $form->field($model, 'short_description')?>
 
-    <?php // echo $form->field($model, 'description') ?>
+    <?php // echo $form->field($model, 'description')?>
 
-    <?php // echo $form->field($model, 'tags') ?>
+    <?php // echo $form->field($model, 'tags')?>
 
-    <?php // echo $form->field($model, 'partner_program_status') ?>
+    <?php // echo $form->field($model, 'partner_program_status')?>
 
-    <?php // echo $form->field($model, 'created_at') ?>
+    <?php // echo $form->field($model, 'created_at')?>
 
     <div class="form-group">
         <?= Html::submitButton(\Yii::t('app/general', 'Search'), ['class' => 'btn btn-primary']) ?>

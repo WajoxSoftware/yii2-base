@@ -1,6 +1,7 @@
 <?php
 use wajox\yii2base\helpers\FormHelper;
 use wajox\yii2base\models\Good;
+
 ?>
 
 <div class="row">

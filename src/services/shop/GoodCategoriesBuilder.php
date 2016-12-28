@@ -21,7 +21,7 @@ class GoodCategoriesBuilder extends Object
         if ($parentCategoryId <= 0
             || !$parentCategoryId
         ) {
-            $parentCategoryId = null;    
+            $parentCategoryId = null;
         }
 
         $this->parentCategoryId =$parentCategoryId;

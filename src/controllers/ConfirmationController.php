@@ -57,6 +57,7 @@ class ConfirmationController extends \wajox\yii2base\controllers\Controller
 
     public function getManager()
     {
-        return $this->getDependency(UsersManager::className());;
+        return $this->getDependency(UsersManager::className());
+        ;
     }
 }

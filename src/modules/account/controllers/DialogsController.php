@@ -50,8 +50,8 @@ class DialogsController extends ApplicationController
         );
         $statuses = $query->offset($pages->offset)->limit($pages->limit)->all();
         $messagesIds = array_map(function ($status) {
-                return $status->message_id;
-            }, $statuses);
+            return $status->message_id;
+        }, $statuses);
         $messages = $manager->getMessagesByIds($messagesIds);
         $members = $manager->getMembersByDialogsIds([$dialog->id]);
         $messages = array_reverse($messages);

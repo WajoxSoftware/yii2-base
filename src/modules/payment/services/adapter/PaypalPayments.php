@@ -3,7 +3,6 @@ namespace wajox\yii2base\modules\payment\services\adapter;
 
 class PaypalPayments extends BasePaymentsAbstract
 {
-
     public function getSettings()
     {
         return [

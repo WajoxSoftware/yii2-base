@@ -37,19 +37,19 @@ class PartnerOffersController extends ApplicationController
                 'partner_id' => [0, $this->getPartner()->id],
             ])->joinWith([
                 'good' => function ($goodQuery) use ($query) {
-                        $goodQuery = $goodQuery->andWhere([
+                    $goodQuery = $goodQuery->andWhere([
                             'status_id' => Good::STATUS_ID_ACTIVE,
                             'partner_status_id' => Good::PARTNER_STATUS_ID_ACTIVE,
                         ]);
 
-                        if ($query != null) {
-                            $goodQuery = $goodQuery->andWhere([
+                    if ($query != null) {
+                        $goodQuery = $goodQuery->andWhere([
                                 'like', 'title', $query,
                             ]);
-                        }
+                    }
 
-                        return $goodQuery;
-                    },
+                    return $goodQuery;
+                },
             ]);
 
         $models = $programQuery->limit(self::LIMIT)

@@ -1,6 +1,7 @@
 <?php
 use yii\bootstrap\ActiveForm;
 use wajox\yii2base\models\TrafficStream;
+
 ?>
 
 <div class="traffic-stream-form">

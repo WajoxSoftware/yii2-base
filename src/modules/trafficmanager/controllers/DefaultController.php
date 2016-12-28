@@ -4,7 +4,7 @@ namespace wajox\yii2base\modules\trafficmanager\controllers;
 use wajox\yii2base\models\form\StatisticFilterForm;
 use wajox\yii2base\services\traffic\StatisticComputer;
 
-class DefaultController  extends ApplicationController
+class DefaultController extends ApplicationController
 {
     public function actionIndex()
     {

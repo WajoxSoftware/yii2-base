@@ -17,16 +17,16 @@ class OffersController extends ApplicationController
             ])
             ->joinWith([
                 'good' => function ($query) {
-                        return $query->andWhere([
+                    return $query->andWhere([
                             'status_id' => Good::STATUS_ID_ACTIVE,
                             'partner_status_id' => Good::PARTNER_STATUS_ID_ACTIVE,
                         ]);
-                    },
+                },
             ]);
 
         $dataProvider = $this->createObject(
             ActiveDataProvider::className(),
-            [['query' => $query]
+            [['query' => $query]]
         );
 
         return $this->render('index', [

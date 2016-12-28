@@ -86,7 +86,7 @@ class TrafficSourcesController extends ApplicationController
             return $model;
         }
         
-        throw new NotFoundHttpException('The requested page does not exist.'); 
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function findModel($id)

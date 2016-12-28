@@ -7,7 +7,6 @@ class CallbacksController extends ApplicationController
 {
     public function actionIndex($method, $action = 'process', $id = 0)
     {
-
         $bill = null;
 
         if ($id != 0) {
@@ -15,7 +14,7 @@ class CallbacksController extends ApplicationController
                 ->getRepository()
                 ->find(Bill::className())
                 ->byId($id)
-                ->one();   
+                ->one();
         }
 
         if (!$bill) {

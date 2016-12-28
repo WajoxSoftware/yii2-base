@@ -8,14 +8,14 @@ class GoodQuery extends ActiveQuery
     public function byUrl($id)
     {
         return $this->where([
-        	'url' => htmlspecialchars($url),
+            'url' => htmlspecialchars($url),
         ]);
     }
 
     public function byParentId($parentId)
     {
-    	return $this->where([
-    		'parent_id' => intval($parentId),
-    	]);
+        return $this->where([
+            'parent_id' => intval($parentId),
+        ]);
     }
 }

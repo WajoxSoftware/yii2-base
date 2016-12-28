@@ -3,7 +3,6 @@ namespace wajox\yii2base\modules\payment\services\adapter;
 
 class YandexPayments extends BasePaymentsAbstract
 {
-
     public function getSettings()
     {
         return [

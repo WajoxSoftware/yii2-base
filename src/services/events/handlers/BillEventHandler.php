@@ -15,28 +15,28 @@ class BillEventHandler extends EventHandlerAbstract
         });
 
         $eventsManager->on(Bill::className(), BillEvent::EVENT_RETURNED, function ($event) {
-          if ($event->bill->isWithOrder) {
-              $order = $event->bill->order;
-              OrdersManager::money_returned($order);
-          }
-          \Yii::$app->userActionLogs->log(UserActionLog::TYPE_ID_RETURN_BILL, $event->bill, $event->bill->user);
+            if ($event->bill->isWithOrder) {
+                $order = $event->bill->order;
+                OrdersManager::money_returned($order);
+            }
+            \Yii::$app->userActionLogs->log(UserActionLog::TYPE_ID_RETURN_BILL, $event->bill, $event->bill->user);
         });
 
         $eventsManager->on(Bill::className(), BillEvent::EVENT_PAID, function ($event) {
-          if ($event->bill->isWithOrder) {
-              $order = $event->bill->order;
-              OrdersManager::paid($order);
-          }
+            if ($event->bill->isWithOrder) {
+                $order = $event->bill->order;
+                OrdersManager::paid($order);
+            }
           
-          \Yii::$app->userActionLogs->log(UserActionLog::TYPE_ID_PAY_BILL, $event->bill, $event->bill->user);
+            \Yii::$app->userActionLogs->log(UserActionLog::TYPE_ID_PAY_BILL, $event->bill, $event->bill->user);
         });
 
         $eventsManager->on(Bill::className(), BillEvent::EVENT_CANCELLED, function ($event) {
-          if ($event->bill->isWithOrder) {
-              $order = $event->bill->order;
-              OrdersManager::cancelled($order);
-          }
-          \Yii::$app->userActionLogs->log(UserActionLog::TYPE_ID_CANCEL_BILL, $event->bill, $event->bill->user);
+            if ($event->bill->isWithOrder) {
+                $order = $event->bill->order;
+                OrdersManager::cancelled($order);
+            }
+            \Yii::$app->userActionLogs->log(UserActionLog::TYPE_ID_CANCEL_BILL, $event->bill, $event->bill->user);
         });
     }
 }

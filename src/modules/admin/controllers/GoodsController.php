@@ -121,8 +121,8 @@ class GoodsController extends ApplicationController
         ];
 
         return  $this->asJs(function () use ($data) {
-                    return $data;
-                })->renderFormat('create');
+            return $data;
+        })->renderFormat('create');
     }
 
     /*
@@ -163,7 +163,6 @@ class GoodsController extends ApplicationController
         return $this->render('view', [
             'model' => $builder->getModel(),
         ]);
-        
     }
 
     public function actionStatus($id, $statusId)
@@ -252,7 +251,7 @@ class GoodsController extends ApplicationController
 
         $manager = $this->createObject(
             GoodsManager::className(),
-            [$user, $this->createObject(Good::className()]
+            [$user, $this->createObject(Good::className())]
         );
 
         return $manager->getDraftsBuilder($model, $cloneMode);

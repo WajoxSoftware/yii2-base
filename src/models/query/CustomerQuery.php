@@ -16,12 +16,12 @@ class CustomerQuery extends ActiveQuery
     public function blockedByEmailOrPhone($email, $phone)
     {
         return $this->orWhere([
-	        	'email' => htmlspecialchars($email),
-	        	'status_id' => intval(Customer::STATUS_ID_BLOCKED),
-	        ])
+                'email' => htmlspecialchars($email),
+                'status_id' => intval(Customer::STATUS_ID_BLOCKED),
+            ])
             ->orWhere([
-            	'phone' => htmlspecialchars($phone),
-            	'status_id' => intval(Customer::STATUS_ID_BLOCKED),
+                'phone' => htmlspecialchars($phone),
+                'status_id' => intval(Customer::STATUS_ID_BLOCKED),
             ]);
     }
 }

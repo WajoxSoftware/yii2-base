@@ -21,7 +21,7 @@ class TrafficStreamImagesController extends ApplicationController
         $this->requireUserAccess($stream->user_id);
 
         if ($request->isPost) {
-            $manager = $this->getUploadsManager()
+            $manager = $this->getUploadsManager();
             $model = $manager->saveImage($request);
 
             if (!$model->isNewRecord) {

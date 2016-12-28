@@ -102,6 +102,9 @@ class EgoodEntitiesController extends ApplicationController
 
     protected function getUploadsManager()
     {
-         return $this->createObject(UploadsManager::className(), [$this->getUser()])
+        return $this->createObject(
+            UploadsManager::className(),
+            [$this->getUser()]
+        );
     }
 }

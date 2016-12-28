@@ -55,7 +55,7 @@ if ($categoryId
       'sort' => $sort,
   ];
 
-  echo ListView::widget([
+    echo ListView::widget([
     'dataProvider' => $dataProvider,
     'itemView' => '_item',
   ]);

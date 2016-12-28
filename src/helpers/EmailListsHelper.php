@@ -5,8 +5,8 @@ use yii\helpers\ArrayHelper;
 
 class EmailListsHelper
 {
-	public static function getEmailLists()
-	{
-		return ArrayHelper::map(EmailList::find()->all(), 'id', 'title');
-	}
+    public static function getEmailLists()
+    {
+        return ArrayHelper::map(EmailList::find()->all(), 'id', 'title');
+    }
 }

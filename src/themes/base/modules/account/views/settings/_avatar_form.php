@@ -1,6 +1,7 @@
 <?php
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
+
 ?>
 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'class' => 'js-image-upload-form']]); ?>
 

@@ -193,7 +193,7 @@ class ContactsManager extends Object
     {
         return $this
             ->getRepository()
-            ->find(User::className()
+            ->find(User::className())
             ->byId($usersIds);
     }
 }

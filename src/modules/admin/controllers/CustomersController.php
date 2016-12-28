@@ -33,7 +33,7 @@ class CustomersController extends ApplicationController
             && $model->load($request->post())
             && $model->save();
 
-        return $this->renderJs('update',[
+        return $this->renderJs('update', [
             'model' => $model,
             'success' => $success,
         ]);

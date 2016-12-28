@@ -43,7 +43,6 @@ class OrderEventHandler extends EventHandlerAbstract
         });
 
         $eventsManager->on(Order::className(), OrderEvent::EVENT_PAID, function ($event) {
-
             OrderDeliveryManager::processPaidOrder($event->order);
             PartnerFeeManager::processOrder($event->order);
             OrderEventHandler::onEvent($event);

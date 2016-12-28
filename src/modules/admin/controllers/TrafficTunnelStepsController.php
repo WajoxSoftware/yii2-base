@@ -19,7 +19,7 @@ class TrafficTunnelStepsController extends ApplicationController
         if ($request->isPost
             &&  $model->load($request->post())
         ) {
-           $success = $model->save();
+            $success = $model->save();
         }
 
         return $this->renderJs('create', [

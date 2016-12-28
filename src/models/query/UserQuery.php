@@ -10,7 +10,7 @@ class UserQuery extends ActiveQuery
         return $this->where(['id' => intval($id)]);
     }
 
-    public  function byAccessToken($token)
+    public function byAccessToken($token)
     {
         return $this->where([
             'access_token' => htmlspecialchars($token),
@@ -19,7 +19,7 @@ class UserQuery extends ActiveQuery
 
     public function byResetToken($token)
     {
-    	return $this->where([
+        return $this->where([
             'password_reset_token' => htmlspecialchars($token),
         ]);
     }
@@ -33,7 +33,7 @@ class UserQuery extends ActiveQuery
 
     public function byNameOrEmail($name, $email)
     {
-    	return $this->where([
+        return $this->where([
             'name' => htmlspecialchars($name),
         ])->orWhere([
             'email' => htmlspecialchars($email),

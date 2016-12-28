@@ -9,8 +9,8 @@ class ClicksManager extends Object
     public function save()
     {
         $this
-        	->getApp()
-        	->userActionLogs
-        	->log(UserActionLog::TYPE_ID_CLICK_NEW);
+            ->getApp()
+            ->userActionLogs
+            ->log(UserActionLog::TYPE_ID_CLICK_NEW);
     }
 }

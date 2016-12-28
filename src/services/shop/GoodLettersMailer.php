@@ -24,7 +24,6 @@ class GoodLettersMailer extends Object
         $data = ['body' => $this->getBody()];
 
         return $this->getApp()->mailer->send($email, $subject, $template, $data);
-
     }
 
     protected function getBody()

@@ -270,11 +270,9 @@ class StatisticFilterForm extends Model
             || $this->interval == DateTimeHelper::INTERVAL_YEAR
         ) {
             $stepType = DateTimeHelper::STEP_MONTH;
-        
         } elseif ($this->interval == DateTimeHelper::INTERVAL_ALL) {
             $stepType = DateTimeHelper::STEP_ALL;
         } else {
-
             if (empty($this->stepType)) {
                 $stepType = DateTimeHelper::STEP_MONTH;
             }

@@ -10,8 +10,8 @@ class ActiveRecord extends \yii\db\ActiveRecord
     public static function find()
     {
         return $this->createObject(
-        	ActiveQuery::className(),
-        	[get_called_class()]
+            ActiveQuery::className(),
+            [get_called_class()]
         );
     }
 

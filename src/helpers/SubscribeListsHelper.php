@@ -5,9 +5,9 @@ use yii\helpers\ArrayHelper;
 
 class SubscribeListsHelper
 {
-	public static function getListsList()
+    public static function getListsList()
     {
-       	$lists = \Yii::$app->mailer->getLists();
+        $lists = \Yii::$app->mailer->getLists();
 
         return ArrayHelper::map($lists, 'Id', 'Name');
     }

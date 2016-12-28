@@ -8,9 +8,9 @@ class GoodsBuilderPhysical extends GoodsBuilderAbstract
     public function createForm()
     {
         $this->setForm(
-        	$this->createObject(
-        		PhysicalGoodForm::className()
-        	)
+            $this->createObject(
+                PhysicalGoodForm::className()
+            )
         );
 
         return $this;
