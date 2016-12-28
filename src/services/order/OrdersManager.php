@@ -22,17 +22,26 @@ class OrdersManager extends Object
         $cartItems = $cartManager->getCartItems();
         $goodsIds = array_keys($cartItems);
 
-        $methods = GoodDeliveryMethod::find()->where([
+        $methods = $this
+            ->getRepository()
+            ->find(GoodDeliveryMethod::className())
+            ->where([
                 'good_id' => $goodsIds,
-            ])->indexBy('good_id')->all();
+            ])
+            ->indexBy('good_id')
+            ->all();
 
         $groups = [];
         foreach ($methods as $goodId => $method) {
             if (!isset($groups[$method->delivery_method])) {
-                $groups[$method->delivery_method] = $this->createObject(ShopCartManager::className(), [
-                    $customer->user,
-                    false,
-                ]);
+                $groups[$method->delivery_method] = $this
+                    ->createObject(
+                        ShopCartManager::className(),
+                        [
+                            $customer->user,
+                            false,
+                        ]
+                    );
             }
 
             $count = $cartItems[$goodId];
@@ -41,7 +50,11 @@ class OrdersManager extends Object
 
         $orders = [];
         foreach ($groups as $methodName => $groupCartManager) {
-            $order = $this->create($methodName, $groupCartManager, $customer);
+            $order = $this->create(
+                $methodName,
+                $groupCartManager,
+                $customer
+            );
 
             if ($order && !$order->isNewRecord) {
                 $orders[]  = $order;
@@ -60,14 +73,20 @@ class OrdersManager extends Object
      */
     public function create($deliveryMethod, $cartManager, $customer)
     {
-        $builder = $this->createObject(OrderBuilder::className(), [
-            $cartManager,
-            $customer,
-            $deliveryMethod,
-        ]);
+        $builder = $this->createObject(
+            OrderBuilder::className(),
+            [
+                $cartManager,
+                $customer,
+                $deliveryMethod,
+            ]
+        );
 
         if ($builder->save()) {
-            $this->triggerEvent($builder->getOrder(), OrderEvent::EVENT_CREATED);
+            $this->triggerEvent(
+                $builder->getOrder(),
+                OrderEvent::EVENT_CREATED
+            );
         }
 
         return $builder->getOrder();
@@ -185,6 +204,13 @@ class OrdersManager extends Object
         $event = $this->createObject(OrderEvent::className());
         $event->order = $model;
         
-        $this->getApp()->eventsManager->trigger(Order::className(), $type, $event);
+        $this
+            ->getApp()
+            ->eventsManager
+            ->trigger(
+                Order::className(),
+                $type,
+                $event
+            );
     }
 }

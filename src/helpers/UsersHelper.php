@@ -8,6 +8,11 @@ use yii\helpers\ArrayHelper;
 
 class UsersHelper
 {
+    public static function getGenderList()
+    {
+        return User::getGenderList();
+    }
+    
     public static function getUsersList($user_id = 0)
     {
         $users = User::find()->where('id != :id', ['id' => $user_id])->all();

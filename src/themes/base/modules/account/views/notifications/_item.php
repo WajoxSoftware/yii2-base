@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+
 ?>
 
 <a href="<?= Url::toRoute(['view', 'id' => $model->id]) ?>" class="row list-item">

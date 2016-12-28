@@ -7,9 +7,25 @@ class CallbacksController extends ApplicationController
 {
     public function actionIndex($method, $action = 'process', $id = 0)
     {
-        $bill = $id == 0 ? null : Bill::findOne($id);
+        $bill = null;
 
-        $paymentMethod = $this->getApp()->systemPaymentSettings->getItem($method);
+        if ($id != 0) {
+            $bill = $this
+                ->getRepository()
+                ->find(Bill::className())
+                ->byId($id)
+                ->one();
+        }
+
+        if (!$bill) {
+            throw new \Exception('Unknown bill id');
+        }
+
+        $paymentMethod = $this
+            ->getApp()
+            ->systemPaymentSettings
+            ->getItem($method);
+
         $data = $this->getApp()->request->isPost ? $this->getApp()->request->post() : null;
 
         $params = $paymentMethod->processPayment($action, $data);

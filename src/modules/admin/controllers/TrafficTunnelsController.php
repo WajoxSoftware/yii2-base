@@ -12,7 +12,9 @@ class TrafficTunnelsController extends ApplicationController
 {
     public function actionIndex()
     {
-        $query = TrafficTunnel::find();
+        $query = $this
+            ->getRepository()
+            ->find(TrafficTunnel::className());
 
         return $this->render('index', [
             'query' => $query,
@@ -46,7 +48,9 @@ class TrafficTunnelsController extends ApplicationController
             ]);
 
             foreach ($dataProvider->getModels() as $s) {
-                $sources[] = $this->getSourcesManager()->getSourceData($s);
+                $sources[] = $this
+                    ->getSourcesManager()
+                    ->getSourceData($s);
             }
         }
 
@@ -109,11 +113,10 @@ class TrafficTunnelsController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = TrafficTunnel::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(
+            TrafficTunnel::className(),
+            $id
+        );
     }
 
     protected function getSourcesManager()

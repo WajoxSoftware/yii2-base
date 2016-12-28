@@ -1,6 +1,8 @@
 <?php
 namespace wajox\yii2base\models;
 
+use wajox\yii2base\models\query\EmailListQuery;
+
 class EmailList extends \wajox\yii2base\components\db\ActiveRecord
 {
     const VIEW_ROUTE = '/subscribes/view';
@@ -30,6 +32,14 @@ class EmailList extends \wajox\yii2base\components\db\ActiveRecord
             'api_id' => \Yii::t('app/attributes', 'Api ID'),
             'description' => \Yii::t('app/attributes', 'Description'),
         ];
+    }
+
+    public static function find()
+    {
+        return self::createObject(
+            EmailListQuery::className(),
+            [get_called_class()]
+        );
     }
 
     public function getSubscribes()

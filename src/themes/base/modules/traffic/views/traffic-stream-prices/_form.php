@@ -2,6 +2,7 @@
 use yii\bootstrap\ActiveForm;
 use dosamigos\datepicker\DatePicker;
 use wajox\yii2base\helpers\FormHelper;
+
 ?>
 
 <div class="traffic-stream-price-form">

@@ -43,21 +43,22 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
 
     protected function findModelByUrl($url)
     {
-        $url = htmlspecialchars($url);
-        if (($model = EmailList::find()->where(['url' => $url])->one()) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(EmailList::className())
+            ->byUrl($url)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function findModel($id)
     {
-        if (($model = EmailList::find($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(EmailList::className(), $id);
     }
 
     protected function getSubscribesManager()

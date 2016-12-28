@@ -34,7 +34,11 @@ class GoodsManager extends Object
             return;
         }
 
-        return Good::findOne($this->model->parent_good_id);
+        return $this
+            ->getRepository()
+            ->find(Good::className())
+            ->byId($this->model->parent_good_id)
+            ->one();
     }
 
     public function getBuilder()
@@ -47,12 +51,18 @@ class GoodsManager extends Object
 
         $className = $buildersList[$this->model->good_type_id];
 
-        return $this->createObject($className, [$this->user, $this->model]);
+        return $this->createObject(
+            $className,
+            [$this->user, $this->model]
+        );
     }
 
     public function getDraftsBuilder($source = null, $cloneMode = false)
     {
-        return $this->createObject(GoodDraftsBuilder::className(), [$this->user, $source, $cloneMode]);
+        return $this->createObject(
+            GoodDraftsBuilder::className(),
+            [$this->user, $source, $cloneMode]
+        );
     }
 
     public function delete()

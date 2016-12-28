@@ -15,11 +15,14 @@ class BillSearch extends Bill
 
     public function search($params)
     {
-        $query = Bill::find();
+        $query = $this
+            ->getRepository()
+            ->find(Bill::className());
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         $this->load($params);
 

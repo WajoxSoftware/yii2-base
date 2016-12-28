@@ -2,6 +2,7 @@
 use yii\bootstrap\ActiveForm;
 use wajox\yii2base\models\GoodCategory;
 use wajox\yii2base\helpers\FormHelper;
+
 ?>
 
 <div class="good-category-form">

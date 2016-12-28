@@ -80,7 +80,9 @@ class TrafficTunnelListing extends Component
         ];
 
         $this->back = null;
-        $this->sources = [['title' => \Yii::t('app/general', 'All')]];
+        $this->sources = [
+            ['title' => \Yii::t('app/general', 'All')]
+        ];
     }
 
     protected function loadPartner()
@@ -89,13 +91,24 @@ class TrafficTunnelListing extends Component
 
         if ($this->itemId == null) {
             $this->back = ['typeId' => self::TYPE_ID_INDEX];
-            $this->sources = Partner::find();
+            $this->sources = $this
+                ->getRepository()
+                ->find(Partner::className());
 
             return;
         }
 
-        $model = User::findOne($this->itemId);
-        $this->sources = TrafficSource::find()->where(['user_id' => $model->id]);
+        $model = $this
+            ->getRepository()
+            ->find(User::className())
+            ->byId($this->itemId)
+            ->one();
+
+        $this->sources =$this
+            ->getRepository()
+            ->find(TrafficSource::className())
+            ->where(['user_id' => $model->id]);
+            
         $this->back = ['typeId' => self::TYPE_ID_PARTNER_ITEM, 'itemId' => $model->id];
     }
 
@@ -105,26 +118,56 @@ class TrafficTunnelListing extends Component
 
         if ($this->itemId == null) {
             $this->back = ['typeId' => self::TYPE_ID_INDEX];
-            $this->sources = TrafficManager::find();
+            $this->sources = $this
+                ->getRepository()
+                ->find(TrafficManager::className());
 
             return;
         }
 
-        $model = User::findOne($this->itemId);
-        $this->sources = TrafficSource::find()->where(['user_id' => $model->id]);
-        $this->back = ['typeId' => self::TYPE_ID_MANAGER_ITEM, 'itemId' => $model->id];
+        $model = $this
+                ->getRepository()
+                ->find(User::className())
+                ->byId($this->itemId)
+                ->one();
+
+        $this->sources = $this
+                ->getRepository()
+                ->find(TrafficSource::className())
+                ->where(['user_id' => $model->id]);
+
+        $this->back = [
+            'typeId' => self::TYPE_ID_MANAGER_ITEM,
+            'itemId' => $model->id,
+        ];
     }
 
     protected function loadSource()
     {
         $this->items = null;
-        $model = TrafficSource::findOne($this->itemId);
-        $this->sources = TrafficStream::find()->where(['traffic_source_id' => $model->id]);
+        $model = $this
+                ->getRepository()
+                ->find(TrafficSource::className())
+                ->byId($this->itemId)
+                ->one();
+
+        $this->sources = $this
+                ->getRepository()
+                ->find(TrafficStream::className())
+                ->where([
+                    'traffic_source_id' => $model->id,
+                ]);
 
         if ($model->user->isPartner) {
-            $this->back = ['typeId' => self::TYPE_ID_PARTNER_ITEM, 'itemId' => $model->user_id];
+            $this->back = [
+                'typeId' => self::TYPE_ID_PARTNER_ITEM,
+                'itemId' => $model->user_id,
+            ];
         } else {
-            $this->back = ['typeId' => self::TYPE_ID_MANAGER_ITEM, 'itemId' => $model->user_id];
+            $this->back = [
+                'typeId' => self::TYPE_ID_MANAGER_ITEM,
+                'itemId' => $model->user_id,
+            ];
         }
     }
 }

@@ -29,24 +29,29 @@ class GoodsController extends ApplicationController
             return $this->actionView($id);
         }
 
-        $goodQuery =  Good::find();
+        $goodQuery =  $this
+            ->getRepository()
+            ->find(Good::className());
 
         if ($query != null) {
             $goodQuery->where([
-                    'like', 'title', $query,
-                ]);
+                'like', 'title', $query,
+            ]);
         }
 
-        $models = $goodQuery->limit(self::LIMIT)
-                ->indexBy('id')
-                ->all();
+        $models = $goodQuery
+            ->limit(self::LIMIT)
+            ->indexBy('id')
+            ->all();
 
         return $this->renderJson('index', ['models' => $models]);
     }
 
     public function actionView($id)
     {
-        $model = Good::findOne($id);
+        $model = $this
+            ->getRepository()
+            ->find(Good::className($id));
 
         return $this->renderJson('view', ['model' => $model]);
     }

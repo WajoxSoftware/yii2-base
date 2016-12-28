@@ -17,7 +17,7 @@ class GoodUserCouponsController extends ApplicationController
 
     public function actionCreate($id, $typeId)
     {
-        $model_good = Good::findOne($id);
+        $model_good = $this->findGoodModel($id);
 
         $modelCoupon = $this->createObject(GoodUserCoupon::className());
         $modelCoupon->type_id = $typeId;
@@ -79,10 +79,11 @@ class GoodUserCouponsController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = GoodUserCoupon::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(GoodUserCoupon::className(), $id);
+    }
+
+    protected function findGoodModel($id)
+    {
+        return $this->findModelById(Good::className(), $id);
     }
 }

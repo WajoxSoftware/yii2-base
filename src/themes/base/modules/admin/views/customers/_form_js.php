@@ -12,9 +12,9 @@ $form = ActiveForm::begin([
 <div class="row">
 	<div class="col-md-12">
 	  <?= $form->field($model, 'status_id')->dropDownList(
-	        $model::getStatusIdsList(),
-	        ['prompt' => \Yii::t('app/general', 'Select')]
-	      ); ?>
+            $model::getStatusIdsList(),
+            ['prompt' => \Yii::t('app/general', 'Select')]
+          ); ?>
 	</div>
 
 	<div class="col-md-12">

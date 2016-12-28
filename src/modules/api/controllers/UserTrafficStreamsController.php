@@ -29,7 +29,10 @@ class UserTrafficStreamsController extends ApplicationController
             return $this->actionView($id);
         }
 
-        $tsQuery =  TrafficStream::find()->where([
+        $tsQuery = $this
+            ->getRepository()
+            ->find(TrafficStream::className())
+            ->where([
                 'user_id' => $this->getUser()->id,
             ]);
 
@@ -48,7 +51,11 @@ class UserTrafficStreamsController extends ApplicationController
 
     public function actionView($id)
     {
-        $model = TrafficStream::findOne($id);
+        $model = $this
+            ->getRepository()
+            ->find(TrafficStream::className())
+            ->byId($id)
+            ->one();
 
         return $this->renderJson('view', ['model' => $model]);
     }

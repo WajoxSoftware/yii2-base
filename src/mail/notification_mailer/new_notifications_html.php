@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+
 ?>
 
 <h1>You have new notifications</h1>

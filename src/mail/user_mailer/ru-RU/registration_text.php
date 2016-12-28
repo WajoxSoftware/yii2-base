@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+
 $link = Url::toRoute(['/confirmation/confirm', 'token' => $user->confirmation_token], true);
 $login_link = Url::toRoute(['/profile/session'], true);
 ?>

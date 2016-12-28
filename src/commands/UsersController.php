@@ -5,7 +5,6 @@ use yii\console\Controller;
 use wajox\yii2base\models\User;
 use wajox\yii2base\services\users\UsersManager;
 
-
 class UsersController extends Controller
 {
     public function actionCreate()

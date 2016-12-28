@@ -7,13 +7,17 @@ class GoodsBuilderElectronic extends GoodsBuilderAbstract
 {
     public function createForm()
     {
-        $this->setForm($this->createObject(ElectronicGoodForm::className()));
+        $this->setForm(
+            $this->createObject(
+                ElectronicGoodForm::className()
+            )
+        );
 
         return $this;
     }
 
     protected function getGoodTypeId()
     {
-    	return \wajox\yii2base\models\Good::TYPE_ID_ELECTRONIC;
+        return \wajox\yii2base\models\Good::TYPE_ID_ELECTRONIC;
     }
 }

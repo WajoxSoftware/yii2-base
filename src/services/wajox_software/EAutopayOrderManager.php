@@ -7,7 +7,7 @@ use wajox\yii2base\models\Order;
 use wajox\yii2base\models\EautopayOrder;
 use wajox\yii2base\models\Customer;
 
-class EAutopayOrderManager  extends Component
+class EAutopayOrderManager extends Component
 {
     public $userApiKey = null;
     public $customerApiKey = null;
@@ -113,11 +113,13 @@ class EAutopayOrderManager  extends Component
         $time = time() - 3600 * 2;
         $except_status = ['delivered_paid', 'returned', 'cancelled'];
 
-        $q = EautopayOrder::find()
-              ->where('[[status_at]] < :time', ['time' => $time])
-              ->andWhere(['not in', 'status', $except_status])
-              ->orderBy('[[status_at]] ASC')
-              ->limit(100);
+        $q = $this
+            ->getRepository()
+            ->find(EautopayOrder::className())
+            ->where('[[status_at]] < :time', ['time' => $time])
+            ->andWhere(['not in', 'status', $except_status])
+            ->orderBy('[[status_at]] ASC')
+            ->limit(100);
 
         foreach ($q as $ea_order) {
             $resource = $this->apiUrl.$this->userApiKey.'/orders/'.$ea_order->eautopay_order_id;

@@ -129,7 +129,10 @@ class PrivacySettingsManager extends Object
         $existsIds = array_keys($this->targetUsersSettings);
         $usersIds = array_diff($usersIds, $existsIds);
 
-        $usersSettingsQuery = UserSettings::find()->where(['id' => $usersIds]);
+        $usersSettingsQuery = $this
+                ->getRepository()
+                ->find(UserSettings::className())
+                ->byId($usersIds);
 
         foreach ($usersSettingsQuery->each() as $model) {
             $this->targetUsersSettings[$model->id] = $model;

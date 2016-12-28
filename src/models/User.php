@@ -83,22 +83,37 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
 
     public static function find()
     {
-        return \Yii::createObject(UserQuery::className(), [get_called_class()]);
+        return self::createObject(
+            UserQuery::className(),
+            [get_called_class()]
+        );
     }
 
     public static function findIdentity($id)
     {
-        return static::findOne($id);
+        return $this
+            ->getRepository()
+            ->find(static::className())
+            ->byId($id)
+            ->one();
     }
 
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        return static::find()->byAccessToken($token);
+        return $this
+            ->getRepository()
+            ->find(static::className())
+            ->byAccessToken($token)
+            ->one();
     }
 
     public static function findByNameOrEmail($name)
     {
-        return static::find()->byNameOrEmail($name, $name)->one();
+        return $this
+            ->getRepository()
+            ->find(static::className())
+            ->byNameOrEmail($name, $name)
+            ->one();
     }
 
     public static function findByPasswordResetToken($token)
@@ -111,7 +126,11 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
             return;
         }
 
-        return static::find()->byResetToken($token)->one();
+        return $this
+            ->getRepository()
+            ->find(static::className())
+            ->byResetToken($token)
+            ->one();
     }
 
     public function getId()
@@ -170,7 +189,12 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
 
     public function validateEmailUnique($attribute, $params)
     {
-        $user = self::find()->byEmail($this->$attribute)->one();
+        $user = $this
+            ->getRepository()
+            ->find(self::className())
+            ->byEmail($this->$attribute)
+            ->one();
+
         if ($user && ($this->isNewRecord || $this->id != $user->id)) {
             $this->addError($attribute, \Yii::t('app/validation', 'Email already in use'));
         }
@@ -178,7 +202,11 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
 
     public function validateNameUnique($attribute, $params)
     {
-        $user = self::find()->byNameOrEmail($this->$attribute, $this->$attribute)->one();
+        $user = $this
+            ->getRepository()
+            ->find(self::className())
+            ->byNameOrEmail($this->$attribute, $this->$attribute)
+            ->one();
 
         if ($user && ($this->isNewRecord || $this->id != $user->id)) {
             $this->addError($attribute, \Yii::t('app/validation', 'Name already in use'));
@@ -301,20 +329,32 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
 
     public function getNewInboxMessagesCount()
     {
-        return MessageUserStatus::find()->where([
+        return $this
+            ->getRepository()
+            ->find(MessageUserStatus::className())
+            ->where([
                 'user_id' => $this->id,
                 'status_id' => MessageUserStatus::STATUS_ID_NEW,
-            ])->count();
+            ])
+            ->count();
     }
 
     public function getContactsCount()
     {
-        return UserContact::find()->where(['user_id' => $this->id])->count();
+        return $this
+            ->getRepository()
+            ->find(UserContact::className())
+            ->where(['user_id' => $this->id])
+            ->count();
     }
 
     public function getRequestsCount()
     {
-        return ContactRequest::find()->where(['contact_user_id' => $this->id])->count();
+        return $this
+            ->getRepository()
+            ->find(ContactRequest::className())
+            ->where(['contact_user_id' => $this->id])
+            ->count();
     }
 
     public function getNotificationsEnabled()
@@ -405,7 +445,7 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
     public function getDialogs()
     {
         return $this->hasOne(Dialog::className(), ['id' => 'dialog_id'])
-            ->viaTable(DialogUser::tableName(), ['user_id' => 'id']);
+            ->viaClass(DialogUser::className(), ['user_id' => 'id']);
     }
 
     public function getNameWithEmail()

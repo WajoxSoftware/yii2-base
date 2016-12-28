@@ -14,7 +14,9 @@ trait TrafficControllerTrait
 {
     protected function viewManagersList()
     {
-        $query = TrafficManager::find();
+        $query = $this
+            ->getRepository()
+            ->find(TrafficManager::className());
 
         $dataProvider = $this->createObject(ActiveDataProvider::className(), [
             ['query' => $query],
@@ -29,7 +31,10 @@ trait TrafficControllerTrait
     {
         $user = $this->findUser($id);
 
-        $query = TrafficSource::find()->where([
+        $query = $this
+            ->getRepository()
+            ->find(TrafficSource::className())
+            ->where([
                 'user_id' => $user->id,
                 'parent_source_id' => 0,
             ]);
@@ -50,18 +55,25 @@ trait TrafficControllerTrait
         $user = $source->user;
 
         if ($source->hasSources) {
-            $query = TrafficSource::find()->where([
+            $query = $this
+            ->getRepository()
+            ->find(TrafficSource::className())
+            ->where([
                 'parent_source_id' => $source->id,
             ]);
         } else {
-            $query = TrafficStream::find()->where([
+            $query = $this
+            ->getRepository()
+            ->find(TrafficStream::className())
+            ->where([
                 'traffic_source_id' => $source->id,
             ]);
         }
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         return $this->render('view_source', [
             'searchModel' => $this->getFilterForm($user),
@@ -77,13 +89,17 @@ trait TrafficControllerTrait
         $source = $stream->source;
         $user = $source->user;
 
-        $query = TrafficStreamPrice::find()->where([
-            'traffic_stream_id' => $stream->id,
-        ]);
+        $query = $this
+            ->getRepository()
+            ->find(TrafficStreamPrice::className())
+            ->where([
+                'traffic_stream_id' => $stream->id,
+            ]);
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         return $this->render('view_stream', [
             'dataProvider' => $dataProvider,
@@ -107,7 +123,13 @@ trait TrafficControllerTrait
 
     protected function findUser($id)
     {
-        if (($model = User::findOne($id)) !== null) {
+        $model =$this
+            ->getRepository()
+            ->find(User::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
@@ -116,7 +138,13 @@ trait TrafficControllerTrait
 
     protected function findSourceModel($id)
     {
-        if (($model = TrafficSource::findOne($id)) !== null) {
+        $model =$this
+            ->getRepository()
+            ->find(TrafficSource::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
@@ -125,7 +153,13 @@ trait TrafficControllerTrait
 
     protected function findStreamModel($id)
     {
-        if (($model = TrafficStream::findOne($id)) !== null) {
+        $model =$this
+            ->getRepository()
+            ->find(TrafficStream::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

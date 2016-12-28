@@ -1,6 +1,8 @@
 <?php
 namespace wajox\yii2base\models;
 
+use wajox\yii2base\models\query\GoodCategoryQuery;
+
 class GoodCategory extends \wajox\yii2base\components\db\ActiveRecord
 {
     const VIEW_ROUTE = '/shop/goods/index';
@@ -38,6 +40,14 @@ class GoodCategory extends \wajox\yii2base\components\db\ActiveRecord
         ];
     }
 
+    public static function find()
+    {
+        return self::createObject(
+            GoodCategoryQuery::className(),
+            [get_called_class()]
+        );
+    }
+
     public static function getStatusIdList()
     {
         return [
@@ -66,8 +76,11 @@ class GoodCategory extends \wajox\yii2base\components\db\ActiveRecord
 
         $ids = explode(',', $this->parents_ids);
 
-        return GoodCategory::find()->where([
-                'id' => $ids,
-            ])->orderBy('id ASC')->all();
+        return $this
+            ->getRepository()
+            ->find(GoodCategory::className())
+            ->byId($ids)
+            ->orderBy('id ASC')
+            ->all();
     }
 }

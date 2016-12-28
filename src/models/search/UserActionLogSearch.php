@@ -16,7 +16,9 @@ class UserActionLogSearch extends UserActionLog
 
     public function search($params)
     {
-        $query = UserActionLog::find();
+        $query = $this
+            ->getRepository()
+            ->find(UserActionLog::className());
 
         $dataProvider = $this->createObject(ActiveDataProvider::className(), [
             ['query' => $query],
@@ -53,7 +55,11 @@ class UserActionLogSearch extends UserActionLog
 
     public function getReferalUserName()
     {
-        $user = User::findOne($this->referal_user_id);
+        $user = $this
+            ->getRepository()
+            ->find(User::className())
+            ->byId($this->referal_user_id)
+            ->one();
 
         if ($user == null) {
             return;
@@ -64,7 +70,11 @@ class UserActionLogSearch extends UserActionLog
 
     public function getUserName()
     {
-        $user = User::findOne($this->user_id);
+        $user = $this
+            ->getRepository()
+            ->find(User::className())
+            ->byId($this->user_id)
+            ->one();
 
         if ($user == null) {
             return;

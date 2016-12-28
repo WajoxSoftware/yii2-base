@@ -19,7 +19,7 @@ class TrafficTunnelStepsController extends ApplicationController
         if ($request->isPost
             &&  $model->load($request->post())
         ) {
-           $success = $model->save();
+            $success = $model->save();
         }
 
         return $this->renderJs('create', [
@@ -58,19 +58,17 @@ class TrafficTunnelStepsController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = TrafficTunnelStep::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(
+            TrafficTunnelStep::className(),
+            $id
+        );
     }
 
     protected function findTunnelModel($id)
     {
-        if (($model = TrafficTunnel::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(
+            TrafficTunnel::className(),
+            $id
+        );
     }
 }

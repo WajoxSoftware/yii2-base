@@ -14,33 +14,47 @@ class UsersManager extends Object
 
     public function existsEmail($email)
     {
-        return User::find()->byEmail($email)->exists();
+        return $this
+                ->getRepository()
+                ->find(User::className())
+                ->byEmail($email)
+                ->exists();
     }
 
     public function findByEmail($email)
     {
-        return User::find()->byEmail($email)->one();
+        return $this
+                ->getRepository()
+                ->find(User::className())
+                ->byEmail($email)
+                ->one();
     }
 
     public function findByGuid($guid)
     {
-        return User::find()
-            ->where(['guid' => $guid])
-            ->one();
+        return $this
+                ->getRepository()
+                ->find(User::className())
+                ->where(['guid' => $guid])
+                ->one();
     }
 
     public function findByEmailOrGuid($email, $guid)
     {
-        return User::find()
-            ->byEmailOrGuid($email, $guid)
-            ->one();
+        return $this
+                ->getRepository()
+                ->find(User::className())
+                ->byEmailOrGuid($email, $guid)
+                ->one();
     }
 
     public function findUnConfirmedByToken($token)
     {
-        return User::find()
-            ->confirmedByToken($token)
-            ->one();
+        return $this
+                ->getRepository()
+                ->find(User::className())
+                ->confirmedByToken($token)
+                ->one();
     }
 
     public function findOrCreate($email, $name)
@@ -130,20 +144,20 @@ class UsersManager extends Object
         $model->generateAuthKey();
         $model->generateConfirmationToken();
 
-        $model->ip_address = \Yii::$app->visitor->ip;
+        $model->ip_address = $this->getApp()->visitor->ip;
 
-        $modelGuid = $this->findByGuid(\Yii::$app->visitor->guid);
+        $modelGuid = $this->findByGuid($this->getApp()->visitor->guid);
 
         if ($modelGuid
             && ($model->isNewRecord
                 || $modelGuid->id != $model->id
             )
         ) {
-            \Yii::$app->visitor->resetGuid();
+            $this->getApp()->visitor->resetGuid();
         }
 
-        $model->guid = \Yii::$app->visitor->guid;
-        $model->referal_user_id = \Yii::$app->visitor->referalId;
+        $model->guid = $this->getApp()->visitor->guid;
+        $model->referal_user_id = $this->getApp()->visitor->referalId;
         $model->created_at = time();
 
         return $model;

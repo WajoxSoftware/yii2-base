@@ -34,13 +34,16 @@ class GoodsController extends ApplicationController
             $categoryId = $category->id;
         }
 
-        $categoriesQuery = GoodCategory::find()->where([
-                'parent_id' => $categoryId,
-            ]);
+        $categoriesQuery = $this
+            ->getRepository()
+            ->find(GoodCategory::className())
+            ->byParentId($categoryId);
 
-        $query = Good::find()->where([
-                'category_id' => $categoryId,
-            ])->orderBy($sort->orders);
+        $query = $this
+            ->getRepository()
+            ->find(Good::className())
+            ->byCategoryId($categoryId)
+            ->orderBy($sort->orders);
 
         $categoriesDataProvider = $this->createObject(
             ActiveDataProvider::className(),
@@ -118,8 +121,8 @@ class GoodsController extends ApplicationController
         ];
 
         return  $this->asJs(function () use ($data) {
-                    return $data;
-                })->renderFormat('create');
+            return $data;
+        })->renderFormat('create');
     }
 
     /*
@@ -155,11 +158,11 @@ class GoodsController extends ApplicationController
 
         if ($request->isPost && $builder->save($request)) {
             return $this->redirect(['view', 'id' => $builder->getModel()->id]);
-        } else {
-            return $this->render('view', [
-                'model' => $builder->getModel(),
-            ]);
         }
+
+        return $this->render('view', [
+            'model' => $builder->getModel(),
+        ]);
     }
 
     public function actionStatus($id, $statusId)
@@ -200,20 +203,32 @@ class GoodsController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = Good::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(Good::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function findCategoryModel($id)
     {
-        if (($model = GoodCategory::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(GoodCategory::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function getBuilder($model = null)
@@ -222,7 +237,10 @@ class GoodsController extends ApplicationController
         $model = $model ? $model : $this->createObject(Good::className());
         $typeId = $model->good_type_id;
 
-        $manager = new GoodsManager($user, $model);
+        $manager = $this->createObject(
+            GoodsManager::className(),
+            [$user, $model]
+        );
 
         return $manager->getBuilder($typeId);
     }
@@ -231,7 +249,10 @@ class GoodsController extends ApplicationController
     {
         $user = $this->getUser();
 
-        $manager = new GoodsManager($user, $this->createObject(Good::className()));
+        $manager = $this->createObject(
+            GoodsManager::className(),
+            [$user, $this->createObject(Good::className())]
+        );
 
         return $manager->getDraftsBuilder($model, $cloneMode);
     }

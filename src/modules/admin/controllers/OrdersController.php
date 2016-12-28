@@ -9,7 +9,6 @@ use yii\data\Sort;
 
 class OrdersController extends ApplicationController
 {
-
     public function actionIndex()
     {
         $sort = $this->getSort();
@@ -56,10 +55,16 @@ class OrdersController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = Order::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(Order::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

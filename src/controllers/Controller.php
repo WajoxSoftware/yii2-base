@@ -182,4 +182,19 @@ class Controller extends \yii\web\Controller
     {
         return \wajox\yii2base\helpers\ViewTypesHelper::getViewType($listingViewType);
     }
+
+    protected function findModelById($className, $id)
+    {
+        $model = $this
+            ->getRepository()
+            ->find($className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
+            return $model;
+        }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
 }

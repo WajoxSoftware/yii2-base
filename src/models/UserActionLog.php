@@ -1,6 +1,8 @@
 <?php
 namespace wajox\yii2base\models;
 
+use wajox\yii2base\models\query\UserActionLogQuery;
+
 class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
 {
     use \wajox\yii2base\traits\CreatedAtTrait;
@@ -66,6 +68,14 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
             'action_item_id' => \Yii::t('app/attributes', 'Action Item ID'),
             'created_at' => \Yii::t('app/attributes', 'Created At'),
         ];
+    }
+
+    public static function find()
+    {
+        return self::createObject(
+            UserActionLogQuery::className(),
+            [get_called_class()]
+        );
     }
 
     public static function getOfferTypeIdList()
@@ -203,17 +213,20 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
 
     public function getUser()
     {
-        return User::find()->where([
-            'id' => $this->user_id,
-        ])->orWhere(['guid' => $this->guid])
-        ->one();
+        return $this
+            ->getRepository()
+            ->find(User::className())
+            ->byIdOrGuid($this->user_id, $this->guid)
+            ->one();
     }
 
     public function getReferalUser()
     {
-        return User::find()->where([
-            'id' => $this->referal_user_id,
-        ])->one();
+        return $this
+            ->getRepository()
+            ->find(User::className())
+            ->byId($this->referal_user_id)
+            ->one();
     }
 
     public function getBill()
@@ -222,7 +235,11 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
             return;
         }
 
-        return Bill::findOne($this->action_item_id);
+        return $this
+            ->getRepository()
+            ->find(Bill::className())
+            ->byId($this->action_item_id)
+            ->one();
     }
 
     public function getVisit()
@@ -231,7 +248,11 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
             return;
         }
 
-        return Statistic::findOne($this->action_item_id);
+        return $this
+            ->getRepository()
+            ->find(Statistic::className())
+            ->byId($this->action_item_id)
+            ->one();
     }
 
     public function getGood()
@@ -240,7 +261,11 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
             return;
         }
 
-        return Good::findOne($this->action_item_id);
+        return $this
+            ->getRepository()
+            ->find(Good::className())
+            ->byId($this->action_item_id)
+            ->one();
     }
 
     public function getOrder()
@@ -249,7 +274,11 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
             return;
         }
 
-        return Order::findOne($this->action_item_id);
+        return $this
+            ->getRepository()
+            ->find(Order::className())
+            ->byId($this->action_item_id)
+            ->one();
     }
 
     public function getEmailList()
@@ -258,6 +287,10 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
             return;
         }
 
-        return EmailList::findOne($this->action_item_id);
+        return $this
+            ->getRepository()
+            ->find(EmailList::className())
+            ->byId($this->action_item_id)
+            ->one();
     }
 }

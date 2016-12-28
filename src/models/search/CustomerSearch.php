@@ -16,11 +16,15 @@ class CustomerSearch extends Customer
 
     public function search($params, $sort)
     {
-        $query = Customer::find();
+        $query = $this
+            ->getRepository()
+            ->find(Customer::className());
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
+
 
         $this->load($params);
 

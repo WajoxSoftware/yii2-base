@@ -9,8 +9,9 @@ class UserSubaccountsController extends ApplicationController
 {
     public function actionCreate($id)
     {
-        $model_user = User::findOne($id);
-        $model = $this->createObjet(UserSubaccount::className());
+        $model_user = $this->findUserModel($id);
+
+        $model = $this->createObject(UserSubaccount::className());
         $model->user_id = $model_user->id;
         $request = $this->getApp()->request;
 
@@ -54,10 +55,14 @@ class UserSubaccountsController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = UserSubaccount::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(
+            UserSubaccount::className(),
+            $id
+        );
+    }
+
+    protected function findUserModel($id)
+    {
+        return $this->findModelById(User::className(), $id);
     }
 }

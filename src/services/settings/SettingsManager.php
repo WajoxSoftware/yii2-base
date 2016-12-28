@@ -63,12 +63,18 @@ class SettingsManager extends Component
 
     public function find($key)
     {
-        return SettingOption::find()->where(['key' => $key])->one();
+        return $this
+            ->getRepository()
+            ->find(SettingOption::className())
+            ->where(['key' => $key])
+            ->one();
     }
 
     public function load()
     {
-        $q = SettingOption::find();
+        $q = $this
+                ->getRepository()
+                ->find(SettingOption::className());
 
         foreach ($q->each() as $model) {
             $this->add($model);

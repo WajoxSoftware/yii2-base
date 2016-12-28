@@ -61,9 +61,13 @@ class OrderStatusesController extends ApplicationController
 
     protected function buildStatus($model, $uploadedFile, $request)
     {
-        $status = OrderStatus::find()->where([
+        $status = $this
+            ->getRepository()
+            ->find(OrderStatus::className())
+            ->where([
                 'order_id' => $model->id,
-            ])->orderBy('[[created_at]] DESC')->one();
+            ])
+            ->orderBy('[[created_at]] DESC')->one();
 
         $status->load($request->post());
 
@@ -78,11 +82,17 @@ class OrderStatusesController extends ApplicationController
 
     protected function findOrder($id)
     {
-        if (($model = Order::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(Order::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function cancelledStatus($model)
@@ -97,7 +107,7 @@ class OrderStatusesController extends ApplicationController
 
     protected function returnMoneyStatus($model)
     {
-       return $this->getBillsManager()->returned($model->bill);
+        return $this->getBillsManager()->returned($model->bill);
     }
 
     protected function preparedStatus($model)

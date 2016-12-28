@@ -92,7 +92,9 @@ class UserActionLogsManager extends Component
 
     public function buildQuery($typeId = null, $itemId = null, $params = [])
     {
-        $q = UserActionLog::find();
+        $q = $this
+            ->getRepository()
+            ->find(UserActionLog::className());
 
         if ($typeId != null) {
             $q = $q->andWhere(['action_type_id' => $typeId]);

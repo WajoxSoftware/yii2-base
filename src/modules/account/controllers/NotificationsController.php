@@ -9,13 +9,16 @@ class NotificationsController extends ApplicationController
 {
     public function actionIndex()
     {
-        $query = UserNotification::find()->where([
-            'user_id' => $this->getUser()->id,
-        ])->orderBy('created_at DESC');
+        $query = $this
+            ->getRepository()
+            ->find(UserNotification::className())
+            ->where(['user_id' => $this->getUser()->id])
+            ->orderBy('created_at DESC');
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         return $this->render('index', [
                 'dataProvider' => $dataProvider,
@@ -44,15 +47,24 @@ class NotificationsController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = UserNotification::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(UserNotification::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function getManager()
     {
-        return $this->createObject(UserNotificationsManager::className(), [$this->getUser()]);
+        return $this->createObject(
+            UserNotificationsManager::className(),
+            [$this->getUser()]
+        );
     }
 }

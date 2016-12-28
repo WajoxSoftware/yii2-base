@@ -9,7 +9,7 @@ class GoodPartnerProgramLinksController extends ApplicationController
 {
     public function actionCreate($id)
     {
-        $modelGood = Good::findOne($id);
+        $modelGood = $this->findGoodModel($id);
         $model = $this->createObject(GoodPartnerProgramLink::className());
         $model->good_partner_program_id = $modelGood->partnerProgram->id;
         $request = $this->getApp()->request;
@@ -54,10 +54,14 @@ class GoodPartnerProgramLinksController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = GoodPartnerProgramLink::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(
+            GoodPartnerProgramLink::className(),
+            $id
+        );
+    }
+
+    protected function findGoodModel($id)
+    {
+        return $this->findModelById(Good::className(), $id);
     }
 }

@@ -141,7 +141,11 @@ class GoodUserCouponForm extends GoodUserCoupon
             return '';
         }
 
-        $good = Good::findOne($this->redirectGoodId);
+        $good = $this
+            ->getRepository()
+            ->find(Good::className())
+            ->byId($this->redirectGoodId)
+            ->one();
 
         if ($good) {
             return $good->title;

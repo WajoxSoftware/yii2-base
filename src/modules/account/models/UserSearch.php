@@ -20,12 +20,15 @@ class UserSearch extends User
 
     public function search($params, $exceptUserIds = null)
     {
-        $query = User::find()->joinWith([
+        $query = $this
+            ->getRepository()
+            ->find(User::className())
+            ->joinWith([
                 'settings' => function ($q) {
-                        return $q->andWhere([
-                            'search_profile' => PrivacySettingsManager::ACCESS_ALL,
-                        ]);
-                    },
+                    return $q->andWhere([
+                        'search_profile' => PrivacySettingsManager::ACCESS_ALL,
+                    ]);
+                },
             ]);
 
         if ($exceptUserIds !== null) {

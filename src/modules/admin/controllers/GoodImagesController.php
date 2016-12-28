@@ -54,20 +54,12 @@ class GoodImagesController extends ApplicationController
 
     protected function findGood($id)
     {
-        if (($model = Good::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(Good::className(), $id);
     }
 
     protected function findModel($id)
     {
-        if (($model = GoodImage::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(GoodImage::className(), $id);
     }
 
     protected function getUploadsManager()

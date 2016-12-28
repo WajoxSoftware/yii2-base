@@ -85,7 +85,11 @@ class ShopCartManager extends Object
         $goods = [];
 
         if (sizeof($ids) > 0) {
-            $goods = Good::find()->where(['id' => $ids])->all();
+            $goods = $this
+                ->getRepository()
+                ->find(Good::className())
+                ->byId($ids)
+                ->all();
         }
 
         $this->setGoods($goods)
@@ -268,7 +272,14 @@ class ShopCartManager extends Object
         }
 
         $items = json_encode($this->items);
-        $this->getApp()->session->set(self::SHOP_CART_PARAM, $items);
+        
+        $this
+            ->getApp()
+            ->session
+            ->set(
+                self::SHOP_CART_PARAM,
+                $items
+            );
 
         return $this;
     }
@@ -296,12 +307,15 @@ class ShopCartManager extends Object
     {
         $originalPrice = $good->sum;
         $deliveryPrice = GoodsHelper::getDeliveryPrice($good);
-        $price = GoodsHelper::getPartnerPrice($good, \Yii::$app->visitor->partner);
+        $price = GoodsHelper::getPartnerPrice(
+            $good,
+            $this->getApp()->visitor->partner
+        );
 
         return [
-                'sum' => $deliveryPrice + $price,
-                'price' => $price,
-                'delivery' => $deliveryPrice,
-            ];
+            'sum' => $deliveryPrice + $price,
+            'price' => $price,
+            'delivery' => $deliveryPrice,
+        ];
     }
 }

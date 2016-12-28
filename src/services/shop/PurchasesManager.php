@@ -40,7 +40,10 @@ class PurchasesManager extends Object
 
     public function dropGood($good)
     {
-        $models = UserPaidGood::find()->where([
+        $models = $this
+            ->getRepository()
+            ->find(UserPaidGood::className())
+            ->where([
                 'user_id' => $this->user->id,
                 'good_id' => $good->id,
             ]);

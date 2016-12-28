@@ -95,8 +95,9 @@ class BillsController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = Bill::findOne($id)) !== null
-            && $model->isOwner($this->getUser()->id)) {
+        $model = $this->findModelById(Bill::className(), $id);
+        
+        if ($model->isOwner($this->getUser()->id)) {
             return $model;
         }
 

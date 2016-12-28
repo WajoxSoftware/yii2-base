@@ -5,7 +5,6 @@ use wajox\yii2base\services\uploads\FileTypes;
 
 class UploadedImage extends UploadedFile
 {
-
     public function rules()
     {
         return [

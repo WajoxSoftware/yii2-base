@@ -84,19 +84,28 @@ class NetworkAccountsManager extends Object
 
     public function findAccount($params)
     {
-        $networkAccount = UserNetworkAccount::find()->where([
+        $networkAccount = $this
+            ->getRespository()
+            ->find(UserNetworkAccount::className())
+            ->where([
                 'uid' => $params['uid'],
                 'provider' => $params['provider'],
-             ])->one();
+             ])
+            ->one();
 
         return $networkAccount;
     }
 
     public function deleteAccount($id)
     {
-        return UserNetworkAccount::deleteAll([
-            'user_id' => $this->getUser()->id,
-            'id' => $id,
-        ]);
+        return $this
+            ->getRepository()
+            ->deleteAll(
+                UserNetworkAccount::className(),
+                [
+                    'user_id' => $this->getUser()->id,
+                    'id' => $id,
+                ]
+            );
     }
 }

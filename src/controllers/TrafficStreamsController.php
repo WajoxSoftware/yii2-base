@@ -38,11 +38,17 @@ class TrafficStreamsController extends Controller
             'status_id' => TrafficStream::STATUS_ID_ACTIVE,
         ];
 
-        if (($model = TrafficStream::find()->where($conditions)->one()) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(TrafficStream::className())
+            ->where($conditions)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function registerStream($model, $tag, $isIternalRedirect)

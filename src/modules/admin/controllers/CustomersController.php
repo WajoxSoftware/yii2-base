@@ -33,7 +33,7 @@ class CustomersController extends ApplicationController
             && $model->load($request->post())
             && $model->save();
 
-        return $this->renderJs('update',[
+        return $this->renderJs('update', [
             'model' => $model,
             'success' => $success,
         ]);
@@ -74,10 +74,6 @@ class CustomersController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model =  Customer::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(Customer::className(), $id);
     }
 }

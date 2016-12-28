@@ -42,7 +42,10 @@ class PartnersController extends ApplicationController
 
     public function actionAllFees()
     {
-        $query = PartnerFee::find()->orderBy('created_at DESC');
+        $query = $this
+            ->getRepository()
+            ->find(PartnerFee::className())
+            ->orderBy('created_at DESC');
 
         $dataProvider = $this->createObject(
             ActiveDataProvider::className(),
@@ -56,7 +59,10 @@ class PartnersController extends ApplicationController
 
     public function actionAllPayments()
     {
-        $query = Payment::find()->orderBy('created_at DESC');
+        $query = $this
+            ->getRepository()
+            ->find(Payment::className())
+            ->orderBy('created_at DESC');
 
         $dataProvider = $this->createObject(
             ActiveDataProvider::className(),
@@ -72,11 +78,17 @@ class PartnersController extends ApplicationController
     {
         $partner = $this->findModel($id);
 
-        $query = Order::find()->orderBy('created_at DESC')->joinWith([
-            'customer' => function ($query) use ($partner) {
-                  return $query->andWhere(['referal_user_id' => $partner->id]);
+        $query = $this
+            ->getRepository()
+            ->find(Order::className())
+            ->orderBy('created_at DESC')
+            ->joinWith([
+                'customer' => function ($query) use ($partner) {
+                    return $query->andWhere([
+                            'referal_user_id' => $partner->id
+                        ]);
                 },
-        ]);
+            ]);
 
         $dataProvider = $this->createObject(
             ActiveDataProvider::className(),
@@ -93,7 +105,10 @@ class PartnersController extends ApplicationController
     {
         $partner = $this->findModel($id);
 
-        $query = PartnerFee::find()->orderBy('created_at DESC')
+        $query = $this
+            ->getRepository()
+            ->find(PartnerFee::className())
+            ->orderBy('created_at DESC')
             ->where(['partner_id' => $partner->id]);
 
         $dataProvider = $this->createObject(
@@ -111,7 +126,10 @@ class PartnersController extends ApplicationController
     {
         $partner = $this->findModel($id);
 
-        $query = Payment::find()->orderBy('created_at DESC')
+        $query = $this
+            ->getRepository()
+            ->find(Payment::className())
+            ->orderBy('created_at DESC')
             ->where(['user_id' => $partner->user->id]);
 
         $dataProvider = $this->createObject(
@@ -139,17 +157,19 @@ class PartnersController extends ApplicationController
         $request = $this->getApp()->request;
         $builder = $this->createObject(PartnersBuilder::className(), [$user, $model]);
 
-        if ($request->isPost && $builder->save($request)) {
+        if ($request->isPost
+            && $builder->save($request)
+        ) {
             return $this->redirect([
                 'view',
                 'id' => $builder->getModel()->id,
             ]);
-        } else {
-            return $this->render('create', [
-                'model' => $builder->getModel(),
-                'modelUser' => $builder->getUser(),
-            ]);
         }
+
+        return $this->render('create', [
+            'model' => $builder->getModel(),
+            'modelUser' => $builder->getUser(),
+        ]);
     }
 
     public function actionUpdate($id)
@@ -159,17 +179,19 @@ class PartnersController extends ApplicationController
         $request = $this->getApp()->request;
         $builder = $this->createObject(PartnersBuilder::className(), [$user, $model]);
 
-        if ($request->isPost && $builder->save($request)) {
+        if ($request->isPost
+            && $builder->save($request)
+        ) {
             return $this->redirect([
                 'view',
                 'id' => $builder->getModel()->id,
             ]);
-        } else {
-            return $this->render('update', [
-                'model' => $builder->getModel(),
-                'modelUser' => $builder->getUser(),
-            ]);
         }
+
+        return $this->render('update', [
+            'model' => $builder->getModel(),
+            'modelUser' => $builder->getUser(),
+        ]);
     }
 
     public function actionDelete($id)
@@ -201,10 +223,16 @@ class PartnersController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = Partner::findOne($id)) !== null) {
+        $model =$this
+            ->getRepository()
+            ->find(Partner::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

@@ -17,11 +17,14 @@ class GoodPartnerProgram extends GoodPartnerProgramModel
 
     public function search($params)
     {
-        $query = GoodPartnerProgramModel::find();
+        $query = $this
+            ->getRepository()
+            ->find(GoodPartnerProgramModel::className());
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         $this->load($params);
 

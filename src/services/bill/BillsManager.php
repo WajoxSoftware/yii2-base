@@ -1,45 +1,49 @@
 <?php
 namespace wajox\yii2base\services\bill;
 
-use wajox\yii2base\models\User;
 use wajox\yii2base\models\Bill;
 use wajox\yii2base\services\events\types\BillEvent;
 use wajox\yii2base\components\base\Object;
 
 class BillsManager extends Object
 {
+    const SYSTEM_PAYMENT = 'SystemPayments';
+
     public function create($data, $customer)
     {
         $model = $this->createObject(Bill::className());
         $model->load($data);
-        $model->payment_method = 'SystemPayments';
+        $model->payment_method = self::SYSTEM_PAYMENT;
         $model->created_at     = time();
         $model->customer_id    = $customer->id;
         $model->user_id        = $customer->user_id;
 
-        if ($model->updateStatus(Bill::STATUS_ID_NEW)) {
+        if ($model->saveStatusNew()) {
             $this->triggerEvent($model, BillEvent::EVENT_CREATED);
         }
 
         return $model;
     }
 
-    public function paid($model, $payment_method = 'SystemPayments')
+    public function paid($model, $payment_method = self::SYSTEM_PAYMENT)
     {
         if ($model->isPaid) {
             return false;
         }
 
         if ($model->isAccountUpdateDestination) {
-            $balance_updated = $model->customer->user->updateBalance($model->sum);
+            $balanceUpdated = $model
+                ->customer
+                ->user
+                ->updateBalance($model->sum);
 
-            if (!$balance_updated) {
+            if (!$balanceUpdated) {
                 return false;
             }
         }
 
         $model->payment_method = $payment_method;
-        $model->updateStatus(Bill::STATUS_ID_PAID);
+        $model->saveStatusPaid();
 
         $this->triggerEvent($model, BillEvent::EVENT_PAID);
 
@@ -52,7 +56,7 @@ class BillsManager extends Object
             return false;
         }
 
-        $model->updateStatus(Bill::STATUS_ID_CANCELLED);
+        $model->saveStatusCancelled();
 
         $this->triggerEvent($model, BillEvent::EVENT_CANCELLED);
 
@@ -65,7 +69,7 @@ class BillsManager extends Object
             return false;
         }
 
-        $model->updateStatus(Bill::STATUS_ID_RETURNED);
+        $model->saveStatusReturned();
 
         $this->triggerEvent($model, BillEvent::EVENT_RETURNED);
 

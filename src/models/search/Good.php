@@ -17,11 +17,14 @@ class Good extends GoodModel
 
     public function search($params)
     {
-        $query = GoodModel::find();
+        $query = $this
+            ->getRepository()
+            ->find(GoodModel::className());
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         $this->load($params);
 

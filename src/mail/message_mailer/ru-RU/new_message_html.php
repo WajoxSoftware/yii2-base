@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+
 $link = Url::toRoute(['/profile/messages/view', 'id' => $message->id], true);
 ?>
 <h1>У Вас новое сообщение!</h1>

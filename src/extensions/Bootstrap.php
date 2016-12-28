@@ -142,7 +142,7 @@ class Bootstrap extends Component implements BootstrapInterface
             'class'    => PhpMessageSource::className(),
             'basePath' => __DIR__ . '/../messages',
             'fileMap' => $this->i18nMap,
-        ];  
+        ];
     }
 
     protected function initControllersMap($app)

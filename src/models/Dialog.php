@@ -33,7 +33,7 @@ class Dialog extends \wajox\yii2base\components\db\ActiveRecord
     public function getUsers()
     {
         return $this->hasMany(User::className(), ['id' => 'user_id'])
-            ->viaTable(DialogUser::tableName(), ['dialog_id' => 'id']);
+            ->viaClass(DialogUser::className(), ['dialog_id' => 'id']);
     }
 
     public function getMessages()

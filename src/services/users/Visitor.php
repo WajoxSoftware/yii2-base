@@ -213,9 +213,11 @@ class Visitor extends Component
 
     protected function loadDirectPartnerUser()
     {
-        $partner = Partner::find()->where([
-                'type_id' => Partner::TYPE_ID_DIRECT,
-            ])->one();
+        $partner = $this
+            ->getRepository()
+            ->find(Partner::className())
+            ->where(['type_id' => Partner::TYPE_ID_DIRECT])
+            ->one();
 
         if ($partner != null) {
             return $partner->user;
@@ -270,7 +272,14 @@ class Visitor extends Component
     protected function loadReferal()
     {
         $referalId = $this->loadReferalId();
-        $referal = $referalId == null ? null : User::findOne($referalId);
+        $referal = null;
+        if ($$referalId != null) {
+            $referal = $this
+                ->getRepository()
+                ->find(User::className())
+                ->byId($referalId)
+                ->one();
+        }
 
         if ($referal == null) {
             $referal = $this->loadDirectPartnerUser();
@@ -304,7 +313,11 @@ class Visitor extends Component
     protected function loadTrafficStream()
     {
         $streamId = $this->loadTrafficStreamId();
-        $stream = TrafficStream::findOne($streamId);
+        $stream = $this
+            ->getRepository()
+            ->find(TrafficStream::className())
+            ->byId($referalId)
+            ->one();
 
         $this->setTrafficStream($stream);
     }

@@ -10,12 +10,11 @@ class GoodEventHandler extends EventHandlerAbstract
     public function bindEvents($eventsManager)
     {
         $eventsManager->on(Good::className(), GoodEvent::EVENT_ORDERED, function ($event) {
-           \Yii::$app->userActionLogs->log(UserActionLog::TYPE_ID_GOOD_ORDER, $event->good);
+            \Yii::$app->userActionLogs->log(UserActionLog::TYPE_ID_GOOD_ORDER, $event->good);
         });
         
         $eventsManager->on(Good::className(), GoodEvent::EVENT_PAID, function ($event) {
-           \Yii::$app->userActionLogs->log(UserActionLog::TYPE_ID_GOOD_PAY, $event->good);
+            \Yii::$app->userActionLogs->log(UserActionLog::TYPE_ID_GOOD_PAY, $event->good);
         });
-
     }
 }

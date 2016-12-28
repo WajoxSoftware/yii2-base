@@ -51,7 +51,7 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
     public function getGood()
     {
         return $this->hasOne(Good::className(), ['id' => 'good_id'])
-        ->viaTable(TrafficStreamGood::tableName(), ['traffic_stream_id' => 'id']);
+        ->viaClass(TrafficStreamGood::className(), ['traffic_stream_id' => 'id']);
     }
 
     public function getTrafficCompany()
@@ -77,13 +77,13 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
     public function getManager()
     {
         return $this->hasOne(TrafficManager::className(), ['user_id' => 'id'])
-        ->viaTable(User::tableName(), ['id' => 'user_id']);
+        ->viaClass(User::tableName(), ['id' => 'user_id']);
     }
 
     public function getPartner()
     {
         return $this->hasOne(Partner::className(), ['user_id' => 'id'])
-        ->viaTable(User::tableName(), ['id' => 'user_id']);
+        ->viaClass(User::className(), ['id' => 'user_id']);
     }
 
     public function getPrices()
@@ -114,13 +114,16 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
     {
         $partner_id = $this->partner->id;
 
-        $query = Good::find()->where([
+        $query = $this
+            ->getRepository()
+            ->find(Good::className())
+            ->where([
                 'status_id' => Good::STATUS_ID_ACTIVE,
                 'partner_status_id' => Good::PARTNER_STATUS_ID_ACTIVE,
             ])->joinWith([
                 'partnerPrograms' => function ($query) use ($partner_id) {
-                        return $query->andWhere(['partner_id' => [0, $partner_id]]);
-                    },
+                    return $query->andWhere(['partner_id' => [0, $partner_id]]);
+                },
             ]);
 
         return ArrayHelper::map($query->all(), 'id', 'title');

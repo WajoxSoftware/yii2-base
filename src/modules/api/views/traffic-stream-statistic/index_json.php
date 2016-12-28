@@ -1,1 +1,1 @@
-<?= json_encode($items); ?>
+<?= json_encode($items);

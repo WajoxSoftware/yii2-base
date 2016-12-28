@@ -16,32 +16,44 @@ class UserSearch extends User
 
     public function search($params, $exceptUserIds = null, $sort = null)
     {
-        $query = User::find();
+        $query = $this
+            ->getRepository()
+            ->find(User::className());
 
         return $this->buildDataProvider($query, $params, $exceptUserIds, $sort);
     }
 
     public function employeeSearch($params, $exceptUserIds = null, $sort = null)
     {
-        $query = User::find()->where([
-            'role' => array_keys(User::getEmployeesRoleList()),
-        ]);
+        $query = $this
+            ->getRepository()
+            ->find(User::className())
+            ->where([
+                'role' => array_keys(User::getEmployeesRoleList()),
+            ]);
 
         return $this->buildDataProvider($query, $params, $exceptUserIds, $sort);
     }
 
     public function usersSearch($params, $exceptUserIds = null, $sort = null)
     {
-        $query = User::find()->where([
-            'role' => array_keys(User::getUsersRoleList()),
-        ]);
+        $query = $this
+            ->getRepository()
+            ->find(User::className())
+            ->where([
+                'role' => array_keys(User::getUsersRoleList()),
+            ]);
 
         return $this->buildDataProvider($query, $params, $exceptUserIds, $sort);
     }
 
     protected function buildDataProvider($query = null, $params = [], $exceptUserIds = null, $sort = null)
     {
-        $query = $query == null ? User::find() : $query;
+        if ($query == null) {
+            $query = $this
+                ->getRepository()
+                ->find(User::className());
+        }
 
         if ($exceptUserIds !== null) {
             $query = $query->andWhere([
@@ -51,9 +63,10 @@ class UserSearch extends User
             ]);
         }
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         $this->load($params);
 

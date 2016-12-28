@@ -23,11 +23,19 @@ class GoodsController extends ApplicationController
             $categoryId = $category->id;
         }
 
-        $categories = GoodCategory::find()->where([
+        $categories = $this
+            ->getRepository()
+            ->find(GoodCategory::className())
+            ->where([
                 'parent_id' => $categoryId,
-            ])->all();
+            ])
+            ->all();
 
-        $query = Good::find()->where(['category_id' => $categoryId])->orderBy($sort->orders);
+        $query = $this
+            ->getRepository()
+            ->find(Good::className())
+            ->where(['category_id' => $categoryId])
+            ->orderBy($sort->orders);
 
         $dataProvider = $this->createObject(ActiveDataProvider::className(), [
             ['query' => $query],
@@ -59,20 +67,32 @@ class GoodsController extends ApplicationController
 
     protected function findModel($url)
     {
-        if (($model = Good::find()->where(['url' => $url])->one()) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(Good::className())
+            ->byUrl($url)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function findCategoyModel($url)
     {
-        if (($model = GoodCategory::find()->where(['url' => $url])->one()) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(GoodCategory::className())
+            ->byUrl($url)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function getSort()

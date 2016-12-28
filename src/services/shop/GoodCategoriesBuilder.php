@@ -21,7 +21,7 @@ class GoodCategoriesBuilder extends Object
         if ($parentCategoryId <= 0
             || !$parentCategoryId
         ) {
-            $parentCategoryId = null;    
+            $parentCategoryId = null;
         }
 
         $this->parentCategoryId =$parentCategoryId;
@@ -146,7 +146,11 @@ class GoodCategoriesBuilder extends Object
             return '0';
         }
 
-        $parentCategory = GoodCategory::findOne($this->getParentCategoryId());
+        $parentCategory = $this
+            ->getRepository()
+            ->find(GoodCategory::className())
+            ->byId($this->getParentCategoryId())
+            ->one();
 
         if (!$parentCategory) {
             return '0';
@@ -185,10 +189,15 @@ class GoodCategoriesBuilder extends Object
 
     protected function isUrlExists($url)
     {
-        $query = GoodCategory::find()->where(['url' => $url]);
+        $query = $this
+            ->getRepository()
+            ->find(GoodCategory::className())
+            ->byUrl($url);
 
         if (!$this->isNew()) {
-            $query = $query->andWhere(['!=', 'id', $this->getGoodCategory()->id]);
+            $query = $query->andWhere(
+                ['!=', 'id', $this->getGoodCategory()->id]
+            );
         }
 
         return $query->exists();

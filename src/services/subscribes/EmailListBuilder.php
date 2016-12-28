@@ -142,10 +142,15 @@ class EmailListBuilder extends Object
 
     protected function isUrlExists($url)
     {
-        $query = EmailList::find()->where(['url' => $url]);
+        $query = $this
+            ->getRepository()
+            ->find(EmailList::className())
+            ->where(['url' => $url]);
 
         if (!$this->isNew()) {
-            $query = $query->andWhere(['!=', 'id', $this->getEmailList()->id]);
+            $query = $query->andWhere(
+                ['!=', 'id', $this->getEmailList()->id]
+            );
         }
 
         return $query->exists();

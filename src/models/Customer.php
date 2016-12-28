@@ -57,7 +57,10 @@ class Customer extends \wajox\yii2base\components\db\ActiveRecord
 
     public static function find()
     {
-        return \Yii::createObject(CustomerQuery::className(), [get_called_class()]);
+        return self::createObject(
+            CustomerQuery::className(),
+            [get_called_class()]
+        );
     }
 
     public static function getStatusIdsList()

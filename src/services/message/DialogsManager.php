@@ -24,7 +24,9 @@ class DialogsManager extends Object
 
     public function getAllUserDialogsQuery()
     {
-        $query = DialogUser::find()
+        $query = $this
+            ->getRepository()
+            ->find(DialogUser::className())
             ->where(['user_id' => $this->user->id])
             ->andWhere(['status_id' => DialogUser::STATUS_ID_ACTIVE])
             ->andWhere(['!=', 'message_id', 0])
@@ -35,7 +37,9 @@ class DialogsManager extends Object
 
     public function getDialogsUsersByDialogsIds($dialogsIds)
     {
-        $query = DialogUser::find()
+        $query = $this
+            ->getRepository()
+            ->find(DialogUser::className())
             ->where(['!=', 'user_id', $this->user->id])
             ->andWhere(['dialog_id' => $dialogsIds]);
 
@@ -93,15 +97,18 @@ class DialogsManager extends Object
             return $result;
         });
 
-        $messages = $this->getMessagesMapByIds($messagesIds, function ($messages) {
-            $result = [];
-            foreach ($messages as $message) {
-                $dialogId = $message->dialog_id;
-                $result[$dialogId] = $message;
-            }
+        $messages = $this->getMessagesMapByIds(
+            $messagesIds,
+            function ($messages) {
+                $result = [];
+                foreach ($messages as $message) {
+                    $dialogId = $message->dialog_id;
+                    $result[$dialogId] = $message;
+                }
 
-            return $result;
-        });
+                return $result;
+            }
+        );
 
         return [
             'members' => $members,
@@ -111,15 +118,21 @@ class DialogsManager extends Object
 
     public function getMessagesByIds($ids)
     {
-        return Message::find()
-            ->where(['id' => $ids])
+        return $this
+            ->getRepository()
+            ->find(Message::className())
+            ->byId($ids)
             ->orderBy(['status_at' => 'DESC'])
             ->all();
     }
 
     public function getMembersByIds($ids)
     {
-        return User::find()->where(['id' => $ids])->all();
+        return $this
+            ->getRepository()
+            ->find(User::className())
+            ->byId($ids)
+            ->all();
     }
 
     public function getMembersMapByIds($usersIds, $callback)
@@ -143,7 +156,9 @@ class DialogsManager extends Object
             MessageUserStatus::STATUS_ID_NEW,
         ];
 
-        return MessageUserStatus::find()
+        return $this
+            ->getRepository()
+            ->find(MessageUserStatus::className())
             ->where(['user_id' => $this->user->id])
             ->andWhere(['dialog_id' => $this->dialog->id])
             ->andWhere(['status_id' => $activeStatuses])
@@ -152,7 +167,10 @@ class DialogsManager extends Object
 
     public function getDialogMessagesQuery()
     {
-        return Message::find()->orderBy(['status_at' => 'DESC']);
+        return $this
+            ->getRepository()
+            ->find(Message::className())
+            ->orderBy(['status_at' => 'DESC']);
     }
 
     public function create($members)
@@ -196,16 +214,15 @@ class DialogsManager extends Object
         $dialogUserRows = [];
 
         foreach ($users as $user) {
-            $dialogUserRows[] = $this->buildMember($user)->attributes;
+            $dialogUserRows[] = $this
+                ->buildMember($user)
+                ->attributes;
         }
 
-        $dialogUser = $this->createObject(DialogUser::className());
-
-        \Yii::$app->db->createCommand()->batchInsert(
-            DialogUser::tableName(),
-            $dialogUser->attributes(),
+        $this->getRepository()->insert(
+            DialogUser::className(),
             $dialogUserRows
-        )->execute();
+        );
 
         return true;
     }
@@ -216,7 +233,9 @@ class DialogsManager extends Object
             return false;
         }
 
-        $dialogUser = DialogUser::find()
+        $dialogUser = $this
+            ->getRepository()
+            ->find(DialogUser::className())
             ->where(['user_id' => $this->user->id])
             ->andWhere(['dialog_id' => $this->dialog->id])
             ->one();
@@ -238,14 +257,23 @@ class DialogsManager extends Object
             false;
         }
 
-        \Yii::$app->db->createCommand()->update(
-                MessageUserStatus::tableName(),
-                ['status_id' => MessageUserStatus::STATUS_ID_DELETED],
-                [
-                    'user_id' => $this->user->id,
-                    'dialog_id' => $this->dialog->id,
-                ]
-            )->execute();
+        $set = [
+            'status_id' => MessageUserStatus::STATUS_ID_DELETED,
+        ];
+
+        $where = [
+            'user_id' => $this->user->id,
+            'dialog_id' => $this->dialog->id,
+        ];
+
+        $this
+            ->getRepository()
+            ->update(
+                MessageUserStatus::className(),
+                $set,
+                $where
+            )
+            ->execute();
 
         return true;
     }
@@ -299,7 +327,9 @@ class DialogsManager extends Object
             MessageUserStatus::STATUS_ID_NEW,
         ];
 
-        $lastMessageStatus = MessageUserStatus::find()
+        $lastMessageStatus = $this
+            ->getRepository()
+            ->find(MessageUserStatus::className())
             ->where([
                 'dialog_id' => $this->dialog->id,
                 'user_id' => $this->user->id,
@@ -360,13 +390,21 @@ class DialogsManager extends Object
 
         $key = $this->getMembersUsersIdsKey($members);
 
-        $dialogMembers = DialogMembers::find()->where(['users_ids' => $key])->one();
+        $dialogMembers = $this
+            ->getRepository()
+            ->find(DialogMembers::className())
+            ->where(['users_ids' => $key])
+            ->one();
 
         if (!$dialogMembers) {
             return false;
         }
 
-        $model = Dialog::findOne($dialogMembers->id);
+        $model = $this
+            ->getRepository()
+            ->find(Dialog::className())
+            ->byId($dialogMembers->id)
+            ->one();
 
         if (!$model) {
             return false;
@@ -381,13 +419,13 @@ class DialogsManager extends Object
 
     public function activateMembers($ids)
     {
-        \Yii::$app->db
-            ->createCommand()
+        $this
+            ->getRepository()
             ->update(
-                DialogUser::tableName(),
+                DialogUser::className(),
                 ['status_id' => DialogUser::STATUS_ID_ACTIVE],
                 ['user_id' => $ids]
-            )->execute();
+            );
     }
 
     protected function saveDialogMembers($members)

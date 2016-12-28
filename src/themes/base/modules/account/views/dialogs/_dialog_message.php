@@ -1,5 +1,6 @@
 <?php
 use wajox\yii2base\helpers\TextHelper;
+
 $user = $user == null ? new \wajox\yii2base\models\User() : $user;
 ?>
 

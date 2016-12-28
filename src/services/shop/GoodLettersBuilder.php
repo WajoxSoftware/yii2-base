@@ -25,11 +25,17 @@ class GoodLettersBuilder extends Object
     public function processDeliveryStatus()
     {
         $letterTypeId = $this->getLetterTypeId();
-        $goodIds = array_map(function ($item) {
-            return $item->id;
-        }, $this->order->goods);
+        $goodIds = array_map(
+            function ($item) {
+                return $item->id;
+            },
+            $this->order->goods
+        );
 
-        $goodLettersQuery = GoodLetter::find()->where([
+        $goodLettersQuery = $this
+            ->getRepository()
+            ->find(GoodLetter::className())
+            ->where([
                 'good_id' => $goodIds,
                 'type_id' => $letterTypeId,
             ]);

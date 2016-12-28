@@ -63,9 +63,11 @@ class UserSubaccountsController extends ApplicationController
     protected function findModel($id)
     {
         $user_id = $this->getApp()->user->id;
-        $model = UserSubaccount::find()
-                    ->where(['user_id' => $user_id, 'id' => $id])
-                    ->one();
+        $model = $this
+            ->getRepository()
+            ->find(UserSubaccount::className())
+            ->where(['user_id' => $user_id, 'id' => $id])
+            ->one();
 
         if ($model !== null) {
             return $model;

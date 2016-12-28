@@ -69,20 +69,32 @@ class TrafficStreamsController extends ApplicationController
 
     protected function findModelSource($id)
     {
-        if (($model = TrafficSource::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(TrafficSource::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function findModel($id)
     {
-        if (($model = TrafficStream::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(TrafficStream::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function requireUserAccess($id)

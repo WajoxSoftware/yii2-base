@@ -80,7 +80,11 @@ class UrlConverter extends Object
         $className = $this->path2class($urlParts['path']);
         parse_str($urlParts['query'], $params);
 
-        $model = $className::find()->where($params)->one();
+        $model = $this
+            ->getRepository()
+            ->find($className)
+            ->where($params)
+            ->one();
 
         return ['class' => $className, 'params' => $params, 'model' => $model];
     }

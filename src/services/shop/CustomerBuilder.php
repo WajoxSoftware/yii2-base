@@ -23,10 +23,14 @@ class CustomerBuilder extends Object
             return false;
         }
 
-        $exists = Customer::find()->blockedByEmailOrPhone(
-            $this->customer->email,
-            $this->customer->phone
-        )->exists();
+        $exists = $this
+            ->getRepository()
+            ->find(Customer::className())
+            ->blockedByEmailOrPhone(
+                $this->customer->email,
+                $this->customer->phone
+            )
+            ->exists();
 
         if ($exists) {
             return false;
@@ -113,7 +117,10 @@ class CustomerBuilder extends Object
             $this->setUser($user);
         }
 
-        $uniqIdStr = $this->customer->email . $this->customer->phone . $this->customer->fullAddress . $this->customer->fullName;
+        $uniqIdStr = $this->customer->email
+            . $this->customer->phone
+            . $this->customer->fullAddress
+            . $this->customer->fullName;
 
         $uniqId = md5($uniqIdStr);
 
@@ -134,7 +141,11 @@ class CustomerBuilder extends Object
 
     public function findCustomerByUniqid($uniqId)
     {
-        $model = Customer::find()->byUniqid($uniqId)->one();
+        $model = $this
+            ->getRepository()
+            ->find(Customer::className())
+            ->byUniqid($uniqId)
+            ->one();
 
         if ($model == null) {
             return null;
@@ -151,7 +162,9 @@ class CustomerBuilder extends Object
 
     public function findOrCreateUser($customer)
     {
-        return $this->getUsersManager()->findOrCreate($customer->email, $customer->email);
+        return $this
+            ->getUsersManager()
+            ->findOrCreate($customer->email, $customer->email);
     }
 
     protected function getUsersManager()

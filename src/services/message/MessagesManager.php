@@ -56,10 +56,14 @@ class MessagesManager extends Object
 
     public function updateMessageUserStatus($user, $message, $statusId)
     {
-        $model = MessageUserStatus::find()->where([
+        $model = $this
+            ->getRepository()
+            ->find(MessageUserStatus::className())
+            ->where([
                 'message_id' => $message->id,
                 'user_id' => $user->id,
-            ])->one();
+            ])
+            ->one();
 
         if ($model == null) {
             return false;
@@ -113,11 +117,14 @@ class MessagesManager extends Object
 
     protected function findDialogUser($model)
     {
-        return DialogUser::find()
+        return $this
+            ->getRepository()
+            ->find(DialogUser::className())
             ->where([
                 'dialog_id' => $model->dialog_id,
                 'user_id' => $model->user_id,
-            ])->one();
+            ])
+            ->one();
     }
     protected function findLastMessageUserStatus($model)
     {
@@ -126,39 +133,42 @@ class MessagesManager extends Object
             MessageUserStatus::STATUS_ID_NEW,
         ];
 
-        return MessageUserStatus::find()
+        return $this
+            ->getRepository()
+            ->find(MessageUserStatus::className())
             ->where([
                 'dialog_id' => $model->dialog_id,
                 'user_id' => $model->user_id,
                 'status_id' => $activeStatuses,
-            ])->orderBy([
-                'created_at' => 'DESC',
-            ])->one();
+            ])
+            ->orderBy(['created_at' => 'DESC'])
+            ->one();
     }
 
     protected function insertMessageUserStatuses($rows)
     {
-        $messageStatus = $this->createObject(MessageUserStatus::className());
-
-        $count = $this->getApp()->db->createCommand()->batchInsert(
-                MessageUserStatus::tableName(),
-                $messageStatus->attributes(),
+        $count = $this
+            ->getRepository()
+            ->insert(
+                MessageUserStatus::className(),
                 $rows
-            )->execute();
+            );
 
         return $count;
     }
 
     protected function updateDialogUsers($message)
     {
-        $this->getApp()->db->createCommand()->update(
-                DialogUser::tableName(),
+        $this
+            ->getRepository()
+            ->update(
+                DialogUser::className(),
                 [
                     'message_id' => $message->id,
                     'updated_at' => $message->status_at,
                 ],
                 ['dialog_id' => $message->dialog_id]
-            )->execute();
+            );
     }
 
     protected function triggerEvent($model)
@@ -173,8 +183,19 @@ class MessagesManager extends Object
             return;
         }
 
-        $event = $this->reateObject(MessageUserStatusEvent::className());
+        $event = $this->reateObject(
+            MessageUserStatusEvent::className()
+        );
+        
         $event->messageUserStatus = $model;
-        $this->getApp()->eventsManager->trigger(MessageUserStatus::className(), $type, $event);
+
+        $this
+            ->getApp()
+            ->eventsManager
+            ->trigger(
+                MessageUserStatus::className(),
+                $type,
+                $event
+            );
     }
 }

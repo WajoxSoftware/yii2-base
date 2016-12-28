@@ -22,11 +22,7 @@ class DialogMessagesController extends ApplicationController
 
     protected function findDialogModel($id)
     {
-        if (($model = Dialog::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(Dialog::className(), $id);
     }
 
     protected function getDialogsManager($dialog)

@@ -72,12 +72,24 @@ class Bill extends \wajox\yii2base\components\db\ActiveRecord
         return $this->order != null;
     }
 
-    public function updateStatus($new_status_id)
+    public function saveStatusNew()
     {
-        $this->status_id = $new_status_id;
-        $this->status_at = time();
+        return $this->updateStatus(self::STATUS_ID_NEW);
+    }
 
-        return $this->save();
+    public function saveStatusPaid()
+    {
+        return $this->updateStatus(self::STATUS_ID_PAID);
+    }
+
+    public function saveStatusCancelled()
+    {
+        return $this->updateStatus(self::STATUS_ID_CANCELLED);
+    }
+
+    public function saveStatusReturned()
+    {
+        return $this->updateStatus(self::STATUS_ID_RETURNED);
     }
 
     public static function getStatusIdList()
@@ -157,5 +169,13 @@ class Bill extends \wajox\yii2base\components\db\ActiveRecord
         }
 
         return true;
+    }
+
+    protected function updateStatus($new_status_id)
+    {
+        $this->status_id = $new_status_id;
+        $this->status_at = time();
+
+        return $this->save();
     }
 }

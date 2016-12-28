@@ -3,7 +3,6 @@ namespace wajox\yii2base\models;
 
 class UserSettings extends \wajox\yii2base\components\db\ActiveRecord
 {
-
     public static function tableName()
     {
         return 'user_settings';

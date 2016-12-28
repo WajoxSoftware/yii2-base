@@ -1,10 +1,7 @@
 <?php
-
 use yii\bootstrap\ActiveForm;
-use yii\helpers\ArrayHelper;
-use wajox\yii2base\models\EmailList;
+use wajox\yii2base\helpers\EmailListsHelper;
 
-$email_lists = ArrayHelper::map(EmailList::find()->all(), 'id', 'title');
 ?>
 
 <div class="good-email-list-form">
@@ -16,7 +13,7 @@ $email_lists = ArrayHelper::map(EmailList::find()->all(), 'id', 'title');
         <div class="col-md-12">
             <?= $form->field($model, 'email_list_id')
                 ->dropDownList(
-                    $email_lists,
+                    EmailListsHelper::getEmailLists(),
                     ['prompt' => \Yii::t('app/general', 'Select')]
                 ); ?>
         </div>

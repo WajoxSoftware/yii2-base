@@ -85,10 +85,13 @@ class UploadsManager extends Object
 
     public function remove($ids)
     {
-        $query = UploadedFileModel::find()->where([
-            'user_id' => $this->getUser()->id,
-            'id' => $this->filterIds($ids),
-        ]);
+        $query = $this
+            ->getRepository()
+            ->find(UploadedFileModel::className())
+            ->where([
+                'user_id' => $this->getUser()->id,
+                'id' => $this->filterIds($ids),
+            ]);
 
         foreach ($query->each() as $model) {
             $model->delete();
@@ -175,14 +178,16 @@ class UploadsManager extends Object
 
     protected function updateStatusId($ids, $statusId)
     {
-        $this->getApp()->db->createCommand()->update(
-            UploadedFileModel::tableName(),
-            ['status_id' => $statusId],
-            [
-                'user_id' => $this->getUser()->id,
-                'id' => $ids,
+        $this
+            ->getRepository()
+            ->update(
+                UploadedFileModel::className(),
+                ['status_id' => $statusId],
+                [
+                    'user_id' => $this->getUser()->id,
+                    'id' => $ids,
 
-            ]
-        )->execute();
+                ]
+            );
     }
 }

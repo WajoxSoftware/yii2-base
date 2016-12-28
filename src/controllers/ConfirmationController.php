@@ -14,7 +14,14 @@ class ConfirmationController extends \wajox\yii2base\controllers\Controller
         $model = $this->createObject(ConfirmationForm::className());
         if ($model->load($this->getApp()->request->post())) {
             if ($model->process()) {
-                $this->getApp()->session->setFlash('success', \Yii::t('app/general', 'Confirmation email was sent'));
+                $this->getApp()->session->setFlash(
+                    'success',
+                    \Yii::t(
+                        'app/general',
+                        'Confirmation email was sent'
+                    )
+                );
+
                 $model = $this->createObject(ConfirmationForm::className());
             }
         }
@@ -34,7 +41,13 @@ class ConfirmationController extends \wajox\yii2base\controllers\Controller
             $this->getManager()->confirmEmail($model);
 
             $this->getApp()->user->login($model);
-            $this->getApp()->session->setFlash('success', \Yii::t('app/general', 'E-mail was confirmed'));
+            $this->getApp()->session->setFlash(
+                'success',
+                \Yii::t(
+                    'app/general',
+                    'E-mail was confirmed'
+                )
+            );
 
             return $this->redirect(['/account']);
         }
@@ -44,6 +57,7 @@ class ConfirmationController extends \wajox\yii2base\controllers\Controller
 
     public function getManager()
     {
-        return $this->getDependency(UsersManager::className());;
+        return $this->getDependency(UsersManager::className());
+        ;
     }
 }

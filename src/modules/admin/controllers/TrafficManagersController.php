@@ -13,19 +13,21 @@ class TrafficManagersController extends ApplicationController
         $user = $this->createObject(User::className());
         $model = $this->createObject(TrafficManager::className());
         $request = $this->getApp()->request;
-        $builder = $this->createObject(TrafficManagersBuilder::className(), [$user, $model]);
+        $builder = $this->createObject(
+            TrafficManagersBuilder::className(),
+            [$user, $model]
+        );
 
         if ($request->isPost && $builder->save($request)) {
             return $this->redirect([
                 '/admin/traffics/view-user',
                 'id' => $builder->getModel()->user_id,
             ]);
-        } else {
-            return $this->render('create', [
-                'model' => $builder->getModel(),
-                'modelUser' => $builder->getUser(),
-            ]);
         }
+        return $this->render('create', [
+            'model' => $builder->getModel(),
+            'modelUser' => $builder->getUser(),
+        ]);
     }
 
     public function actionUpdate($id)
@@ -33,19 +35,22 @@ class TrafficManagersController extends ApplicationController
         $model = $this->findModel($id);
         $user = $model->user;
         $request = $this->getApp()->request;
-        $builder = $this->createObject(TrafficManagersBuilder::className(), [$user, $model]);
+        $builder = $this->createObject(
+            TrafficManagersBuilder::className(),
+            [$user, $model]
+        );
 
         if ($request->isPost && $builder->save($request)) {
             return $this->redirect([
                 'view',
                 'id' => $builder->getModel()->id,
             ]);
-        } else {
-            return $this->render('update', [
-                'model' => $builder->getModel(),
-                'modelUser' => $builder->getUser(),
-            ]);
         }
+
+        return $this->render('update', [
+            'model' => $builder->getModel(),
+            'modelUser' => $builder->getUser(),
+        ]);
     }
 
     public function actionDelete($id)
@@ -58,10 +63,16 @@ class TrafficManagersController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = TrafficManager::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(TrafficManager::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }
