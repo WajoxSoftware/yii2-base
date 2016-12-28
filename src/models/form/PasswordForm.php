@@ -22,7 +22,12 @@ class PasswordForm extends Model
     public function process()
     {
         if ($this->validate()) {
-            $user = User::find()->byIdentity($this->getApp()->user->id)->one();
+            $user = $this
+                ->getRepository()
+                ->find(User::className())
+                ->byIdentity($this->getApp()->user->id)
+                ->one();
+                
             $user->scenario = 'change_password';
             $user->setPassword($this->password);
             $user->generateAuthKey();

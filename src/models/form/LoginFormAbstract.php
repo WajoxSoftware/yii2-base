@@ -56,7 +56,11 @@ abstract class LoginFormAbstract extends Model
     public function getUser()
     {
         if ($this->_user === null) {
-            $this->_user = User::find()->byNameOrEmail($this->name, $this->name)->one();
+            $this->_user = $this
+                ->getRepository()
+                ->find(User::className())
+                ->byNameOrEmail($this->name, $this->name)
+                ->one();
         }
 
         return $this->_user;

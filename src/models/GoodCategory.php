@@ -76,8 +76,11 @@ class GoodCategory extends \wajox\yii2base\components\db\ActiveRecord
 
         $ids = explode(',', $this->parents_ids);
 
-        return GoodCategory::find()->where([
-                'id' => $ids,
-            ])->orderBy('id ASC')->all();
+        return $this
+            ->getRepository()
+            ->find(GoodCategory::className())
+            ->byId($ids)
+            ->orderBy('id ASC')
+            ->all();
     }
 }

@@ -188,7 +188,11 @@ class GoodUserCoupon extends \wajox\yii2base\components\db\ActiveRecord
 
     public function getRedirectGood()
     {
-        return Good::findOne($this->redirectGoodId);
+        return $this
+            ->getRepository()
+            ->find(Good::className())
+            ->byId($this->redirectGoodId)
+            ->one();
     }
 
     public function getFinishedMessage()

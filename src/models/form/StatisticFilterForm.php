@@ -151,9 +151,10 @@ class StatisticFilterForm extends Model
 
     public function findUserSubaccountsByTags()
     {
-        $query = UserSubaccount::find()->where([
-                'user_id' => $this->getUser()->id,
-            ]);
+        $query = $this
+            ->getRepository()
+            ->find(UserSubaccount::className())
+            ->where(['user_id' => $this->getUser()->id]);
 
         if (!empty($this->userSubaccountTag1)) {
             $query->andWHere(['like', 'tag1', $this->userSubaccountTag1]);

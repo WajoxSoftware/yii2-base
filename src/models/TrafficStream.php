@@ -114,13 +114,16 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
     {
         $partner_id = $this->partner->id;
 
-        $query = Good::find()->where([
+        $query = $this
+            ->getRepository()
+            ->find(Good::className())
+            ->where([
                 'status_id' => Good::STATUS_ID_ACTIVE,
                 'partner_status_id' => Good::PARTNER_STATUS_ID_ACTIVE,
             ])->joinWith([
                 'partnerPrograms' => function ($query) use ($partner_id) {
-                        return $query->andWhere(['partner_id' => [0, $partner_id]]);
-                    },
+                    return $query->andWhere(['partner_id' => [0, $partner_id]]);
+                },
             ]);
 
         return ArrayHelper::map($query->all(), 'id', 'title');
