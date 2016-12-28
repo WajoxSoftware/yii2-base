@@ -8,18 +8,20 @@ class CustomerQuery extends ActiveQuery
 {
     public function byUniqid($id)
     {
-        return $this->where(['uniqid' => $uniqId]);
+        return $this->where([
+            'uniqid' => htmlspecialchars($uniqId),
+        ]);
     }
 
     public function blockedByEmailOrPhone($email, $phone)
     {
         return $this->orWhere([
-	        	'email' => $email,
-	        	'status_id' => Customer::STATUS_ID_BLOCKED,
+	        	'email' => htmlspecialchars($email),
+	        	'status_id' => intval(Customer::STATUS_ID_BLOCKED),
 	        ])
             ->orWhere([
-            	'phone' => $phone,
-            	'status_id' => Customer::STATUS_ID_BLOCKED,
+            	'phone' => htmlspecialchars($phone),
+            	'status_id' => intval(Customer::STATUS_ID_BLOCKED),
             ]);
     }
 }

@@ -7,6 +7,8 @@ class EmailListQuery extends ActiveQuery
 {
     public function byUrl($id)
     {
-        return $this->where(['url' => $url]);
+        return $this->where([
+            'url' => htmlspecialchars($url),
+        ]);
     }
 }

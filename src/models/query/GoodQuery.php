@@ -7,13 +7,15 @@ class GoodQuery extends ActiveQuery
 {
     public function byUrl($id)
     {
-        return $this->where(['url' => $url]);
+        return $this->where([
+            'url' => htmlspecialchars($url),
+        ]);
     }
 
     public function byCategoryId($categoryId)
     {
     	return $this->where([
-            'category_id' => $categoryId,
+            'category_id' => intval($categoryId),
         ]);
     }
 }

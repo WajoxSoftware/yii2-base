@@ -8,7 +8,7 @@ class UserActionLogQuery extends ActiveQuery
     public function byUserIdOrGuid($userId, $guid)
     {
     	return $this
-    		->where(['user_id' => $userId,])
-            ->orWhere(['guid' => $guid]);
+    		->where(['user_id' => intval($userId)])
+            ->orWhere(['guid' => htmlspecialchars($guid)]);
     }
 }
