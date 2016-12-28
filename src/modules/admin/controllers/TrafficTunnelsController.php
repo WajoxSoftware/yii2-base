@@ -113,17 +113,10 @@ class TrafficTunnelsController extends ApplicationController
 
     protected function findModel($id)
     {
-        $model = $this
-                ->getRepository()
-                ->find(TrafficTunnel::className)
-                ->byId($id)
-                ->one();
-                
-        if ($model == null) {
-            return $model;
-        }
-        
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return $this->findModelById(
+            TrafficTunnel::className(),
+            $id
+        );
     }
 
     protected function getSourcesManager()

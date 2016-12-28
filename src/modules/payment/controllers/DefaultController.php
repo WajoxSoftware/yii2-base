@@ -35,16 +35,6 @@ class DefaultController extends ApplicationController
 
     private function findBill($id)
     {
-        $model = $this
-            ->getRepository()
-            ->find(Bill::className())
-            ->byId($id)
-            ->one();
-
-        if ($model !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(Bill::className(), $id);
     }
 }

@@ -55,31 +55,14 @@ class UserSubaccountsController extends ApplicationController
 
     protected function findModel($id)
     {
-        $model = $this
-            ->getRepository()
-            ->find(UserSubaccount::className())
-            ->byId($id)
-            ->one();
-
-        if ($model !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return $this->findModelById(
+            UserSubaccount::className(),
+            $id
+        );
     }
 
     protected function findUserModel($id)
     {
-        $model = $this
-            ->getRepository()
-            ->find(User::className())
-            ->byId($id)
-            ->one();
-
-        if ($model !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return $this->findModelById(User::className(), $id);
     }
 }

@@ -75,20 +75,12 @@ class EgoodEntitiesController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = EGoodEntity::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(EGoodEntity::className(), $id);
     }
 
     protected function findGoodModel($id)
     {
-        if (($model = Good::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(Good::className(), $id);
     }
 
     protected function getUploadedFile()

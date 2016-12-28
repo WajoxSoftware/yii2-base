@@ -16,11 +16,14 @@ class SubscribeSearch extends Subscribe
 
     public function search($params, $sort)
     {
-        $query = Subscribe::find();
+        $query = $this
+            ->getRepository()
+            ->find(Subscribe::className());
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         $this->load($params);
 

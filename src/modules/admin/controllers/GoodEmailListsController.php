@@ -10,7 +10,7 @@ class GoodEmailListsController extends ApplicationController
 {
     public function actionCreate($id)
     {
-        $model_good = Good::findOne($id);
+        $model_good = $this->findGoodModel($id);
         $model = $this->createObject(GoodEmailList::className());
         $model->good_id = $model_good->id;
         $request = $this->getApp()->request;
@@ -38,19 +38,16 @@ class GoodEmailListsController extends ApplicationController
 
     protected function findEmailListModel($id)
     {
-        if (($model = EmailList::findOne($id)) !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return $this->findModelById(EmailList::className(), $id);
     }
 
     protected function findModel($id)
     {
-        if (($model = GoodEmailList::findOne($id)) !== null) {
-            return $model;
-        }
+        return $this->findModelById(GoodEmailList::className(), $id);
+    }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+    protected function findGoodModel($id)
+    {
+        return $this->findModelById(Good::className(), $id);
     }
 }

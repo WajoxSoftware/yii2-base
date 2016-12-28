@@ -16,11 +16,14 @@ class OrderSearch extends Order
 
     public function search($params, $sort)
     {
-        $query = Order::find();
+        $query = $this
+            ->getRepository()
+            ->find(Order::className());
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         $this->load($params);
 

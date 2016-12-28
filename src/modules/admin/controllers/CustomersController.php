@@ -74,10 +74,6 @@ class CustomersController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model =  Customer::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(Customer::className(), $id);
     }
 }

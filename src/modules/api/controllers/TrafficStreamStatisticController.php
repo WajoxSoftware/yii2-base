@@ -55,11 +55,10 @@ class TrafficStreamStatisticController extends ApplicationController
         $items = [];
 
         foreach ($ids as $id) {
-            $model = $this
-                ->getRepository()
-                ->find(TrafficStream::className())
-                ->byId($id)
-                ->one();
+            $model = $this->findModelById(
+                TrafficStream::className(),
+                $id
+            );
 
             if ($model != null) {
                 $stat = $this->createObject(

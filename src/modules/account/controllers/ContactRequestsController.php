@@ -36,11 +36,7 @@ class ContactRequestsController extends ApplicationController
 
     protected function findUserModel($id)
     {
-        if (($model = User::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(User::className(), $id);
     }
 
     protected function getContactsManager()

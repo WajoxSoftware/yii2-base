@@ -9,7 +9,7 @@ class GoodLettersController extends ApplicationController
 {
     public function actionCreate($id = 0)
     {
-        $modelGood = $id != 0 ? Good::findOne($id) : null;
+        $modelGood = $id != 0 ? $this->findGoodModel($id) : null;
         $goodId = $modelGood == null ? 0 : $modelGood->id;
         $model = $this->createObject(GoodLetter::className());
         $model->good_id = $goodId;
@@ -53,12 +53,13 @@ class GoodLettersController extends ApplicationController
         ]);
     }
 
+    protected function findGoodModel($id)
+    {
+        return $this->findModelById(Good::className(), $id);
+    }
+
     protected function findModel($id)
     {
-        if (($model = GoodLetter::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(GoodLetter::className(), $id);
     }
 }

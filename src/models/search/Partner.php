@@ -16,11 +16,14 @@ class Partner extends PartnerModel
 
     public function search($params, $sort)
     {
-        $query = PartnerModel::find();
+        $query = $this
+            ->getRepository()
+            ->find(PartnerModel::className());
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         $this->load($params);
 

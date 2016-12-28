@@ -79,31 +79,11 @@ class GoodUserCouponsController extends ApplicationController
 
     protected function findModel($id)
     {
-        $model = $this
-            ->getRepository()
-            ->find(GoodUserCoupon::className())
-            ->byId($id)
-            ->one();
-
-        if ($model !== null) {
-            return $model;
-        }
-        
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return $this->findModelById(GoodUserCoupon::className(), $id);
     }
 
     protected function findGoodModel($id)
     {
-        $model = $this
-            ->getRepository()
-            ->find(Good::className())
-            ->byId($id)
-            ->one();
-
-        if ($model !== null) {
-            return $model;
-        }
-        
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return $this->findModelById(Good::className(), $id);
     }
 }

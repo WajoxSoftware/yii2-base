@@ -16,11 +16,14 @@ class StaticPage extends StaticPageModel
 
     public function search($params)
     {
-        $query = StaticPageModel::find();
+        $query = $this
+            ->getRepository()
+            ->find(StaticPageModel::className());
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         $this->load($params);
 

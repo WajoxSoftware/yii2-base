@@ -30,16 +30,9 @@ class UserActionLogsController extends ApplicationController
 
     protected function findModel($id)
     {
-        $model = $this
-            ->getRepository()
-            ->find(UserActionLog::className())
-            ->byId($id)
-            ->one();
-
-        if ($model !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return $this->findModelById(
+            UserActionLog::className(),
+            $id
+        );
     }
 }
