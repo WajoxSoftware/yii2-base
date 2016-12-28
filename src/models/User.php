@@ -83,7 +83,10 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
 
     public static function find()
     {
-        return \Yii::createObject(UserQuery::className(), [get_called_class()]);
+        return self::createObject(
+            UserQuery::className(),
+            [get_called_class()]
+        );
     }
 
     public static function findIdentity($id)

@@ -24,11 +24,11 @@ class ActivityController extends ApplicationController
     {
         $model = $this->findModel($id);
 
-        $query = UserActionLog::find()->where([
-                'user_id' => $model->user_id,
-            ])->orWhere([
-                'guid' => $model->guid,
-            ])->orderBy('id DESC');
+        $query = $this
+            ->getRepository()
+            ->find(UserActionLog::className())
+            ->byUserIdOrGuid($model->user_id, $model->guid)
+            ->orderBy('id DESC');
 
         $dataProvider = $this->createObject(ActiveDataProvider::className(), [
             ['query' => $query],
@@ -42,10 +42,16 @@ class ActivityController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = UserActionLog::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(UserActionLog::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

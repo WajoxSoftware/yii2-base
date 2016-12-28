@@ -1,7 +1,9 @@
 <?php
 namespace wajox\yii2base\models\query;
 
-class UserQuery extends \yii\db\ActiveQuery
+use wajox\yii2base\components\db\ActiveQuery;
+
+class UserQuery extends ActiveQuery
 {
     public function byIdentity($id)
     {
@@ -39,6 +41,13 @@ class UserQuery extends \yii\db\ActiveQuery
         return $this>where(['email' => $email])
             ->orWhere(['guid' => $guid]);
     }
+
+    public function byIdOrGuid($id, $guid)
+    {
+        return $this>where(['id' => $id])
+            ->orWhere(['guid' => $guid]);
+    }
+
 
     public function confirmedByToken($token)
     {

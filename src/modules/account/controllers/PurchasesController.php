@@ -9,9 +9,11 @@ class PurchasesController extends ApplicationController
 {
     public function actionIndex()
     {
-        $query = UserPaidGood::find()->where([
-                'user_id' => $this->getUser()->id,
-            ])->with('good');
+        $query = $this
+            ->getRepository()
+            ->find(UserPaidGood::className())
+            ->where(['user_id' => $this->getUser()->id])
+            ->with('good');
 
         $dataProvider = $this->createObject(
             ActiveDataProvider::className(),
@@ -43,8 +45,15 @@ class PurchasesController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = UserPaidGood::findOne($id)) !== null
-            && $model->isOwner($this->getUser()->id)) {
+        $model = $this
+            ->getRepository()
+            ->find(UserPaidGood::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null
+            && $model->isOwner($this->getUser()->id)
+        ) {
             return $model;
         }
 

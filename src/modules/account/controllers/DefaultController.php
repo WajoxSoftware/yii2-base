@@ -11,9 +11,11 @@ class DefaultController extends ApplicationController
 
         $stat = [];
 
-        $stat['unread_messages'] = MessageUserStatus::find()
-          ->where(['user_id' => $user->id, 'status_id' => MessageUserStatus::STATUS_ID_NEW])
-          ->count();
+        $stat['unread_messages'] = $this
+            ->getRepository()
+            ->find(MessageUserStatus::className())
+            ->where(['user_id' => $user->id, 'status_id' => MessageUserStatus::STATUS_ID_NEW])
+            ->count();
 
         $stat['account_balance'] = $user->accountBalanceRUR;
 

@@ -46,7 +46,9 @@ class TrafficTunnelsController extends ApplicationController
             ]);
 
             foreach ($dataProvider->getModels() as $s) {
-                $sources[] = $this->getSourcesManager()->getSourceData($s);
+                $sources[] = $this
+                    ->getSourcesManager()
+                    ->getSourceData($s);
             }
         }
 
@@ -109,11 +111,17 @@ class TrafficTunnelsController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = TrafficTunnel::findOne($id)) !== null) {
+        $model = $this
+                ->getRepository()
+                ->find(TrafficTunnel::className)
+                ->byId($id)
+                ->one();
+                
+        if ($model == null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function getSourcesManager()

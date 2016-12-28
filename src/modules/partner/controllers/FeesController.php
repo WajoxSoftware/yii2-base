@@ -9,17 +9,23 @@ class FeesController extends ApplicationController
     {
         $partner = $this->getPartner();
 
-        $query = $query = PartnerFee::find()->orderBy('created_at DESC')
+        $query = $this
+            ->getRepository()
+            ->find(PartnerFee::className())
+            ->orderBy('created_at DESC')
             ->where(['partner_id' => $this->getPartner()->id]);
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [[
-            'query' => $query,
-            'sort' => [
-                'defaultOrder' => [
-                    'created_at' => SORT_DESC,
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [[
+                'query' => $query,
+                'sort' => [
+                    'defaultOrder' => [
+                        'created_at' => SORT_DESC,
+                    ],
                 ],
-            ],
-        ]]);
+            ]]
+        );
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,

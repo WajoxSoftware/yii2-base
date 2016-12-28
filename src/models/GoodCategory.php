@@ -1,6 +1,8 @@
 <?php
 namespace wajox\yii2base\models;
 
+use wajox\yii2base\models\query\GoodCategoryQuery;
+
 class GoodCategory extends \wajox\yii2base\components\db\ActiveRecord
 {
     const VIEW_ROUTE = '/shop/goods/index';
@@ -36,6 +38,14 @@ class GoodCategory extends \wajox\yii2base\components\db\ActiveRecord
             'title' => \Yii::t('app/attributes', 'Title'),
             'status_id' => \Yii::t('app/attributes', 'Status ID'),
         ];
+    }
+
+    public static function find()
+    {
+        return self::createObject(
+            GoodCategoryQuery::className(),
+            [get_called_class()]
+        );
     }
 
     public static function getStatusIdList()

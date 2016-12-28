@@ -23,9 +23,14 @@ class UserActionLogsController extends ApplicationController
 
     public function actionIndex($ids = [])
     {
-        $models = UserActionLog::find()->where([
+        $models = $this
+            ->getRepository()
+            ->find(UserActionLog::className())
+            ->where([
                 'id' => $ids,
-            ])->all()->indexBy('id');
+            ])
+            ->all()
+            ->indexBy('id');
 
         return $this->renderJson('index', ['models' => $models]);
     }

@@ -26,10 +26,14 @@ class TrafficController extends ApplicationController
 
     protected function findSourceModel($id)
     {
-        $model = TrafficSource::find()->where([
+        $model = $this
+            ->getRepository()
+            ->find(TrafficSource::className())
+            ->where([
                 'id' => $id,
                 'user_id' => $this->getUser()->id,
-            ])->one();
+            ])
+            ->one();
 
         if ($model !== null) {
             return $model;
@@ -40,10 +44,14 @@ class TrafficController extends ApplicationController
 
     protected function findStreamModel($id)
     {
-        $model = TrafficStream::find()->where([
+        $model = $this
+            ->getRepository()
+            ->find(TrafficStream::className())
+            ->where([
                 'id' => $id,
                 'user_id' => $this->getUser()->id,
-            ])->one();
+            ])
+            ->one();
 
         if ($model !== null) {
             return $model;

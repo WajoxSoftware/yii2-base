@@ -9,9 +9,13 @@ class OffersController extends ApplicationController
 {
     public function actionIndex()
     {
-        $query = GoodPartnerProgram::find()->where([
+        $query = $this
+            ->getRepository()
+            ->find(GoodPartnerProgram::className())
+            ->where([
                 'partner_id' => [0, $this->getPartner()->id]
-            ])->joinWith([
+            ])
+            ->joinWith([
                 'good' => function ($query) {
                         return $query->andWhere([
                             'status_id' => Good::STATUS_ID_ACTIVE,
@@ -20,7 +24,10 @@ class OffersController extends ApplicationController
                     },
             ]);
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [['query' => $query]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]
+        );
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
@@ -39,15 +46,19 @@ class OffersController extends ApplicationController
 
     protected function findModel($id)
     {
-        $model = GoodPartnerProgram::find()->where([
+        $model = $this
+            ->getRepository()
+            ->find(GoodPartnerProgram::className())
+            ->where([
                 'id' => $id,
                 'partner_id' => [0, $this->getPartner()->id]
-            ])->one();
+            ])
+            ->one();
 
         if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

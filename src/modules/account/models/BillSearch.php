@@ -16,14 +16,18 @@ class BillSearch extends Bill
 
     public function search($params, $user)
     {
-        $query = Bill::find()->where(['user_id' => $user->id]);
+        $query = $this
+            ->getRepository()
+            ->find(Bill::className())
+            ->where(['user_id' => $user->id]);
 
         $this->load($params);
 
         if (!$this->validate()) {
-            return $this->createObject(ActiveDataProvider::className(), [
-                ['query' => $query],
-            ]);
+            return $this->createObject(
+                ActiveDataProvider::className(),
+                [['query' => $query]]
+            );
         }
 
         $query->andFilterWhere([
@@ -33,9 +37,10 @@ class BillSearch extends Bill
 
         $query->orderBy(['created_at' => 'DESC']);
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         return $dataProvider;
     }

@@ -9,7 +9,9 @@ class EmailListsController extends ApplicationController
 {
     public function actionIndex()
     {
-        $query = EmailList::find();
+        $query = $this
+            ->getRepository()
+            ->find(EmailList::className());
 
         return $this->render('index', [
             'query' => $query,
@@ -70,11 +72,17 @@ class EmailListsController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = EmailList::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(EmailList::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function getBuilder($model = null)

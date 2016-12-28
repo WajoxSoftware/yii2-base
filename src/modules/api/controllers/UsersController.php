@@ -29,7 +29,9 @@ class UsersController extends ApplicationController
             return $this->actionView($id);
         }
 
-        $userQuery =  User::find();
+        $userQuery =  $this
+            ->getRepository()
+            ->find(User::className());
 
         if ($query != null) {
             $userQuery->where([
@@ -37,16 +39,21 @@ class UsersController extends ApplicationController
                 ]);
         }
 
-        $models = $userQuery->limit(self::LIMIT)
-                ->indexBy('id')
-                ->all();
+        $models = $userQuery
+            ->limit(self::LIMIT)
+            ->indexBy('id')
+            ->all();
 
         return $this->renderJson('index', ['models' => $models]);
     }
 
     public function actionView($id)
     {
-        $model = User::findOne($id);
+        $model = $this
+            ->getRepository()
+            ->find(User::className())
+            ->byId($id)
+            ->one();
 
         return $this->renderJson('view', ['model' => $model]);
     }

@@ -33,7 +33,10 @@ class UserSubaccountsController extends ApplicationController
             $userId = $this->getUser()->id;
         }
 
-        $subQuery =  UserSubaccount::find()->where([
+        $subQuery =  $this
+            ->getRepository()
+            ->find(UserSubaccount::className())
+            ->where([
                 'user_id' => $userId,
             ]);
 
@@ -52,7 +55,11 @@ class UserSubaccountsController extends ApplicationController
 
     public function actionView($id)
     {
-        $model = UserSubaccount::findOne($id);
+        $model = $this
+            ->getRepository()
+            ->find(UserSubaccount::className())
+            ->byId($id)
+            ->one();
 
         return $this->renderJson('view', ['model' => $model]);
     }

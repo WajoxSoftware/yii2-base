@@ -24,9 +24,12 @@ class DialogsController extends ApplicationController
         );
         $models = $query->offset($pages->offset)->limit($pages->limit)->all();
 
-        $dialogIds = array_map(function ($userDialog) {
-            return $userDialog->dialog_id;
-        }, $models);
+        $dialogIds = array_map(
+            function ($userDialog) {
+                return $userDialog->dialog_id;
+            },
+            $models
+        );
 
         $dialogsData = $manager->getDialogsDataByIds($dialogIds);
         $dialogsData['pages'] = $pages;
@@ -69,7 +72,12 @@ class DialogsController extends ApplicationController
     {
         $userIds = is_array($userIds) ? $userIds : explode(',', $userIds);
         $manager = $this->getDialogsManager();
-        $members = User::find()->where(['id' => $userIds])->all();
+        $members = $this
+            ->getRepository()
+            ->find(User::className())
+            ->byId($userIds)
+            ->all();
+
         $pm = $this->createObject(PrivacySettingsManager::className(), [$user]);
         $pm->addTargetUsersIds($userIds);
 
@@ -106,11 +114,17 @@ class DialogsController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = Dialog::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(Dialog::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function getDialogsManager($dialog = null)

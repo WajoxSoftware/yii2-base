@@ -1,6 +1,8 @@
 <?php
 namespace wajox\yii2base\models;
 
+use wajox\yii2base\models\query\GoodQuery;
+
 class Good extends \wajox\yii2base\components\db\ActiveRecord
 {
     use \wajox\yii2base\traits\CreatedAtTrait;
@@ -80,6 +82,14 @@ class Good extends \wajox\yii2base\components\db\ActiveRecord
             'payment_methods' => \Yii::t('app/attributes', 'Good Payment Methods'),
             'delivery_methods' => \Yii::t('app/attributes', 'Good Delivery Methods'),
         ];
+    }
+
+    public static function find()
+    {
+        return self::createObject(
+            GoodQuery::className(),
+            [get_called_class()]
+        );
     }
 
     public static function getStatusIdList()

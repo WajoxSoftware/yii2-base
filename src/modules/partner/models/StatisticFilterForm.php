@@ -148,7 +148,10 @@ class StatisticFilterForm extends Model
 
     public function findUserSubaccountsByTags()
     {
-        $query = UserSubaccount::find()->where([
+        $query = $this
+            ->getRepository()
+            ->find(UserSubaccount::className())
+            ->where([
                 'user_id' => $this->getUser()->id,
             ]);
 
@@ -177,7 +180,11 @@ class StatisticFilterForm extends Model
             return;
         }
 
-        return TrafficStream::findOne($this->trafficStreamId);
+        return $this
+            ->getRepository()
+            ->find(TrafficStream::className())
+            ->byId($this->trafficStreamId)
+            ->one();
     }
 
     public function getPartnerOffer()
@@ -186,7 +193,11 @@ class StatisticFilterForm extends Model
             return;
         }
 
-        return GoodPartnerProgram::findOne($this->partnerOfferId);
+        return $this
+            ->getRepository()
+            ->find(GoodPartnerProgram::className())
+            ->byId($this->partnerOfferId)
+            ->one();
     }
 
     public function getTrafficStreamTitle()
