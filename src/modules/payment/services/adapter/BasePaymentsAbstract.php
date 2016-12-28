@@ -44,14 +44,20 @@ abstract class BasePaymentsAbstract extends Object
 
     public function getBill($id)
     {
-        return Bill::findOne($id);
+        return $this
+            ->getRepository()
+            ->find(Bill::className())
+            ->byId($id)
+            ->one();
     }
 
     public function payBill($id)
     {
         $bill = $this->getBill($id);
 
-        return $this->getDependency(BillsManager::className())->paid($bill, $this->getId());
+        return $this
+            ->getDependency(BillsManager::className())
+            ->paid($bill, $this->getId());
     }
 
     public function errorResponse($message = '')
@@ -109,10 +115,15 @@ abstract class BasePaymentsAbstract extends Object
 
     public function detachGood($good)
     {
-        GoodPaymentMethod::deleteAll([
-            'good_id' => $good->id,
-            'payment_method' => $this->getId(),
-        ]);
+        $this
+            ->getRepository()
+            ->deleteAll(
+                GoodPaymentMethod::className(),
+                [
+                    'good_id' => $good->id,
+                    'payment_method' => $this->getId(),
+                ]
+            );
 
         $this->afterDetach($good);
     }

@@ -170,7 +170,11 @@ class TrafficStreamBuilder extends Object
         if ($this->getTrafficModeGoodEnabled()) {
             $this->modelGood->load($this->request->post());
 
-            $good = Good::findOne($this->modelGood->good_id);
+            $good = $this
+                ->getRepository()
+                ->find(Good::className())
+                ->byId($this->modelGood->good_id)
+                ->one();
 
             if ($good == null) {
                 throw new \Exception('Good not found');

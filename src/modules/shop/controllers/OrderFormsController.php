@@ -36,13 +36,17 @@ class OrderFormsController extends ApplicationController
 
     protected function findGood($url)
     {
-        $good = Good::findOne(['url' => $url]);
+        $good = $this
+            ->getRepository()
+            ->find(Good::className())
+            ->byUrl($url)
+            ->one();
 
-        if ($good == null) {
-            throw new NotFoundHttpException('The requested page does not exist.');
+        if ($good != null) {
+            return $good;
         }
 
-        return $good;
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function getClicksManager()

@@ -12,7 +12,9 @@ class TrafficTunnelsController extends ApplicationController
 {
     public function actionIndex()
     {
-        $query = TrafficTunnel::find();
+        $query = $this
+            ->getRepository()
+            ->find(TrafficTunnel::className());
 
         return $this->render('index', [
             'query' => $query,

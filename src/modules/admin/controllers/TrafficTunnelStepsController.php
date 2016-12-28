@@ -58,19 +58,31 @@ class TrafficTunnelStepsController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = TrafficTunnelStep::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(TrafficTunnelStep::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function findTunnelModel($id)
     {
-        if (($model = TrafficTunnel::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(TrafficTunnel::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

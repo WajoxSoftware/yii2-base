@@ -9,8 +9,12 @@ class DefaultController extends ApplicationController
     public function actionIndex($id)
     {
         $bill = $this->findBill($id);
+        $isCashMethod = $this
+            ->getApp()
+            ->systemPaymentSettings
+            ->isCashMethod($bill->payment_method);
 
-        if ($this->getApp()->systemPaymentSettings->isCashMethod($bill->payment_method)) {
+        if ($isCashMethod) {
             return $this->redirect([
                 '/payment/callbacks',
                 'method' => $bill->payment_method,
@@ -31,7 +35,13 @@ class DefaultController extends ApplicationController
 
     private function findBill($id)
     {
-        if (($model = Bill::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(Bill::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

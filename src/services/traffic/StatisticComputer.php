@@ -66,26 +66,37 @@ class StatisticComputer extends Object
 
         $time_cond = ['start' => $start_time, 'finish' => $finish_time];
 
-        $visitsCount = $this->getApp()->userActionLogs->getVisitNewLogs($params)
+        $visitsCount = $this
+            ->getApp()->userActionLogs
+            ->getVisitNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->count();
 
-        $uniqueVisitsCount = $this->getApp()->userActionLogs->getVisitNewLogs($params)
+        $uniqueVisitsCount = $this
+            ->getApp()->userActionLogs
+            ->getVisitNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->select('[[ip_address]]')
             ->groupBy('[[ip_address]]')
             ->count();
 
-        $subscribesCount = $this->getApp()->userActionLogs->getSubscribeNewLogs($params)
+        $subscribesCount = $this
+            ->getApp()->userActionLogs
+            ->getSubscribeNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->count();
 
-        $newBillLogs = $this->getApp()->userActionLogs->getBillNewLogs($params)
+        $newBillLogs = $this
+            ->getApp()->userActionLogs
+            ->getBillNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->indexBy('action_item_id')
             ->all();
 
-        $paidBillLogs = $this->getApp()->userActionLogs->getBillPayLogs($params)
+        $paidBillLogs = $this
+            ->getApp()
+            ->userActionLogs
+            ->getBillPayLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->indexBy('action_item_id')
             ->all();
@@ -93,8 +104,15 @@ class StatisticComputer extends Object
         $newBillIds = array_keys($newBillLogs);
         $paidBillIds = array_keys($paidBillLogs);
 
-        $billsNewQ = Bill::find()->where(['id' => $newBillIds]);
-        $billsPaidQ = Bill::find()->where(['id' => $paidBillIds]);
+        $billsNewQ = $this
+            ->getRepository()
+            ->find(Bill::className())
+            ->byId($newBillIds);
+
+        $billsPaidQ = $this
+            ->getRepository()
+            ->find(Bill::className())
+            ->byId($paidBillIds);
 
         $newBillsCount = sizeof($newBillIds);
         $paidBillsCount = sizeof($paidBillIds);

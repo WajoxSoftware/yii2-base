@@ -146,7 +146,11 @@ class GoodCategoriesBuilder extends Object
             return '0';
         }
 
-        $parentCategory = GoodCategory::findOne($this->getParentCategoryId());
+        $parentCategory = $this
+            ->getRepository()
+            ->find(GoodCategory::className())
+            ->byId($this->getParentCategoryId())
+            ->one();
 
         if (!$parentCategory) {
             return '0';
@@ -188,7 +192,7 @@ class GoodCategoriesBuilder extends Object
         $query = $this
             ->getRepository()
             ->find(GoodCategory::className())
-            ->where(['url' => $url]);
+            ->byUrl($url);
 
         if (!$this->isNew()) {
             $query = $query->andWhere(

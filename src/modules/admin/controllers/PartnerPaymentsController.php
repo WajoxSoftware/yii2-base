@@ -36,10 +36,16 @@ class PartnerPaymentsController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = User::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(User::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

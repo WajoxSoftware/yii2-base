@@ -91,13 +91,24 @@ class TrafficTunnelListing extends Component
 
         if ($this->itemId == null) {
             $this->back = ['typeId' => self::TYPE_ID_INDEX];
-            $this->sources = Partner::find();
+            $this->sources = $this
+                ->getRepository()
+                ->find(Partner::className());
 
             return;
         }
 
-        $model = User::findOne($this->itemId);
-        $this->sources = TrafficSource::find()->where(['user_id' => $model->id]);
+        $model = $this
+            ->getRepository()
+            ->find(User::className())
+            ->byId($this->itemId)
+            ->one();
+
+        $this->sources =$this
+            ->getRepository()
+            ->find(TrafficSource::className())
+            ->where(['user_id' => $model->id]);
+            
         $this->back = ['typeId' => self::TYPE_ID_PARTNER_ITEM, 'itemId' => $model->id];
     }
 

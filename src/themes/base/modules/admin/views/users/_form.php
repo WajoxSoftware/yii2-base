@@ -3,7 +3,7 @@ use dosamigos\datepicker\DatePicker;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
-use wajox\yii2base\models\User;
+use wajox\yii2base\helpers\UsersHelper;
 
 ?>
 
@@ -34,7 +34,7 @@ use wajox\yii2base\models\User;
         <div class="col-md-3">
             <?= $form->field($model, 'gender')
                 ->dropDownList(
-                    User::getGenderList()
+                    UsersHelper::getGenderList()
                 ); ?>
         </div>
 
@@ -52,7 +52,7 @@ use wajox\yii2base\models\User;
         <div class="col-md-3">
             <?= $form->field($model, 'referal_user_id')
                 ->dropDownList(
-                    ArrayHelper::map(User::find()->all(), 'id', 'name'),
+                    UsersHelper::getUsersList(),
                     ['prompt' => \Yii::t('app/general', 'Select')]
                 ); ?>
         </div>

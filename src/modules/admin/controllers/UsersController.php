@@ -61,11 +61,11 @@ class UsersController extends ApplicationController
             $this->saveRole($model);
 
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
         }
+        
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     public function actionView($id)
@@ -92,11 +92,17 @@ class UsersController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = User::findOne($id)) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(User::className())
+            ->byId($id)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function saveRole($user)
