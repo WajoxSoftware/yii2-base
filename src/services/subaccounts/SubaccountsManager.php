@@ -2,19 +2,17 @@
 
 namespace wajox\yii2base\services\subaccounts;
 
-use wajox\yii2base\models\user;
+use wajox\yii2base\models\User;
 use wajox\yii2base\models\UserSubaccount;
 use wajox\yii2base\components\base\Object;
 
 class SubaccountsManager extends Object
 {
-    public $user = null;
+    protected $user = null;
 
-    public function __construct($user)
+    public function __construct(User $user)
     {
-        if (is_a($user, 'wajox\yii2base\models\User')) {
-            $this->user = $user;
-        }
+        $this->user = $user;
     }
 
     public function getSubaccount($tag)
@@ -28,7 +26,11 @@ class SubaccountsManager extends Object
         $cond['user_id'] = $this->user->id;
         $cond = array_merge($cond, $tagAttributes);
 
-        $subaccount = UserSubaccount::find()->where($cond)->one();
+        $subaccount = $this
+            ->getRepository()
+            ->find(UserSubaccount::className())
+            ->where($cond)
+            ->one();
 
         if ($subaccount) {
             return $subaccount;
@@ -48,7 +50,11 @@ class SubaccountsManager extends Object
             'user_id' => $this->user->id,
         ];
 
-        return UserSubaccount::find()->where($cond)->one();
+        return $this
+            ->getRepository()
+            ->find(UserSubaccount::className())
+            ->where($cond)
+            ->one();
     }
 
     private function createSubaccount($tag)

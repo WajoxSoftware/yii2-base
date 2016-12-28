@@ -185,10 +185,15 @@ class GoodCategoriesBuilder extends Object
 
     protected function isUrlExists($url)
     {
-        $query = GoodCategory::find()->where(['url' => $url]);
+        $query = $this
+            ->getRepository()
+            ->find(GoodCategory::className())
+            ->where(['url' => $url]);
 
         if (!$this->isNew()) {
-            $query = $query->andWhere(['!=', 'id', $this->getGoodCategory()->id]);
+            $query = $query->andWhere(
+                ['!=', 'id', $this->getGoodCategory()->id]
+            );
         }
 
         return $query->exists();

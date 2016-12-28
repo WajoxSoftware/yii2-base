@@ -11,7 +11,7 @@ class ContactsManager extends Object
 {
     protected $user;
 
-    public function __construct($user)
+    public function __construct(User $user)
     {
         $this->setUser($user);
     }
@@ -69,14 +69,21 @@ class ContactsManager extends Object
             return false;
         }
 
-        $privacyManager = $this->createObject(PrivacySettingsManager::className(), [$user]);
-        $hasAccess = $privacyManager->addTargetUsersIds([$user->id])
-                                                        ->canAdd($user->id);
+        $privacyManager = $this->createObject(
+            PrivacySettingsManager::className(),
+            [$user]
+        );
+
+        $hasAccess = $privacyManager
+            ->addTargetUsersIds([$user->id])
+            ->canAdd($user->id);
+
         if (!$hasAccess) {
             return false;
         }
 
-        return !$this->hasContact($user) && !$this->hasRequest($user);
+        return !$this->hasContact($user)
+               && !$this->hasRequest($user);
     }
 
     public function removeContact($user)
@@ -94,9 +101,7 @@ class ContactsManager extends Object
             $usersIds[$userId] = $userId;
         }
 
-        $usersQuery = User::find()->where(['[[id]]' => $usersIds]);
-
-        return $usersQuery;
+        return $this->findUsersByIds($usersIds);
     }
 
     public function getRequestsQuery()
@@ -107,16 +112,17 @@ class ContactsManager extends Object
             $usersIds[$userId] = $userId;
         }
 
-        $usersQuery = User::find()->where(['[[id]]' => $usersIds]);
-
-        return $usersQuery;
+        return $this->findUsersByIds($usersIds);
     }
 
     public function getSentRequests()
     {
-        return ContactRequest::find()->where([
-                'user_id' => $this->user->id,
-            ])->indexBy('contact_user_id')->all();
+        return $this
+            ->getRepository()
+            ->find(ContactRequest::className())
+            ->where(['user_id' => $this->user->id])
+            ->indexBy('contact_user_id')
+            ->all();
     }
 
     protected function setUser($user)
@@ -143,14 +149,32 @@ class ContactsManager extends Object
 
     protected function getContactModels($user)
     {
-        return UserContact::find()->where(['user_id' => $this->user->id, 'contact_user_id' => $user->id])
-                           ->orWhere(['user_id' => $user->id, 'contact_user_id' => $this->user->id]);
+        return $this
+            ->getRepository()
+            ->find(UserContact::className())
+            ->where([
+                'user_id' => $this->user->id,
+                'contact_user_id' => $user->id,
+            ])
+            ->orWhere([
+                'user_id' => $user->id,
+                'contact_user_id' => $this->user->id,
+            ]);
     }
 
     protected function getRequestModels($user)
     {
-        return ContactRequest::find()->where(['user_id' => $this->user->id, 'contact_user_id' => $user->id])
-                           ->orWhere(['user_id' => $user->id, 'contact_user_id' => $this->user->id]);
+        return $this
+            ->getRepository()
+            ->find(ContactRequest::className())
+            ->where([
+                'user_id' => $this->user->id,
+                'contact_user_id' => $user->id,
+            ])
+            ->orWhere([
+                'user_id' => $user->id,
+                'contact_user_id' => $this->user->id,
+            ]);
     }
 
     protected function addContactModel($userId, $contactUserId)
@@ -163,5 +187,13 @@ class ContactsManager extends Object
         }
 
         return $this;
+    }
+
+    protected function findUsersByIds($ids)
+    {
+        return $this
+            ->getRepository()
+            ->find(User::className()
+            ->byId($usersIds);
     }
 }

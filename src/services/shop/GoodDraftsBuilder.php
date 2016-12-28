@@ -15,7 +15,10 @@ class GoodDraftsBuilder extends \wajox\yii2base\components\base\Object
 
     public function __construct($user, $source = null, $cloneMode = false)
     {
-        $this->setUser($user)->setSource($source)->setCloneMode($cloneMode);
+        $this
+            ->setUser($user)
+            ->setSource($source)
+            ->setCloneMode($cloneMode);
     }
 
     public function setUser($user)
@@ -183,7 +186,10 @@ class GoodDraftsBuilder extends \wajox\yii2base\components\base\Object
     {
         $model = $model ?: $this->createObject(Good::className());
 
-        $manager = new GoodsManager($this->user, $model);
+        $manager = $this->createObject(
+            GoodsManager::className(),
+            [$this->user, $model]
+        );
 
         return $manager->getBuilder($model->good_type_id)->build();
     }

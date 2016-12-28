@@ -66,26 +66,26 @@ class StatisticComputer extends Object
 
         $time_cond = ['start' => $start_time, 'finish' => $finish_time];
 
-        $visitsCount = \Yii::$app->userActionLogs->getVisitNewLogs($params)
+        $visitsCount = $this->getApp()->userActionLogs->getVisitNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->count();
 
-        $uniqueVisitsCount = \Yii::$app->userActionLogs->getVisitNewLogs($params)
+        $uniqueVisitsCount = $this->getApp()->userActionLogs->getVisitNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->select('[[ip_address]]')
             ->groupBy('[[ip_address]]')
             ->count();
 
-        $subscribesCount = \Yii::$app->userActionLogs->getSubscribeNewLogs($params)
+        $subscribesCount = $this->getApp()->userActionLogs->getSubscribeNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->count();
 
-        $newBillLogs = \Yii::$app->userActionLogs->getBillNewLogs($params)
+        $newBillLogs = $this->getApp()->userActionLogs->getBillNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->indexBy('action_item_id')
             ->all();
 
-        $paidBillLogs = \Yii::$app->userActionLogs->getBillPayLogs($params)
+        $paidBillLogs = $this->getApp()->userActionLogs->getBillPayLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->indexBy('action_item_id')
             ->all();
@@ -106,9 +106,14 @@ class StatisticComputer extends Object
             $cond['partner_id'] = $this->getPartner()->id;
         }
 
-        $partnersFeeSum = PartnerFee::find()
+        $partnersFeeSum = $this
+            ->getRepository()
+            ->find(PartnerFee::className())
             ->where($cond)
-            ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
+            ->andWhere(
+                'created_at >= :start AND created_at < :finish',
+                $time_cond
+            )
             ->sum('[[sum]]');
 
         if ($this->getIsPartner()) {

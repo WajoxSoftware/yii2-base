@@ -93,7 +93,11 @@ class TrafficStreamStatisticAnalyzer extends Object
             $billIds[] = $billLog->action_item_id;
         }
 
-        $this->billSum = Bill::find()->where(['id' => $billIds])->sum('[[sum]]');
+        $this->billSum = $this
+            ->getRepository()
+            ->find(Bill::className())
+            ->where(['id' => $billIds])
+            ->sum('[[sum]]');
     }
 
     protected function computeClicksSum()
@@ -103,9 +107,17 @@ class TrafficStreamStatisticAnalyzer extends Object
             'start' => $this->start_time,
             'finish' => $this->finish_time,
           ];
-        $query = TrafficStreamPrice::find()
-            ->where('[[traffic_stream_id]] = :stream AND [[started_at]] >= :start AND [[finished_at]] < :finish', $cond)
-            ->orWhere('[[traffic_stream_id]] = :stream AND [[started_at]] = 0 AND [[finished_at]] = 0', $cond);
+        $query = $this
+            ->getRepository()
+            ->find(TrafficStreamPrice::className())
+            ->where(
+                '[[traffic_stream_id]] = :stream AND [[started_at]] >= :start AND [[finished_at]] < :finish',
+                $cond
+            )
+            ->orWhere(
+                '[[traffic_stream_id]] = :stream AND [[started_at]] = 0 AND [[finished_at]] = 0',
+                $cond
+            );
 
         $this->clicksSum = $query->sum('[[sum]]');
 

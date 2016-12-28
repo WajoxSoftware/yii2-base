@@ -22,4 +22,14 @@ trait AppTrait
     {
         return \Yii::$app->get($id, $throwException);
     }
+
+    public static function getRepository()
+    {
+        return \Yii::$app->repository;
+    }
+
+    public static function getDb()
+    {
+        return \Yii::$app->db;
+    }
 }

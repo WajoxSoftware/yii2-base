@@ -25,7 +25,11 @@ class UserNotificationMailer extends Object
             return false;
         }
 
-        $subject = \Yii::t('app/mailer', 'You have new unread notifications');
+        $subject = \Yii::t(
+            'app/mailer',
+            'You have new unread notifications'
+        );
+
         $template = 'notification_mailer/new_notifications';
         $email = $this->user->email;
         $data = ['notifications' => $this->notifications];
@@ -50,10 +54,17 @@ class UserNotificationMailer extends Object
     {
         $lastTime = time() - self::NOTIFICATION_INTERVAL * 60;
 
-        $this->notifications = UserNotification::find()->where([
-                    'user_id' => $this->getUser()->id,
-                    'status_id' => UserNotification::STATUS_ID_NEW,
-                ])->andWhere(['>=', 'created_at', $lastTime])->all();
+        $this->notifications = $this
+            ->getRepository()
+            ->find(UserNotification::className())
+            ->where([
+                'user_id' => $this->getUser()->id,
+                'status_id' => UserNotification::STATUS_ID_NEW,
+            ])
+            ->andWhere([
+                '>=', 'created_at', $lastTime,
+            ])
+            ->all();
 
         return $this;
     }

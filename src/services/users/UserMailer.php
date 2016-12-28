@@ -16,30 +16,54 @@ class UserMailer extends Object
     public function registration($password)
     {
         $email = $this->user->email;
-        $subject = \Yii::t('app/mailer', 'User Mailer Registration Email Subject');
+        $subject = \Yii::t(
+            'app/mailer',
+            'User Mailer Registration Email Subject'
+        );
         $template = 'user_mailer/registration';
-        $data = ['user' => $this->user, 'password' => $password];
+        $data = [
+            'user' => $this->user,
+            'password' => $password,
+        ];
 
-        return $this->getApp()->mailer->send($email, $subject, $template, $data);
+        return $this
+            ->getApp()
+            ->mailer
+            ->send($email, $subject, $template, $data);
     }
 
     public function confirmation()
     {
         $email = $this->user->email;
-        $subject = \Yii::t('app/mailer', 'User Mailer Confirmation Email Subject');
+        $subject = \Yii::t(
+            'app/mailer',
+            'User Mailer Confirmation Email Subject'
+        );
         $template = 'user_mailer/confirmation';
         $data = ['user' => $this->user];
 
-        return $this->getApp()->mailer->send($email, $subject, $template, $data);
+        return $this
+            ->getApp()
+            ->mailer
+            ->send($email, $subject, $template, $data);
     }
 
     public function reset_password($password)
     {
         $email = $this->user->email;
-        $subject = \Yii::t('app/mailer', 'User Mailer Reset Password Email Subject');
+        $subject = \Yii::t(
+            'app/mailer',
+            'User Mailer Reset Password Email Subject'
+        );
         $template = 'user_mailer/reset_password';
-        $data = ['user' => $this->user, 'password' => $password];
+        $data = [
+            'user' => $this->user,
+            'password' => $password,
+        ];
 
-        return $this->getApp()->mailer->send($email, $subject, $template, $data);
+        return $this
+            ->getApp()
+            ->mailer
+            ->send($email, $subject, $template, $data);
     }
 }

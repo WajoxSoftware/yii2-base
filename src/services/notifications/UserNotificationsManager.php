@@ -15,12 +15,20 @@ class UserNotificationsManager extends Object
 
     public function createSystemMessage($subject, $message)
     {
-        return $this->create($subject, $message, UserNotification::TYPE_ID_SYSTEM);
+        return $this->create(
+            $subject,
+            $message,
+            UserNotification::TYPE_ID_SYSTEM
+        );
     }
 
     public function createAccountMessage($subject, $message)
     {
-        return $this->create($subject, $message, UserNotification::TYPE_ID_ACCOUNT);
+        return $this->create(
+            $subject,
+            $message,
+            UserNotification::TYPE_ID_ACCOUNT
+        );
     }
 
     public function createOrderMessage($subject, $message, $orderId)
@@ -30,53 +38,75 @@ class UserNotificationsManager extends Object
 
     public function readAll()
     {
-        $this->getApp()->db->createCommand()->update(
-                UserNotification::tableName(),
+        $this
+            ->getRepository()
+            ->update(
+                UserNotification::className(),
                 ['status_id' => UserNotification::STATUS_ID_READ],
                 [
                     'user_id' => $this->user->id,
                     'status_id' => UserNotification::STATUS_ID_NEW,
                 ]
-            )->execute();
+            );
     }
 
     public function read($id)
     {
-        $this->getApp()->db->createCommand()->update(
-                UserNotification::tableName(),
+        $this
+            ->getRepository()
+            ->update((
+                UserNotification::classNameName(),
                 ['status_id' => UserNotification::STATUS_ID_READ],
                 [
                     'user_id' => $this->user->id,
                     'status_id' => UserNotification::STATUS_ID_NEW,
                     'id' => $id,
                 ]
-            )->execute();
+            );
     }
 
     public function orderStatusNotification($order)
     {
         $newStatus = $order->status . '/' . $order->deliveryStatus;
 
-        $content = \Yii::t('app/notifications', 'Order Status Changed to {newStatus}', [
+        $content = \Yii::t(
+            'app/notifications',
+            'Order Status Changed to {newStatus}',
+            [
                 'newStatus' => $newStatus,
                 'orderId' => $order->id,
-            ]);
+            ]
+        );
 
-        $subject = \Yii::t('app/notifications', 'Order Status Change Subject');
+        $subject = \Yii::t(
+            'app/notifications',
+            'Order Status Change Subject'
+        );
 
-        return $this->createOrderMessage($subject, $content, $order->id);
+        return $this->createOrderMessage(
+            $subject,
+            $content,
+            $order->id
+        );
     }
 
     public function messageStatusNotification($messageUserStatus)
     {
         $message = $messageUserStatus->message;
 
-        $content = \Yii::t('app/notifications', 'New Nessage {messageText} from {name}', [
+        $content = \Yii::t(
+            'app/notifications',
+            'New Nessage {messageText} from {name}',
+            [
                 'messageText' => $message->content,
                 'name' => $message->user->fullName,
-            ]);
+            ]
+        );
 
-        $subject = \Yii::t('app/notifications', 'New Message Subject');
+        $subject = \Yii::t(
+            'app/notifications',
+            'New Message Subject'
+        );
 
         return $this->createAccountMessage($subject, $content);
     }
@@ -85,7 +115,10 @@ class UserNotificationsManager extends Object
     {
         $model = $this->buildModel($typeId);
 
-        $model->setSubject($subject)->setMessage($message)->setContentParams($params);
+        $model
+            ->setSubject($subject)
+            ->setMessage($message)
+            ->setContentParams($params);
 
         return $model->save();
     }

@@ -112,10 +112,13 @@ abstract class BaseDeliveryAbstract extends Object
 
     public function detachGood($good)
     {
-        GoodDeliveryMethod::deleteAll([
-            'good_id' => $good->id,
-            'delivery_method' => $this->getId(),
-        ]);
+        $this->getRepository()->deleteAll(
+            GoodDeliveryMethod::className(),
+            [
+                'good_id' => $good->id,
+                'delivery_method' => $this->getId(),
+            ]
+        );
 
         $this->afterDetach($good);
     }

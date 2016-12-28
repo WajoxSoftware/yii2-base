@@ -239,8 +239,14 @@ abstract class GoodsBuilderAbstract extends Object
             return $this;
         }
 
-        $manager = $this->createObject(DeliveryMethodsManager::className(), [$this->getGood()]);
-        $success = $manager->detachMethods()->attachMethods($this->getActualDeliveryMethods());
+        $manager = $this->createObject(
+            DeliveryMethodsManager::className(),
+            [$this->getGood()]
+        );
+
+        $success = $manager
+            ->detachMethods()
+            ->attachMethods($this->getActualDeliveryMethods());
 
         if (!$success) {
             throw new \Exception('Unable to save delivery methods');
@@ -251,7 +257,10 @@ abstract class GoodsBuilderAbstract extends Object
 
     protected function saveRelations()
     {
-        $lettersQuery = GoodLetter::find()->where(['good_id' => 0]);
+        $lettersQuery = $this
+            ->getRepository()
+            ->find(GoodLetter::className())
+            ->where(['good_id' => 0]);
 
         foreach ($lettersQuery->each() as $letter) {
             $goodLetter = clone $letter;
@@ -331,10 +340,15 @@ abstract class GoodsBuilderAbstract extends Object
 
     protected function isUrlExists($url)
     {
-        $query = Good::find()->where(['url' => $url]);
+        $query = $this
+            ->getRepository()
+            ->find(Good::className())
+            ->where(['url' => $url]);
 
         if (!$this->isNew()) {
-            $query = $query->andWhere(['!=', 'id', $this->getGood()->id]);
+            $query = $query->andWhere(
+                ['!=', 'id', $this->getGood()->id]
+            );
         }
 
         return $query->exists();
@@ -347,7 +361,9 @@ abstract class GoodsBuilderAbstract extends Object
             'extra' => ['delivery_good_id' => $this->getForm()->deliveryId],
         ];
 
-        if ($this->getGood()->isPhysical && $this->getForm()->isCashOnDelivery) {
+        if ($this->getGood()->isPhysical
+            && $this->getForm()->isCashOnDelivery
+        ) {
             return ['CodDelivery' => $params];
         }
 

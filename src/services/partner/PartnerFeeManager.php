@@ -55,7 +55,10 @@ class PartnerFeeManager extends Object
 
     public function dropOrder($order)
     {
-        $partnerFees = PartnerFee::find()->where(['order_id' => $order->id]);
+        $partnerFees = $this
+            ->getRepository()
+            ->find(PartnerFee::className())
+            ->where(['order_id' => $order->id]);
 
         foreach ($partnerFees->each() as $partnerFee) {
             $this->canccel($partnerFee);

@@ -84,8 +84,13 @@ class OrderBuilder extends Object
 
     protected function computeSum()
     {
-        $this->goodsSum = $this->getCartManager()->getSum();
-        $this->goodsDeliverySum = $this->getCartManager()->getDeliverySum();
+        $this->goodsSum = $this
+            ->getCartManager()
+            ->getSum();
+
+        $this->goodsDeliverySum = $this
+            ->getCartManager()
+            ->getDeliverySum();
 
         return $this;
     }
@@ -112,12 +117,16 @@ class OrderBuilder extends Object
 
     protected function createBill()
     {
-        $bill = $this->getBillsManager()->create([
-          'Bill' => [
+        $billParams = [
+            'Bill' => [
             'sum' => $this->getTotalSum(),
             'payment_destination_id' => Bill::DESTINATION_ID_ORDER,
-          ],
-        ], $this->getCustomer());
+            ],
+        ];
+
+        $bill = $this
+            ->getBillsManager()
+            ->create($billParams, $this->getCustomer());
 
         if ($bill->isNewRecord) {
             throw new \Exception('Can not create bill');

@@ -7,7 +7,11 @@ class GoodsBuilderElectronic extends GoodsBuilderAbstract
 {
     public function createForm()
     {
-        $this->setForm($this->createObject(ElectronicGoodForm::className()));
+        $this->setForm(
+        	$this->createObject(
+        		ElectronicGoodForm::className()
+        	)
+        );
 
         return $this;
     }

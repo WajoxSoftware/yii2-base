@@ -14,7 +14,6 @@ class GoodLettersMailer extends Object
 
     public function send()
     {
-
         $order = $this->model->order;
 
         $email = $this->model->order->customer->email;

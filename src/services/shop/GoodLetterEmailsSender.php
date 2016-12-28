@@ -17,18 +17,27 @@ class GoodLetterEmailsSender extends Object
 
     protected function getEmailsQuery()
     {
-        return GoodLetterEmail::find()->where([
+        return $this
+            ->getRepository()
+            ->find(GoodLetterEmail::className())
+            ->where([
                 'status_id' => GoodLetterEmail::STATUS_ID_NEW,
-            ])->andWhere([
+            ])
+            ->andWhere([
                 '<=',
                 'scheduled_at',
                 time(),
-            ])->limit(self::LIMIT);
+            ])
+            ->limit(self::LIMIT);
     }
 
     protected function sendEmail($model)
     {
-        $mailer = $this->createObject(GoodLettersMailer::className(), [$model]);
+        $mailer = $this->createObject(
+            GoodLettersMailer::className(),
+            [$model]
+        );
+        
         $result = $mailer->send();
 
         $model->status_id = $result ? GoodLetterEmail::STATUS_ID_SEND : GoodLetterEmail::STATUS_ID_ERROR;

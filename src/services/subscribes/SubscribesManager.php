@@ -40,7 +40,10 @@ class SubscribesManager extends Object
 
     public function unsubscribe($email, $emailList = null)
     {
-        $query = Subscribe::find()->where(['email' => $email]);
+        $query = $this
+            ->getRepository()
+            ->find(Subscribe::className())
+            ->where(['email' => $email]);
 
         if ($emailList) {
             $query->andWhere(['email_list_id' => $emailList->id]);
@@ -49,8 +52,20 @@ class SubscribesManager extends Object
         $subscribes = $query->all();
 
         foreach ($subscribes as $subscribe) {
-            $this->triggerEvent($subscribe, EmailListEvent::EVENT_UNSUBSCRIBE, $subscribe->user);
-            $this->getApp()->mailer->deleteUserFromList($subscribe->email, $subscribe->emailList->api_id);
+            $this->triggerEvent(
+                $subscribe,
+                EmailListEvent::EVENT_UNSUBSCRIBE,
+                $subscribe->user
+            );
+
+            $this
+                ->getApp()
+                ->mailer
+                ->deleteUserFromList(
+                    $subscribe->email,
+                    $subscribe->emailList->api_id
+                );
+
             $subscribe->status_id = Subscribe::STATUS_ID_DELETED;
             $subscribe->save();
         }
@@ -61,7 +76,12 @@ class SubscribesManager extends Object
         $model = $this->setSubscriptionExternalData($model);
 
         if ($model->save()) {
-            $this->triggerEvent($model, EmailListEvent::EVENT_SUBSCRIBE, $model->user);
+            $this->triggerEvent(
+                $model,
+                EmailListEvent::EVENT_SUBSCRIBE,
+                $model->user
+            );
+            
             $this->synchronizeSubscription($model);
         }
 

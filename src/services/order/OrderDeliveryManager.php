@@ -52,7 +52,7 @@ class OrderDeliveryManager extends Object
 
     public function callAdapter($order, $callbackName)
     {
-        $class = '\wajox\yii2base\services\delivery\\' . $order->delivery_method;
+        $class = 'wajox\yii2base\services\delivery\\' . $order->deliveryMethod;
         $obj = $this->createObject($class);
 
         return $obj->$callbackName($order);

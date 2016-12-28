@@ -2,8 +2,9 @@
 namespace wajox\yii2base\services\traffic;
 
 use wajox\yii2base\models\UserActionLog;
+use wajox\yii2base\components\base\Object;
 
-class TrafficTunnelAnalyzer
+class TrafficTunnelAnalyzer extends Object
 {
     protected $startDate;
     protected $finishDate;
@@ -146,7 +147,9 @@ class TrafficTunnelAnalyzer
             $where['action_item_id'] = $step->action_params;
         }
 
-        return UserActionLog::find()
+        return $this
+            ->getRepository()
+            ->find(UserActionLog::className())
             ->andWhere(['>', 'created_at', $this->getStartAt()])
             ->andWhere(['<', 'created_at', $this->getFinishAt()])
             ->where($where);
