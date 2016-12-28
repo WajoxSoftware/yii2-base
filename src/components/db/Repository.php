@@ -24,17 +24,17 @@ class Repository extends Object
 
 	public function insert($name, $rows)
 	{
-        $obj = $this->createObject($name);
+		$obj = $this->createObject($name);
 
-        return $this
-        	->getDb()
-        	->createCommand()
-        	->batchInsert(
-	            $obj->tableName(),
-	            $obj->attributes(),
-	            $rows
-	        )
-	        ->execute();
+		return $this
+			->getDb()
+			->createCommand()
+			->batchInsert(
+		        $obj->tableName(),
+		        $obj->attributes(),
+		        $rows
+		    )
+		    ->execute();
 	}
 
 	public function update(string $name, array $set, array $where)
