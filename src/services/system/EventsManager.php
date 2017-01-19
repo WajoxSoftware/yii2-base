@@ -6,42 +6,54 @@ use wajox\yii2base\components\base\Object;
 
 class EventsManager extends Object
 {
-    public $handlers = [];
+    public $listeners = [];
+    public $eventsMap = [];
 
-    public function __construct($params = [])
+    public function __construct(array $params = [])
     {
-        if (isset($params['handlers'])) {
-            $this->setHandlers($params['handlers']);
+        $listeners = [];
+        $handlers = [];
+
+        if (isset($params['listeners'])) {
+            $listeners = $params['listeners'];
         }
+
+        if (isset($params['handlers'])) {
+            $handlers = $params['handlers'];
+        }
+
+        $this
+            ->setListeners($listeners)
+            ->setHandlers($handlers);
     }
 
-    public function on($className, $typeId, $callback)
+    public function on(string $className, string $typeId, callable $callback): EventsManager
     {
         Event::on($className, $typeId, $callback);
 
         return $this;
     }
 
-    public function addHandler($className, $params = [])
+    public function addListener(string $className, array $params = [])
     {
         $handler = $this->createObject($className, [$params]);
         $handler->bindEvents($this);
     }
 
-    public function trigger($className, $typeId, $event)
+    public function trigger(string $className, string $typeId, Event $event): EventsManager
     {
         Event::trigger($className, $typeId, $event);
 
         return $this;
     }
 
-    protected function setHandlers($handlers)
+    protected function setListeners(array $listeners): EventsManager
     {
-        $this->handlers = $handlers;
+        $this->listeners = $listeners;
 
-        foreach ($this->handlers as $key => $params) {
+        foreach ($this->listeners as $key => $params) {
             if (!is_numeric($key)) {
-                $this->addHandler($key, $params);
+                $this->addListener($key, $params);
                 continue;
             }
 
@@ -50,6 +62,17 @@ class EventsManager extends Object
                 $params[1],
                 $params[2]
             );
+        }
+
+        return $this;
+    }
+
+    protected function setHandlers(array $handlers)
+    {
+        foreach ($handlers as $eventClass => $types) {
+            foreach ($types as $typeId => $handler) {
+                $this->on($eventClass, $typeId, $handler);
+            }
         }
 
         return $this;
