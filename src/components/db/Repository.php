@@ -5,9 +5,9 @@ use wajox\yii2base\components\base\Object;
 
 class Repository extends Object
 {
-    public function __construct(array $map)
+    public function __construct(array $params)
     {
-        $this->loadMap($map);
+        $this->loadMap($params['map']);
     }
 
     public function get($name)
