@@ -490,13 +490,6 @@ class UrlManager extends \codemix\localeurls\UrlManager
         }
         
         \Yii::$app->getResponse()->redirect($url);
-        
-        if (YII2_LOCALEURLS_TEST) {
-            // Response::redirect($url) above will call `Url::to()` internally. So to really
-            // test for the same final redirect URL here, we need to call Url::to(), too.
-            throw new \yii\base\Exception(\yii\helpers\Url::to($url));
-        } else {
-            \Yii::$app->end();
-        }
+        \Yii::$app->end();
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace wajox\yii2base\models\form;
 
 use wajox\yii2base\components\base\Model;
