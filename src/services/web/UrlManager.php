@@ -322,8 +322,6 @@ class UrlManager extends \codemix\localeurls\UrlManager
             return false;
         }
 
-        \Yii::trace('No matching URL rules. Using default URL parsing logic.', __METHOD__);
-        // Ensure, that $pathInfo does not end with more than one slash.
         if (strlen($pathInfo) > 1 && substr_compare($pathInfo, '//', -2, 2) === 0) {
             return false;
         }
@@ -433,7 +431,7 @@ class UrlManager extends \codemix\localeurls\UrlManager
                     $language = $this->_defaultLanguage;
                 }
             }
-            // #35: Only redirect if a valid language was found
+
             if ($this->matchCode($language)===[null, null]) {
                 return;
             }
@@ -442,6 +440,7 @@ class UrlManager extends \codemix\localeurls\UrlManager
             if ($key && is_string($key)) {
                 $language = $key;
             }
+
             $this->redirectToLanguage($this->keepUppercaseLanguageCode ? $language : strtolower($language));
         }
     }

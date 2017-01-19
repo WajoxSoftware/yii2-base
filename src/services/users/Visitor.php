@@ -273,7 +273,7 @@ class Visitor extends Component
     {
         $referalId = $this->loadReferalId();
         $referal = null;
-        if ($$referalId != null) {
+        if ($referalId != null) {
             $referal = $this
                 ->getRepository()
                 ->find(User::className())
