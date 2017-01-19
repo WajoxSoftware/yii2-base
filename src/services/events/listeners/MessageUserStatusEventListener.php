@@ -1,13 +1,14 @@
 <?php
-namespace wajox\yii2base\services\events\handlers;
+namespace wajox\yii2base\services\events\listeners;
 
 use wajox\yii2base\models\MessageUserStatus;
 use wajox\yii2base\services\events\types\MessageUserStatusEvent;
 use wajox\yii2base\services\notifications\UserNotificationsManager;
+use wajox\yii2base\services\system\EventsManager;
 
-class MessageUserStatusEventHandler extends EventHandlerAbstract
+class MessageUserStatusEventListener extends BaseListenerAbstract
 {
-    public function bindEvents($eventsManager)
+    public function bindEvents(EventsManager$eventsManager)
     {
         $eventsManager->on(MessageUserStatus::className(), MessageUserStatusEvent::EVENT_CREATED, function ($event) {
             (new UserNotificationsManager($event->messageUserStatus->user))->messageStatusNotification($event->messageUserStatus);

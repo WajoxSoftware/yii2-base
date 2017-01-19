@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\services\events\handlers;
+namespace wajox\yii2base\services\events\listeners;
 
 use wajox\yii2base\models\Good;
 use wajox\yii2base\models\Order;
@@ -13,8 +13,9 @@ use wajox\yii2base\services\subscribes\SubscribesManager;
 use wajox\yii2base\services\shop\GoodLettersBuilder;
 use wajox\yii2base\services\shop\PurchasesManager;
 use wajox\yii2base\services\notifications\UserNotificationsManager;
+use wajox\yii2base\services\system\EventsManager;
 
-class OrderEventHandler extends EventHandlerAbstract
+class OrderEventListener extends BaseListenerAbstract
 {
     public function bindEvents($eventsManager)
     {

@@ -1,14 +1,15 @@
 <?php
-namespace wajox\yii2base\services\events\handlers;
+namespace wajox\yii2base\services\events\listeners;
 
 use wajox\yii2base\models\Bill;
 use wajox\yii2base\models\UserActionLog;
 use wajox\yii2base\services\events\types\BillEvent;
 use wajox\yii2base\services\order\OrdersManager;
+use wajox\yii2base\services\system\EventsManager;
 
-class BillEventHandler extends EventHandlerAbstract
+class BillEventListener extends BaseListenerAbstract
 {
-    public function bindEvents($eventsManager)
+    public function bindEvents(EventsManager $eventsManager)
     {
         $eventsManager->on(Bill::className(), BillEvent::EVENT_CREATED, function ($event) {
             \Yii::$app->userActionLogs->log(UserActionLog::TYPE_ID_NEW_BILL, $event->bill, $event->bill->user);

@@ -1,13 +1,14 @@
 <?php
-namespace wajox\yii2base\services\events\handlers;
+namespace wajox\yii2base\services\events\listeners;
 
 use wajox\yii2base\models\EmailList;
 use wajox\yii2base\services\events\types\EmailListEvent;
 use wajox\yii2base\models\UserActionLog;
+use wajox\yii2base\services\system\EventsManager;
 
-class EmailListEventHandler extends EventHandlerAbstract
+class EmailListEventListener extends BaseListenerAbstract
 {
-    public function bindEvents($eventsManager)
+    public function bindEvents(EventsManager $eventsManager)
     {
         $eventsManager->on(EmailList::className(), EmailListEvent::EVENT_SUBSCRIBE, function ($event) {
             $user = null;
