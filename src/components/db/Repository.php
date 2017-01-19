@@ -11,19 +11,19 @@ class Repository extends Component
         $this->loadMap($params['map']);
     }
 
-    public function get($name)
+    public function get(string $name)
     {
         return $this->getDependency($name);
     }
 
-    public function find($name): ActiveQuery
+    public function find(string $name): ActiveQuery
     {
         $className = $this->get($name);
 
         return $className::find();
     }
 
-    public function insert($name, $rows)
+    public function insert(string $name, array $rows)
     {
         $obj = $this->createObject($name);
 
@@ -52,10 +52,10 @@ class Repository extends Component
     }
 
     public function updateAll(
-        $name,
-        $attributes,
-        $condition = '',
-        $params = []
+        string $name,
+        array $attributes,
+        string $condition = '',
+        array $params = []
     ) {
         $className = $this->get($name);
 
@@ -66,7 +66,7 @@ class Repository extends Component
         );
     }
 
-    public function deleteAll($name, $condition = '', $params = [])
+    public function deleteAll(string $name, string $condition = '', array $params = [])
     {
         $className = $this->get($name);
 
