@@ -6,77 +6,77 @@ use wajox\yii2base\components\base\Object;
 
 abstract class BaseDeliveryAbstract extends Object
 {
-    public function getClassShort()
+    public function getClassShort(): string
     {
         return str_replace(__NAMESPACE__ . '\\', '', get_called_class());
     }
 
-    public function getClass()
+    public function getClass(): string
     {
         return get_called_class();
     }
 
-    public function getId()
+    public function getId(): string
     {
         return $this->getClassShort();
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return \Yii::t('app/general', 'Delivery Method '.$this->getClassShort());
     }
 
-    public function getSettings()
+    public function getSettings(): array
     {
         return $this->getApp()->systemPaymentSettings->get($this->getClass());
     }
 
-    public function is($id)
+    public function is($id): bool
     {
         return $id == $this->getId();
     }
 
-    public function processNewOrder($order)
+    public function processNewOrder($order): bool
     {
         return true;
     }
 
-    public function processPaidOrder($order)
+    public function processPaidOrder($order): bool
     {
         return true;
     }
 
-    public function processSendOrder($order)
+    public function processSendOrder($order): bool
     {
         return true;
     }
 
-    public function processCancelledOrder($order)
+    public function processCancelledOrder($order): bool
     {
         return true;
     }
 
-    public function processPreparedOrder($order)
+    public function processPreparedOrder($order): bool
     {
         return true;
     }
 
-    public function processDeliveredOrder($order)
+    public function processDeliveredOrder($order): bool
     {
         return true;
     }
 
-    public function processUndeliveredOrder($order)
+    public function processUndeliveredOrder($order): bool
     {
         return true;
     }
 
-    public function processReturnedOrder($order)
+    public function processReturnedOrder($order): bool
     {
         return true;
     }
 
-    public function processMoneyReturnedOrder($order)
+    public function processMoneyReturnedOrder($order): bool
     {
         return true;
     }

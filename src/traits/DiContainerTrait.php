@@ -8,17 +8,17 @@ trait DiContainerTrait
         return \Yii::$container;
     }
 
-    public static function getDependency($class, $params = [], $config = [])
+    public static function getDependency(string $class, array $params = [], $config = [])
     {
         return self::getContainer()->get($class, $params, $config);
     }
 
-    public static function setDependency($class, $definition = [], $params = [])
+    public static function setDependency(string $class, array $definition = [], array $params = [])
     {
         return self::getContainer()->set($class, $definition, $params);
     }
 
-    public static function createObject($type, $params = [])
+    public static function createObject(string $type, array $params = [])
     {
         return \Yii::createObject($type, $params);
     }
