@@ -1,12 +1,13 @@
 <?php
 namespace wajox\yii2base\components\db;
 
-use wajox\yii2base\components\base\Object;
+use wajox\yii2base\components\base\Component;
 
-class Repository extends Object
+class Repository extends Component
 {
-    public function __construct(array $params)
+    public function __construct(array $params = [])
     {
+        $params['map'] = isset($params['map']) ? $params['map'] : [];
         $this->loadMap($params['map']);
     }
 
