@@ -1,11 +1,12 @@
 <?php
-namespace wajox\yii2base\modules\admin\controllers;
+namespace wajox\yii2base\modules\shop\controllers\admin;
 
+use wajox\yii2base\modules\shop\models\GoodCategory;
+use wajox\yii2base\modules\shop\services\GoodCategoriesBuilder;
+use wajox\yii2base\modules\admin\ApplicationController as AdminApplicationController;
 use yii\web\NotFoundHttpException;
-use wajox\yii2base\models\GoodCategory;
-use wajox\yii2base\services\shop\GoodCategoriesBuilder;
 
-class GoodCategoriesController extends ApplicationController
+class GoodCategoriesController extends AdminApplicationController
 {
     public function actionCreate($id = null)
     {
@@ -66,7 +67,10 @@ class GoodCategoriesController extends ApplicationController
 
     protected function getBuilder($model = null)
     {
-        $builder = $this->createObject(GoodCategoriesBuilder::className(), [$model]);
+        $builder = $this->createObject(
+            GoodCategoriesBuilder::className(),
+            [$model]
+        );
 
         return $builder->buildGoodCategory();
     }

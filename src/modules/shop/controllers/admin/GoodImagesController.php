@@ -1,13 +1,14 @@
 <?php
-namespace wajox\yii2base\modules\admin\controllers;
+namespace wajox\yii2base\modules\shop\controllers\admin;
 
-use wajox\yii2base\models\Good;
-use wajox\yii2base\models\GoodImage;
+use wajox\yii2base\modules\shop\models\Good;
+use wajox\yii2base\modules\shop\models\GoodImage;
 use wajox\yii2base\models\UploadedImage;
 use wajox\yii2base\services\uploads\UploadsManager;
+use wajox\yii2base\modules\admin\ApplicationController as AdminApplicationController;
 use yii\web\NotFoundHttpException;
 
-class GoodImagesController extends ApplicationController
+class GoodImagesController extends AdminApplicationController
 {
     public function actionCreate($id)
     {

@@ -1,15 +1,16 @@
 <?php
-namespace wajox\yii2base\modules\admin\controllers;
+namespace wajox\yii2base\modules\shop\controllers\admin;
 
-use wajox\yii2base\models\Good;
-use wajox\yii2base\models\GoodCategory;
-use wajox\yii2base\services\shop\GoodsManager;
+use wajox\yii2base\modules\shop\models\Good;
+use wajox\yii2base\modules\shop\models\GoodCategory;
+use wajox\yii2base\modules\shop\services\GoodsManager;
+use wajox\yii2base\modules\admin\ApplicationController as AdminApplicationController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
 use yii\data\Sort;
 
-class GoodsController extends ApplicationController
+class GoodsController extends AdminApplicationController
 {
     public function behaviors()
     {

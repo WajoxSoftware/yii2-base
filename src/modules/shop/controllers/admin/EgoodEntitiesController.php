@@ -1,13 +1,14 @@
 <?php
-namespace wajox\yii2base\modules\admin\controllers;
+namespace wajox\yii2base\modules\shop\controllers\admin;
 
-use yii\web\NotFoundHttpException;
-use wajox\yii2base\models\Good;
-use wajox\yii2base\models\EGoodEntity;
+use wajox\yii2base\modules\shop\models\Good;
+use wajox\yii2base\modules\shopmodels\EGoodEntity;
 use wajox\yii2base\models\UploadedFile;
 use wajox\yii2base\services\uploads\UploadsManager;
+use wajox\yii2base\modules\admin\ApplicationController as AdminApplicationController;
+use yii\web\NotFoundHttpException;
 
-class EgoodEntitiesController extends ApplicationController
+class EgoodEntitiesController extends AdminApplicationController
 {
     public function actionCreate($id, $typeId)
     {

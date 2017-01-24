@@ -1,11 +1,12 @@
 <?php
-namespace wajox\yii2base\modules\admin\controllers;
+namespace wajox\yii2base\modules\shop\controllers\admin;
 
-use wajox\yii2base\models\Good;
-use wajox\yii2base\models\GoodLetter;
+use wajox\yii2base\modules\shop\models\Good;
+use wajox\yii2base\modules\shopmodels\GoodLetter;
+use wajox\yii2base\modules\admin\ApplicationController as AdminApplicationController;
 use yii\web\NotFoundHttpException;
 
-class GoodLettersController extends ApplicationController
+class GoodLettersController extends AdminApplicationController
 {
     public function actionCreate($id = 0)
     {

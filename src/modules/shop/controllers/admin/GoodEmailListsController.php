@@ -1,12 +1,13 @@
 <?php
-namespace wajox\yii2base\modules\admin\controllers;
+namespace wajox\yii2base\modules\shop\controllers\admin;
 
-use wajox\yii2base\models\Good;
-use wajox\yii2base\models\GoodEmailList;
-use wajox\yii2base\models\EmailList;
+use wajox\yii2base\modules\shop\models\Good;
+use wajox\yii2base\modules\shop\models\GoodEmailList;
+use wajox\yii2base\modules\shop\models\EmailList;
+use wajox\yii2base\modules\admin\ApplicationController as AdminApplicationController;
 use yii\web\NotFoundHttpException;
 
-class GoodEmailListsController extends ApplicationController
+class GoodEmailListsController extends AdminApplicationController
 {
     public function actionCreate($id)
     {
