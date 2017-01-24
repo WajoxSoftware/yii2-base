@@ -1,7 +1,7 @@
 <?php
-namespace wajox\yii2base\services\shop;
+namespace wajox\yii2base\modules\shop\services;
 
-use wajox\yii2base\models\UserPaidGood;
+use wajox\yii2base\modules\shop\models\UserPaidGood;
 use wajox\yii2base\components\base\Object;
 
 class PurchasesManager extends Object

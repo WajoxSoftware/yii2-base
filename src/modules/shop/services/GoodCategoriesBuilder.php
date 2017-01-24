@@ -1,8 +1,7 @@
 <?php
+namespace wajox\yii2base\modules\shop\services;
 
-namespace wajox\yii2base\services\shop;
-
-use wajox\yii2base\models\GoodCategory;
+use wajox\yii2base\modules\shop\models\GoodCategory;
 use wajox\yii2base\helpers\TextHelper;
 use wajox\yii2base\components\base\Object;
 

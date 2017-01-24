@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\services\shop;
+namespace wajox\yii2base\modules\shop\services;
 
 use wajox\yii2base\components\base\Object;
 

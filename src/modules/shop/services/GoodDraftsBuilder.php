@@ -2,9 +2,9 @@
 /**
  * @FIXME: DEPRECATED
  */
-namespace wajox\yii2base\services\shop;
+namespace wajox\yii2base\modules\shop\services;
 
-use wajox\yii2base\models\Good;
+use wajox\yii2base\modules\shop\models\Good;
 
 class GoodDraftsBuilder extends \wajox\yii2base\components\base\Object
 {
