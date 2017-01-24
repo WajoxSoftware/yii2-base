@@ -277,7 +277,7 @@ class Visitor extends Component
             $referal = $this
                 ->getRepository()
                 ->find(User::className())
-                ->byId($referalId)
+                ->byId((int) $referalId)
                 ->one();
         }
 
@@ -316,7 +316,7 @@ class Visitor extends Component
         $stream = $this
             ->getRepository()
             ->find(TrafficStream::className())
-            ->byId($streamId)
+            ->byId((int) $streamId)
             ->one();
 
         $this->setTrafficStream($stream);
