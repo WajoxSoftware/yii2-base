@@ -17,7 +17,7 @@ use wajox\yii2base\services\system\EventsManager;
 
 class OrderEventListener extends BaseListenerAbstract
 {
-    public function bindEvents($eventsManager)
+    public function bindEvents(EventsManager $eventsManager)
     {
         $eventsManager->on(Order::className(), OrderEvent::EVENT_CREATED, function ($event) {
             //after create callbacks
