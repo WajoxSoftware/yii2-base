@@ -45,6 +45,6 @@ class BillQuery extends ActiveQuery
     {
         return $this->where([
             'order_id' => (int) $orderId,
-        ]);   
+        ]);
     }
 }
