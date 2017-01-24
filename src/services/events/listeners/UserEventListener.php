@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\services\events\handlers;
+namespace wajox\yii2base\services\events\listeners;
 
 use wajox\yii2base\models\User;
 use wajox\yii2base\services\events\types\UserEvent;
