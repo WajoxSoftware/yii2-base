@@ -1,7 +1,5 @@
 <?php
-namespace app\components\db;
-
-use wajox\yii2base\helpers\TextHelper;
+namespace wajox\yii2base\components\db;
 
 class ActiveQuery extends \yii\db\ActiveQuery
 {
@@ -10,7 +8,7 @@ class ActiveQuery extends \yii\db\ActiveQuery
         return $this->where(['id' => intval($id)]);
     }
 
-    public function viaClass($className, $link, callable $callable = null)
+    public function viaClass(string $className, array $link, callable $callable = null): ActiveQuery
     {
         return $this->viaTable(
             $className::tableName(),
