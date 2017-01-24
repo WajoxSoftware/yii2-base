@@ -12,7 +12,7 @@ abstract class BaseListenerAbstract
         $this->setParams($params);
     }
 
-    public function setParams(array $params): EventListenerAbstract
+    public function setParams(array $params): BaseListenerAbstract
     {
         $this->params = $params;
 
