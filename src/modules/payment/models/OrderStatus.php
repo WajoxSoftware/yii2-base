@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\models;
+namespace wajox\yii2base\modules\payment\models;
 
 class OrderStatus extends \wajox\yii2base\components\db\ActiveRecord
 {

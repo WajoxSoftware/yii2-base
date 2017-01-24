@@ -1,11 +1,9 @@
 <?php
+namespace wajox\yii2base\modules\payment\services;
 
-namespace wajox\yii2base\services\order;
-
-use wajox\yii2base\models\Order;
-use wajox\yii2base\models\GoodDeliveryMethod;
-use wajox\yii2base\services\events\types\OrderEvent;
-use wajox\yii2base\services\shop\ShopCartManager;
+use wajox\yii2base\modules\payment\models\Order;
+use wajox\yii2base\modules\payment\models\GoodDeliveryMethod;
+use wajox\yii2base\modules\payment\\events\OrderEvent;
 use wajox\yii2base\components\base\Object;
 
 class OrdersManager extends Object

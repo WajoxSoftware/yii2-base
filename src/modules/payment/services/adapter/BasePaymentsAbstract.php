@@ -7,27 +7,27 @@ use wajox\yii2base\components\base\Object;
 
 abstract class BasePaymentsAbstract extends Object
 {
-    public function getIsEnabled()
+    public function getIsEnabled(): bool
     {
         return true;
     }
 
-    public function getClassShort()
+    public function getClassShort(): string
     {
         return str_replace(__NAMESPACE__.'\\', '', get_called_class());
     }
 
-    public function getClass()
+    public function getClass(): string
     {
         return get_called_class();
     }
 
-    public function getId()
+    public function getId(): string
     {
         return $this->getClassShort();
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return \Yii::t(
             'app/payment',
@@ -35,14 +35,14 @@ abstract class BasePaymentsAbstract extends Object
         );
     }
 
-    public function getSettings()
+    public function getSettings(): array
     {
         return $this->getApp()
             ->systemPaymentSettings
             ->getSettings($this->getId());
     }
 
-    public function getBill($id)
+    public function getBill($id): Bill
     {
         return $this
             ->getRepository()
@@ -56,7 +56,8 @@ abstract class BasePaymentsAbstract extends Object
         $bill = $this->getBill($id);
 
         return $this
-            ->getDependency(BillsManager::className())
+            ->getApp()
+            ->billsManager
             ->paid($bill, $this->getId());
     }
 

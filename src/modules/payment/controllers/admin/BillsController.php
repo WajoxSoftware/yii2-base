@@ -1,11 +1,12 @@
 <?php
-namespace wajox\yii2base\modules\admin\controllers;
+namespace wajox\yii2base\modules\payment\controllers\admin;
 
-use wajox\yii2base\models\Bill;
-use wajox\yii2base\models\search\BillSearch;
+use wajox\yii2base\modules\payment\models\Bill;
+use wajox\yii2base\modules\payment\models\search\BillSearch;
+use wajox\yii2base\modules\admin\ApplicationController as AdminApplicationController;
 use yii\web\NotFoundHttpException;
 
-class BillsController extends ApplicationController
+class BillsController extends AdminApplicationController
 {
     public function actionIndex()
     {

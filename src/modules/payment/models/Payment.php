@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\models;
+namespace wajox\yii2base\modules\payment\models;
 
 class Payment extends \wajox\yii2base\components\db\ActiveRecord
 {

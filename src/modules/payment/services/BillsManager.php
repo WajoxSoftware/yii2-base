@@ -1,8 +1,8 @@
 <?php
-namespace wajox\yii2base\services\bill;
+namespace wajox\yii2base\modules\payment\services\bill;
 
-use wajox\yii2base\models\Bill;
-use wajox\yii2base\services\events\types\BillEvent;
+use wajox\yii2base\modules\payment\models\Bill;
+use wajox\yii2base\\modules\payment\events\BillEvent;
 use wajox\yii2base\components\base\Object;
 
 class BillsManager extends Object
@@ -25,7 +25,7 @@ class BillsManager extends Object
         return $model;
     }
 
-    public function paid($model, $payment_method = self::SYSTEM_PAYMENT)
+    public function paid($model, $paymentMethod = self::SYSTEM_PAYMENT)
     {
         if ($model->isPaid) {
             return false;
@@ -42,7 +42,7 @@ class BillsManager extends Object
             }
         }
 
-        $model->payment_method = $payment_method;
+        $model->payment_method = $paymentMethod;
         $model->saveStatusPaid();
 
         $this->triggerEvent($model, BillEvent::EVENT_PAID);
@@ -81,6 +81,9 @@ class BillsManager extends Object
         $event = $this->createObject(BillEvent::className());
         $event->bill = $model;
         
-        $this->getApp()->eventsManager->trigger(Bill::className(), $type, $event);
+        $this
+            ->getApp()
+            ->eventsManager
+            ->trigger(Bill::className(), $type, $event);
     }
 }

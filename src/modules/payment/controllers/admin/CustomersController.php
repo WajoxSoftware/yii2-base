@@ -1,13 +1,15 @@
 <?php
-namespace wajox\yii2base\modules\admin\controllers;
+namespace wajox\yii2base\modules\payment\controllers\admin;
 
-use wajox\yii2base\models\Customer;
-use wajox\yii2base\models\search\CustomerSearch;
+use wajox\yii2base\modules\payment\models\Customer;
+use wajox\yii2base\modules\payment\models\search\CustomerSearch;
+use wajox\yii2base\modules\admin\ApplicationController as AdminApplicationController;
+
 use yii\web\NotFoundHttpException;
 use yii\data\Sort;
 use yii\data\ActiveDataProvider;
 
-class CustomersController extends ApplicationController
+class CustomersController extends AdminApplicationController
 {
     public function actionIndex()
     {
@@ -44,14 +46,17 @@ class CustomersController extends ApplicationController
         $request = $this->getApp()->request;
         $model = $this->findModel($id);
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [[
-            'query' => $model->getUserActionLogs(),
-            'sort' => [
-                'defaultOrder' => [
-                    'created_at' => SORT_DESC,
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [[
+                'query' => $model->getUserActionLogs(),
+                'sort' => [
+                    'defaultOrder' => [
+                        'created_at' => SORT_DESC,
+                    ],
                 ],
-            ],
-        ]]);
+            ]]
+        );
 
         return $this->render('view', [
             'dataProvider' => $dataProvider,

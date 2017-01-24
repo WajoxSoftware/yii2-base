@@ -1,5 +1,7 @@
 <?php
-namespace wajox\yii2base\models;
+namespace wajox\yii2base\modules\payment\models;
+
+use wajox\yii2base\modules\payment\models\query\BillQuery;
 
 class Bill extends \wajox\yii2base\components\db\ActiveRecord
 {
@@ -52,47 +54,55 @@ class Bill extends \wajox\yii2base\components\db\ActiveRecord
         ];
     }
 
-    public function getIsNew()
+    public static function find()
+    {
+        return self::createObject(
+            BillQuery::className(),
+            [get_called_class()]
+        );
+    }
+
+    public function getIsNew(): bool
     {
         return $this->status_id == self::STATUS_ID_NEW;
     }
 
-    public function getIsPaid()
+    public function getIsPaid(): bool
     {
         return $this->status_id == self::STATUS_ID_PAID;
     }
 
-    public function getIsCancelled()
+    public function getIsCancelled(): bool
     {
         return $this->status_id == self::STATUS_ID_CANCELLED;
     }
 
-    public function getIsWithOrder()
+    public function getIsWithOrder(): bool
     {
         return $this->order != null;
     }
 
-    public function saveStatusNew()
+    public function saveStatusNew(): bool
     {
         return $this->updateStatus(self::STATUS_ID_NEW);
     }
 
-    public function saveStatusPaid()
+    public function saveStatusPaid(): bool
     {
         return $this->updateStatus(self::STATUS_ID_PAID);
     }
 
-    public function saveStatusCancelled()
+    public function saveStatusCancelled(): bool
     {
         return $this->updateStatus(self::STATUS_ID_CANCELLED);
     }
 
-    public function saveStatusReturned()
+    public function saveStatusReturned(): bool
     {
         return $this->updateStatus(self::STATUS_ID_RETURNED);
     }
 
-    public static function getStatusIdList()
+    public static function getStatusIdList(): array
     {
         return [
             self::STATUS_ID_NEW => \Yii::t('app/attributes', 'Bill Status New'),
@@ -102,14 +112,14 @@ class Bill extends \wajox\yii2base\components\db\ActiveRecord
         ];
     }
 
-    public function getStatus()
+    public function getStatus(): string
     {
         $statusList = self::getStatusIdList();
 
         return $statusList[$this->status_id];
     }
 
-    public static function getPaymentDestinationIdList()
+    public static function getPaymentDestinationIdList(): array
     {
         return [
             self::DESTINATION_ID_ACCOUNT => \Yii::t('app/attributes', 'Bill Payment Destination Account'),
@@ -117,14 +127,14 @@ class Bill extends \wajox\yii2base\components\db\ActiveRecord
         ];
     }
 
-    public function getPaymentDestination()
+    public function getPaymentDestination(): string
     {
         $list = self::getPaymentDestinationIdList();
 
         return $list[$this->payment_destination_id];
     }
 
-    public function getIsAccountUpdateDestination()
+    public function getIsAccountUpdateDestination(): string
     {
         return $this->payment_destination_id == self::DESTINATION_ID_ACCOUNT;
     }
@@ -134,10 +144,11 @@ class Bill extends \wajox\yii2base\components\db\ActiveRecord
         return number_format($this->sum, 2);
     }
 
-    public function getPaymentMethod()
+    public function getPaymentMethod(): string
     {
         return \Yii::t('app/payment', 'Payment Method ' . $this->payment_method);
     }
+    
     //relations
     public function getOrder()
     {
@@ -154,9 +165,9 @@ class Bill extends \wajox\yii2base\components\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
-    public function isOwner($user_id)
+    public function isOwner(int $userId): bool
     {
-        if ($this->user_id == $user_id) {
+        if ($this->user_id == $userId) {
             return true;
         }
 
@@ -164,16 +175,16 @@ class Bill extends \wajox\yii2base\components\db\ActiveRecord
             return false;
         }
 
-        if ($this->customer->user_id != $user_id) {
+        if ($this->customer->user_id != $userId) {
             return false;
         }
 
         return true;
     }
 
-    protected function updateStatus($new_status_id)
+    protected function updateStatus(int $newStatusId): bool
     {
-        $this->status_id = $new_status_id;
+        $this->status_id = $newStatusId;
         $this->status_at = time();
 
         return $this->save();

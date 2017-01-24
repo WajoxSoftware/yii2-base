@@ -1,8 +1,8 @@
 <?php
-namespace wajox\yii2base\models\search;
+namespace wajox\yii2base\modules\payment\models\search;
 
 use yii\data\ActiveDataProvider;
-use wajox\yii2base\models\Bill;
+use wajox\yii2base\modules\payment\models\Bill;
 
 class BillSearch extends Bill
 {
@@ -37,9 +37,10 @@ class BillSearch extends Bill
 
         $query->orderBy(['created_at' => 'DESC']);
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         return $dataProvider;
     }

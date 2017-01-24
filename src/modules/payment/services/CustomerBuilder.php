@@ -1,9 +1,7 @@
 <?php
-namespace wajox\yii2base\services\shop;
+namespace wajox\yii2base\modules\payment\services;
 
-use wajox\yii2base\models\User;
-use wajox\yii2base\models\Customer;
-use wajox\yii2base\services\users\UsersManager;
+use wajox\yii2base\modules\paymentmodels\Customer;
 use wajox\yii2base\components\base\Object;
 
 class CustomerBuilder extends Object
@@ -169,6 +167,6 @@ class CustomerBuilder extends Object
 
     protected function getUsersManager()
     {
-        return $this->getDependency(UsersManager::className());
+        return $this->getApp()->usersManager;
     }
 }

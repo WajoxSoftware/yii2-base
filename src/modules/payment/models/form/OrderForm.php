@@ -1,8 +1,7 @@
 <?php
-namespace wajox\yii2base\models\form;
+namespace wajox\yii2base\modules\payment\models\form;
 
 use wajox\yii2base\components\base\Model;
-use wajox\yii2base\models\Good;
 
 class OrderForm extends Model
 {
