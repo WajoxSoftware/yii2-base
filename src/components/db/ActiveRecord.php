@@ -17,7 +17,7 @@ class ActiveRecord extends \yii\db\ActiveRecord
         );
     }
 
-    public function hasOne(string $class, array $link): ActiveQueryInterface
+    public function hasOne($class, $link)
     {
         return parent::hasOne(
             $this->getDepencency($class),
@@ -25,7 +25,7 @@ class ActiveRecord extends \yii\db\ActiveRecord
         );
     }
 
-    public function hasMany(string $class, array $link): ActiveQueryInterface
+    public function hasMany($class, $link)
     {
         return parent::hasMany(
             $this->getDepencency($class),
