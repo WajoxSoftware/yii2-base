@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\traits;
 
-use app\components\db\Repository;
+use wajox\yii2base\components\db\Repository;
 use yii\base\Application;
 use yii\web\User;
 use yii\db\Connection as DbConnection;
