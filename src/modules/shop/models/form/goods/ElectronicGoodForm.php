@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\models\form\goods;
+namespace wajox\yii2base\modules\shop\models\form\goods;
 
 class ElectronicGoodForm extends GoodFormAbstract
 {

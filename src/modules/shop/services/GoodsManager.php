@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\services\shop;
 
-use wajox\yii2base\models\Good;
+use wajox\yii2base\modules\shop\models\Good;
 use wajox\yii2base\components\base\Object;
 
 class GoodsManager extends Object
@@ -11,7 +11,9 @@ class GoodsManager extends Object
 
     public function __construct($user, $model)
     {
-        $this->setUser($user)->setModel($model);
+        $this
+            ->setUser($user)
+            ->setModel($model);
     }
 
     public function setUser($user)

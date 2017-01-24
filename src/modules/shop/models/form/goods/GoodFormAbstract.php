@@ -1,10 +1,10 @@
 <?php
-namespace wajox\yii2base\models\form\goods;
+namespace wajox\yii2base\modules\shop\models\form\goods;
 
 use wajox\yii2base\components\base\Model;
-use wajox\yii2base\models\Good;
-use wajox\yii2base\models\GoodPartnerProgram;
-use wajox\yii2base\helpers\GoodsHelper;
+use wajox\yii2base\modules\shop\models\Good;
+use wajox\yii2base\modules\shop\models\GoodPartnerProgram;
+use wajox\yii2base\modules\shop\helpers\GoodsHelper;
 
 class GoodFormAbstract extends Model
 {

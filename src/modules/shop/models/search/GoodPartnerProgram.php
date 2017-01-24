@@ -1,8 +1,8 @@
 <?php
-namespace wajox\yii2base\models\search;
+namespace wajox\yii2base\modules\shop\models\search;
 
 use yii\data\ActiveDataProvider;
-use wajox\yii2base\models\GoodPartnerProgram as GoodPartnerProgramModel;
+use wajox\yii2base\modules\shop\models\GoodPartnerProgram as GoodPartnerProgramModel;
 
 class GoodPartnerProgram extends GoodPartnerProgramModel
 {

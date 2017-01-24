@@ -1,7 +1,7 @@
 <?php
-namespace wajox\yii2base\models;
+namespace wajox\yii2base\modules\shop\models;
 
-use wajox\yii2base\models\query\GoodQuery;
+use wajox\yii2base\modules\shop\models\query\GoodQuery;
 
 class Good extends \wajox\yii2base\components\db\ActiveRecord
 {
@@ -245,11 +245,6 @@ class Good extends \wajox\yii2base\components\db\ActiveRecord
     public function getGoodEmailLists()
     {
         return $this->hasMany(GoodEmailList::className(), ['good_id' => 'id']);
-    }
-
-    public function getAuthor()
-    {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     public function getParentGood()

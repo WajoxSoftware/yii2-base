@@ -1,7 +1,7 @@
 <?php
-namespace wajox\yii2base\models;
+namespace wajox\yii2base\modules\shop\models;
 
-use wajox\yii2base\models\query\GoodCategoryQuery;
+use wajox\yii2base\modules\shop\models\query\GoodCategoryQuery;
 
 class GoodCategory extends \wajox\yii2base\components\db\ActiveRecord
 {

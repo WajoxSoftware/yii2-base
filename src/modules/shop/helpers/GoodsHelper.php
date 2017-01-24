@@ -1,10 +1,10 @@
 <?php
-namespace wajox\yii2base\helpers;
+namespace wajox\yii2base\modules\shop\helpers;
 
 use wajox\yii2base\models\User;
-use wajox\yii2base\models\GoodPartnerProgram;
-use wajox\yii2base\models\GoodPaymentMethod;
-use wajox\yii2base\models\GoodDeliveryMethod;
+use wajox\yii2base\modules\shop\models\GoodPartnerProgram;
+use wajox\yii2base\modules\shop\models\GoodPaymentMethod;
+use wajox\yii2base\modules\shop\models\GoodDeliveryMethod;
 
 class GoodsHelper
 {

@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\models;
+namespace wajox\yii2base\modules\shop\models;
 
 class GoodLetterEmail extends \wajox\yii2base\components\db\ActiveRecord
 {
@@ -35,10 +35,5 @@ class GoodLetterEmail extends \wajox\yii2base\components\db\ActiveRecord
     public function getLetter()
     {
         return $this->hasOne(GoodLetter::className(), ['id' => 'good_email_id']);
-    }
-
-    public function getOrder()
-    {
-        return $this->hasOne(Order::className(), ['id' => 'order_id']);
     }
 }

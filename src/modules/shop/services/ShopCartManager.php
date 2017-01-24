@@ -1,8 +1,8 @@
 <?php
-namespace wajox\yii2base\services\shop;
+namespace wajox\yii2base\modules\shop\services;
 
-use wajox\yii2base\models\Good;
-use wajox\yii2base\helpers\GoodsHelper;
+use wajox\yii2base\modules\shop\models\Good;
+use wajox\yii2base\modules\shop\helpers\GoodsHelper;
 use wajox\yii2base\components\base\Object;
 
 class ShopCartManager extends Object
@@ -19,7 +19,7 @@ class ShopCartManager extends Object
 
     const SHOP_CART_PARAM = '__shop_cart';
 
-    public function __construct($user, $saveMode = true)
+    public function __construct($user, bool $saveMode = true)
     {
         $this->setActual()
              ->setUser($user)
@@ -27,33 +27,33 @@ class ShopCartManager extends Object
              ->saveToSession();
     }
 
-    public function setSaveMode($saveMode)
+    public function setSaveMode(bool $saveMode): ShopCartManager
     {
         $this->saveMode = $saveMode;
 
         return $this;
     }
 
-    public function getSaveMode()
+    public function getSaveMode(): bool
     {
         return $this->saveMode;
     }
 
-    public function setUser($user)
+    public function setUser($user): ShopCartManager
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function setGoods($goods)
+    public function setGoods(array $goods): ShopCartManager
     {
         $this->goods = $goods;
 
         return $this;
     }
 
-    public function getGoods()
+    public function getGoods(): array
     {
         if (sizeof($this->goods) < sizeof($this->items)) {
             $this->loadGoods();
@@ -62,14 +62,14 @@ class ShopCartManager extends Object
         return $this->goods;
     }
 
-    protected function setCart($cart)
+    protected function setCart(array $cart): ShopCartManager
     {
         $this->cart = $cart;
 
         return $this;
     }
 
-    public function getCart()
+    public function getCart(): array
     {
         if (!$this->isActual()) {
             $this->getCartByItems($this->items);
@@ -78,7 +78,7 @@ class ShopCartManager extends Object
         return $this->cart;
     }
 
-    public function loadGoods($items = null)
+    public function loadGoods($items = null): ShopCartManager
     {
         $items = $items == null ? $this->items : $items;
         $ids = array_keys($items);
@@ -98,12 +98,14 @@ class ShopCartManager extends Object
         return $this;
     }
 
-    public function getCartByItems($items)
+    public function getCartByItems(array $items): ShopCartManager
     {
-        return $this->loadGoods($items)->computeCart($items);
+        return $this
+            ->loadGoods($items)
+            ->computeCart($items);
     }
 
-    public function getCount($goodId)
+    public function getCount(int $goodId): int
     {
         if (isset($this->items[$goodId])) {
             return $this->items[$goodId];
@@ -112,7 +114,7 @@ class ShopCartManager extends Object
         return 0;
     }
 
-    public function computeCart($items)
+    public function computeCart(array $items): ShopCartManager
     {
         $cartItems = [];
         $totalCount = 0;
@@ -154,7 +156,7 @@ class ShopCartManager extends Object
         return $this;
     }
 
-    public function getCartItems()
+    public function getCartItems(): array
     {
         return $this->getCart()['items'];
     }
@@ -174,14 +176,14 @@ class ShopCartManager extends Object
         return $this->getCart()['totalSum'];
     }
 
-    public function clearIds($ids)
+    public function clearIds(array $ids): array
     {
         $ids = array_map($ids, 'intval');
 
         return $ids;
     }
 
-    public function getCartJson()
+    public function getCartJson(): string
     {
         $items = [];
 
@@ -195,7 +197,7 @@ class ShopCartManager extends Object
         return json_encode(['items' => $items]);
     }
 
-    public function parseCartJson($json)
+    public function parseCartJson(string $json): ShopCartManager
     {
         $this->dropItems();
 
@@ -208,12 +210,12 @@ class ShopCartManager extends Object
         return $this;
     }
 
-    public function isItemExists($itemId)
+    public function isItemExists(int $itemId): bool
     {
         return (isset($this->items[$itemId]) && $this->items[$itemId] > 0);
     }
 
-    public function dropItems()
+    public function dropItems(): ShopCartManager
     {
         $this->items = [];
 
@@ -223,7 +225,7 @@ class ShopCartManager extends Object
         return $this;
     }
 
-    public function addItem($itemId, $count = 1)
+    public function addItem(int $itemId, int $count = 1): ShopCartManager
     {
         if ($count < 1) {
             return $this->removeItem($itemId);
@@ -237,7 +239,7 @@ class ShopCartManager extends Object
         return $this;
     }
 
-    public function removeItem($itemId)
+    public function removeItem(int $itemId): ShopCartManager
     {
         $this->items[$itemId] = null;
         unset($this->items[$itemId]);
@@ -248,7 +250,7 @@ class ShopCartManager extends Object
         return $this;
     }
 
-    protected function loadFromSession()
+    protected function loadFromSession(): ShopCartManager
     {
         if ($this->getSaveMode() == false) {
             return $this;
@@ -265,7 +267,7 @@ class ShopCartManager extends Object
         return $this;
     }
 
-    protected function saveToSession()
+    protected function saveToSession(): ShopCartManager
     {
         if ($this->getSaveMode() == false) {
             return $this;
@@ -284,26 +286,26 @@ class ShopCartManager extends Object
         return $this;
     }
 
-    protected function isActual()
+    protected function isActual(): bool
     {
         return $this->statusId == self::STATUS_ID_ACTUAL;
     }
 
-    protected function setActual()
+    protected function setActual(): ShopCartManager
     {
         $this->statusId = self::STATUS_ID_ACTUAL;
 
         return $this;
     }
 
-    protected function setChanged()
+    protected function setChanged(): ShopCartManager
     {
         $this->statusId = self::STATUS_ID_CHANGED;
 
         return $this;
     }
 
-    protected function computePrices($good)
+    protected function computePrices($good): array
     {
         $originalPrice = $good->sum;
         $deliveryPrice = GoodsHelper::getDeliveryPrice($good);

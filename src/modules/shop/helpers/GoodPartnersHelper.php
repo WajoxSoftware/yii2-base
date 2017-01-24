@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\helpers;
+namespace wajox\yii2base\modules\shop\helpers;
 
 use wajox\yii2base\models\User;
 use wajox\yii2base\models\Partner;

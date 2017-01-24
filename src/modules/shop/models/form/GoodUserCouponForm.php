@@ -1,8 +1,8 @@
 <?php
-namespace wajox\yii2base\models\form;
+namespace wajox\yii2base\modules\shop\models\form;
 
-use wajox\yii2base\models\Good;
-use wajox\yii2base\models\GoodUserCoupon;
+use wajox\yii2base\modules\shop\models\Good;
+use wajox\yii2base\modules\shop\models\GoodUserCoupon;
 
 class GoodUserCouponForm extends GoodUserCoupon
 {
