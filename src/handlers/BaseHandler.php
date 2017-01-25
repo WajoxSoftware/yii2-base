@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\events\handlers;
+namespace wajox\yii2base\events;
 
 use wajox\yii2base\components\base\Object;
 

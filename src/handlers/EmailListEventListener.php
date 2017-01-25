@@ -1,8 +1,8 @@
 <?php
-namespace wajox\yii2base\events\handlers;
+namespace wajox\yii2base\events;
 
 use wajox\yii2base\models\EmailList;
-use wajox\yii2base\events\types\EmailListEvent;
+use wajox\yii2base\events\EmailListEvent;
 use wajox\yii2base\models\UserActionLog;
 
 class EmailListEventHandler extends BaseHandler

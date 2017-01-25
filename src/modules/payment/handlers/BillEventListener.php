@@ -1,10 +1,10 @@
 <?php
 namespace wajox\yii2base\services\events\listeners;
 
-use wajox\yii2base\models\Bill;
+use wajox\yii2base\modules\payment\models\Bill;
 use wajox\yii2base\models\UserActionLog;
-use wajox\yii2base\services\events\types\BillEvent;
-use wajox\yii2base\events\handlers\BaseHandler;
+use wajox\yii2base\modules\payment\events\illEvent;
+use wajox\yii2base\handlers\BaseHandler;
 
 class BillEventHandler extends BaseHandler
 {

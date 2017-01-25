@@ -1,11 +1,11 @@
 <?php
-namespace wajox\yii2base\events\types;
+namespace wajox\yii2base\events;
 
 use yii\base\Event;
 
 class StatisticEvent extends Event
 {
-    const EVENT_NEW = 'new_view';
+    const EVENT_NEW = 'view';
 
     public $statistic;
 }

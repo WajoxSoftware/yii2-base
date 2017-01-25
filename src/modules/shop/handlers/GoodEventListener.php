@@ -1,12 +1,12 @@
 <?php
 namespace wajox\yii2base\services\events\listeners;
 
-use wajox\yii2base\models\Good;
-use wajox\yii2base\services\events\types\GoodEvent;
+use wajox\yii2base\modules\shop\models\Good;
+use wajox\yii2base\modules\shop\events\GoodEvent;
 use wajox\yii2base\models\UserActionLog;
-use wajox\yii2base\services\system\EventsManager;
+use wajpx\yii2base\handlers\BaseHandler;
 
-class GoodEventListener extends BaseListenerAbstract
+class GoodEventHandler extends BaseHandler
 {
     public static function ordered($event)
     {

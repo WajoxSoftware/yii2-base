@@ -2,18 +2,18 @@
 namespace wajox\yii2base\services\events\listeners;
 
 use wajox\yii2base\models\Good;
-use wajox\yii2base\models\Order;
+use wajox\yii2base\modules\payment\models\Order;
 use wajox\yii2base\models\UserActionLog;
 use wajox\yii2base\services\order\OrderMailer;
-use wajox\yii2base\services\events\types\OrderEvent;
-use wajox\yii2base\services\events\types\GoodEvent;
+use wajox\yii2base\services\events\OrderEvent;
+use wajox\yii2base\services\events\GoodEvent;
 use wajox\yii2base\modules\payment\servicesOrderDeliveryManager;
 use wajox\yii2base\services\partner\PartnerFeeManager;
 use wajox\yii2base\services\subscribes\SubscribesManager;
 use wajox\yii2base\modules\shop\services\GoodLettersBuilder;
 use wajox\yii2base\modules\shop\services\PurchasesManager;
 use wajox\yii2base\services\notifications\UserNotificationsManager;
-use wajox\yii2base\events\handlers\BaseHandler;
+use wajox\yii2base\handlers\BaseHandler;
 
 class OrderEventHandler extends BaseHandler
 {
