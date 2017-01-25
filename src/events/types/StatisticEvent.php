@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\services\events\types;
+namespace wajox\yii2base\events\types;
 
 use yii\base\Event;
 

@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\services\events\listeners;
+namespace wajox\yii2base\events\listeners;
 
 use wajox\yii2base\services\system\EventsManager;
 
