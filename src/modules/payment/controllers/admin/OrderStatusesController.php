@@ -6,8 +6,6 @@ use wajox\yii2base\models\OrderStatus;
 use wajox\yii2base\models\UploadedFile;
 use wajox\yii2base\services\uploads\UploadsManager;
 use yii\web\NotFoundHttpException;
-use wajox\yii2base\services\order\OrdersManager;
-use wajox\yii2base\services\bill\BillsManager;
 
 class OrderStatusesController extends ApplicationController
 {
@@ -142,11 +140,11 @@ class OrderStatusesController extends ApplicationController
 
     protected function getOrdersManager()
     {
-        return $this->getDependency(OrdersManager::className());
+        return $this->getApp()->ordersManager;
     }
 
     protected function getBillsManager()
     {
-        return $this->getDependency(BillsManager::className());
+        return $this->getApp()->billsManager;
     }
 }

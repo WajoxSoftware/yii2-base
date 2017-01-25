@@ -191,6 +191,6 @@ class OrderBuilder extends Object
 
     protected function getBillsManager()
     {
-        return $this->getDependency(BillsManager::className());
+        return $this->getApp()->billsManager;
     }
 }

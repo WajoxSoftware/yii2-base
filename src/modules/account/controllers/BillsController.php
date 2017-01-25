@@ -6,8 +6,6 @@ use wajox\yii2base\models\Bill;
 use wajox\yii2base\models\Customer;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
-use wajox\yii2base\services\bill\BillsManager;
-use wajox\yii2base\services\shop\CustomerBuilder;
 use wajox\yii2base\modules\account\models\BillSearch;
 
 class BillsController extends ApplicationController
@@ -61,15 +59,18 @@ class BillsController extends ApplicationController
         $customer = $this->createObject(Customer::className());
 
         if ($request->isPost) {
-            $builder = $this->createObject(
-                CustomerBuilder::className(),
-                [$request, $user]
-            );
+            $builder = $this
+                ->getCustomersManager()
+                ->createBuilder($request, $user);
+
             $saved = $builder->save();
             $customer = $builder->getCustomer();
 
             if ($saved) {
-                $model = $this->getBillsManager()->create($request->post(), $customer);
+                $model = $this
+                    ->getBillsManager()
+                    ->create($request->post(), $customer);
+                    
                 if (!$model->isNewRecord) {
                     return $this->redirect([
                         '/payment/default/index',
@@ -107,16 +108,22 @@ class BillsController extends ApplicationController
     protected function renderBillsByStatus($status = 'new')
     {
         $user_id = $this->getApp()->user->id;
-        $query = $this->getUser()->getBills()->where(['status' => $status]);
+        $query = $this
+            ->getUser()
+            ->getBills()
+            ->where(['status' => $status]);
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [[
-            'query' => $query,
-            'sort' => [
-                'defaultOrder' => [
-                    'created_at' => SORT_DESC,
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [[
+                'query' => $query,
+                'sort' => [
+                    'defaultOrder' => [
+                        'created_at' => SORT_DESC,
+                    ],
                 ],
-            ],
-        ]]);
+            ]]
+        );
 
         return $this->render($status, [
             'dataProvider' => $dataProvider,
@@ -125,6 +132,11 @@ class BillsController extends ApplicationController
 
     protected function getBillsManager()
     {
-        return $this->getDependency(BillsManager::className());
+        return $this->getApp()->billsManager);
+    }
+
+    protected function getCustomersManager()
+    {
+        return $this->getApp()->customersManager);
     }
 }

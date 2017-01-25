@@ -1,10 +1,8 @@
 <?php
 namespace wajox\yii2base\controllers;
 
-use Yii;
 use wajox\yii2base\models\form\ConfirmationForm;
 use wajox\yii2base\models\User;
-use wajox\yii2base\services\users\UsersManager;
 
 class ConfirmationController extends \wajox\yii2base\controllers\Controller
 {
@@ -57,7 +55,7 @@ class ConfirmationController extends \wajox\yii2base\controllers\Controller
 
     public function getManager()
     {
-        return $this->getDependency(UsersManager::className());
+        return $this->getApp()->usersManager;
         ;
     }
 }

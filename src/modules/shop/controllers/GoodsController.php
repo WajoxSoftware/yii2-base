@@ -1,12 +1,11 @@
 <?php
 namespace wajox\yii2base\modules\shop\controllers;
 
+use wajox\yii2base\models\Good;
+use wajox\yii2base\models\GoodCategory;
 use yii\data\ActiveDataProvider;
 use yii\data\Sort;
 use yii\web\NotFoundHttpException;
-use wajox\yii2base\services\traffic\ClicksManager;
-use wajox\yii2base\models\Good;
-use wajox\yii2base\models\GoodCategory;
 
 class GoodsController extends ApplicationController
 {
@@ -114,6 +113,6 @@ class GoodsController extends ApplicationController
 
     protected function getClicksManager()
     {
-        return $this->getDependency(ClicksManager::className());
+        return $this->getApp()->clicksManager;
     }
 }

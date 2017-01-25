@@ -3,7 +3,6 @@ namespace wajox\yii2base\services\users;
 
 use wajox\yii2base\models\User;
 use wajox\yii2base\models\TrafficManager;
-use wajox\yii2base\services\users\UsersManager;
 use wajox\yii2base\components\base\Object;
 
 class TrafficManagersBuilder extends Object
@@ -155,6 +154,6 @@ class TrafficManagersBuilder extends Object
 
     protected function getUsersManager()
     {
-        return $this->getDependency(UsersManager::className());
+        return $this->getApp()->usersManager;
     }
 }
