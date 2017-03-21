@@ -24,7 +24,7 @@ class AddressByIp extends Object
         return;
         
         try {
-            $geo = json_decode(file_get_contents(self::GEODECODER_URL.$ip));            
+            $geo = json_decode(file_get_contents(self::GEODECODER_URL.$ip));
         } catch (\Exсeption $e) {
             return;
         }

@@ -72,8 +72,8 @@ class EventsManager extends Object
         foreach ($handlers as $eventClass => $types) {
             foreach ($types as $typeId => $handlers) {
                 foreach ($handlers as $handler) {
-                    $this->on($eventClass, $typeId, $handler);    
-                }              
+                    $this->on($eventClass, $typeId, $handler);
+                }
             }
         }
 

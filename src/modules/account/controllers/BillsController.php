@@ -132,11 +132,11 @@ class BillsController extends ApplicationController
 
     protected function getBillsManager()
     {
-        return $this->getApp()->billsManager);
+        return $this->getApp()->billsManager;
     }
 
     protected function getCustomersManager()
     {
-        return $this->getApp()->customersManager);
+        return $this->getApp()->customersManager;
     }
 }

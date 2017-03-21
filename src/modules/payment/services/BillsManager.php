@@ -2,7 +2,7 @@
 namespace wajox\yii2base\modules\payment\services\bill;
 
 use wajox\yii2base\modules\payment\models\Bill;
-use wajox\yii2base\\modules\payment\events\BillEvent;
+use wajox\yii2base\modules\payment\events\BillEvent;
 use wajox\yii2base\components\base\Object;
 
 class BillsManager extends Object

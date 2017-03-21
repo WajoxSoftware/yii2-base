@@ -28,7 +28,7 @@ class BillEventHandler extends BaseHandler
             UserActionLog::TYPE_ID_RETURN_BILL,
             $event->bill,
             $event->bill->user
-        );      
+        );
     }
 
     public static function paid(BillEvent $event)

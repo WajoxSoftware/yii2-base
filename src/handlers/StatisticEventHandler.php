@@ -7,11 +7,11 @@ use wajox\yii2base\models\Statistic;
 
 class StatisticEventHandler extends BaseHandler
 {
-	public static function created(StatisticEvent $event)
-	{
+    public static function created(StatisticEvent $event)
+    {
         \Yii::$app->userActionLogs->log(
-        	UserActionLog::TYPE_ID_VISIT_NEW,
-        	$event->statistic
+            UserActionLog::TYPE_ID_VISIT_NEW,
+            $event->statistic
         );
     }
 }

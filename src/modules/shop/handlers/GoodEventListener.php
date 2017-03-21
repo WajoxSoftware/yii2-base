@@ -11,16 +11,16 @@ class GoodEventHandler extends BaseHandler
     public static function ordered($event)
     {
         \Yii::$app->userActionLogs->log(
-        	UserActionLog::TYPE_ID_GOOD_ORDER,
-        	$event->good
+            UserActionLog::TYPE_ID_GOOD_ORDER,
+            $event->good
         );
     }
     
     public static function paid($event)
     {
         \Yii::$app->userActionLogs->log(
-        	UserActionLog::TYPE_ID_GOOD_PAY,
-        	$event->good
+            UserActionLog::TYPE_ID_GOOD_PAY,
+            $event->good
         );
     }
 }

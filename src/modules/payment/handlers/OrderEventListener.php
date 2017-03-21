@@ -139,7 +139,6 @@ class OrderEventHandler extends BaseHandler
             $event->order,
             $event->order->user
         );
-
     }
 
     public static function onEvent(OrderEvent $event)
