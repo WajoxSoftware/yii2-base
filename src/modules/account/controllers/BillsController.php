@@ -2,8 +2,8 @@
 namespace wajox\yii2base\modules\account\controllers;
 
 use wajox\yii2base\models\User;
-use wajox\yii2base\models\Bill;
-use wajox\yii2base\models\Customer;
+use wajox\yii2base\modules\payment\models\Bill;
+use wajox\yii2base\modules\payment\models\Customer;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use wajox\yii2base\modules\account\models\BillSearch;

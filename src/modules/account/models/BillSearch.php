@@ -2,7 +2,7 @@
 namespace wajox\yii2base\modules\account\models;
 
 use yii\data\ActiveDataProvider;
-use wajox\yii2base\models\Bill;
+use wajox\yii2base\modules\payment\models\Bill;
 
 class BillSearch extends Bill
 {

@@ -88,7 +88,7 @@ class ShopCartManager extends Object
             $goods = $this
                 ->getRepository()
                 ->find(Good::className())
-                ->byId($ids)
+                ->byIds($ids)
                 ->all();
         }
 

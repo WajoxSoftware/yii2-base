@@ -189,11 +189,11 @@ class ContactsManager extends Object
         return $this;
     }
 
-    protected function findUsersByIds($ids)
+    protected function findUsersByIds($usersIds)
     {
         return $this
             ->getRepository()
             ->find(User::className())
-            ->byId($usersIds);
+            ->byIds($usersIds);
     }
 }
