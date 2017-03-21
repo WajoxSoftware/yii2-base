@@ -55,6 +55,10 @@ class UserActionLogSearch extends UserActionLog
 
     public function getReferalUserName()
     {
+        if (!$this->referal_user_id) {
+            return;
+        }
+
         $user = $this
             ->getRepository()
             ->find(User::className())
@@ -70,6 +74,10 @@ class UserActionLogSearch extends UserActionLog
 
     public function getUserName()
     {
+        if (!$this->user_id) {
+            return;
+        }
+
         $user = $this
             ->getRepository()
             ->find(User::className())
