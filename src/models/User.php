@@ -91,8 +91,7 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
 
     public static function findIdentity($id)
     {
-        return $this
-            ->getRepository()
+        return self::getRepository()
             ->find(static::className())
             ->byId($id)
             ->one();

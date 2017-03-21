@@ -21,7 +21,13 @@ class AddressByIp extends Object
 
     public static function get($ip)
     {
-        $geo = json_decode(file_get_contents(self::GEODECODER_URL.$ip));
+        return;
+        
+        try {
+            $geo = json_decode(file_get_contents(self::GEODECODER_URL.$ip));            
+        } catch (\Exсeption $e) {
+            return;
+        }
 
         if ($geo->status == self::STATUS_FAILED) {
             return;

@@ -2,7 +2,7 @@
 namespace wajox\yii2base\services\traffic;
 
 use wajox\yii2base\components\base\Object;
-use wajox\yii2base\models\Bill;
+use wajox\yii2base\modules\payment\models\Bill;
 use wajox\yii2base\models\PartnerFee;
 
 class StatisticComputer extends Object
@@ -67,13 +67,15 @@ class StatisticComputer extends Object
         $time_cond = ['start' => $start_time, 'finish' => $finish_time];
 
         $visitsCount = $this
-            ->getApp()->userActionLogs
+            ->getApp()
+            ->userActionLogs
             ->getVisitNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->count();
 
         $uniqueVisitsCount = $this
-            ->getApp()->userActionLogs
+            ->getApp()
+            ->userActionLogs
             ->getVisitNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->select('[[ip_address]]')
@@ -81,13 +83,15 @@ class StatisticComputer extends Object
             ->count();
 
         $subscribesCount = $this
-            ->getApp()->userActionLogs
+            ->getApp()
+            ->userActionLogs
             ->getSubscribeNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->count();
 
         $newBillLogs = $this
-            ->getApp()->userActionLogs
+            ->getApp()
+            ->userActionLogs
             ->getBillNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->indexBy('action_item_id')
@@ -107,12 +111,12 @@ class StatisticComputer extends Object
         $billsNewQ = $this
             ->getRepository()
             ->find(Bill::className())
-            ->byId($newBillIds);
+            ->byIds($newBillIds);
 
         $billsPaidQ = $this
             ->getRepository()
             ->find(Bill::className())
-            ->byId($paidBillIds);
+            ->byIds($paidBillIds);
 
         $newBillsCount = sizeof($newBillIds);
         $paidBillsCount = sizeof($paidBillIds);

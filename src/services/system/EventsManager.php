@@ -70,8 +70,10 @@ class EventsManager extends Object
     protected function setHandlers(array $handlers)
     {
         foreach ($handlers as $eventClass => $types) {
-            foreach ($types as $typeId => $handler) {
-                $this->on($eventClass, $typeId, $handler);
+            foreach ($types as $typeId => $handlers) {
+                foreach ($handlers as $handler) {
+                    $this->on($eventClass, $typeId, $handler);    
+                }              
             }
         }
 

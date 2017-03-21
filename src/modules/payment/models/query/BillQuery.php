@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\models\query;
+namespace wajox\yii2base\modules\payment\models\query;
 
 use wajox\yii2base\components\db\ActiveQuery;
 use wajox\yii2base\modules\payment\models\Bill;

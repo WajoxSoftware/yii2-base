@@ -69,7 +69,11 @@ class Bootstrap extends Component implements BootstrapInterface
 
     protected function setupAliases()
     {
-        \Yii::setAlias('@wajox/yii2base', '@vendor/wajox/yii2base/src');
+        /**
+         * @todo fix
+         */
+        \Yii::setAlias('@wajox/yii2base', '/home/wajox/dev/ws-yii2-modules/yii2-base/src');
+        // \Yii::setAlias('@wajox/yii2base', '@vendor/wajox/yii2base/src');
     }
 
     protected function setupAppTheme($theme, $app)
