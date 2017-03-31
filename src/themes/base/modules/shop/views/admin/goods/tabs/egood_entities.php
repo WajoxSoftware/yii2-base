@@ -4,7 +4,7 @@ use wajox\yii2base\models\EGoodEntity;
 foreach (EGoodEntity::getTypeIdList() as $typeId => $typeName) {
     $this->params['pageControls']['items'][] = [
       'title' => $typeName,
-      'url' => ['/admin/egood-entities/create', 'id' => $model->getModel()->id, 'typeId' => $typeId, 'suffix' => '.js'],
+      'url' => ['/shop/admin/egood-entities/create', 'id' => $model->getModel()->id, 'typeId' => $typeId, 'suffix' => '.js'],
       'icon' => 'fa-plus',
       'class' => 'js-remote-link',
     ];

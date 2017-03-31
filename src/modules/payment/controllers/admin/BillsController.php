@@ -3,7 +3,7 @@ namespace wajox\yii2base\modules\payment\controllers\admin;
 
 use wajox\yii2base\modules\payment\models\Bill;
 use wajox\yii2base\modules\payment\models\search\BillSearch;
-use wajox\yii2base\modules\admin\ApplicationController as AdminApplicationController;
+use wajox\yii2base\modules\admin\controllers\ApplicationController as AdminApplicationController;
 use yii\web\NotFoundHttpException;
 
 class BillsController extends AdminApplicationController

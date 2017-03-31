@@ -4,7 +4,7 @@ namespace wajox\yii2base\modules\shop\controllers\admin;
 use wajox\yii2base\modules\shop\models\Good;
 use wajox\yii2base\modules\shop\models\GoodUserCoupon;
 use wajox\yii2base\modules\shop\models\form\GoodUserCouponForm;
-use wajox\yii2base\modules\admin\ApplicationController as AdminApplicationController;
+use wajox\yii2base\modules\admin\controllers\ApplicationController as AdminApplicationController;
 use yii\web\NotFoundHttpException;
 
 class GoodUserCouponsController extends AdminApplicationController

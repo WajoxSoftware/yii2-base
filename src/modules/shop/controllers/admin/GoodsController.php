@@ -4,7 +4,7 @@ namespace wajox\yii2base\modules\shop\controllers\admin;
 use wajox\yii2base\modules\shop\models\Good;
 use wajox\yii2base\modules\shop\models\GoodCategory;
 use wajox\yii2base\modules\shop\services\GoodsManager;
-use wajox\yii2base\modules\admin\ApplicationController as AdminApplicationController;
+use wajox\yii2base\modules\admin\controllers\ApplicationController as AdminApplicationController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
@@ -38,12 +38,12 @@ class GoodsController extends AdminApplicationController
         $categoriesQuery = $this
             ->getRepository()
             ->find(GoodCategory::className())
-            ->byParentId($categoryId);
+            ->byParentId((int) $categoryId);
 
         $query = $this
             ->getRepository()
             ->find(Good::className())
-            ->byCategoryId($categoryId)
+            ->byCategoryId((int) $categoryId)
             ->orderBy($sort->orders);
 
         $categoriesDataProvider = $this->createObject(
@@ -207,7 +207,7 @@ class GoodsController extends AdminApplicationController
         $model = $this
             ->getRepository()
             ->find(Good::className())
-            ->byId($id)
+            ->byId((int) $id)
             ->one();
 
         if ($model !== null) {
@@ -222,7 +222,7 @@ class GoodsController extends AdminApplicationController
         $model = $this
             ->getRepository()
             ->find(GoodCategory::className())
-            ->byId($id)
+            ->byId((int) $id)
             ->one();
 
         if ($model !== null) {

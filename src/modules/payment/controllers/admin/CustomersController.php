@@ -3,7 +3,7 @@ namespace wajox\yii2base\modules\payment\controllers\admin;
 
 use wajox\yii2base\modules\payment\models\Customer;
 use wajox\yii2base\modules\payment\models\search\CustomerSearch;
-use wajox\yii2base\modules\admin\ApplicationController as AdminApplicationController;
+use wajox\yii2base\modules\admin\controllers\ApplicationController as AdminApplicationController;
 
 use yii\web\NotFoundHttpException;
 use yii\data\Sort;

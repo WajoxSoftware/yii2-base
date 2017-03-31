@@ -17,6 +17,7 @@
         "yiisoft/yii2-swiftmailer": "*",
         "yiidoc/yii2-redactor": "*",
         "yii-dream-team/yii2-upload-behavior": "*",
+        "wajox/y2modcms": "dev-master",
         "baibaratsky/yii2-serialized-attributes-behavior": "*",
         "2amigos/yii2-date-picker-widget" : "~1.0",
         "2amigos/yii2-date-time-picker-widget" : "~1.0",
@@ -27,8 +28,8 @@
         "kartik-v/yii2-widgets": "dev-master",
         "picodi-lab/expertsender-api-client": "*",
         "wajox/yii2widgets": "dev-master",
-        "wajox/y2modcms": "dev-master",
-        "codemix/yii2-localeurls": "*"
+        "codemix/yii2-localeurls": "*",
+        "bower-asset/bootstrap-material-design": "*"
     },
     "autoload": {
         "psr-4": {

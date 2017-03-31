@@ -9,6 +9,7 @@ abstract class ModuleAbstract extends \yii\base\Module
 
     public $hasSessionController = false;
     public $hasRegistrationController = false;
+    public $layouts = [];
 
     public function init()
     {
@@ -18,8 +19,6 @@ abstract class ModuleAbstract extends \yii\base\Module
 
     protected function initModule()
     {
-        // $this->controllerNamespace = 'wajox\yii2base\modules\\'.$this->id.'\controllers';
-        // $this->layout = 'profile';
         $this->getApp()->user->loginUrl = ['/'.$this->id.'/session'];
     }
 
@@ -29,5 +28,26 @@ abstract class ModuleAbstract extends \yii\base\Module
             'label' => $this->t('app/'.$this->id, 'Module Home'),
             'url' => ['/'.$this->id],
         ];
+    }
+
+    public function beforeAction($action)
+    {
+        $this->setLayoutByControllerId($action->controller->id);
+
+        return parent::beforeAction($action);
+    }
+
+    protected function setLayoutByControllerId($controllerId)
+    {
+        if (sizeof($this->layouts) == 0) {
+            return;
+        }
+
+        $parts = explode('/', $controllerId);
+        $layoutId = sizeof($parts) > 1 ? array_shift($parts) : 'default';
+
+        if (isset($layouts[$layoutId])) {
+            $this->layout = $layouts[$layoutId];
+        }
     }
 }

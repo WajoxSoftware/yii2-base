@@ -63,7 +63,7 @@ if ($categoryId
     || !$categoryId
 ) {
     $this->params['pageControls']['items'][] = [
-    'url' => ['/admin/good-categories/create', 'id' => $categoryId, 'suffix' => '.js'],
+    'url' => ['/shop/admin/good-categories/create', 'id' => $categoryId, 'suffix' => '.js'],
     'title' => \Yii::t('app/general', 'Add Good Category'),
     'icon' => 'fa-plus',
     'class' => 'js-remote-link',

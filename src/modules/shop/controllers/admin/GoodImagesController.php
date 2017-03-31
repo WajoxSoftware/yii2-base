@@ -5,7 +5,7 @@ use wajox\yii2base\modules\shop\models\Good;
 use wajox\yii2base\modules\shop\models\GoodImage;
 use wajox\yii2base\models\UploadedImage;
 use wajox\yii2base\services\uploads\UploadsManager;
-use wajox\yii2base\modules\admin\ApplicationController as AdminApplicationController;
+use wajox\yii2base\modules\admin\controllers\ApplicationController as AdminApplicationController;
 use yii\web\NotFoundHttpException;
 
 class GoodImagesController extends AdminApplicationController

@@ -1,7 +1,7 @@
 <?php
 $this->params['pageControls']['items'][] = [
   'title' => \Yii::t('app/general', 'Add'),
-  'url' => ['/admin/good-letters/create', 'id' => $model->getModel()->id, 'suffix' => '.js'],
+  'url' => ['/shop/admin/good-letters/create', 'id' => $model->getModel()->id, 'suffix' => '.js'],
   'icon' => 'fa-plus',
   'class' => 'js-remote-link',
 ];

@@ -1,8 +1,7 @@
 <?php
-namespace wajox\yii2base\modules\account\models;
+namespace wajox\yii2base\modules\payment\models;
 
 use yii\data\ActiveDataProvider;
-use wajox\yii2base\modules\payment\models\Bill;
 
 class BillSearch extends Bill
 {

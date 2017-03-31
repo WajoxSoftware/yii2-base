@@ -16,7 +16,7 @@ class m151123_134620_create_traffic_stream extends Migration
             'user_id' => Schema::TYPE_INTEGER . ' NOT NULL',
             'status_id' => Schema::TYPE_INTEGER . ' NOT NULL',
             'title' => Schema::TYPE_STRING. ' NOT NULL',
-            'target_url' => Schema::TYPE_STRING. ' NOT NULL',
+            'content' => Schema::TYPE_TEXT,
         ], $tableOptions);
 
         $this->addForeignKey("FK_traffic_stream_user_id", "{{%traffic_stream}}", "user_id", "{{%user}}", "id", 'CASCADE');
