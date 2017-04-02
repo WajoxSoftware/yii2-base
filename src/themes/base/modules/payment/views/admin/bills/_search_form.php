@@ -1,10 +1,8 @@
 <?php
-
 use yii\bootstrap\ActiveForm;
-use wajox\yii2base\models\Bill;
+use wajox\yii2base\modules\payment\models\Bill;
 
 ?>
-
 
 <?php $form = ActiveForm::begin([
     'method' => 'get',

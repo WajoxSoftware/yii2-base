@@ -53,23 +53,4 @@ $userSubaccountApiUrl = \yii\helpers\Url::toRoute(['/api/user-subaccounts', 'use
         </div>
     </div>
   </div>
-
-
-  <div class="row">
-      <div class="col-md-3">
-          <?= $form->field($model, 'userSubaccountTag1')->textInput(['maxlength' => true]) ?>
-      </div>
-
-      <div class="col-md-3">
-          <?= $form->field($model, 'userSubaccountTag2')->textInput(['maxlength' => true]) ?>
-      </div>
-
-      <div class="col-md-3">
-          <?= $form->field($model, 'userSubaccountTag3')->textInput(['maxlength' => true]) ?>
-      </div>
-
-      <div class="col-md-3">
-          <?= $form->field($model, 'userSubaccountTag4')->textInput(['maxlength' => true]) ?>
-      </div>
-  </div>
 <?php ActiveForm::end(); ?>

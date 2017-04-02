@@ -20,13 +20,11 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
         return [
             [['title', 'tag', 'full_tag'], 'filter', 'filter' => 'strip_tags'],
             [['title', 'tag', 'full_tag'], 'filter', 'filter' => 'trim'],
-            [['user_id', 'title', 'status_id', 'tag', 'full_tag', 'level', 'parent_ids', 'traffic_source_id', 'parent_id'], 'required'],
+            [['user_id', 'title', 'status_id', 'tag', 'full_tag', 'level', 'traffic_source_id', 'parent_id'], 'required'],
             [['user_id', 'level', 'parent_id', 'status_id'], 'integer'],
-            [['title', 'target_url'], 'filter', 'filter' => 'strip_tags'],
             [['title', 'tag', 'full_tag', 'parent_ids'], 'string', 'max' => 255],
             [['content'], 'string', 'max' => 50000],
             ['status_id', 'in', 'range' => array_keys(self::getStatusIdList())],
-            //[['target_url'], 'url'],
         ];
     }
 
@@ -122,5 +120,15 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
         }
 
         return parent::save($runValidation, $attributeNames);
+    }
+
+    public function getParentIds()
+    {
+        return explode(',', $this->parent_ids);
+    }
+
+    public function getTags()
+    {
+        return explode('/', $this->full_tag);
     }
 }

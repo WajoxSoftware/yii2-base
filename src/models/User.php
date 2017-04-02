@@ -239,7 +239,7 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
 
     public function getHasTrafficAccount()
     {
-        return \Yii::trafficManager != null && $this->isManager;
+        return $this->trafficManager != null && $this->isManager;
     }
 
     public function getHasPartnerAccount()
@@ -464,7 +464,7 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
 
     public function getHasTrafficManager()
     {
-        return \Yii::trafficManager != null;
+        return $this->trafficManager != null;
     }
 
     public function getViewUrl()

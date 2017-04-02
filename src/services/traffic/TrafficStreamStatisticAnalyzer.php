@@ -1,10 +1,9 @@
 <?php
-
 namespace wajox\yii2base\services\traffic;
 
 use wajox\yii2base\helpers\DateTimeHelper;
 use wajox\yii2base\models\TrafficStreamPrice;
-use wajox\yii2base\models\Bill;
+use wajox\yii2base\modules\payment\models\Bill;
 use wajox\yii2base\components\base\Object;
 
 class TrafficStreamStatisticAnalyzer extends Object
@@ -20,7 +19,7 @@ class TrafficStreamStatisticAnalyzer extends Object
     public $ecpc = 0.0;
     public $cpc = 0.0;
     public $roi = 0;
-    public $billsSum = 0.0;
+    public $billSum = 0.0;
     public $clicksSum = 0.0;
     public $paidClicksCount = 0;
     public $extParams = [];

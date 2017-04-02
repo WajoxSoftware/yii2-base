@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\modules\payment\services\adapter;
 
-use wajox\yii2base\models\Bill;
+use wajox\yii2base\modules\payment\models\Bill;
 use wajox\yii2base\components\base\Object;
 
 abstract class BasePaymentsAbstract extends Object

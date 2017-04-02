@@ -19,8 +19,12 @@ use yii\bootstrap\ActiveForm;
                 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
             </div>
 
+            <div class="col-md-6">
+                <?= $form->field($model, 'tag')->textInput(['maxlength' => true]) ?>
+            </div>
+
             <?php if ($model->isLink): ?>
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <?= $form->field($model, 'targetUrl')->textInput(['maxlength' => true]) ?>
                 </div>
             <?php endif; ?>          

@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\modules\payment\controllers;
 
-use wajox\yii2base\models\Bill;
+use wajox\yii2base\modules\payment\models\Bill;
 
 class CallbacksController extends ApplicationController
 {

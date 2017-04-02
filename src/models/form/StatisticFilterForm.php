@@ -17,18 +17,12 @@ class StatisticFilterForm extends Model
     public $interval;
     public $startDate;
     public $finishDate;
-    public $userSubaccountTag1;
-    public $userSubaccountTag2;
-    public $userSubaccountTag3;
-    public $userSubaccountTag4;
 
     protected $user;
 
     public function rules()
     {
         return [
-            [['userSubaccountTag1', 'userSubaccountTag2', 'userSubaccountTag3', 'userSubaccountTag4'], 'filter', 'filter' => 'strip_tags'],
-            [['userSubaccountTag1', 'userSubaccountTag2', 'userSubaccountTag3', 'userSubaccountTag4'], 'filter', 'filter' => 'trim'],
             [['startDate', 'finishDate'], 'default'],
             [['startDate', 'finishDate'], 'date', 'format' => 'dd.mm.yyyy'],
             [['interval'], 'in', 'range' => array_keys(self::getIntervalsList())],
@@ -43,11 +37,6 @@ class StatisticFilterForm extends Model
             'finishDate' => \Yii::t('app/attributes', 'FromTo'),
             'interval' => \Yii::t('app/attributes', 'Dates Interval'),
             'datesInterval' => \Yii::t('app/attributes', 'Dates Interval'),
-            'userSubaccountTag' => \Yii::t('app/attributes', 'User Subaccount Tag'),
-            'userSubaccountTag1' => \Yii::t('app/attributes', 'User Subaccount Tag1'),
-            'userSubaccountTag2' => \Yii::t('app/attributes', 'User Subaccount Tag2'),
-            'userSubaccountTag3' => \Yii::t('app/attributes', 'User Subaccount Tag3'),
-            'userSubaccountTag4' => \Yii::t('app/attributes', 'User Subaccount Tag4'),
         ];
     }
 
@@ -106,72 +95,5 @@ class StatisticFilterForm extends Model
         $intervals = $this->getIntervalsList();
 
         return $intervals[$this->interval];
-    }
-
-    public function getUserSubaccountTag()
-    {
-        $tags = [
-            $this->userSubaccountTag1,
-            $this->userSubaccountTag2,
-            $this->userSubaccountTag3,
-            $this->userSubaccountTag4,
-        ];
-
-        $tags = array_filter($tags);
-
-        if (sizeof($tags) == 0) {
-            return;
-        }
-
-        return '/' . implode('/', $tags);
-    }
-
-    public function getUserSubaccountIds()
-    {
-        $tag = $this->getUserSubaccountTag();
-        $ids = [];
-        $query = $this->findUserSubaccountsByTags();
-
-        if ($query->count() == 0) {
-            if (!empty($tag)) {
-                return '0';
-            } else {
-                return;
-            }
-
-            return;
-        }
-
-        foreach ($query->each() as $id => $model) {
-            $ids[] = $id;
-        }
-
-        return implode(',', $ids);
-    }
-
-    public function findUserSubaccountsByTags()
-    {
-        $query = $this
-            ->getRepository()
-            ->find(UserSubaccount::className())
-            ->where(['user_id' => $this->getUser()->id]);
-
-        if (!empty($this->userSubaccountTag1)) {
-            $query->andWHere(['like', 'tag1', $this->userSubaccountTag1]);
-        }
-
-        if (!empty($this->userSubaccountTag2)) {
-            $query->andWHere(['like', 'tag2', $this->userSubaccountTag2]);
-        }
-
-        if (!empty($this->userSubaccountTag3)) {
-            $query->andWHere(['like', 'tag3', $this->userSubaccountTag3]);
-        }
-
-        if (!empty($this->userSubaccountTag4)) {
-            $query->andWHere(['like', 'tag4', $this->userSubaccountTag4]);
-        }
-
-        return $query->indexBy('id');
     }
 }

@@ -15,10 +15,6 @@ class TrafficStreamsController extends ApplicationController
 
         $this->requireUserAccess($modelSource->user_id);
 
-        if ($modelSource->hasSources) {
-            throw new NotFoundHttpException('Error');
-        }
-
         $builder = $this->getBuilder($modelSource)->build();
         $success = false;
 
@@ -64,7 +60,10 @@ class TrafficStreamsController extends ApplicationController
 
     protected function getBuilder($source, $model = null)
     {
-        return $this->createObject(TrafficStreamBuilder::className(), $source, $model);
+        return $this->createObject(
+            TrafficStreamBuilder::className(),
+            [$source, $model]
+        );
     }
 
     protected function findModelSource($id)

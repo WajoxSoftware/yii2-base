@@ -114,4 +114,20 @@ class TrafficSource extends \wajox\yii2base\components\db\ActiveRecord
     {
         return $this->type_id == self::TYPE_ID_GOOD;
     }
+
+    public function getTargetUrl()
+    {
+        if ($this->isLink) {
+            return $this->target;
+        }
+    }
+
+    public function beforeValidate()
+    {
+        if ($this->isLink) {
+            $this->target = $this->targetUrl;
+        }
+
+        return parent::beforeValidate();
+    }
 }
