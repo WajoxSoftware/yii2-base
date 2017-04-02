@@ -1,9 +1,11 @@
 <?php
 use yii\widgets\ListView;
+use wajox\yii2base\models\TrafficSource;
 
 $this->params['pageControls']['items'][] = [
     'url' => [
       '/traffic/traffic-sources/create',
+      'typeId' => TrafficSource::TYPE_ID_LINK,
       'id' => $user->id,
       'suffix' => '.js',
     ],

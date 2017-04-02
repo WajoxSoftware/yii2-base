@@ -16,7 +16,8 @@ class m151123_134618_create_traffic_source_table extends Migration
             'title' => Schema::TYPE_STRING,
             'status_id' => Schema::TYPE_INTEGER . ' NOT NULL',
             'tag' => Schema::TYPE_STRING,
-            'target_url' => Schema::TYPE_STRING. ' NOT NULL',
+            'type_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'target' => Schema::TYPE_TEXT . ' NOT NULL',
         ], $tableOptions);
 
         $this->addForeignKey("FK_traffic_source_user_id", "{{%traffic_source}}", "user_id", "{{%user}}", "id", 'CASCADE');

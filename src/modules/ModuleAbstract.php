@@ -46,8 +46,8 @@ abstract class ModuleAbstract extends \yii\base\Module
         $parts = explode('/', $controllerId);
         $layoutId = sizeof($parts) > 1 ? array_shift($parts) : 'default';
 
-        if (isset($layouts[$layoutId])) {
-            $this->layout = $layouts[$layoutId];
+        if (isset($this->layouts[$layoutId])) {
+            $this->layout = $this->layouts[$layoutId];
         }
     }
 }

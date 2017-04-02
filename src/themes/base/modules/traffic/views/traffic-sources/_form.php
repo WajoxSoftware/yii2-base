@@ -6,8 +6,7 @@ use yii\bootstrap\ActiveForm;
 <div class="traffic-source-form">
 
     <?php $form = ActiveForm::begin(['options' => ['class' => 'js-remote-form']]); ?>
-        <?= $form->field($model, 'user_id')->textInput()->hiddenInput()->label(false) ?>
-        <?= $form->field($model, 'parent_source_id')->textInput()->hiddenInput()->label(false) ?>
+
         <div class="row">
             <div class="col-md-6">
                 <?= $form->field($model, 'status_id')->dropDownList(
@@ -19,8 +18,12 @@ use yii\bootstrap\ActiveForm;
             <div class="col-md-6">
                 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
             </div>
+
+            <?php if ($model->isLink): ?>
+                <div class="col-md-12">
+                    <?= $form->field($model, 'targetUrl')->textInput(['maxlength' => true]) ?>
+                </div>
+            <?php endif; ?>          
         </div>
-
     <?php ActiveForm::end(); ?>
-
 </div>

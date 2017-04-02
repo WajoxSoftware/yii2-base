@@ -35,11 +35,6 @@ class TrafficManager extends \wajox\yii2base\components\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
-    public function getSubaccounts()
-    {
-        return $this->hasMany(UserSubaccount::className(), ['user_id' => 'user_id']);
-    }
-
     public function getStreams()
     {
         return $this->hasMany(TrafficStream::className(), ['user_id' => 'user_id']);

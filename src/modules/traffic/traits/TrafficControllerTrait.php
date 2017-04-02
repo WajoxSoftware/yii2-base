@@ -36,7 +36,6 @@ trait TrafficControllerTrait
             ->find(TrafficSource::className())
             ->where([
                 'user_id' => $user->id,
-                'parent_source_id' => 0,
             ]);
 
         $dataProvider = $this->createObject(ActiveDataProvider::className(), [
@@ -54,21 +53,13 @@ trait TrafficControllerTrait
         $source = $this->findSourceModel($id);
         $user = $source->user;
 
-        if ($source->hasSources) {
-            $query = $this
-            ->getRepository()
-            ->find(TrafficSource::className())
-            ->where([
-                'parent_source_id' => $source->id,
-            ]);
-        } else {
-            $query = $this
+        $query = $this
             ->getRepository()
             ->find(TrafficStream::className())
             ->where([
                 'traffic_source_id' => $source->id,
             ]);
-        }
+
 
         $dataProvider = $this->createObject(
             ActiveDataProvider::className(),

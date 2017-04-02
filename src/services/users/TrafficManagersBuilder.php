@@ -42,15 +42,22 @@ class TrafficManagersBuilder extends Object
 
     public function save($request)
     {
+        $ta = \Yii::$app->db->beginTransaction();
+
         try {
-            $this->loadRequest($request)
-                 ->build()
-                 ->validate()
-                 ->saveUser()
-                 ->saveModel();
+            $this
+                ->loadRequest($request)
+                ->build()
+                ->validate()
+                ->saveUser()
+                ->saveModel();
         } catch (\Exception $e) {
+            $ta->rollBack();
+            
             return false;
         }
+
+        $ta->commit();
 
         return true;
     }
@@ -116,6 +123,7 @@ class TrafficManagersBuilder extends Object
     protected function validate()
     {
         if (!$this->getUser()->validate()) {
+            print_r($this->getUser()->errors);die();
             throw new \Exception('Invalid user data');
         }
 
@@ -128,7 +136,8 @@ class TrafficManagersBuilder extends Object
 
     protected function saveUser()
     {
-        $this->user = $this->getUsersManager()
+        $this->user = $this
+            ->getUsersManager()
             ->save($this->getUser());
 
         if ($this->getUser()->isNewRecord) {
@@ -147,7 +156,7 @@ class TrafficManagersBuilder extends Object
             throw new \Exception('Can not save model');
         }
 
-        $this->getUsersManager()->saveRole($this->model);
+        //$this->getUsersManager()->saveRole($this->getUser());
 
         return $this;
     }
