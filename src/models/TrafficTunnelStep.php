@@ -34,7 +34,7 @@ class TrafficTunnelStep extends \wajox\yii2base\components\db\ActiveRecord
 
     public static function getActionTypeIdList()
     {
-        return \wajox\yii2base\models\UserActionLog::getActionTypeIdList();
+        return \wajox\yii2base\models\Log::getActionTypeIdList();
     }
 
     public function getTitle()

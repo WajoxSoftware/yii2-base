@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\services\traffic;
 
-use wajox\yii2base\models\UserActionLog;
+use wajox\yii2base\models\Log;
 use wajox\yii2base\components\base\Object;
 
 class TrafficTunnelAnalyzer extends Object
@@ -141,7 +141,7 @@ class TrafficTunnelAnalyzer extends Object
     {
         $where['action_type_id'] = $step->action_type_id;
 
-        if ($step->action_type_id == UserActionLog::TYPE_ID_VISIT_NEW) {
+        if ($step->action_type_id == Log::TYPE_ID_VISIT_NEW) {
             $where['request_uri'] = $step->action_params;
         } elseif (!empty($step->action_params)) {
             $where['action_item_id'] = $step->action_params;
@@ -149,7 +149,7 @@ class TrafficTunnelAnalyzer extends Object
 
         return $this
             ->getRepository()
-            ->find(UserActionLog::className())
+            ->find(Log::className())
             ->andWhere(['>', 'created_at', $this->getStartAt()])
             ->andWhere(['<', 'created_at', $this->getFinishAt()])
             ->where($where);

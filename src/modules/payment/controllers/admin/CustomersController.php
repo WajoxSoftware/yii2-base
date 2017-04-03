@@ -49,7 +49,7 @@ class CustomersController extends AdminApplicationController
         $dataProvider = $this->createObject(
             ActiveDataProvider::className(),
             [[
-                'query' => $model->getUserActionLogs(),
+                'query' => $model->getLogs(),
                 'sort' => [
                     'defaultOrder' => [
                         'created_at' => SORT_DESC,

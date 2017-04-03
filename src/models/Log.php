@@ -1,9 +1,9 @@
 <?php
 namespace wajox\yii2base\models;
 
-use wajox\yii2base\models\query\UserActionLogQuery;
+use wajox\yii2base\models\query\LogQuery;
 
-class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
+class Log extends \wajox\yii2base\components\db\ActiveRecord
 {
     use \wajox\yii2base\traits\CreatedAtTrait;
 
@@ -33,25 +33,21 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
     const TYPE_ID_PAY_BILL = 702;
     const TYPE_ID_CANCEL_BILL = 703;
 
-    const OFFER_TYPE_ID_NONE = 0;
-    const OFFER_TYPE_ID_GOOD = 100;
-
     public static function tableName()
     {
-        return 'user_action_log';
+        return 'log';
     }
 
     public function rules()
     {
         return [
-            [['guid', 'user_id', 'action_type_id', 'offer_type_id', 'created_at'], 'required'],
-            [['user_id', 'referal_user_id', 'referer_type_id', 'user_subaccount_id', 'action_type_id', 'action_item_id', 'traffic_stream_id', 'offer_type_id', 'offer_item_id', 'created_at'], 'integer'],
+            [['guid', 'user_id', 'type_id', 'created_at'], 'required'],
+            [['user_id', 'referal_user_id', 'referer_type_id', 'type_id', 'item_id', 'created_at'], 'integer'],
             [['request_uri', 'referer_uri', 'guid', 'cookie_id', 'ip_address', 'country', 'region', 'city'], 'filter', 'filter' => 'strip_tags'],
             [['request_uri', 'referer_uri', 'guid', 'cookie_id', 'ip_address', 'country', 'region', 'city'], 'filter', 'filter' => 'htmlentities'],
             [['request_uri', 'referer_uri', 'guid', 'cookie_id', 'ip_address', 'country', 'region', 'city'], 'filter', 'filter' => 'trim'],
             [['request_uri', 'referer_uri', 'guid', 'cookie_id', 'ip_address', 'country', 'region', 'city'], 'string', 'max' => 255],
-            [['action_type_id'], 'in', 'range' => array_keys(self::getActionTypeIdList())],
-            [['offer_type_id'], 'in', 'range' => self::getOfferTypeIdList()],
+            [['type_id'], 'in', 'range' => array_keys(self::getActionTypeIdList())],
         ];
     }
 
@@ -64,8 +60,7 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
             'userName' => \Yii::t('app/attributes', 'User ID'),
             'referalUserName' => \Yii::t('app/attributes', 'Referal User ID'),
             'actionTitle' => \Yii::t('app/attributes', 'Action Type ID'),
-            'action_type_id' => \Yii::t('app/attributes', 'Action Type ID'),
-            'action_item_id' => \Yii::t('app/attributes', 'Action Item ID'),
+            'type_id' => \Yii::t('app/attributes', 'Action Type ID'),
             'created_at' => \Yii::t('app/attributes', 'Created At'),
         ];
     }
@@ -73,17 +68,9 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
     public static function find()
     {
         return self::createObject(
-            UserActionLogQuery::className(),
+            LogQuery::className(),
             [get_called_class()]
         );
-    }
-
-    public static function getOfferTypeIdList()
-    {
-        return [
-            self::OFFER_TYPE_ID_NONE,
-            self::OFFER_TYPE_ID_GOOD,
-        ];
     }
 
     public static function getActionTypeIdList()
@@ -121,8 +108,8 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
     {
         $titles = self::getActionTypeIdList();
 
-        if (isset($titles[$this->action_type_id])) {
-            return $titles[$this->action_type_id];
+        if (isset($titles[$this->type_id])) {
+            return $titles[$this->type_id];
         }
 
         return;
@@ -130,7 +117,7 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
 
     public function getIsGoodAction()
     {
-        return in_array($this->action_type_id, [
+        return in_array($this->type_id, [
             self::TYPE_ID_GOOD_ORDER,
             self::TYPE_ID_GOOD_PAY,
         ]);
@@ -138,7 +125,7 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
 
     public function getIsBillAction()
     {
-        return in_array($this->action_type_id, [
+        return in_array($this->type_id, [
             self::TYPE_ID_NEW_BILL,
             self::TYPE_ID_RETURN_BILL,
             self::TYPE_ID_PAY_BILL,
@@ -148,21 +135,21 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
 
     public function getIsClickAction()
     {
-        return in_array($this->action_type_id, [
+        return in_array($this->type_id, [
             self::TYPE_ID_CLICK_NEW,
         ]);
     }
 
     public function getIsVisitAction()
     {
-        return in_array($this->action_type_id, [
+        return in_array($this->type_id, [
             self::TYPE_ID_VISIT_NEW,
         ]);
     }
 
     public function getIsUserAction()
     {
-        return in_array($this->action_type_id, [
+        return in_array($this->type_id, [
             self::TYPE_ID_SIGN_UP,
             self::TYPE_ID_SIGN_IN,
             self::TYPE_ID_SIGN_OUT,
@@ -171,7 +158,7 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
 
     public function getIsOrderAction()
     {
-        return in_array($this->action_type_id, [
+        return in_array($this->type_id, [
             self::TYPE_ID_NEW_ORDER,
             self::TYPE_ID_RETURN_ORDER,
             self::TYPE_ID_PAY_ORDER,
@@ -184,7 +171,7 @@ class UserActionLog extends \wajox\yii2base\components\db\ActiveRecord
 
     public function getIsSubscribeAction()
     {
-        return in_array($this->action_type_id, [
+        return in_array($this->type_id, [
             self::TYPE_ID_NEW_SUBSCRIBE,
             self::TYPE_ID_UNSUBSCRIBE,
         ]);

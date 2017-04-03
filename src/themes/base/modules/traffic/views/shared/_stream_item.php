@@ -4,38 +4,33 @@ use yii\helpers\Url;
 ?>
 <div class="list-item" data-TrafficStream-id="<?= $model->id ?>">
   <div class="row">
-    <div class="col-md-12">
-      <a href="<?= Url::toRoute(['view-stream', 'id' => $model->id]) ?>"><?= $model->title ?></a>
+    <div class="col-md-4">
+      <a href="<?= Url::toRoute(['view-stream', 'id' => $model->id]) ?>" class="traffic-stream-level-<?= $model->level ?>"><?= $model->title ?></a>
     </div>
-  </div>
 
-  <div class="row text-muted  hidden-sm hidden-xs">
-    <div class="col-md-2"><?= \Yii::t('app/attributes', 'Traffic Stream Subscribes') ?></div>
-    <div class="col-md-2"><?= \Yii::t('app/attributes', 'Traffic Stream Clicks') ?></div>
-    <div class="col-md-2"><?= \Yii::t('app/attributes', 'Traffic Stream Orders') ?></div>
-    <div class="col-md-2"><?= \Yii::t('app/attributes', 'Traffic Stream eCPC') ?></div>
-    <div class="col-md-2"><?= \Yii::t('app/attributes', 'Traffic Stream CPC') ?></div>
-    <div class="col-md-2"><?= \Yii::t('app/attributes', 'Traffic Stream ROI') ?></div>
-  </div>
-
-  <div class="row hidden-sm hidden-xs">
-    <div class="col-md-2">
-      <span data-role="stat" data-target="subscribes_count">0</span>
-    </div>
-    <div class="col-md-2">
-      <span data-role="stat" data-target="clicks_count">0</span>
-    </div>
-    <div class="col-md-2">
-      <span data-role="stat" data-target="bill_sum">0.00</span>
-    </div>
-    <div class="col-md-2">
-      <span data-role="stat" data-target="ecpc">0.00</span>
-    </div>
-    <div class="col-md-2">
-      <span data-role="stat" data-target="cpc">0.00</span>
-    </div>
-    <div class="col-md-2">
-      <span data-role="stat" data-target="roi">0</span> %
+    <div class="col-md-8">
+      <table>
+        <tr>
+          <td>
+            <span data-role="stat" data-target="subscribes_count">0</span>
+          </td>
+          <td>
+            <span data-role="stat" data-target="clicks_count">0</span>
+          </td>
+          <td>
+            <span data-role="stat" data-target="bill_sum">0.00</span>
+          </td>
+          <td>
+            <span data-role="stat" data-target="ecpc">0.00</span>
+          </td>
+          <td>
+            <span data-role="stat" data-target="cpc">0.00</span>
+          </td>
+          <td>
+            <span data-role="stat" data-target="roi">0</span> %
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 

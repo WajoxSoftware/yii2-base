@@ -68,14 +68,14 @@ class StatisticComputer extends Object
 
         $visitsCount = $this
             ->getApp()
-            ->userActionLogs
+            ->actionLogs
             ->getVisitNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->count();
 
         $uniqueVisitsCount = $this
             ->getApp()
-            ->userActionLogs
+            ->actionLogs
             ->getVisitNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->select('[[ip_address]]')
@@ -84,14 +84,14 @@ class StatisticComputer extends Object
 
         $subscribesCount = $this
             ->getApp()
-            ->userActionLogs
+            ->actionLogs
             ->getSubscribeNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->count();
 
         $newBillLogs = $this
             ->getApp()
-            ->userActionLogs
+            ->actionLogs
             ->getBillNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->indexBy('action_item_id')
@@ -99,7 +99,7 @@ class StatisticComputer extends Object
 
         $paidBillLogs = $this
             ->getApp()
-            ->userActionLogs
+            ->actionLogs
             ->getBillPayLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
             ->indexBy('action_item_id')

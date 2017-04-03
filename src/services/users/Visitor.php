@@ -4,17 +4,15 @@ namespace wajox\yii2base\services\users;
 use wajox\yii2base\components\base\Component;
 use wajox\yii2base\services\web\HttpReferer;
 use wajox\yii2base\services\web\AddressByIp;
-use wajox\yii2base\services\subaccounts\SubaccountsManager;
 use wajox\yii2base\models\User;
 use wajox\yii2base\models\Partner;
 use wajox\yii2base\models\TrafficStream;
-use wajox\yii2base\models\UserActionLog;
+use wajox\yii2base\models\Log;
 
 class Visitor extends Component
 {
     const REFERAL_PARAM = '_r_id';
     const USER_SUB_PARAM = '_s_id';
-    const USER_TAG_PARAM  = 'subaccount_tag';
     const STREAM_PARAM = '_ts_id';
     const CID_PARAM = '_c_id';
     const CID_GET_PARAM = 'c_id';
@@ -24,7 +22,6 @@ class Visitor extends Component
 
     protected $trafficStream = null;
     protected $referal = null;
-    protected $userSubaccount = null;
     protected $ip = null;
     protected $guid = null;
     protected $cookieId = '';
@@ -51,7 +48,6 @@ class Visitor extends Component
     {
         $this->loadReferal();
         $this->loadTrafficStream();
-        $this->loadUserSubaccount();
         $this->loadOffer();
         $this->loadCookieId();
         $this->loadGuid();
@@ -76,7 +72,7 @@ class Visitor extends Component
     public function getOfferTypeId()
     {
         if ($this->offerTypeId == null) {
-            return UserActionLog::OFFER_TYPE_ID_NONE;
+            return Log::OFFER_TYPE_ID_NONE;
         }
 
         return $this->offerTypeId;
@@ -98,15 +94,6 @@ class Visitor extends Component
         }
 
         return $this->referal->id;
-    }
-
-    public function getUserSubaccountId()
-    {
-        if ($this->userSubaccount == null) {
-            return null;
-        }
-
-        return $this->userSubaccount->id;
     }
 
     public function getTrafficStreamId()
@@ -139,11 +126,6 @@ class Visitor extends Component
     public function getReferal()
     {
         return $this->referal;
-    }
-
-    public function getUserSubaccount()
-    {
-        return $this->userSubaccount;
     }
 
     public function getTrafficStream()
@@ -228,11 +210,11 @@ class Visitor extends Component
 
     protected function loadOffer()
     {
-        $offerTypeId = intval($this->getParam(self::OFFER_TYPE_PARAM, UserActionLog::OFFER_TYPE_ID_NONE));
+        $offerTypeId = intval($this->getParam(self::OFFER_TYPE_PARAM, Log::OFFER_TYPE_ID_NONE));
         $offerItemId = intval($this->getParam(self::OFFER_ID_PARAM, 0));
 
         if ($this->trafficStream != null && $this->trafficStream->good != null) {
-            $offerTypeId = UserActionLog::OFFER_TYPE_ID_GOOD;
+            $offerTypeId = Log::OFFER_TYPE_ID_GOOD;
             $offerItemId = $this->trafficStream->good->id;
         }
 
@@ -320,51 +302,6 @@ class Visitor extends Component
             ->one();
 
         $this->setTrafficStream($stream);
-    }
-
-    protected function loadUserSubaccountId()
-    {
-        $userSubId = isset($this->getApp()->session[self::USER_SUB_PARAM]) ? htmlspecialchars($this->getApp()->session[self::USER_SUB_PARAM]) : null;
-        $userSubId = isset($_GET[self::USER_SUB_PARAM]) ? htmlspecialchars($_GET[self::USER_SUB_PARAM]) : $userSubId;
-
-        return $userSubId;
-    }
-
-    protected function loadUserSubaccountTag()
-    {
-        $tag = isset($_GET[self::USER_TAG_PARAM]) ? htmlspecialchars($_GET[self::USER_TAG_PARAM]) : '';
-
-        return $tag;
-    }
-
-    public function setUserSubaccount($userSub)
-    {
-        $this->userSubaccount = $userSub;
-        $id =  $this->userSubaccount == null ? null : $this->userSubaccount->id;
-        $this->getApp()->session[self::USER_SUB_PARAM] = $id;
-    }
-
-    protected function loadUserSubaccount()
-    {
-        if (!$this->referal) {
-            return;
-        }
-
-        $manager = $this->createObject(SubaccountsManager::className, [$this->referal]);
-        $userSubId = $this->loadUserSubaccountId();
-        $userSubTag = $this->loadUserSubaccountTag();
-        $userSub = null;
-        $userId = $this->referal->id;
-
-        if ($userSubId) {
-            $userSub = $manager->getSubaccountById($userSubId);
-        }
-
-        if ($userSubTag) {
-            $userSub = $manager->getSubaccount($userId);
-        }
-
-        $this->setUserSubaccount($userSub);
     }
 
     protected function setCookieId($cid)

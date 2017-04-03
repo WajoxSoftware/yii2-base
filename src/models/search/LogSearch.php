@@ -2,15 +2,15 @@
 namespace wajox\yii2base\models\search;
 
 use yii\data\ActiveDataProvider;
-use wajox\yii2base\models\UserActionLog;
+use wajox\yii2base\models\Log;
 use wajox\yii2base\models\User;
 
-class UserActionLogSearch extends UserActionLog
+class LogSearch extends Log
 {
     public function rules()
     {
         return [
-            [['referal_user_id', 'user_id', 'action_type_id', 'action_item_id'], 'integer'],
+            [['referal_user_id', 'user_id', 'type_id', 'item_id'], 'integer'],
         ];
     }
 
@@ -18,11 +18,12 @@ class UserActionLogSearch extends UserActionLog
     {
         $query = $this
             ->getRepository()
-            ->find(UserActionLog::className());
+            ->find(Log::className());
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [
-            ['query' => $query],
-        ]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         $this->load($params);
 
@@ -33,8 +34,7 @@ class UserActionLogSearch extends UserActionLog
         $query->andFilterWhere([
             'referal_user_id' => $this->referal_user_id,
             'user_id' => $this->user_id,
-            'action_type_id' => $this->action_type_id,
-            'action_item_id' => $this->action_item_id,
+            'type_id' => $this->type_id,
         ]);
 
         $query->orderBy('id DESC');
@@ -46,8 +46,8 @@ class UserActionLogSearch extends UserActionLog
     {
         $titles = self::getActionTypeIdList();
 
-        if (isset($titles[$this->action_type_id])) {
-            return $titles[$this->action_type_id];
+        if (isset($titles[$this->type_id])) {
+            return $titles[$this->type_id];
         }
 
         return \Yii::t('app/general', 'All');

@@ -27,9 +27,10 @@ $this->params['filter'] = [
 ?>
 
 <div data-traffic-stream-interval-filter="<?= $searchModel->interval ?>" data-traffic-stream-startdate-filter="<?= $searchModel->startDate ?>" data-traffic-stream-finishdate-filter="<?= $searchModel->finishDate ?>">
-    <?= ListView::widget([
-      'dataProvider' => $dataProvider,
-      'itemView' => '@app/modules/traffic/views/shared/_stream_item',
+
+    <?= $this->render('_streams_list', [
+      'streams' => $streams,
+      'parentId' => 0,
     ]); ?>
 </div>
 

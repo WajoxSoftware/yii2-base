@@ -386,9 +386,9 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
         return $this->hasMany(Statistic::className(), ['user_id' => 'id'])->orWhere(['guid' => $this->guid]);
     }
 
-    public function getUserActionLogs()
+    public function getLogs()
     {
-        return $this->hasMany(UserActionLog::className(), ['user_id' => 'id'])->orWhere(['guid' => $this->guid]);
+        return $this->hasMany(Log::className(), ['user_id' => 'id'])->orWhere(['guid' => $this->guid]);
     }
 
     public function getSettings()

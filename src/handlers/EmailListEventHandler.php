@@ -3,7 +3,7 @@ namespace wajox\yii2base\events;
 
 use wajox\yii2base\models\EmailList;
 use wajox\yii2base\events\EmailListEvent;
-use wajox\yii2base\models\UserActionLog;
+use wajox\yii2base\models\Log;
 
 class EmailListEventHandler extends BaseHandler
 {
@@ -15,8 +15,8 @@ class EmailListEventHandler extends BaseHandler
             $user = $event->subscribe->user;
         }
 
-        \Yii::$app->userActionLogs->log(
-            UserActionLog::TYPE_ID_NEW_SUBSCRIBE,
+        \Yii::$app->actionLogs->log(
+            Log::TYPE_ID_NEW_SUBSCRIBE,
             $event->emailList,
             $user
         );
@@ -29,8 +29,8 @@ class EmailListEventHandler extends BaseHandler
         if ($event->subscribe && $event->subscribe->user_id != 0) {
             $user = $event->subscribe->user;
         }
-        \Yii::$app->userActionLogs->log(
-            UserActionLog::TYPE_ID_UNSUBSCRIBE,
+        \Yii::$app->actionLogs->log(
+            Log::TYPE_ID_UNSUBSCRIBE,
             $event->emailList,
             $user
         );

@@ -64,7 +64,7 @@ class TrafficStreamStatisticAnalyzer extends Object
 
     protected function computeClicksCount()
     {
-        $this->clicksCount = $this->getApp()->userActionLogs->getClickNewLogs($this->extParams)
+        $this->clicksCount = $this->getApp()->actionLogs->getClickNewLogs($this->extParams)
             ->andWhere(['traffic_stream_id' => $this->model->id])
             ->andWhere('[[created_at]] >= :start AND [[created_at]] < :finish', $this->getTimeCond())
             ->count();
@@ -72,7 +72,7 @@ class TrafficStreamStatisticAnalyzer extends Object
 
     protected function computeSubscribesCount()
     {
-        $this->subscribesCount = $this->getApp()->userActionLogs->getSubscribeNewLogs($this->extParams)
+        $this->subscribesCount = $this->getApp()->actionLogs->getSubscribeNewLogs($this->extParams)
             ->andWhere(['traffic_stream_id' => $this->model->id])
             ->andWhere('[[created_at]] >= :start AND [[created_at]] < :finish', $this->getTimeCond())
             ->count();
@@ -81,7 +81,7 @@ class TrafficStreamStatisticAnalyzer extends Object
     protected function computeBillsSum()
     {
         $traffic_stream_id = $this->model->id;
-        $billLogs = $this->getApp()->userActionLogs->getBillPayLogs($this->extParams)
+        $billLogs = $this->getApp()->actionLogs->getBillPayLogs($this->extParams)
             ->andWhere(['traffic_stream_id' => $this->model->id])
             ->andWhere('[[created_at]] >= :start AND [[created_at]] < :finish', $this->getTimeCond())
             ->indexBy('id');

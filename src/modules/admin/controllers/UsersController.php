@@ -36,7 +36,7 @@ class UsersController extends ApplicationController
         $model = $this->findModel($id);
 
         $dataProvider = $this->createObject(ActiveDataProvider::className(), [[
-            'query' => $model->getUserActionLogs(),
+            'query' => $model->getLogs(),
             'sort' => [
                 'defaultOrder' => [
                     'created_at' => SORT_DESC,

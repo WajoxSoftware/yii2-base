@@ -101,9 +101,9 @@ class Customer extends \wajox\yii2base\components\db\ActiveRecord
         return $this->hasMany(Order::className(), ['customer_id' => 'id']);
     }
 
-    public function getUserActionLogs()
+    public function getLogs()
     {
-        return $this->hasMany(UserActionLog::className(), ['user_id' => 'user_id'])->orWhere(['guid' => $this->guid]);
+        return $this->hasMany(Log::className(), ['user_id' => 'user_id'])->orWhere(['guid' => $this->guid]);
     }
 
     public function getFullName()

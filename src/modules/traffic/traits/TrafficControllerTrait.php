@@ -52,23 +52,23 @@ trait TrafficControllerTrait
     {
         $source = $this->findSourceModel($id);
         $user = $source->user;
+        $streams = [];
 
         $query = $this
             ->getRepository()
             ->find(TrafficStream::className())
             ->where([
                 'traffic_source_id' => $source->id,
-            ]);
+            ])
+            ->orderBy('level ASC');
 
-
-        $dataProvider = $this->createObject(
-            ActiveDataProvider::className(),
-            [['query' => $query]]
-        );
+        foreach ($query->each() as $stream) {
+            $streams[$stream->parent_id][] = $stream;
+        }
 
         return $this->render('view_source', [
             'searchModel' => $this->getFilterForm($user),
-            'dataProvider' => $dataProvider,
+            'streams' => $streams,
             'source' => $source,
             'user' => $user,
         ]);

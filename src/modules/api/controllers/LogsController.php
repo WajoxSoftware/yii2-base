@@ -2,9 +2,9 @@
 namespace wajox\yii2base\modules\api\controllers;
 
 use yii\filters\AccessControl;
-use wajox\yii2base\models\UserActionLog;
+use wajox\yii2base\models\Log;
 
-class UserActionLogsController extends ApplicationController
+class LogsController extends ApplicationController
 {
     public function behaviors()
     {
@@ -25,7 +25,7 @@ class UserActionLogsController extends ApplicationController
     {
         $models = $this
             ->getRepository()
-            ->find(UserActionLog::className())
+            ->find(Log::className())
             ->where([
                 'id' => $ids,
             ])

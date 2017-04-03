@@ -18,7 +18,7 @@ class SenderSettingsController extends Controller
     protected function getSettings()
     {
         $params = [
-            'endpoint_url' => 'https://api2.esv2.com',
+            'endpoint_url' => 'https://api2.esv2.com/Api/',
             'api_key' => '5RhLodq9D9oEhHVduhpv',
             'transactional_id' => '37',
             'base_list_id' => '5',

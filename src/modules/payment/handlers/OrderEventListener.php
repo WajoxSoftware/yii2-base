@@ -3,7 +3,7 @@ namespace wajox\yii2base\services\events\listeners;
 
 use wajox\yii2base\models\Good;
 use wajox\yii2base\modules\payment\models\Order;
-use wajox\yii2base\models\UserActionLog;
+use wajox\yii2base\models\Log;
 use wajox\yii2base\services\order\OrderMailer;
 use wajox\yii2base\services\events\OrderEvent;
 use wajox\yii2base\services\events\GoodEvent;
@@ -24,8 +24,8 @@ class OrderEventHandler extends BaseHandler
         SubscribesManager::subscribeOrder($event->order);
         OrderEventHandler::onEvent($event);
 
-        \Yii::$app->userActionLogs->log(
-            UserActionLog::TYPE_ID_NEW_ORDER,
+        \Yii::$app->actionLogs->log(
+            Log::TYPE_ID_NEW_ORDER,
             $event->order,
             $event->order->user
         );
@@ -50,8 +50,8 @@ class OrderEventHandler extends BaseHandler
 
         (new PurchasesManager($event->order->user))->addOrder($event->order);
 
-        \Yii::$app->userActionLogs->log(
-            UserActionLog::TYPE_ID_PAY_ORDER,
+        \Yii::$app->actionLogs->log(
+            Log::TYPE_ID_PAY_ORDER,
             $event->order,
             $event->order->user
         );
@@ -72,9 +72,9 @@ class OrderEventHandler extends BaseHandler
     {
         OrderDeliveryManager::processCancelledOrder($event->order);
         OrderEventHandler::onEvent($event);
-        OrderEventHandler::logEvent(UserActionLog::TYPE_ID_CANCEL_ORDER, $event);
-        \Yii::$app->userActionLogs->log(
-            UserActionLog::TYPE_ID_RETURN_ORDER,
+        OrderEventHandler::logEvent(Log::TYPE_ID_CANCEL_ORDER, $event);
+        \Yii::$app->actionLogs->log(
+            Log::TYPE_ID_RETURN_ORDER,
             $event->order,
             $event->order->user
         );
@@ -89,8 +89,8 @@ class OrderEventHandler extends BaseHandler
 
         OrderEventHandler::onEvent($event);
 
-        \Yii::$app->userActionLogs->log(
-            UserActionLog::TYPE_ID_MONEYBACK_ORDER,
+        \Yii::$app->actionLogs->log(
+            Log::TYPE_ID_MONEYBACK_ORDER,
             $event->order,
             $event->order->user
         );
@@ -112,8 +112,8 @@ class OrderEventHandler extends BaseHandler
     {
         OrderDeliveryManager::processDeliveredOrder($event->order);
         OrderEventHandler::onEvent($event);
-        \Yii::$app->userActionLogs->log(
-            UserActionLog::TYPE_ID_DELIVER_ORDER,
+        \Yii::$app->actionLogs->log(
+            Log::TYPE_ID_DELIVER_ORDER,
             $event->order,
             $event->order->user
         );
@@ -123,8 +123,8 @@ class OrderEventHandler extends BaseHandler
     {
         OrderDeliveryManager::processUndeliveredOrder($event->order);
         OrderEventHandler::onEvent($event);
-        \Yii::$app->userActionLogs->log(
-            UserActionLog::TYPE_ID_UNDELIVER_ORDER,
+        \Yii::$app->actionLogs->log(
+            Log::TYPE_ID_UNDELIVER_ORDER,
             $event->order,
             $event->order->user
         );
@@ -134,8 +134,8 @@ class OrderEventHandler extends BaseHandler
     {
         OrderDeliveryManager::processReturnedOrder($event->order);
         OrderEventHandler::onEvent($event);
-        \Yii::$app->userActionLogs->log(
-            UserActionLog::TYPE_ID_RETURN_ORDER,
+        \Yii::$app->actionLogs->log(
+            Log::TYPE_ID_RETURN_ORDER,
             $event->order,
             $event->order->user
         );

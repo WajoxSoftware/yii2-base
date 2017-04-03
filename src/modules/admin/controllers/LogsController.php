@@ -2,15 +2,15 @@
 
 namespace wajox\yii2base\modules\admin\controllers;
 
-use wajox\yii2base\models\UserActionLog;
-use wajox\yii2base\models\search\UserActionLogSearch;
+use wajox\yii2base\models\Log;
+use wajox\yii2base\models\search\LogSearch;
 use yii\web\NotFoundHttpException;
 
-class UserActionLogsController extends ApplicationController
+class LogsController extends ApplicationController
 {
     public function actionIndex()
     {
-        $searchModel = $this->createObject(UserActionLogSearch::className());
+        $searchModel = $this->createObject(LogSearch::className());
         $dataProvider = $searchModel->search($this->getApp()->request->queryParams);
 
         return $this->render('index', [
@@ -31,7 +31,7 @@ class UserActionLogsController extends ApplicationController
     protected function findModel($id)
     {
         return $this->findModelById(
-            UserActionLog::className(),
+            Log::className(),
             $id
         );
     }
