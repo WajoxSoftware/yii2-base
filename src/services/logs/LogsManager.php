@@ -128,11 +128,11 @@ class LogsManager extends Component
             ->find(Log::className());
 
         if ($typeId != null) {
-            $q = $q->andWhere(['action_type_id' => $typeId]);
+            $q = $q->andWhere(['type_id' => $typeId]);
         }
 
         if ($itemId != null) {
-            $q = $q->andWhere(['action_item_id' => $itemId]);
+            $q = $q->andWhere(['item_id' => $itemId]);
         }
 
         if (sizeof($params) > 0) {

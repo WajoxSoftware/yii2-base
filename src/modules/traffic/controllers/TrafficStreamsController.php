@@ -8,14 +8,18 @@ use wajox\yii2base\services\traffic\TrafficStreamBuilder;
 
 class TrafficStreamsController extends ApplicationController
 {
-    public function actionCreate($id)
+    public function actionCreate($sourceId, $streamId = 0)
     {
         $request = $this->getApp()->request;
-        $modelSource = $this->findModelSource($id);
+        $modelSource = $this->findModelSource($sourceId);
+        $modelStream = $this->findModel($streamId);
 
         $this->requireUserAccess($modelSource->user_id);
 
-        $builder = $this->getBuilder($modelSource)->build();
+        $builder = $this
+            ->getBuilder($modelSource, $modelStream)
+            ->build();
+
         $success = false;
 
         if ($request->isPost) {
@@ -32,7 +36,7 @@ class TrafficStreamsController extends ApplicationController
     {
         $request = $this->getApp()->request;
         $model = $this->findModel($id);
-        $builder = $this->getBuilder($model->source, $model);
+        $builder = $this->getBuilder($model->source, null, $model);
         $success = false;
 
         $this->requireUserAccess($model->user_id);
@@ -58,11 +62,11 @@ class TrafficStreamsController extends ApplicationController
         ]);
     }
 
-    protected function getBuilder($source, $model = null)
+    protected function getBuilder($source, $stream = null, $model = null)
     {
         return $this->createObject(
             TrafficStreamBuilder::className(),
-            [$source, $model]
+            [$source, $stream, $model]
         );
     }
 

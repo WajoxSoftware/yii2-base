@@ -225,7 +225,7 @@ class Log extends \wajox\yii2base\components\db\ActiveRecord
         return $this
             ->getRepository()
             ->find(Bill::className())
-            ->byId($this->action_item_id)
+            ->byId($this->item_id)
             ->one();
     }
 
@@ -238,7 +238,7 @@ class Log extends \wajox\yii2base\components\db\ActiveRecord
         return $this
             ->getRepository()
             ->find(Statistic::className())
-            ->byId($this->action_item_id)
+            ->byId($this->item_id)
             ->one();
     }
 
@@ -251,7 +251,7 @@ class Log extends \wajox\yii2base\components\db\ActiveRecord
         return $this
             ->getRepository()
             ->find(Good::className())
-            ->byId($this->action_item_id)
+            ->byId($this->item_id)
             ->one();
     }
 
@@ -264,7 +264,7 @@ class Log extends \wajox\yii2base\components\db\ActiveRecord
         return $this
             ->getRepository()
             ->find(Order::className())
-            ->byId($this->action_item_id)
+            ->byId($this->item_id)
             ->one();
     }
 
@@ -277,7 +277,7 @@ class Log extends \wajox\yii2base\components\db\ActiveRecord
         return $this
             ->getRepository()
             ->find(EmailList::className())
-            ->byId($this->action_item_id)
+            ->byId($this->item_id)
             ->one();
     }
 }

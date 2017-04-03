@@ -5,7 +5,6 @@ use wajox\yii2base\models\Good;
 use wajox\yii2base\models\TrafficStream;
 use wajox\yii2base\models\TrafficStreamGood;
 use wajox\yii2base\models\TrafficCompany;
-use wajox\yii2base\services\web\UrlConverter;
 use wajox\yii2base\components\base\Object;
 
 class TrafficStreamBuilder extends Object

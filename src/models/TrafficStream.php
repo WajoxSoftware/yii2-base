@@ -3,7 +3,6 @@ namespace wajox\yii2base\models;
 
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
-use wajox\yii2base\services\web\UrlConverter;
 
 class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
 {
@@ -72,12 +71,12 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
         return $this->status_id == self::STATUS_ID_ACTIVE;
     }
 
-    public function getUrl($tag = 'sub1/sub2/sub3/sub4')
+    public function getUrl()
     {
         return str_replace('%2F', '/', Url::toRoute([
             '/traffic-streams/view',
-            'id' => $this->id,
-            'tag' => $tag,
+            'sourceTag' => $this->source->tag,
+            'streamTag' => $this->full_tag,
         ], true));
     }
 
