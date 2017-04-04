@@ -2,12 +2,12 @@
 $items = [];
 
 $items['index'] = [
-  'url' => ['view', 'id' => $model->id],
+  'url' => ['view-source', 'id' => $model->id],
   'title' => \Yii::t('app/admin', 'Nav Traffic Source View'),
 ];
 
 $items['stat'] = [
-  'url' => ['view', 'id' => $model->id, 'stat' => false],
+  'url' => ['view-source', 'id' => $model->id, 'stat' => true],
   'title' => \Yii::t('app/admin', 'Nav Traffic Source Stat'),
 ];
 

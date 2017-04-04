@@ -4,8 +4,8 @@ use yii\widgets\ListView;
 
 $this->params['breadcrumbs'][] = $source->title;
 
-$this->render('tabs/_tabs', [
-  'current' => $stat ? 'index' : 'stat',
+$this->render('@app/modules/traffic/views/shared/_tabs', [
+  'current' => $stat ? 'stat' : 'index',
   'model' => $source,
 ]);
 
