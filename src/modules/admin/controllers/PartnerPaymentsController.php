@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\modules\admin\controllers;
 
-use wajox\yii2base\models\Payment;
+use wajox\yii2base\modules\payment\models\Payment;
 use wajox\yii2base\models\User;
 use yii\web\NotFoundHttpException;
 

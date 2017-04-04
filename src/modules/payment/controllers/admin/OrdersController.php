@@ -1,11 +1,11 @@
 <?php
+namespace wajox\yii2base\modules\payment\controllers\admin;
 
-namespace wajox\yii2base\modules\payment\controllers;
-
-use wajox\yii2base\models\Order;
-use wajox\yii2base\models\search\OrderSearch;
+use wajox\yii2base\modules\payment\models\Order;
+use wajox\yii2base\modules\payment\models\search\OrderSearch;
 use yii\web\NotFoundHttpException;
 use yii\data\Sort;
+use wajox\yii2base\modules\admin\controllers\ApplicationController as AdminApplicationController;
 
 class OrdersController extends AdminApplicationController
 {

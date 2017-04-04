@@ -41,9 +41,17 @@ use yii\helpers\Url;
             <i class="fa fa-link"></i>
             <?= \Yii::t('app/general', 'Generate link') ?>
         </a>
+
+        <?php if ($model->level < 5): ?>
+          <a href="<?= Url::toRoute(['/traffic/traffic-streams/create', 'sourceId' => $model->traffic_source_id, 'streamId' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
+            <i class="fa fa-plus"><?= \Yii::t('app/general', 'Add') ?></i>
+          </a>
+        <?php endif; ?>
+
         <a href="<?= Url::toRoute(['/traffic/traffic-streams/update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
           <i class="fa fa-pencil"><?= \Yii::t('app/general', 'Edit') ?></i>
         </a>
+
         <a href="<?= Url::toRoute(['/traffic/traffic-streams/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
           <i class="fa fa-trash"><?= \Yii::t('app/general', 'Delete') ?></i>
         </a>

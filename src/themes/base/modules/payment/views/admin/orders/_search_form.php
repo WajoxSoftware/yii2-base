@@ -1,6 +1,6 @@
 <?php
 use yii\bootstrap\ActiveForm;
-use wajox\yii2base\models\Order;
+use wajox\yii2base\modules\payment\models\Order;
 
 ?>
 

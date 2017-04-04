@@ -42,16 +42,18 @@ class UserQuery extends ActiveQuery
 
     public function byEmailOrGuid($email, $guid)
     {
-        return $this>where([
-            'email' => htmlspecialchars($email),
-        ])->orWhere([
-            'guid' => htmlspecialchars($guid),
-        ]);
+        return $this
+            ->where([
+                'email' => htmlspecialchars($email),
+            ])->orWhere([
+                'guid' => htmlspecialchars($guid),
+            ]);
     }
 
     public function byIdOrGuid($id, $guid)
     {
-        return $this>where(['id' => intval($id)])
+        return $this
+            ->where(['id' => intval($id)])
             ->orWhere(['guid' => htmlspecialchars($guid)]);
     }
 

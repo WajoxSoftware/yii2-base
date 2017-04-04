@@ -94,7 +94,7 @@ class StatisticComputer extends Object
             ->actionLogs
             ->getBillNewLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
-            ->indexBy('action_item_id')
+            ->indexBy('item_id')
             ->all();
 
         $paidBillLogs = $this
@@ -102,7 +102,7 @@ class StatisticComputer extends Object
             ->actionLogs
             ->getBillPayLogs($params)
             ->andWhere('created_at >= :start AND created_at < :finish', $time_cond)
-            ->indexBy('action_item_id')
+            ->indexBy('item_id')
             ->all();
 
         $newBillIds = array_keys($newBillLogs);

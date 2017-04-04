@@ -11,8 +11,8 @@ class TrafficTunnelStep extends \wajox\yii2base\components\db\ActiveRecord
     public function rules()
     {
         return [
-            [['traffic_tunnel_id', 'position', 'title', 'action_type_id'], 'required'],
-            [['traffic_tunnel_id', 'position', 'action_type_id'], 'integer'],
+            [['traffic_tunnel_id', 'position', 'title', 'type_id'], 'required'],
+            [['traffic_tunnel_id', 'position', 'type_id'], 'integer'],
             [['title', 'action_params'], 'filter', 'filter' => 'strip_tags'],
             [['title'], 'filter', 'filter' => 'htmlentities'],
             [['title'], 'filter', 'filter' => 'trim'],
@@ -27,7 +27,7 @@ class TrafficTunnelStep extends \wajox\yii2base\components\db\ActiveRecord
             'traffic_tunnel_id' => \Yii::t('app/attributes', 'Traffic Tunnel ID'),
             'position' => \Yii::t('app/attributes', 'Position'),
             'title' => \Yii::t('app/attributes', 'Title'),
-            'action_type_id' => \Yii::t('app/attributes', 'Action Type ID'),
+            'type_id' => \Yii::t('app/attributes', 'Action Type ID'),
             'action_params' => \Yii::t('app/attributes', 'Action Params'),
         ];
     }
@@ -41,6 +41,6 @@ class TrafficTunnelStep extends \wajox\yii2base\components\db\ActiveRecord
     {
         $ls = self::getActionTypeIdList();
 
-        return $ls[$this->action_type_id];
+        return $ls[$this->type_id];
     }
 }

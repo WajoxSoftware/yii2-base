@@ -89,7 +89,7 @@ class TrafficStreamStatisticAnalyzer extends Object
         $billIds = [];
 
         foreach ($billLogs->each() as $billLog) {
-            $billIds[] = $billLog->action_item_id;
+            $billIds[] = $billLog->item_id;
         }
 
         $this->billSum = $this

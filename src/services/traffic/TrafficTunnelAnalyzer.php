@@ -139,12 +139,12 @@ class TrafficTunnelAnalyzer extends Object
 
     protected function getStepDataQuery($step)
     {
-        $where['action_type_id'] = $step->action_type_id;
+        $where['type_id'] = $step->type_id;
 
-        if ($step->action_type_id == Log::TYPE_ID_VISIT_NEW) {
+        if ($step->type_id == Log::TYPE_ID_VISIT_NEW) {
             $where['request_uri'] = $step->action_params;
         } elseif (!empty($step->action_params)) {
-            $where['action_item_id'] = $step->action_params;
+            $where['item_id'] = $step->action_params;
         }
 
         return $this

@@ -38,6 +38,8 @@ return [
     'Nav Goods Good Email Lists' => 'Рассылки',
 
     'Nav Traffic Sources' => 'Источники трафика',
+    'Nav Traffic Source View' => 'Управление',
+    'Nav Traffic Source Stat' => 'Статистика',
     'Nav Traffic Managers' => 'Менеджеры трафика',
 
     'Nav Partners Partners List' => 'Список партнеров',

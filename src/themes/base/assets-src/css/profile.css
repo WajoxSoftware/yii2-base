@@ -25,6 +25,22 @@
   display: none;
 }
 
+.traffic-stream-level-1 {
+  padding-left: 20px;
+}
+
+.traffic-stream-level-2 {
+  padding-left: 40px;
+}
+
+.traffic-stream-level-3 {
+  padding-left: 60px;
+}
+
+.traffic-stream-level-4 {
+  padding-left: 80px;
+}
+
 .sidebar-nav {
     display: block;
     float: left;

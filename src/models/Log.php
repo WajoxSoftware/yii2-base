@@ -33,6 +33,9 @@ class Log extends \wajox\yii2base\components\db\ActiveRecord
     const TYPE_ID_PAY_BILL = 702;
     const TYPE_ID_CANCEL_BILL = 703;
 
+    const OFFER_TYPE_ID_NONE = 100;
+    const OFFER_TYPE_ID_GOOD = 200;
+
     public static function tableName()
     {
         return 'log';

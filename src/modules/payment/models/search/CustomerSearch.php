@@ -1,8 +1,8 @@
 <?php
-namespace wajox\yii2base\models\search;
+namespace wajox\yii2base\modules\payment\models\search;
 
 use yii\data\ActiveDataProvider;
-use wajox\yii2base\models\Customer;
+use wajox\yii2base\modules\payment\models\Customer;
 
 class CustomerSearch extends Customer
 {

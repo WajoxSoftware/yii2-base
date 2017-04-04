@@ -48,7 +48,7 @@ trait TrafficControllerTrait
         ]);
     }
 
-    protected function viewSource($id)
+    protected function viewSource($id, $stat = false)
     {
         $source = $this->findSourceModel($id);
         $user = $source->user;
@@ -71,6 +71,7 @@ trait TrafficControllerTrait
             'streams' => $streams,
             'source' => $source,
             'user' => $user,
+            'stat' => $stat,
         ]);
     }
 

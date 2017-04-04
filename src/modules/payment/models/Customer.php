@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\modules\payment\models;
 
-use wajox\yii2base\models\query\CustomerQuery;
+use wajox\yii2base\modules\payment\models\query\CustomerQuery;
 
 class Customer extends \wajox\yii2base\components\db\ActiveRecord
 {

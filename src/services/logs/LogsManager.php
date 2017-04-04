@@ -7,12 +7,7 @@ use wajox\yii2base\models\LogParam;
 
 class LogsManager extends Component
 {
-    public function __construct($params = [])
-    {
-        ;
-    }
-
-    public function log($typeId, $itemId = null, $user = null, $params = [])
+    public function logAsync($typeId, $itemId = null, $user = null, $params = [])
     {
         $cmdParams = [
             $typeId,
@@ -30,10 +25,8 @@ class LogsManager extends Component
             );
     }
 
-    public function saveLog($typeId, $itemId = null, $userId = null, $params = [])
-    {
-        $user = $userId ? $userId : \Yii::$app->usersManager->findById($userId);
-        
+    public function log($typeId, $itemId = null, $user = null, $params = [])
+    {        
         $model = $this->buildModel($user);
 
         $model->type_id = $typeId;

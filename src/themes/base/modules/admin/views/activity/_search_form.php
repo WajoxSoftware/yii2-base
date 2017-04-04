@@ -49,7 +49,7 @@ $userApiUrl = \yii\helpers\Url::toRoute(['/api/users', 'suffix' => '.json'], tru
 
     <div class="row">
         <div class="col-md-12">
-            <?= $form->field($model, 'action_type_id')
+            <?= $form->field($model, 'type_id')
                     ->dropDownList($model::getActionTypeIdList(), ['prompt' => \Yii::t('app/general', 'Select')]); ?>
         </div>
     </div>

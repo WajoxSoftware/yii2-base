@@ -7,9 +7,13 @@ class ActionLogsController extends Controller
 {
     public function actionCreate($typeId, $itemId, $userId, $jsonParams)
     {
+        $user = \Yii::$app
+            ->usersManager
+            ->findById($userId);
+
         \Yii::$app
             ->actionLogs
-            ->saveLog(
+            ->log(
                 $typeId,
                 $itemId,
                 $userId,
