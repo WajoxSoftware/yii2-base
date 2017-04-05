@@ -2,7 +2,7 @@
     <div>
         <?= $this->render(
             '@app/modules/traffic/views/shared/_stream_item',
-            ['model' => $stream, 'stat' => $stat]
+            ['model' => $stream]
         ) ?>
 
         <?php if (isset($streams[$stream->id])): ?>
@@ -10,7 +10,6 @@
                 <?= $this->render('_streams_list', [
                     'streams' => $streams,
                     'parentId' => $stream->id,
-                    'stat' => $stat,
                 ]) ?>
             </div>
         <?php endif; ?>

@@ -11,30 +11,6 @@ use yii\helpers\Url;
     </div>
 
     <div class="col-md-8">
-      <?php if ($stat): ?>
-        <table class="table table-striped">
-          <tr>
-            <td>
-              <span data-role="stat" data-target="subscribes_count">0</span>
-            </td>
-            <td>
-              <span data-role="stat" data-target="clicks_count">0</span>
-            </td>
-            <td>
-              <span data-role="stat" data-target="bill_sum">0.00</span>
-            </td>
-            <td>
-              <span data-role="stat" data-target="ecpc">0.00</span>
-            </td>
-            <td>
-              <span data-role="stat" data-target="cpc">0.00</span>
-            </td>
-            <td>
-              <span data-role="stat" data-target="roi">0</span> %
-            </td>
-          </tr>
-        </table>
-      <?php else: ?>
         <div class="btn-group" role="group">
           <a href="#" class="btn btn-xs btn-default" data-subaccount-link-generator="true" data-link-template="<?= $model->getUrl('[subaccount_tag]') ?>">
               <i class="fa fa-link"></i>
@@ -54,10 +30,9 @@ use yii\helpers\Url;
           </a>
 
           <a href="<?= Url::toRoute(['/traffic/traffic-streams/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
-            <i class="fa fa-trash"><?= \Yii::t('app/general', 'Delete') ?></i>
+            <i class="fa fa-trash"><?= \Yii::t('app/general', 'Archivate') ?></i>
           </a>
         </div>
-      <?php endif; ?>
     </div>
   </div>
 </div>
