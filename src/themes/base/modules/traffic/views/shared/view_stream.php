@@ -25,6 +25,12 @@ $this->params['pageControls']['items'][] = [
 ];
 
 ?>
+
+<h3><?= $stream->title ?></h3>
+<p><?= $stream->getUrl() ?></p>
+<div><p>Описание:</p><?= $stream->content ?></div>
+
+<h3>Цена/Клики</h3>
 <?= ListView::widget([
   'dataProvider' => $dataProvider,
   'itemView' => '@app/modules/traffic/views/shared/_stream_price_item',

@@ -42,6 +42,7 @@ if ($stat) {
 <?php
 if ($stat) {
   echo $this->render('@app/modules/traffic/views/shared/_traffic_stream_statistic_js');
+} else {
   echo $this->render('@app/modules/traffic/views/shared/_subaccounts_link_generator');
 }
 ?>

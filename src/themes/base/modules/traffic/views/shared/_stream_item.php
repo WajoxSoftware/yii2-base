@@ -41,6 +41,8 @@ use yii\helpers\Url;
               <?= \Yii::t('app/general', 'Generate link') ?>
           </a>
 
+          <a href="<?= Url::to(['/traffic/traffic-stream-prices/create', 'id' => $model->id, 'suffix' => '.js']) ?>"  class="btn btn-xs btn-default js-remote-link"><i class="fa fa-plus"></i><?= \Yii::t('app/trafficmanager', 'Price/Clicks') ?></a>
+
           <?php if ($model->level < 5): ?>
             <a href="<?= Url::toRoute(['/traffic/traffic-streams/create', 'sourceId' => $model->traffic_source_id, 'streamId' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
               <i class="fa fa-plus"><?= \Yii::t('app/general', 'Add') ?></i>
