@@ -276,6 +276,7 @@ var HtmlWidgets = function() {
 
     this.init = function() {
         // $('table.table').stacktable();
+        $(function() { $.material.init(); });
         this.bindEvents();
         this.renderAll();
     };
