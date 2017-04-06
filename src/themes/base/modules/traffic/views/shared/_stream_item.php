@@ -7,9 +7,6 @@ use yii\helpers\Url;
       <a href="<?= Url::toRoute(['view-stream', 'id' => $model->id]) ?>"><?= $model->title ?></a>
     </span>
 
-    <p><?= $model->createdDateTime ?>, <?= $model->status ?></p>
-    <p><?= $model->shortMessage ?></p>
-
     <span class="secondary-content">
           <a href="#" data-subaccount-link-generator="true" data-link-template="<?= $model->getUrl('[subaccount_tag]') ?>">
               <i class="fa fa-link"></i>
