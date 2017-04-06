@@ -2,22 +2,20 @@
 use yii\helpers\Url;
 
 ?>
-<div class="list-item" data-TrafficManager-id="<?= $model->id ?>">
-	<div class="row">
-	  <div class="col-md-9">
-	  	<a  href="<?= Url::toRoute(['view-user', 'id' => $model->user_id]) ?>">
-	    	<?=$model->user->name ?>
-	    </a>
-	  </div>
-	  <div class="col-md-3">
-	  	  <div class="btn-group" role="group">
-		    <a href="<?= Url::toRoute(['/admin/traffic-managers/update', 'id' => $model->id]) ?>" class="btn btn-xs btn-default">
+<li class="collection-item" data-TrafficManager-id="<?= $model->id ?>">
+    <span class="title">
+      <a href="<?= Url::toRoute(['view-user', 'id' => $model->user_id]) ?>">
+        <?=$model->user->name ?>
+      </a>
+    </span>
+
+    <span class="secondary-content">
+		<a href="<?= Url::toRoute(['/admin/traffic-managers/update', 'id' => $model->id]) ?>">
 		      <i class="fa fa-pencil"><?= \Yii::t('app/general', 'Edit') ?></i>
 		    </a>
-		    <a href="<?= Url::toRoute(['/admin/traffic-managers/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
+		    <a href="<?= Url::toRoute(['/admin/traffic-managers/delete', 'id' => $model->id, 'suffix' => '.js']) ?>">
 		      <i class="fa fa-trash"><?= \Yii::t('app/general', 'Delete') ?></i>
 		    </a>
-		  </div>
-	  </div>
-	</div>
-</div>
+    </span>
+</li>
+

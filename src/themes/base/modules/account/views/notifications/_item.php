@@ -2,21 +2,18 @@
 use yii\helpers\Url;
 
 ?>
+<li class="collection-item">
+    <span class="title">
+      <a href="<?= Url::toRoute(['view', 'id' => $model->id]) ?>">
+        <?= $model->subject ?>
+      </a>
+    </span>
 
-<a href="<?= Url::toRoute(['view', 'id' => $model->id]) ?>" class="row list-item">
-  <div class="col-md-2">
-    <?= $model->status ?>
-  </div>
+    <p><?= $model->createdDateTime ?>, <?= $model->status ?></p>
+    <p><?= $model->shortMessage ?></p>
 
-  <div class="col-md-4">
-    <?= $model->subject ?>
-  </div>
 
-  <div class="col-md-4">
-    <p class="text-muted"><?= $model->shortMessage ?></p>
-  </div>
+    <span class="secondary-content">
+    </span>
+</li>
 
-  <div class="col-md-2">
-    <?= $model->createdDateTime ?>
-  </div>
-</div>
