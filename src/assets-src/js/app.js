@@ -268,7 +268,6 @@ var HtmlWidgets = function() {
 
             self.toggle(collapsible);
 
-
             return false;
         });
     };

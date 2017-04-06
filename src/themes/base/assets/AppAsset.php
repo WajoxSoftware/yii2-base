@@ -24,6 +24,7 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'wajox\yii2base\assets\AppAsset',
+        'yii\bootstrap\BootstrapAsset',
         'romdim\bootstrap\material\BootMaterialCssAsset',
         'romdim\bootstrap\material\BootMaterialJsAsset',
     ];
