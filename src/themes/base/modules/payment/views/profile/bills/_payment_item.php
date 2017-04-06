@@ -1,17 +1,12 @@
-<?php
+<li class="collection-item">
+    <span class="title">
+      <?=$model->paymentDestination ?>
+    </span>
 
-?>
-<div  class="row message-item">
-  <div class="col-sm-4">
-    <?=$model->sumRUR ?>
-    P
-  </div>
+    <p><?=$model->sumRUR ?> P</p>
+    <p><?= $model->createdDate ?></p>
 
-  <div class="col-sm-4">
-    <?=$model->paymentDestination ?>
-  </div>
 
-  <div class="col-sm-4">
-    <?= $model->createdDate ?>
-  </div>
-</div>
+    <span class="secondary-content">
+    </span>
+</li>
