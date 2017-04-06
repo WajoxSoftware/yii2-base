@@ -17,6 +17,7 @@ class StatisticFilterForm extends Model
     public $interval;
     public $startDate;
     public $finishDate;
+    public $step;
 
     protected $user;
 
@@ -26,6 +27,8 @@ class StatisticFilterForm extends Model
             [['startDate', 'finishDate'], 'default'],
             [['startDate', 'finishDate'], 'date', 'format' => 'dd.mm.yyyy'],
             [['interval'], 'in', 'range' => array_keys(self::getIntervalsList())],
+            [['step'], 'in', 'range' => array_keys(self::getIntervalStepsList())],
+            [['step'], 'default', 'value' => DateTimeHelper::STEP_ALL],
             ['interval', 'default', 'value' => self::INTERVAL_TODAY],
         ];
     }
@@ -36,7 +39,9 @@ class StatisticFilterForm extends Model
             'startDate' => \Yii::t('app/attributes', 'From'),
             'finishDate' => \Yii::t('app/attributes', 'FromTo'),
             'interval' => \Yii::t('app/attributes', 'Dates Interval'),
+            'step' => \Yii::t('app/attributes', 'Dates Step'),
             'datesInterval' => \Yii::t('app/attributes', 'Dates Interval'),
+            'datesStep' => \Yii::t('app/attributes', 'Dates Step'),
         ];
     }
 
@@ -86,6 +91,11 @@ class StatisticFilterForm extends Model
         ];
     }
 
+    public static function getIntervalStepsList()
+    {
+        return DateTimeHelper::getIntervalStepsList();
+    }
+
     public function getDatesInterval()
     {
         if ($this->interval == self::INTERVAL_CUSTOM) {
@@ -95,5 +105,33 @@ class StatisticFilterForm extends Model
         $intervals = $this->getIntervalsList();
 
         return $intervals[$this->interval];
+    }
+
+    public function getDatesStep()
+    {
+        $steps = $this->getIntervalStepsList();
+
+        if (isset($steps[$this->step])) {
+            return $steps[$this->step];
+        }
+    }
+
+    public function getComputedIntervalSteps()
+    {
+        return DateTimeHelper::splitByStep(
+            $this->step,
+            $this->startTimestamp,
+            $this->finishTimestamp
+        );
+    }
+
+    public function getStartTimestamp()
+    {
+        return strtotime($this->startDate);
+    }
+
+    public function getFinishTimestamp()
+    {
+        return strtotime($this->finishDate);
     }
 }

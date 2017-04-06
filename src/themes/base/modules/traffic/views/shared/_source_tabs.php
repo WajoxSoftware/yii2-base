@@ -7,7 +7,7 @@ $items['index'] = [
 ];
 
 $items['stat'] = [
-  'url' => ['view-source', 'id' => $model->id, 'stat' => true],
+  'url' => ['view-source-stat', 'id' => $model->id],
   'title' => \Yii::t('app/admin', 'Nav Traffic Source Stat'),
 ];
 

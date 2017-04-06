@@ -15,13 +15,28 @@ class TrafficsController extends ApplicationController
         return $this->viewUser($id);
     }
 
-    public function actionViewSource($id, $stat = false)
+    public function actionViewSource($id)
     {
-        return $this->viewSource($id, $stat);
+        return $this->viewSource($id);
+    }
+
+    public function actionViewSourceStat($id)
+    {
+        return $this->viewSourceStat($id);
     }
 
     public function actionViewStream($id)
     {
         return $this->viewStream($id);
+    }
+
+    public function actionViewStreamPrices($id)
+    {
+        return $this->viewStreamPrices($id);
+    }
+
+    public function actionViewStreamStat($id)
+    {
+        return $this->viewStreamStat($id);
     }
 }

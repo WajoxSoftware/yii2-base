@@ -9,6 +9,7 @@ use wajox\yii2base\models\TrafficSource;
 use wajox\yii2base\models\TrafficStream;
 use wajox\yii2base\models\TrafficStreamPrice;
 use wajox\yii2base\models\form\StatisticFilterForm;
+use wajox\yii2base\services\traffic\TrafficStreamStatisticAnalyzer;
 
 trait TrafficControllerTrait
 {
@@ -48,7 +49,7 @@ trait TrafficControllerTrait
         ]);
     }
 
-    protected function viewSource($id, $stat = false)
+    protected function viewSource($id)
     {
         $source = $this->findSourceModel($id);
         $user = $source->user;
@@ -71,11 +72,50 @@ trait TrafficControllerTrait
             'streams' => $streams,
             'source' => $source,
             'user' => $user,
-            'stat' => $stat,
+        ]);
+    }
+
+    protected function viewSourceStat($id)
+    {
+        $source = $this->findSourceModel($id);
+        $user = $source->user;
+        $streams = [];
+
+        $query = $this
+            ->getRepository()
+            ->find(TrafficStream::className())
+            ->where([
+                'traffic_source_id' => $source->id,
+            ])
+            ->orderBy('level ASC');
+
+        foreach ($query->each() as $stream) {
+            $streams[$stream->parent_id][] = $stream;
+        }
+
+        return $this->render('view_source_stat', [
+            'searchModel' => $this->getFilterForm($user),
+            'streams' => $streams,
+            'source' => $source,
+            'user' => $user,
         ]);
     }
 
     protected function viewStream($id)
+    {
+        $stream = $this->findStreamModel($id);
+        $source = $stream->source;
+        $user = $source->user;
+
+        return $this->render('view_stream', [
+            'source' => $source,
+            'stream' => $stream,
+            'user' => $user,
+        ]);
+    }
+
+
+    protected function viewStreamPrices($id)
     {
         $stream = $this->findStreamModel($id);
         $source = $stream->source;
@@ -93,7 +133,7 @@ trait TrafficControllerTrait
             [['query' => $query]]
         );
 
-        return $this->render('view_stream', [
+        return $this->render('view_stream_prices', [
             'dataProvider' => $dataProvider,
             'source' => $source,
             'stream' => $stream,
@@ -101,10 +141,35 @@ trait TrafficControllerTrait
         ]);
     }
 
+
+    protected function viewStreamStat($id)
+    {
+        $stream = $this->findStreamModel($id);
+        $source = $stream->source;
+        $user = $source->user;
+
+        $searchModel = $this->getFilterForm($user);
+        $statRows = $this->getStreamStatRows($stream, $searchModel);
+
+        return $this->render('view_stream_stat', [
+            'searchModel' => $searchModel,
+            'source' => $source,
+            'stream' => $stream,
+            'user' => $user,
+            'statRows' => $statRows,
+        ]);
+    }
+
     protected function getFilterForm($user)
     {
-        $request = $this->getApp()->request;
-        $searchModel = $this->createObject(StatisticFilterForm::className());
+        $request = $this
+            ->getApp()
+            ->request;
+
+        $searchModel = $this->createObject(
+            StatisticFilterForm::className()
+        );
+
         $searchModel->setUser($user);
         $searchModel->load($request->post());
         $searchModel->validate();
@@ -156,5 +221,32 @@ trait TrafficControllerTrait
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    protected function getStreamStatRows($stream, $search)
+    {
+        $dateSteps = $search->getComputedIntervalSteps();
+
+        $rows = [];
+
+        foreach ($dateSteps as $dateStep) {
+            $stat = $this->createObject(
+                TrafficStreamStatisticAnalyzer::className(),
+                [
+                    $stream,
+                    'custom',
+                    date('d.m.Y', $dateStep['startAt']),
+                    date('d.m.Y', $dateStep['finishAt']),
+                    []
+                ]
+            );
+
+            $rows[] = [
+                'step' => $dateStep,
+                'stat' => $stat->compute(),
+            ];
+        }
+        
+        return $rows;
     }
 }

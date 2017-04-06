@@ -61,9 +61,11 @@ return [
 
     'Nav Traffics Traffic' => 'Трафик',
     'Nav Traffics Managers' => 'Менеджеры',
-    'Nav Traffic Stream Info' => 'Информация потока',
+    'Nav Traffic Source View' => 'Управление',
+    'Nav Traffic Source Stat' => 'Статистика',
+    'Nav Traffic Stream View' => 'Информация',
     'Nav Traffic Stream Prices' => 'Стоимость',
-    'Nav Traffic Stream Statistic' => 'Статистика',
+    'Nav Traffic Stream Stat' => 'Статистика',
 
     'Nav Traffic Tunnel Steps' => 'Этапы воронки',
 

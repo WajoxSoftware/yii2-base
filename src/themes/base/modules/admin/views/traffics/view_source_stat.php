@@ -11,4 +11,4 @@ $this->params['breadcrumbs'][] = [
   'url' => ['view-user', 'id' => $user->id],
 ];
 
-echo $this->render('@app/modules/traffic/views/shared/view_source', $_params_);
+echo $this->render('@app/modules/traffic/views/shared/view_source_stat', $_params_);

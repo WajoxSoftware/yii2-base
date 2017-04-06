@@ -1,5 +1,5 @@
 <?php
-$this->title = $source->title;
+$this->title = $stream->title;
 
 $this->params['breadcrumbs'][] = [
   'label' => \Yii::t('app/admin', 'Nav Traffics'),
@@ -11,4 +11,4 @@ $this->params['breadcrumbs'][] = [
   'url' => ['view-user', 'id' => $user->id],
 ];
 
-echo $this->render('@app/modules/traffic/views/shared/view_source', $_params_);
+echo $this->render('@app/modules/traffic/views/shared/view_stream_prices', $_params_);
