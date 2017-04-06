@@ -1,7 +1,11 @@
 <?php
 use yii\bootstrap\ActiveForm;
 use wajox\yii2base\models\TrafficStream;
+use wajox\yii2base\helpers\FormHelper;
 
+$tagPrefix = $builder->getStream() == null ?
+    '/' : '/' . $builder->getStream()->full_tag;
+$tagPrefix = $builder->getSource()->tag . $tagPrefix;
 ?>
 
 <div class="traffic-stream-form">
@@ -19,35 +23,21 @@ use wajox\yii2base\models\TrafficStream;
         <div class="col-md-6">
             <?= $form->field($builder->getModel(), 'title')->textInput(['maxlength' => true]) ?>
         </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-md-12">
+            <?= FormHelper::renderPrefixField($form, $builder->getModel(), 'tag', $tagPrefix) ?>
+        </div>
     </div>
 
-    <?php if ($builder->getTrafficModeGoodEnabled()): ?>
-        <div class="row">
-            <div class="col-md-12">
-                <?= $form->field($builder->getModelGood(), 'good_id')->dropDownList(
-                        $builder->getModel()->goodsList(),
-                        ['prompt' => \Yii::t('app/general', 'Select')]
-                    ); ?>
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            <?= $form->field($builder->getModel(), 'content')->widget(\yii\redactor\widgets\Redactor::className()) ?>
         </div>
-    <?php endif; ?>
+    </div>
 
-<?php if ($builder->getTrafficModeCompanyEnabled()): ?>
-        <div class="row">
-            <div class="col-md-12">
-                <?= $form->field($builder->getModel(), 'target_url')->textInput(['maxlength' => true]) ?>
-            </div>
-        </div>
-
-        <?php if (!$builder->getModel()->isNewRecord): ?>
-            <div class="row">
-                <div class="col-md-12">
-                    <?= $form->field($builder->getModelCompany(), 'content')->widget(\yii\redactor\widgets\Redactor::className()) ?>
-                </div>
-            </div>
-        <?php endif; ?>
-
-    <?php endif; ?>
 
     <?php ActiveForm::end(); ?>
 

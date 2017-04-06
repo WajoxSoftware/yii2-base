@@ -5,7 +5,6 @@ use wajox\yii2base\models\User;
 use wajox\yii2base\models\UserSettings;
 use wajox\yii2base\models\form\PasswordForm;
 use wajox\yii2base\models\UploadedImage;
-use wajox\yii2base\services\users\UsersManager;
 use wajox\yii2base\services\uploads\UploadsManager;
 
 class SettingsController extends ApplicationController
@@ -135,7 +134,7 @@ class SettingsController extends ApplicationController
 
     protected function getUsersManager()
     {
-        return $this->getDependency(UsersManager::className());
+        return $this->getApp()->usersManager;
     }
 
     protected function getUploadsManager($user)

@@ -121,7 +121,7 @@ class DialogsManager extends Object
         return $this
             ->getRepository()
             ->find(Message::className())
-            ->byId($ids)
+            ->byIds($ids)
             ->orderBy(['status_at' => 'DESC'])
             ->all();
     }
@@ -131,7 +131,7 @@ class DialogsManager extends Object
         return $this
             ->getRepository()
             ->find(User::className())
-            ->byId($ids)
+            ->byIds($ids)
             ->all();
     }
 

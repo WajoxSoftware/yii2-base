@@ -3,11 +3,16 @@ namespace wajox\yii2base\models;
 
 class TrafficSource extends \wajox\yii2base\components\db\ActiveRecord
 {
+    const TYPE_ID_LINK = 100;
+    const TYPE_ID_GOOD = 200;
+
     const STATUS_ID_ACTIVE = 100;
     const STATUS_ID_INACTIVE = 101;
 
-    protected $_sourcesCount = null;
     protected $_streamsCount = null;
+    
+    public $targetUrl;
+    public $targetGoodId;
 
     public static function tableName()
     {
@@ -17,13 +22,15 @@ class TrafficSource extends \wajox\yii2base\components\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'title', 'status_id', 'parent_source_id'], 'required'],
-            [['user_id', 'status_id', 'parent_source_id'], 'integer'],
-            [['title'], 'filter', 'filter' => 'strip_tags'],
-            [['title'], 'filter', 'filter' => 'htmlentities'],
-            [['title'], 'filter', 'filter' => 'trim'],
-            [['title'], 'string', 'max' => 255],
+            [['user_id', 'title', 'tag', 'status_id', 'type_id', 'target'], 'required'],
+            [['user_id', 'status_id', 'type_id'], 'integer'],
+            [['title', 'tag'], 'filter', 'filter' => 'strip_tags'],
+            [['title', 'tag'], 'filter', 'filter' => 'htmlentities'],
+            [['title', 'tag'], 'filter', 'filter' => 'trim'],
+            [['title', 'tag'], 'string', 'max' => 255],
             ['status_id', 'in', 'range' => array_keys($this::getStatusIdList())],
+            [['targetUrl'], 'url'],
+            [['targetGoodId'], 'integer'],
         ];
     }
 
@@ -55,15 +62,6 @@ class TrafficSource extends \wajox\yii2base\components\db\ActiveRecord
         return $this->status_id == self::STATUS_ID_ACTIVE;
     }
 
-    public function getParentSource()
-    {
-        return $this->hasOne(TrafficSource::className(), ['id' => 'parent_source_id']);
-    }
-
-    public function getSources()
-    {
-        return $this->hasOne(TrafficSource::className(), ['parent_source_id' => 'id']);
-    }
 
     public function getStreams()
     {
@@ -78,15 +76,6 @@ class TrafficSource extends \wajox\yii2base\components\db\ActiveRecord
     public function getHasParentSource()
     {
         return $this->parentSource != null;
-    }
-
-    public function getHasSources()
-    {
-        if ($this->_sourcesCount == null) {
-            $this->_sourcesCount = $this->getSources()->count();
-        }
-
-        return  $this->_sourcesCount;
     }
 
     public function getHasStreams()
@@ -114,5 +103,31 @@ class TrafficSource extends \wajox\yii2base\components\db\ActiveRecord
         }
 
         return true;
+    }
+
+    public function getIsLink()
+    {
+        return $this->type_id == self::TYPE_ID_LINK;
+    }
+
+    public function getIsGood()
+    {
+        return $this->type_id == self::TYPE_ID_GOOD;
+    }
+
+    public function getTargetUrl()
+    {
+        if ($this->isLink) {
+            return $this->target;
+        }
+    }
+
+    public function beforeValidate()
+    {
+        if ($this->isLink) {
+            $this->target = $this->targetUrl;
+        }
+
+        return parent::beforeValidate();
     }
 }

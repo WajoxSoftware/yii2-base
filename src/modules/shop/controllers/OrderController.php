@@ -1,12 +1,9 @@
 <?php
 namespace wajox\yii2base\modules\shop\controllers;
 
-use Yii;
-use yii\web\ForbiddenHttpException;
 use wajox\yii2base\models\form\OrderForm;
-use wajox\yii2base\services\shop\CustomerBuilder;
 use wajox\yii2base\services\shop\ShopCartManager;
-use wajox\yii2base\services\order\OrdersManager;
+use yii\web\ForbiddenHttpException;
 
 class OrderController extends ApplicationController
 {
@@ -98,11 +95,19 @@ class OrderController extends ApplicationController
 
     protected function getCustomersBuilder()
     {
-        return $this->createObject(CustomerBuilder::className(), [$this->getUser()]);
+        return $this
+            ->getCustomersManager()
+            ->createBuilder($this->getUser());
     }
 
     protected function getOrdersManager()
     {
-        return $this->getDependency(OrdersManager::className());
+        return $this->getApp()->ordersManager;
+    }
+
+
+    protected function getCustomersManager()
+    {
+        return $this->getApp()->customersManager;
     }
 }

@@ -91,8 +91,7 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
 
     public static function findIdentity($id)
     {
-        return $this
-            ->getRepository()
+        return self::getRepository()
             ->find(static::className())
             ->byId($id)
             ->one();
@@ -240,7 +239,7 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
 
     public function getHasTrafficAccount()
     {
-        return \Yii::trafficManager != null && $this->isManager;
+        return $this->trafficManager != null && $this->isManager;
     }
 
     public function getHasPartnerAccount()
@@ -387,9 +386,9 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
         return $this->hasMany(Statistic::className(), ['user_id' => 'id'])->orWhere(['guid' => $this->guid]);
     }
 
-    public function getUserActionLogs()
+    public function getLogs()
     {
-        return $this->hasMany(UserActionLog::className(), ['user_id' => 'id'])->orWhere(['guid' => $this->guid]);
+        return $this->hasMany(Log::className(), ['user_id' => 'id'])->orWhere(['guid' => $this->guid]);
     }
 
     public function getSettings()
@@ -465,7 +464,7 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
 
     public function getHasTrafficManager()
     {
-        return \Yii::trafficManager != null;
+        return $this->trafficManager != null;
     }
 
     public function getViewUrl()

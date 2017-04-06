@@ -1,6 +1,4 @@
 <?php
-use yii\helpers\Url;
-
 $this->title = $user->name;
 
 $this->params['breadcrumbs'][] = [

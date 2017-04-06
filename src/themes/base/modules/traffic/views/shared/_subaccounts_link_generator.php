@@ -13,28 +13,6 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="form-group">
-              <input type="text" class="js-subaccount-1 form-control" placeholder="sub1"/>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <input type="text" class="js-subaccount-2 form-control" placeholder="sub2"/>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <input type="text" class="js-subaccount-3 form-control" placeholder="sub3"/>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <input type="text" class="js-subaccount-4 form-control" placeholder="sub4"/>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div class="modal-footer">

@@ -1,9 +1,9 @@
 <?php
 namespace wajox\yii2base\modules\shop\controllers;
 
-use yii\web\NotFoundHttpException;
 use wajox\yii2base\models\Good;
 use wajox\yii2base\services\traffic\ClicksManager;
+use yii\web\NotFoundHttpException;
 
 class OrderFormsController extends ApplicationController
 {

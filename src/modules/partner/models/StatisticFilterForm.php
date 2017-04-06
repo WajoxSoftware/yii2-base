@@ -6,7 +6,7 @@ use wajox\yii2base\helpers\DateTimeHelper;
 use wajox\yii2base\models\UserSubaccount;
 use wajox\yii2base\models\TrafficStream;
 use wajox\yii2base\models\GoodPartnerProgram;
-use wajox\yii2base\models\UserActionLog;
+use wajox\yii2base\models\Log;
 
 class StatisticFilterForm extends Model
 {
@@ -228,7 +228,7 @@ class StatisticFilterForm extends Model
         $params = [];
 
         if (!empty($this->partnerOfferId)) {
-            $params['offer_type_id'] = UserActionLog::OFFER_TYPE_ID_GOOD;
+            $params['offer_type_id'] = Log::OFFER_TYPE_ID_GOOD;
             $params['offer_item_id'] = $this->partnerOffer->good_id;
         }
 

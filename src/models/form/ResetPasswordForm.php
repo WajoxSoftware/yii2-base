@@ -2,7 +2,6 @@
 namespace wajox\yii2base\models\form;
 
 use wajox\yii2base\components\base\Model;
-use wajox\yii2base\services\users\UsersManager;
 
 class ResetPasswordForm extends Model
 {
@@ -37,6 +36,6 @@ class ResetPasswordForm extends Model
 
     public function getManager()
     {
-        return $this->getDependency(UsersManager::className());
+        return $this->getApp()->usersManager;
     }
 }

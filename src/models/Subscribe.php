@@ -102,8 +102,8 @@ class Subscribe extends \wajox\yii2base\components\db\ActiveRecord
         return $this->partnerSubaccount->tag;
     }
 
-    public function getUserActionLogs()
+    public function getLogs()
     {
-        return $this->hasMany(UserActionLog::className(), ['user_id' => 'user_id'])->orWhere(['guid' => $this->guid]);
+        return $this->hasMany(Log::className(), ['user_id' => 'user_id'])->orWhere(['guid' => $this->guid]);
     }
 }

@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 
 ?>
-<a data-UserActionLog-id="<?=$model->id ?>" href="<?= Url::toRoute(['/admin/activity/view', 'id' => $model->id]) ?>" class="row message-item">
+<a data-log-id="<?=$model->id ?>" href="<?= Url::toRoute(['/admin/activity/view', 'id' => $model->id]) ?>" class="row message-item">
     <div class="col-md-3">
       <?= $model->actionTitle ?>
     </div>

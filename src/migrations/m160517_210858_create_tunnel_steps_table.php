@@ -11,7 +11,7 @@ class m160517_210858_create_tunnel_steps_table extends Migration
             'traffic_tunnel_id' => Schema::TYPE_INTEGER . ' NOT NULL',
             'position' => Schema::TYPE_INTEGER . ' NOT NULL',
             'title' => Schema::TYPE_STRING . ' NOT NULL',
-            'action_type_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'type_id' => Schema::TYPE_INTEGER . ' NOT NULL',
             'action_params' => Schema::TYPE_STRING . ' NOT NULL',
         ]);
 

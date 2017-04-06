@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\services\traffic;
 
-use wajox\yii2base\models\UserActionLog;
+use wajox\yii2base\models\Log;
 use wajox\yii2base\components\base\Object;
 
 class ClicksManager extends Object
@@ -10,7 +10,7 @@ class ClicksManager extends Object
     {
         $this
             ->getApp()
-            ->userActionLogs
-            ->log(UserActionLog::TYPE_ID_CLICK_NEW);
+            ->actionLogs
+            ->log(Log::TYPE_ID_CLICK_NEW);
     }
 }

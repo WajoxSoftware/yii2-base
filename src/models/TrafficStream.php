@@ -3,7 +3,6 @@ namespace wajox\yii2base\models;
 
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
-use wajox\yii2base\services\web\UrlConverter;
 
 class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
 {
@@ -18,17 +17,13 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'target_url'], 'filter', 'filter' => 'strip_tags'],
-            [['title', 'target_url'], 'filter', 'filter' => 'trim'],
-            [['user_id', 'title', 'status_id', 'target_url'], 'required'],
-            [['user_id'], 'integer'],
-            [['title', 'target_url'], 'filter', 'filter' => 'strip_tags'],
-            [['title'], 'filter', 'filter' => 'htmlentities'],
-            [['title', 'target_url'], 'filter', 'filter' => 'trim'],
-            [['title'], 'string', 'max' => 255],
+            [['title', 'tag', 'full_tag'], 'filter', 'filter' => 'strip_tags'],
+            [['title', 'tag', 'full_tag'], 'filter', 'filter' => 'trim'],
+            [['user_id', 'title', 'status_id', 'tag', 'full_tag', 'level', 'traffic_source_id', 'parent_id'], 'required'],
+            [['user_id', 'level', 'parent_id', 'status_id'], 'integer'],
+            [['title', 'tag', 'full_tag', 'parent_ids'], 'string', 'max' => 255],
+            [['content'], 'string', 'max' => 50000],
             ['status_id', 'in', 'range' => array_keys(self::getStatusIdList())],
-            [['target_url'], 'string', 'max' => 255],
-            //[['target_url'], 'url'],
         ];
     }
 
@@ -38,35 +33,15 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
             'id' => \Yii::t('app/attributes', 'ID'),
             'user_id' => \Yii::t('app/attributes', 'Referal User ID'),
             'title' => \Yii::t('app/attributes', 'Title'),
+            'tag' => \Yii::t('app/attributes', 'Traffic Stream Tag'),
             'status_id' => \Yii::t('app/attributes', 'Status'),
-            'target_url' => \Yii::t('app/attributes', 'Traffic Stream Target Url'),
+            'content' => \Yii::t('app/attributes', 'Traffic Stream Content'),
         ];
     }
 
     public function getSource()
     {
         return $this->hasOne(TrafficSource::className(), ['id' => 'traffic_source_id']);
-    }
-
-    public function getGood()
-    {
-        return $this->hasOne(Good::className(), ['id' => 'good_id'])
-        ->viaClass(TrafficStreamGood::className(), ['traffic_stream_id' => 'id']);
-    }
-
-    public function getTrafficCompany()
-    {
-        return $this->hasOne(TrafficCompany::className(), ['traffic_stream_id' => 'id']);
-    }
-
-    public function getTrafficGood()
-    {
-        return $this->hasOne(TrafficStreamGood::className(), ['traffic_stream_id' => 'id']);
-    }
-
-    public function getImages()
-    {
-        return $this->hasMany(TrafficStreamImage::className(), ['traffic_stream_id' => 'id']);
     }
 
     public function getUser()
@@ -96,17 +71,12 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
         return $this->status_id == self::STATUS_ID_ACTIVE;
     }
 
-    public function getTragetUrl()
-    {
-        return $this->createObject(UrlConverter::className())->extract($this->target_url);
-    }
-
-    public function getUrl($tag = 'sub1/sub2/sub3/sub4')
+    public function getUrl()
     {
         return str_replace('%2F', '/', Url::toRoute([
             '/traffic-streams/view',
-            'id' => $this->id,
-            'tag' => $tag,
+            'sourceTag' => $this->source->tag,
+            'streamTag' => $this->full_tag,
         ], true));
     }
 
@@ -149,5 +119,15 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
         }
 
         return parent::save($runValidation, $attributeNames);
+    }
+
+    public function getParentIds()
+    {
+        return explode(',', $this->parent_ids);
+    }
+
+    public function getTags()
+    {
+        return explode('/', $this->full_tag);
     }
 }

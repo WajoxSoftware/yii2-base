@@ -12,4 +12,6 @@ return [
     'Nav Traffics Stream Info' => 'Инофрмация о потоке',
     'Nav Traffics Stream Price' => 'Стоимость',
     'Nav Traffics Stream Statistic' => 'Статистика',
+
+    'Price/Clicks' => 'Цена/Клики',
 ];

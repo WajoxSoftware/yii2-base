@@ -22,7 +22,7 @@ class ExpertSenderAdapter extends SenderAdapterAbstract
         $this->apiKey = $params['api_key'];
         $this->transactional_id = $params['transactional_id'];
         $this->base_list_id = $params['base_list_id'];
-        $this->apiSender = new ExpertSenderApi($this->apiKey);
+        $this->apiSender = new ExpertSenderApi($this->apiKey, $this->endpointUrl);
     }
 
     public function sendTransactional($to, $subject, $content_text, $content_html)

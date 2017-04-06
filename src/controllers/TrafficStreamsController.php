@@ -11,31 +11,42 @@ use wajox\yii2base\services\web\UrlConverter;
 
 class TrafficStreamsController extends Controller
 {
-    public function actionView($id, $tag = null)
+    public function actionView($sourceTag, $streamTag = null)
     {
-        $model = $this->findModel($id);
+        $source = $this->findSourceByTag($sourceTag);
+        $stream = $this->findStreamByTag($source->id, $streamTag);
 
-        $isIternalRedirect = $this->isInternalRedirect($model);
-        $targetUrl = $this->getTargetUrl($model);
+        $this->registerStream($stream);
 
-        $this->registerStream($model, $tag, $isIternalRedirect);
-
-        return $this->redirect($targetUrl);
+        return $this->redirect($source->getTargetUrl());
     }
 
-    protected function getSubaccount($user, $tag)
-    {
-        $subaccountsManager = $this->getSubaccountsManager($user);
-        $subaccount = $subaccountsManager->getSubaccount($tag);
-
-        return $subaccount;
-    }
-
-    protected function findModel($id)
+    protected function findSourceByTag($tag)
     {
         $conditions = [
-            'id' => $id,
+            'tag' => $tag,
+            'status_id' => TrafficSource::STATUS_ID_ACTIVE,
+        ];
+
+        $model = $this
+            ->getRepository()
+            ->find(TrafficSource::className())
+            ->where($conditions)
+            ->one();
+
+        if ($model !== null) {
+            return $model;
+        }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    protected function findStreamByTag($source, $tag)
+    {
+        $conditions = [
+            'full_tag' => $tag,
             'status_id' => TrafficStream::STATUS_ID_ACTIVE,
+            'traffic_source_id' => $source->id,
         ];
 
         $model = $this
@@ -51,57 +62,16 @@ class TrafficStreamsController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    protected function registerStream($model, $tag, $isIternalRedirect)
+    protected function registerStream($stream)
     {
-        $subaccount = $this->getSubaccount($model->user, $tag);
+        $this
+            ->getApp()
+            ->visitor
+            ->setTrafficStream($stream);
 
-        $this->getApp()->visitor->setUserSubaccount($subaccount);
-        $this->getApp()->visitor->setTrafficStream($model);
-
-        if ($isIternalRedirect) {
-            return;
-        }
-
-        $this->getClicksManager()->save();
-    }
-
-    protected function isInternalRedirect($model)
-    {
-        $converter = $this->getUrlConverter();
-
-        $url = $converter->extract($model->target_url);
-
-        return is_array($url);
-    }
-
-    protected function getTargetUrl($model)
-    {
-        $converter = $this->getUrlConverter();
-
-        $url = $converter->extract($model->target_url);
-
-        if (!is_array($url)) {
-            return $url;
-        }
-
-        if (isset($url['model']) && $url['model'] != null) {
-            return Url::toRoute([
-                '/shop/goods/view',
-                'url' => $url['model']->url,
-            ]);
-        }
-
-        throw new NotFoundHttpException('Unknown target url');
-    }
-
-    protected function getUrlConverter()
-    {
-        return $this->getDependency(UrlConverter::className());
-    }
-
-    protected function getSubaccountsManager($user)
-    {
-        return $this->createObject(SubaccountsManager::className(), [$user]);
+        $this
+            ->getClicksManager()
+            ->save();
     }
 
     protected function getClicksManager()

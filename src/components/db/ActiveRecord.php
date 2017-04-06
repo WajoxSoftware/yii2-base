@@ -20,7 +20,7 @@ class ActiveRecord extends \yii\db\ActiveRecord
     public function hasOne($class, $link)
     {
         return parent::hasOne(
-            $this->getDepencency($class),
+            $this->getDependency($class),
             $link
         );
     }
@@ -28,7 +28,7 @@ class ActiveRecord extends \yii\db\ActiveRecord
     public function hasMany($class, $link)
     {
         return parent::hasMany(
-            $this->getDepencency($class),
+            $this->getDependency($class),
             $link
         );
     }

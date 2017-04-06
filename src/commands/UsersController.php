@@ -9,7 +9,6 @@ class UsersController extends Controller
 {
     public function actionCreate()
     {
-        $manager = new UsersManager();
         $model = new User(['scenario' => 'signup']);
         $model->first_name = 'Jhon';
         $model->last_name = 'Doe';
@@ -22,7 +21,9 @@ class UsersController extends Controller
         $model->guid = md5(uniqid(time(), true));
         $model->created_at = time();
 
-        $model = $manager->save($model, false, false);
+        $model = \Yii::$app
+            ->usersManager
+            ->save($model, false, false);
 
         if ($model && !$model->isNewRecord) {
             return true;
