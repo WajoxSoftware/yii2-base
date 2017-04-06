@@ -275,7 +275,7 @@ var HtmlWidgets = function() {
 
 
     this.init = function() {
-        $('table.table').stacktable();
+        // $('table.table').stacktable();
         this.bindEvents();
         this.renderAll();
     };

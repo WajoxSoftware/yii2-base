@@ -1,5 +1,4 @@
 <?php
-
 namespace wajox\yii2base\modules\admin\controllers;
 
 use wajox\yii2base\models\Subscribe;
@@ -31,7 +30,7 @@ class SubscribesController extends ApplicationController
         $dataProvider = $this->createObject(
             ActiveDataProvider::className(),
             [[
-                'query' => $model->getUserActionLogs(),
+                'query' => $model->getLogs(),
                 'sort' => [
                     'defaultOrder' => [
                         'created_at' => SORT_DESC,

@@ -1,5 +1,4 @@
 <?php
-
 $this->title = $model->actionTitle;
 $this->params['breadcrumbs'][] = [
     'url' => ['index'],
@@ -48,5 +47,5 @@ $user = $model->getUser();
 	<?= $this->render('_visit', ['model' => $model->getVisit()]); ?>
 <?php endif; ?>
 
-<h6><?= \Yii::t('app/models', 'UserActionLogs') ?></h6>
+<h6><?= \Yii::t('app/models', 'Logs') ?></h6>
 <?= $this->render('@app/modules/admin/views/shared/users/_actions_list', ['dataProvider' => $dataProvider]); ?>

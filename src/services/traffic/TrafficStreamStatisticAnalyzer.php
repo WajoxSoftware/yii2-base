@@ -1,10 +1,9 @@
 <?php
-
 namespace wajox\yii2base\services\traffic;
 
 use wajox\yii2base\helpers\DateTimeHelper;
 use wajox\yii2base\models\TrafficStreamPrice;
-use wajox\yii2base\models\Bill;
+use wajox\yii2base\modules\payment\models\Bill;
 use wajox\yii2base\components\base\Object;
 
 class TrafficStreamStatisticAnalyzer extends Object
@@ -20,7 +19,7 @@ class TrafficStreamStatisticAnalyzer extends Object
     public $ecpc = 0.0;
     public $cpc = 0.0;
     public $roi = 0;
-    public $billsSum = 0.0;
+    public $billSum = 0.0;
     public $clicksSum = 0.0;
     public $paidClicksCount = 0;
     public $extParams = [];
@@ -65,7 +64,7 @@ class TrafficStreamStatisticAnalyzer extends Object
 
     protected function computeClicksCount()
     {
-        $this->clicksCount = $this->getApp()->userActionLogs->getClickNewLogs($this->extParams)
+        $this->clicksCount = $this->getApp()->actionLogs->getClickNewLogs($this->extParams)
             ->andWhere(['traffic_stream_id' => $this->model->id])
             ->andWhere('[[created_at]] >= :start AND [[created_at]] < :finish', $this->getTimeCond())
             ->count();
@@ -73,7 +72,7 @@ class TrafficStreamStatisticAnalyzer extends Object
 
     protected function computeSubscribesCount()
     {
-        $this->subscribesCount = $this->getApp()->userActionLogs->getSubscribeNewLogs($this->extParams)
+        $this->subscribesCount = $this->getApp()->actionLogs->getSubscribeNewLogs($this->extParams)
             ->andWhere(['traffic_stream_id' => $this->model->id])
             ->andWhere('[[created_at]] >= :start AND [[created_at]] < :finish', $this->getTimeCond())
             ->count();
@@ -82,7 +81,7 @@ class TrafficStreamStatisticAnalyzer extends Object
     protected function computeBillsSum()
     {
         $traffic_stream_id = $this->model->id;
-        $billLogs = $this->getApp()->userActionLogs->getBillPayLogs($this->extParams)
+        $billLogs = $this->getApp()->actionLogs->getBillPayLogs($this->extParams)
             ->andWhere(['traffic_stream_id' => $this->model->id])
             ->andWhere('[[created_at]] >= :start AND [[created_at]] < :finish', $this->getTimeCond())
             ->indexBy('id');
@@ -90,7 +89,7 @@ class TrafficStreamStatisticAnalyzer extends Object
         $billIds = [];
 
         foreach ($billLogs->each() as $billLog) {
-            $billIds[] = $billLog->action_item_id;
+            $billIds[] = $billLog->item_id;
         }
 
         $this->billSum = $this

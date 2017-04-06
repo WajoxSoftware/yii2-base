@@ -3,7 +3,6 @@ namespace wajox\yii2base\modules\admin\controllers;
 
 use wajox\yii2base\models\User;
 use wajox\yii2base\models\search\UserSearch;
-use wajox\yii2base\services\users\UsersManager;
 use yii\web\NotFoundHttpException;
 use yii\data\ActiveDataProvider;
 use yii\data\Sort;
@@ -37,7 +36,7 @@ class UsersController extends ApplicationController
         $model = $this->findModel($id);
 
         $dataProvider = $this->createObject(ActiveDataProvider::className(), [[
-            'query' => $model->getUserActionLogs(),
+            'query' => $model->getLogs(),
             'sort' => [
                 'defaultOrder' => [
                     'created_at' => SORT_DESC,
@@ -97,7 +96,7 @@ class UsersController extends ApplicationController
 
     protected function saveRole($user)
     {
-        $this->getDependency(UsersManager::className())->saveRole($user);
+        $this->getApp()->usersManager->saveRole($user);
     }
 
     protected function getSort()

@@ -5,83 +5,56 @@ use wajox\yii2base\models\Good;
 use wajox\yii2base\models\TrafficStream;
 use wajox\yii2base\models\TrafficStreamGood;
 use wajox\yii2base\models\TrafficCompany;
-use wajox\yii2base\services\web\UrlConverter;
 use wajox\yii2base\components\base\Object;
 
 class TrafficStreamBuilder extends Object
 {
-    const TRAFFIC_MODE_GOOD = 100;
-    const TRAFFIC_MODE_COMPANY = 101;
-
     protected $model;
-    protected $modelCompany;
-    protected $modelGood;
     protected $source;
+    protected $stream;
     protected $request;
-    protected $trafficMode;
 
-    public function __construct($source, $model = null)
+    public function __construct($source, $stream, $model = null)
     {
-        $this->setSource($source)->setModel($model);
+        $this
+            ->setSource($source)
+            ->setStream($stream)
+            ->setModel($model);
     }
 
     public function save($request)
     {
+        $ta = \Yii::$app->db->beginTransaction();
+
         try {
-            $this->build()
-                 ->loadRequest($request)
-                 ->validate()
-                 ->store();
+            $this
+                ->build()
+                ->loadRequest($request)
+                ->validate()
+                ->store();
         } catch (\Exception $e) {
+            $ta->rollBack();
             return false;
         }
+
+        $ta->commit();
 
         return true;
     }
 
     public function build()
     {
-        return $this->buildModel()
-            ->buildModelGood()
-            ->buildModelCompany();
+        return $this->buildModel();
     }
 
     public function validate()
     {
-        return $this->validateModel()
-            ->validateModelGood()
-            ->validateModelCompany();
+        return $this->validateModel();
     }
 
     public function store()
     {
-        return $this->saveModel()
-            ->saveModelGood()
-            ->saveModelCompany();
-    }
-
-    public function setTrafficModeGood()
-    {
-        $this->trafficMode = self::TRAFFIC_MODE_GOOD;
-
-        return $this;
-    }
-
-    public function setTrafficModeCompany()
-    {
-        $this->trafficMode = self::TRAFFIC_MODE_COMPANY;
-
-        return $this;
-    }
-
-    public function getTrafficModeGoodEnabled()
-    {
-        return $this->trafficMode == self::TRAFFIC_MODE_GOOD;
-    }
-
-    public function getTrafficModeCompanyEnabled()
-    {
-        return $this->trafficMode == self::TRAFFIC_MODE_COMPANY;
+        return $this->saveModel();
     }
 
     public function getUser()
@@ -93,20 +66,24 @@ class TrafficStreamBuilder extends Object
     {
         $this->source = $source;
 
-        if ($this->getUser()->hasTrafficAccount) {
-            $this->setTrafficModeCompany();
-        }
-
-        if ($this->getUser()->hasPartnerAccount) {
-            $this->setTrafficModeGood();
-        }
-
         return $this;
     }
 
     public function getSource()
     {
         return $this->source;
+    }
+
+    public function setStream($stream)
+    {
+        $this->stream = $stream;
+
+        return $this;
+    }
+
+    public function getStream()
+    {
+        return $this->stream;
     }
 
     public function setModel($model)
@@ -117,14 +94,6 @@ class TrafficStreamBuilder extends Object
 
         $this->model = $model;
 
-        if ($model->trafficCompany != null) {
-            $this->setModelCompany($model->trafficCompany);
-        }
-
-        if ($model->trafficGood != null) {
-            $this->setModelGood($model->trafficGood);
-        }
-
         return $this;
     }
 
@@ -133,55 +102,11 @@ class TrafficStreamBuilder extends Object
         return $this->model;
     }
 
-    public function getModelCompany()
-    {
-        return $this->modelCompany;
-    }
-
-    public function getModelGood()
-    {
-        return $this->modelGood;
-    }
-
-    protected function setModelCompany($modelCompany)
-    {
-        $this->modelCompany = $modelCompany;
-
-        return $this;
-    }
-
-    protected function setModelGood($modelGood)
-    {
-        $this->modelGood = $modelGood;
-
-        return $this;
-    }
-
     protected function loadRequest($request)
     {
         $this->request = $request;
-
         $this->model->load($request->post());
-
-        if ($this->getTrafficModeCompanyEnabled()) {
-            $this->modelCompany->load($this->request->post());
-        }
-
-        if ($this->getTrafficModeGoodEnabled()) {
-            $this->modelGood->load($this->request->post());
-
-            $good = $this
-                ->getRepository()
-                ->find(Good::className())
-                ->byId($this->modelGood->good_id)
-                ->one();
-
-            if ($good == null) {
-                throw new \Exception('Good not found');
-            }
-
-            $this->model->target_url = $this->createObject(UrlConverter::className())->buildClass($good);
-        }
+        $this->loadModelParams();
 
         return $this;
     }
@@ -191,40 +116,18 @@ class TrafficStreamBuilder extends Object
         if ($this->getModel() == null) {
             $this->setModel($this->createObject(TrafficStream::className()));
         }
+    
+        return $this;
+    }
 
+    protected function loadModelParams()
+    {
         $this->model->user_id = $this->getUser()->id;
         $this->model->traffic_source_id = $this->getSource()->id;
-
-        return $this;
-    }
-
-    protected function buildModelCompany()
-    {
-        if (!$this->getTrafficModeCompanyEnabled()) {
-            return $this;
-        }
-
-        if ($this->getModelCompany() == null) {
-            $this->setModelCompany($this->createObject(TrafficCompany::className()));
-        }
-
-        $this->modelCompany->traffic_stream_id = 0;
-
-        return $this;
-    }
-
-    protected function buildModelGood()
-    {
-        if (!$this->getTrafficModeGoodEnabled()) {
-            return $this;
-        }
-
-        if ($this->getModelGood() == null) {
-            $this->setModelGood($this->createObject(TrafficStreamGood::className()));
-        }
-
-        $this->modelGood->traffic_stream_id = 0;
-        $this->model->target_url = 'good://0';
+        $this->model->parent_id = $this->getParentId();
+        $this->model->parent_ids = $this->getParentIds();
+        $this->model->level = $this->getLevel();
+        $this->model->full_tag = $this->getFullTag();
 
         return $this;
     }
@@ -238,68 +141,55 @@ class TrafficStreamBuilder extends Object
         return $this;
     }
 
-    protected function saveModelCompany()
-    {
-        if (!$this->getTrafficModeCompanyEnabled()) {
-            return $this;
-        }
-
-        $this->modelCompany->traffic_stream_id = $this->getModel()->id;
-
-        if (!$this->modelCompany->save()) {
-            throw new \Exception('Can not save traffic stream company model');
-        }
-
-        return $this;
-    }
-
-    protected function saveModelGood()
-    {
-        if (!$this->getTrafficModeGoodEnabled()) {
-            return $this;
-        }
-
-        $this->modelGood->traffic_stream_id = $this->getModel()->id;
-
-        if (!$this->modelGood->save()) {
-            throw new \Exception('Can not save traffic stream good model');
-        }
-
-        return $this;
-    }
-
     protected function validateModel()
     {
         if (!$this->getModel()->validate()) {
+            print_r($this->getModel()->errors);die();
             throw new \Exception('Can not validate traffic stream model');
         }
 
         return $this;
     }
 
-    protected function validateModelCompany()
+    protected function getLevel()
     {
-        if (!$this->getTrafficModeCompanyEnabled()) {
-            return $this;
+        if ($this->getStream() == null) {
+            return 0;
         }
 
-        if (!$this->getModelCompany()->validate()) {
-            throw new \Exception('Can not validate traffic stream company model');
-        }
-
-        return $this;
+        return $this->getStream()->level + 1;
     }
 
-    protected function validateModelGood()
+    protected function getFullTag()
     {
-        if (!$this->getTrafficModeGoodEnabled()) {
-            return $this;
+        if ($this->getStream() == null) {
+            return $this->model->tag;
         }
 
-        if (!$this->getModelGood()->validate()) {
-            throw new \Exception('Can not validate traffic stream good model');
+        $tags = $this->getStream()->tags;
+        $tags[] = $this->model->tag;
+
+        return implode('/', $tags);
+    }
+
+    protected function getParentIds()
+    {
+        if ($this->getStream() == null) {
+            return '';
         }
 
-        return $this;
+        $parentIds = $this->getStream()->parentIds;
+        $parentIds[] = $this->getStream()->id;
+
+        return implode(',', $parentIds);
+    }
+
+    protected function getParentId()
+    {
+        if ($this->getStream() == null) {
+            return 0;
+        }
+
+        return $this->getStream()->id;
     }
 }

@@ -42,11 +42,6 @@ var TrafficStreamStatisticApi = function()
     return this.getFilterValue('finishdate');
   };
 
-  this.getUserSubaccountsIds = function()
-  {
-    return this.getFilterValue('user-subaccounts');
-  };
-
   this.getIDS = function()
   {
     var ids = new Array();
@@ -65,7 +60,6 @@ var TrafficStreamStatisticApi = function()
       interval: this.getInterval(),
       custom_start_date: this.getStartDate(),
       custom_finish_date: this.getFinishDate(),
-      user_subaccounts_ids: this.getUserSubaccountsIds(),
       id: this.getIDS()
     };
 

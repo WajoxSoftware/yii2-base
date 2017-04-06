@@ -2,7 +2,7 @@
 namespace wajox\yii2base\modules\payment\controllers;
 
 use yii\web\NotFoundHttpException;
-use wajox\yii2base\models\Bill;
+use wajox\yii2base\modules\payment\models\Bill;
 
 class DefaultController extends ApplicationController
 {

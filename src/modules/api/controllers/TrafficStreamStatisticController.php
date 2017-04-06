@@ -30,8 +30,7 @@ class TrafficStreamStatisticController extends ApplicationController
         $s_date = $request->post('custom_start_date', null);
         $f_date = $request->post('custom_finish_date', null);
         $ids = $request->post('id', []);
-
-        $userSubaccountsIds = $this->getUserSubaccountsIds();
+        $items = [];
 
         if (sizeof($ids) == 0
             || $ids == null
@@ -41,11 +40,13 @@ class TrafficStreamStatisticController extends ApplicationController
 
         $ids = is_array($ids) ? $ids : [intval($ids)];
 
-        if (sizeof($userSubaccountsIds) > 0) {
-            $params['user_subaccount_id'] = $userSubaccountsIds;
-        }
-
-        $items = $this->getStat($ids, $interval, $s_date, $f_date, $params);
+        $items = $this->getStat(
+            $ids,
+            $interval,
+            $s_date,
+            $f_date,
+            $params
+        );
 
         return $this->renderJson('index', ['items' => $items]);
     }
@@ -60,37 +61,22 @@ class TrafficStreamStatisticController extends ApplicationController
                 $id
             );
 
-            if ($model != null) {
-                $stat = $this->createObject(
-                    TrafficStreamStatisticAnalyzer::className(),
-                    [$model, $interval, $startDate, $finishDate, $params]
-                );
-                $items[] = [
-                        'id' => $model->id,
-                        'stat' => $stat->compute(),
-                    ];
+            if ($model == null) {
+                continue;
             }
+
+            $stat = $this->createObject(
+                TrafficStreamStatisticAnalyzer::className(),
+                [$model, $interval, $startDate, $finishDate, $params]
+            );
+
+            $items[] = [
+                'id' => $model->id,
+                'stat' => $stat->compute(),
+            ];
+            
         }
 
         return $items;
-    }
-
-    protected function getUserSubaccountsIds()
-    {
-        $userSubaccountsIdsString = $this->getApp()->request->post('user_subaccounts_ids', null);
-
-        if ($userSubaccountsIdsString == null) {
-            return [];
-        }
-
-        $ids = [];
-
-        foreach (explode(',', $userSubaccountsIdsString) as $id) {
-            if (is_numeric($id)) {
-                $ids[] = intval($id);
-            }
-        }
-
-        return $ids;
     }
 }

@@ -22,7 +22,10 @@ class DialogsController extends ApplicationController
             Pagination::className(),
             ['totalCount' => $countQuery->count()]
         );
-        $models = $query->offset($pages->offset)->limit($pages->limit)->all();
+        $models = $query
+            ->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
 
         $dialogIds = array_map(
             function ($userDialog) {
@@ -48,7 +51,11 @@ class DialogsController extends ApplicationController
             Pagination::className(),
             ['totalCount' => $countQuery->count()]
         );
-        $statuses = $query->offset($pages->offset)->limit($pages->limit)->all();
+        $statuses = $query
+            ->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
         $messagesIds = array_map(function ($status) {
             return $status->message_id;
         }, $statuses);
@@ -75,7 +82,7 @@ class DialogsController extends ApplicationController
         $members = $this
             ->getRepository()
             ->find(User::className())
-            ->byId($userIds)
+            ->byIds($userIds)
             ->all();
 
         $pm = $this->createObject(PrivacySettingsManager::className(), [$user]);

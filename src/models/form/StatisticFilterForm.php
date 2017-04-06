@@ -17,21 +17,18 @@ class StatisticFilterForm extends Model
     public $interval;
     public $startDate;
     public $finishDate;
-    public $userSubaccountTag1;
-    public $userSubaccountTag2;
-    public $userSubaccountTag3;
-    public $userSubaccountTag4;
+    public $step;
 
     protected $user;
 
     public function rules()
     {
         return [
-            [['userSubaccountTag1', 'userSubaccountTag2', 'userSubaccountTag3', 'userSubaccountTag4'], 'filter', 'filter' => 'strip_tags'],
-            [['userSubaccountTag1', 'userSubaccountTag2', 'userSubaccountTag3', 'userSubaccountTag4'], 'filter', 'filter' => 'trim'],
             [['startDate', 'finishDate'], 'default'],
             [['startDate', 'finishDate'], 'date', 'format' => 'dd.mm.yyyy'],
             [['interval'], 'in', 'range' => array_keys(self::getIntervalsList())],
+            [['step'], 'in', 'range' => array_keys(self::getIntervalStepsList())],
+            [['step'], 'default', 'value' => DateTimeHelper::STEP_ALL],
             ['interval', 'default', 'value' => self::INTERVAL_TODAY],
         ];
     }
@@ -42,12 +39,9 @@ class StatisticFilterForm extends Model
             'startDate' => \Yii::t('app/attributes', 'From'),
             'finishDate' => \Yii::t('app/attributes', 'FromTo'),
             'interval' => \Yii::t('app/attributes', 'Dates Interval'),
+            'step' => \Yii::t('app/attributes', 'Dates Step'),
             'datesInterval' => \Yii::t('app/attributes', 'Dates Interval'),
-            'userSubaccountTag' => \Yii::t('app/attributes', 'User Subaccount Tag'),
-            'userSubaccountTag1' => \Yii::t('app/attributes', 'User Subaccount Tag1'),
-            'userSubaccountTag2' => \Yii::t('app/attributes', 'User Subaccount Tag2'),
-            'userSubaccountTag3' => \Yii::t('app/attributes', 'User Subaccount Tag3'),
-            'userSubaccountTag4' => \Yii::t('app/attributes', 'User Subaccount Tag4'),
+            'datesStep' => \Yii::t('app/attributes', 'Dates Step'),
         ];
     }
 
@@ -97,6 +91,11 @@ class StatisticFilterForm extends Model
         ];
     }
 
+    public static function getIntervalStepsList()
+    {
+        return DateTimeHelper::getIntervalStepsList();
+    }
+
     public function getDatesInterval()
     {
         if ($this->interval == self::INTERVAL_CUSTOM) {
@@ -108,70 +107,31 @@ class StatisticFilterForm extends Model
         return $intervals[$this->interval];
     }
 
-    public function getUserSubaccountTag()
+    public function getDatesStep()
     {
-        $tags = [
-            $this->userSubaccountTag1,
-            $this->userSubaccountTag2,
-            $this->userSubaccountTag3,
-            $this->userSubaccountTag4,
-        ];
+        $steps = $this->getIntervalStepsList();
 
-        $tags = array_filter($tags);
-
-        if (sizeof($tags) == 0) {
-            return;
+        if (isset($steps[$this->step])) {
+            return $steps[$this->step];
         }
-
-        return '/' . implode('/', $tags);
     }
 
-    public function getUserSubaccountIds()
+    public function getComputedIntervalSteps()
     {
-        $tag = $this->getUserSubaccountTag();
-        $ids = [];
-        $query = $this->findUserSubaccountsByTags();
-
-        if ($query->count() == 0) {
-            if (!empty($tag)) {
-                return '0';
-            } else {
-                return;
-            }
-
-            return;
-        }
-
-        foreach ($query->each() as $id => $model) {
-            $ids[] = $id;
-        }
-
-        return implode(',', $ids);
+        return DateTimeHelper::splitByStep(
+            $this->step,
+            $this->startTimestamp,
+            $this->finishTimestamp
+        );
     }
 
-    public function findUserSubaccountsByTags()
+    public function getStartTimestamp()
     {
-        $query = $this
-            ->getRepository()
-            ->find(UserSubaccount::className())
-            ->where(['user_id' => $this->getUser()->id]);
+        return strtotime($this->startDate);
+    }
 
-        if (!empty($this->userSubaccountTag1)) {
-            $query->andWHere(['like', 'tag1', $this->userSubaccountTag1]);
-        }
-
-        if (!empty($this->userSubaccountTag2)) {
-            $query->andWHere(['like', 'tag2', $this->userSubaccountTag2]);
-        }
-
-        if (!empty($this->userSubaccountTag3)) {
-            $query->andWHere(['like', 'tag3', $this->userSubaccountTag3]);
-        }
-
-        if (!empty($this->userSubaccountTag4)) {
-            $query->andWHere(['like', 'tag4', $this->userSubaccountTag4]);
-        }
-
-        return $query->indexBy('id');
+    public function getFinishTimestamp()
+    {
+        return strtotime($this->finishDate);
     }
 }

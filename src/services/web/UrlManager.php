@@ -322,7 +322,9 @@ class UrlManager extends \codemix\localeurls\UrlManager
             return false;
         }
 
-        if (strlen($pathInfo) > 1 && substr_compare($pathInfo, '//', -2, 2) === 0) {
+        if (strlen($pathInfo) > 1
+            && substr_compare($pathInfo, '//', -2, 2) === 0
+        ) {
             return false;
         }
 
@@ -331,6 +333,11 @@ class UrlManager extends \codemix\localeurls\UrlManager
 
         if ($foundSuffix) {
             $params[self::SUFFIX_QUERY_PARAM] = $foundSuffix;
+            $pathInfo = mb_substr(
+                $pathInfo,
+                0,
+                mb_strlen($foundSuffix) * -1
+            );
         }
 
         return [$pathInfo, $params];

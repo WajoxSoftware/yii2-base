@@ -5,7 +5,7 @@ use yii\data\ActiveDataProvider;
 use wajox\yii2base\models\User;
 use wajox\yii2base\models\Partner;
 use wajox\yii2base\models\PartnerFee;
-use wajox\yii2base\models\Payment;
+use wajox\yii2base\modules\payment\models\Payment;
 use wajox\yii2base\models\Order;
 use wajox\yii2base\models\search\Partner as PartnerSearch;
 use wajox\yii2base\services\users\PartnersBuilder;

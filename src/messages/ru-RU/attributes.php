@@ -12,6 +12,7 @@ return [
   'User Screen Name' => 'Имя пользователя',
   'Login' => 'Логин',
   'Dates Interval' => 'Период',
+  'Dates Step' => 'Интервал',
 
   'Gender Unknown' => 'Не указан',
   'Gender Male' => 'Мужской',

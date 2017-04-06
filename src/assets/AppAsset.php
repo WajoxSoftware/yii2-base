@@ -13,6 +13,7 @@ class AppAsset extends AssetBundle
         'js/app.js',
         'js/statistic.js',
     ];
+
     public $depends = [
         'yii\web\YiiAsset',
         //'yii\bootstrap\BootstrapAsset',

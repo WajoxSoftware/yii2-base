@@ -39,6 +39,15 @@ class UsersManager extends Object
                 ->one();
     }
 
+    public function findById($id)
+    {
+        return $this
+                ->getRepository()
+                ->find(User::className())
+                ->byIdentity($id)
+                ->one();
+    }
+
     public function findByEmailOrGuid($email, $guid)
     {
         return $this

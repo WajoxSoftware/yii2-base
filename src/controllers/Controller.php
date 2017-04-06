@@ -187,7 +187,7 @@ class Controller extends \yii\web\Controller
     {
         $model = $this
             ->getRepository()
-            ->find($className())
+            ->find($className)
             ->byId($id)
             ->one();
 

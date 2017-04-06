@@ -3,7 +3,6 @@ namespace wajox\yii2base\models\form;
 
 use wajox\yii2base\components\base\Model;
 use wajox\yii2base\models\User;
-use wajox\yii2base\services\users\UsersManager;
 
 abstract class LoginFormAbstract extends Model
 {
@@ -47,7 +46,7 @@ abstract class LoginFormAbstract extends Model
             $user->last_login_at = time();
             $user->save();
 
-            return $this->getDependency(UsersManager::className())->signIn($user, $this->rememberMe ? 3600 * 24 * 30 : 0);
+            return $this->getApp()->usersManager->signIn($user, $this->rememberMe ? 3600 * 24 * 30 : 0);
         } else {
             return false;
         }

@@ -4,7 +4,6 @@ namespace wajox\yii2base\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use wajox\yii2base\models\form\LoginForm;
-use wajox\yii2base\services\users\UsersManager;
 use wajox\yii2base\services\wajox_software\NetworkAccountsManager;
 
 abstract class SessionControllerAbstract extends \wajox\yii2base\controllers\Controller
@@ -93,7 +92,7 @@ abstract class SessionControllerAbstract extends \wajox\yii2base\controllers\Con
 
     protected function getUsersManager()
     {
-        return $this->getDependency(UsersManager::className());
+        return $this->getApp()->usersManager;
     }
 
     protected function getNetworkAccountManager()

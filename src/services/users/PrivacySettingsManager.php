@@ -124,7 +124,7 @@ class PrivacySettingsManager extends Object
         return $this->user;
     }
 
-    protected function loadSettings($usersIds)
+    protected function loadSettings(array $usersIds)
     {
         $existsIds = array_keys($this->targetUsersSettings);
         $usersIds = array_diff($usersIds, $existsIds);
@@ -132,7 +132,7 @@ class PrivacySettingsManager extends Object
         $usersSettingsQuery = $this
                 ->getRepository()
                 ->find(UserSettings::className())
-                ->byId($usersIds);
+                ->byIds($usersIds);
 
         foreach ($usersSettingsQuery->each() as $model) {
             $this->targetUsersSettings[$model->id] = $model;

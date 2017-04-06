@@ -1,11 +1,10 @@
 <?php
-
 namespace wajox\yii2base\services\wajox_software;
 
 use wajox\yii2base\components\base\component;
 use wajox\yii2base\models\Order;
 use wajox\yii2base\models\EautopayOrder;
-use wajox\yii2base\models\Customer;
+use wajox\yii2base\modules\payment\models\Customer;
 
 class EAutopayOrderManager extends Component
 {

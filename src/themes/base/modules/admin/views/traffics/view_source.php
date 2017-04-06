@@ -1,6 +1,4 @@
 <?php
-use yii\helpers\Url;
-
 $this->title = $source->title;
 
 $this->params['breadcrumbs'][] = [

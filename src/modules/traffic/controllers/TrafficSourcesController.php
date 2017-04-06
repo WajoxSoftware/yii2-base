@@ -7,28 +7,15 @@ use yii\web\NotFoundHttpException;
 
 class TrafficSourcesController extends ApplicationController
 {
-    public function actionCreate($id, $parentId = 0)
+    public function actionCreate($typeId, $id)
     {
         $userId = $this->findModelUser($id)->id;
-
-        if ($parentId != 0) {
-            $parentSource = $this->findModel($parentId);
-
-            if ($parentSource->hasStreams
-                || $parentSource->user_id != $userId
-            ) {
-                throw new NotFoundHttpException('Error');
-            }
-
-            $parentId = $parentSource->id;
-            $userId = $parentSource->user_id;
-        }
 
         $this->requireUserAccess($userId);
 
         $model = $this->createObject(TrafficSource::className());
         $model->user_id = $userId;
-        $model->parent_source_id = $parentId;
+        $model->type_id = $typeId;
         $request = $this->getApp()->request;
 
         $success = false;

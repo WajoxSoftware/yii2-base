@@ -19,7 +19,7 @@ class AppAsset extends AssetBundle
         'libs/flatui/css/flat-ui.css',
     ];
     public $js = [
-        'https://files-stackablejs.netdna-ssl.com/stacktable.min.js',
+        //'https://files-stackablejs.netdna-ssl.com/stacktable.min.js',
         'libs/flatui/js/flat-ui.js',
     ];
     public $depends = [

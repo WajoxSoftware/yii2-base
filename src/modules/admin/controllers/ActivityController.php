@@ -1,17 +1,16 @@
 <?php
-
 namespace wajox\yii2base\modules\admin\controllers;
 
 use yii\data\ActiveDataProvider;
-use wajox\yii2base\models\UserActionLog;
-use wajox\yii2base\models\search\UserActionLogSearch;
+use wajox\yii2base\models\Log;
+use wajox\yii2base\models\search\LogSearch;
 use yii\web\NotFoundHttpException;
 
 class ActivityController extends ApplicationController
 {
     public function actionIndex()
     {
-        $searchModel = $this->createObject(UserActionLogSearch::className());
+        $searchModel = $this->createObject(LogSearch::className());
         $dataProvider = $searchModel->search($this->getApp()->request->queryParams);
 
         return $this->render('index', [
@@ -26,7 +25,7 @@ class ActivityController extends ApplicationController
 
         $query = $this
             ->getRepository()
-            ->find(UserActionLog::className())
+            ->find(Log::className())
             ->byUserIdOrGuid($model->user_id, $model->guid)
             ->orderBy('id DESC');
 
@@ -44,7 +43,7 @@ class ActivityController extends ApplicationController
     {
         $model = $this
             ->getRepository()
-            ->find(UserActionLog::className())
+            ->find(Log::className())
             ->byId($id)
             ->one();
 

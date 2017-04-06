@@ -13,10 +13,15 @@ class m151123_134620_create_traffic_stream extends Migration
         $this->createTable('{{%traffic_stream}}', [
             'id' => Schema::TYPE_PK,
             'traffic_source_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'parent_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'level' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'parent_ids' => Schema::TYPE_STRING. ' NOT NULL',
+            'full_tag' => Schema::TYPE_STRING. ' NOT NULL',
+            'tag' => Schema::TYPE_STRING. ' NOT NULL',
             'user_id' => Schema::TYPE_INTEGER . ' NOT NULL',
             'status_id' => Schema::TYPE_INTEGER . ' NOT NULL',
             'title' => Schema::TYPE_STRING. ' NOT NULL',
-            'target_url' => Schema::TYPE_STRING. ' NOT NULL',
+            'content' => Schema::TYPE_TEXT,
         ], $tableOptions);
 
         $this->addForeignKey("FK_traffic_stream_user_id", "{{%traffic_stream}}", "user_id", "{{%user}}", "id", 'CASCADE');

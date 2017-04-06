@@ -156,6 +156,6 @@ class PartnersBuilder extends Object
 
     protected function getUsersManager()
     {
-        return $this->getDependency(UsersManager::className());
+        return $this->getApp()->usersManager;
     }
 }

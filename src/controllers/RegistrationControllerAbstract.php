@@ -3,7 +3,6 @@ namespace wajox\yii2base\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
-use wajox\yii2base\services\users\UsersManager;
 use wajox\yii2base\models\form\PartnerRegistrationForm;
 
 abstract class RegistrationControllerAbstract extends \wajox\yii2base\controllers\Controller
@@ -62,7 +61,7 @@ abstract class RegistrationControllerAbstract extends \wajox\yii2base\controller
 
     protected function getUsersManager()
     {
-        return $this->getDependency(UsersManager::className());
+        return $this->getApp()->usersManager;
     }
     
     abstract protected function goDashboard();
