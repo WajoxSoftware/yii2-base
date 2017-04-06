@@ -2,22 +2,25 @@
 use yii\helpers\Url;
 
 ?>
-<a data-Order-id="<?=$model->id ?>" href="<?= Url::toRoute(['/admin/orders/view', 'id' => $model->id]) ?>" class="row message-item">
-  <div class="col-sm-1">
-    <?= $model->id ?>
-  </div>
-  <div class="col-sm-3">
-    <?=$model->sum ?>
-    <?php if ($model->delivery_sum > 0): ?>
-    (+<?= $model->deliverySumRUR ?>)
-    <?php endif; ?>
-    P
-  </div>
-  <div class="col-sm-3">
-    <?=$model->status ?>
-  </div>
+<li class="collection-item" data-Order-id="<?=$model->id ?>">
+    <span class="title">
+      <a href="<?= Url::toRoute(['/admin/orders/view', 'id' => $model->id]) ?>">
+        Order #<?= $model->id ?>
+      </a>
+    </span>
 
-  <div class="col-sm-3">
-    <?=$model->deliveryStatus ?>
-  </div>
-</a>
+    <p>
+      <?=$model->sum ?>
+      <?php if ($model->delivery_sum > 0): ?>
+      (+<?= $model->deliverySumRUR ?>)
+      <?php endif; ?>
+      P
+    </p>
+    <p><?=$model->status ?></p>
+
+    <p><?=$model->deliveryStatus ?></p>
+
+    <span class="secondary-content">
+    </span>
+</li>
+
