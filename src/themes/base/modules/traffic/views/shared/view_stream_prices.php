@@ -29,6 +29,7 @@ $this->render('@app/modules/traffic/views/shared/_stream_tabs', [
 ]);
 
 echo ListView::widget([
+  'layout' => '<ul class="collection">{items}</ul><div>{pager}</div>',
   'dataProvider' => $dataProvider,
   'itemView' => '@app/modules/traffic/views/shared/_stream_price_item',
 ]);

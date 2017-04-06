@@ -16,4 +16,3 @@ use yii\helpers\Url;
     <span class="secondary-content">
     </span>
 </li>
-

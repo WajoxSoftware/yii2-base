@@ -2,33 +2,22 @@
 use yii\helpers\Url;
 
 ?>
-
-<div class="list-item" data-GoodLetter-id="<?= $model->id ?>">
-  <div class="row">
-    <div class="col-md-4">
+<li class="collection-item" data-GoodLetter-id="<?= $model->id ?>">
+    <span class="title">
       <?= $model->title ?>
-    </div>
+    </span>
 
-    <div class="col-md-3">
-      <?= $model->letterType ?>
-    </div>
+    <p><?= $model->letterType ?>, <?= $model->delayTime ?></p>
 
-    <div class="col-md-2">
-      <?= $model->delayTime ?>
-    </div>
-
-    <div class="col-md-3">
-      <div class="btn-group" role="group">
-        <a href="<?= Url::toRoute(['/admin/good-letters/update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
+    <span class="secondary-content">
+        <a href="<?= Url::toRoute(['/admin/good-letters/update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
           <i class="fa fa-pencil"></i>
           <?= \Yii::t('app/general', 'Edit') ?>
         </a>
 
-        <a href="<?= Url::toRoute(['/admin/good-letters/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
+        <a href="<?= Url::toRoute(['/admin/good-letters/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
           <i class="fa fa-trash"></i>
           <?= \Yii::t('app/general', 'Delete') ?>
         </a>
-      </div>
-    </div>
-  </div>
-</div>
+    </span>
+</li>

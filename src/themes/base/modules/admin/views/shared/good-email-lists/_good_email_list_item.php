@@ -2,22 +2,17 @@
 use yii\helpers\Url;
 
 ?>
-
-<div class="list-item" data-GoodEmailList-id="<?= $model->id ?>">
-  <div class="row">
-    <div class="col-md-4">
+<li class="collection-item" data-GoodEmailList-id="<?= $model->id ?>">
+    <span class="title">
       <?= $model->emailList->title ?>
-    </div>
+    </span>
 
-    <div class="col-md-6">
-      <?= $model->emailList->description ?>
-    </div>
+    <p><?= $model->emailList->description ?></p>
 
-    <div class="col-md-2">
-      <a href="<?= Url::toRoute(['/admin/good-email-lists/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
+    <span class="secondary-content">
+      <a href="<?= Url::toRoute(['/admin/good-email-lists/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
         <i class="fa fa-trash"></i>
         <?= \Yii::t('app/general', 'Delete') ?>
       </a>
-    </div>
-  </div>
-</div>
+    </span>
+</li>

@@ -2,20 +2,18 @@
 use yii\helpers\Url;
 
 ?>
-<a data-log-id="<?=$model->id ?>" href="<?= Url::toRoute(['/admin/activity/view', 'id' => $model->id]) ?>" class="row message-item">
-    <div class="col-md-3">
-      <?= $model->actionTitle ?>
-    </div>
+<li class="collection-item" data-log-id="<?=$model->id ?>">
+    <span class="title">
+      <a href="<?= Url::toRoute(['/admin/activity/view', 'id' => $model->id]) ?>">
+        <?= $model->actionTitle ?>
+      </a>
+    </span>
 
-    <div class="col-md-3">
-      <?= $model->ip_address ?>
-    </div>
+    <p><?= $model->ip_address ?></p>
+    <p><?= $model->geo ?></p>
+    <p><?= $model->createdDateTime ?></p>
 
-    <div class="col-md-4">
-      <?= $model->geo ?>
-    </div>
+    <span class="secondary-content">
+    </span>
+</li>
 
-    <div class="col-md-2">
-      <?= $model->createdDateTime ?>
-    </div>
-</a>

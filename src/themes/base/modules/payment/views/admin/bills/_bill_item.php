@@ -2,20 +2,19 @@
 use yii\helpers\Url;
 
 ?>
-<a data-Bill-id="<?=$model->id ?>" href="<?= Url::toRoute(['view', 'id' => $model->id]) ?>" class="row bill-item bill-status-<?=$model->status_id ?>">
-  <div class="col-md-2 hidden-xs col-sm-2 status">
-    <?=$model->status ?>
-  </div>
-  <div class="col-md-2 col-xs-3 col-sm-2 sum">
-    <?=$model->sumRUR ?> P
-  </div>
-  <div class="col-md-3 col-xs-5 col-sm-4">
-    <?= $model->customer->email ?>
-  </div>
-  <div class="col-md-3 col-xs-5 col-sm-4 destination">
-    <?=$model->paymentDestination ?>
-  </div>
-  <div class="col-md-2 col-xs-4 col-sm-4 date">
-    <?= $model->statusDate ?>
-  </div>
-</a>
+<li class="collection-item"  data-Bill-id="<?=$model->id ?>" >
+    <span class="title">
+      <a href="<?= Url::toRoute(['view', 'id' => $model->id]) ?>">
+        <?=$model->paymentDestination ?>
+      </a>
+    </span>
+
+    <p><?=$model->status ?></p>
+    <p><?=$model->sumRUR ?> P</p>
+    <p><?= $model->customer->email ?></p>
+    <o><?= $model->statusDate ?></o>
+
+    <span class="secondary-content">
+    </span>
+</li>
+

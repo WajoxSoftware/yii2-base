@@ -3,14 +3,12 @@ use yii\helpers\Url;
 
 ?>
 
-<div class="list-item" data-TrafficTunnel-id="<?= $model->id ?>">
-  <div class="row">
-    <div class="col-md-8">
+<li class="collection-item" data-TrafficTunnel-id="<?= $model->id ?>">
+    <span class="title">
       <a href="<?= Url::toRoute(['view', 'id' => $model->id]) ?>"><?= $model->title ?></a>
-    </div>
+    </span>
 
-    <div class="col-md-4">
-      <div class="btn-group" role="group">
+    <span class="secondary-content">
         <a href="<?= Url::toRoute(['update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
           <i class="fa fa-pencil"></i>
           <?= \Yii::t('app/general', 'Edit') ?>
@@ -20,7 +18,6 @@ use yii\helpers\Url;
           <i class="fa fa-trash"></i>
           <?= \Yii::t('app/general', 'Delete') ?>
         </a>
-      </div>
-    </div>
-  </div>
-</div>
+    </span>
+</li>
+

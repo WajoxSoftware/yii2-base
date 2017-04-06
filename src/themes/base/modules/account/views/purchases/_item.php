@@ -2,19 +2,23 @@
 use yii\helpers\Url;
 
 ?>
-<div class="purchase-list-item">
-  <div class="title"><a href="<?= Url::toRoute(['view', 'id' => $model->id]) ?>"><?= $model->good->title ?></a></div>
-  <div class="list">
-    <?= $this->render('_item_preview', ['model' => $model->good]); ?>
-  </div>
-  <div class="description"><?= $model->good->description ?></div>
+<li class="collection-item">
+    <span class="title">
+      <a href="<?= Url::toRoute(['view', 'id' => $model->id]) ?>">
+        <a href=""><?= $model->good->title ?>
+      </a>
+    </span>
+
+    <p><?= $model->good->description ?></p>
+    <p><?= $this->render('_item_preview', ['model' => $model->good]); ?></p>
 
 
-  <div class="info">
-    <?php if ($model->good->isElectronic): ?>
-      <a href="<?= Url::toRoute(['view', 'id' => $model->id]) ?>" class="btn btn-xs btn-primary"><?= \Yii::t('app/general', 'Access') ?></a>
-    <?php else: ?>
-      <a href="<?= Url::toRoute($model->good->orderUrl) ?>" class="btn btn-xs btn-primary" target="_blank"><?= \Yii::t('app/general', 'View') ?></a>
-    <?php endif; ?>
-  </div>
-</div>
+    <span class="secondary-content">
+      <?php if ($model->good->isElectronic): ?>
+        <a href="<?= Url::toRoute(['view', 'id' => $model->id]) ?>" class="btn btn-xs btn-primary"><?= \Yii::t('app/general', 'Access') ?></a>
+      <?php else: ?>
+        <a href="<?= Url::toRoute($model->good->orderUrl) ?>" class="btn btn-xs btn-primary" target="_blank"><?= \Yii::t('app/general', 'View') ?></a>
+      <?php endif; ?>
+    </span>
+</li>
+

@@ -1,17 +1,15 @@
-<div class="row list-item message-item">
-  <div class="col-sm-3 col-xs-12">
-    <?= $model->user->name ?>
-  </div>
+<li class="collection-item">
+    <span class="title">
+      <?= $model->user->name ?>
+    </span>
 
-  <div class="col-sm-3 hidden-xs">
-    <?= $model->field ?>
-  </div>
+    <p><?= $model->field ?></p>
 
-  <div class="col-sm-3 hidden-xs">
-    <?= $model->url ?>
-  </div>
+    <p><?= $model->url ?></p>
 
-  <div class="col-sm-3 hidden-xs">
-    <?=$model->city ?>
-  </div>
-</div>
+    <p><?=$model->city ?></p>
+
+    <span class="secondary-content">
+    </span>
+</li>
+

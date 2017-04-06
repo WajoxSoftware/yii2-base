@@ -11,6 +11,7 @@ $this->render('_tabs_partner', [
 ]);
 
 echo ListView::widget([
+  'layout' => '<ul class="collection">{items}</ul><div>{pager}</div>',
   'dataProvider' => $dataProvider,
   'itemView' => '_order_item',
 ]);

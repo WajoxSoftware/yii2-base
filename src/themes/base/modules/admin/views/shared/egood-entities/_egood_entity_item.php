@@ -2,25 +2,23 @@
 use yii\helpers\Url;
 
 ?>
+<li class="collection-item" data-GoodCategory-id="<?= $model->id ?>">
+    <span class="title">
+      <?= $model->title ?>
+    </span>
 
-<div class="list-item" data-GoodCategory-id="<?= $model->id ?>">
-  <div class="row">
+    <p><?= $model->type ?></p>
 
-    <div class="col-md-3"><?= $model->type ?></div>
-    <div class="col-md-3"><?= $model->title ?></div>
-
-    <div class="col-md-3">
-      <div class="btn-group" role="group">
-        <a href="<?= Url::toRoute(['/admin/egood-entities/update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
+    <span class="secondary-content">
+        <a href="<?= Url::toRoute(['/admin/egood-entities/update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
           <i class="fa fa-pencil"></i>
           <?= \Yii::t('app/general', 'Edit') ?>
         </a>
 
-        <a href="<?= Url::toRoute(['/admin/egood-entities/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
+        <a href="<?= Url::toRoute(['/admin/egood-entities/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
           <i class="fa fa-trash"></i>
           <?= \Yii::t('app/general', 'Delete') ?>
         </a>
-      </div>
-    </div>
-  </div>
-</div>
+    </span>
+</li>
+
