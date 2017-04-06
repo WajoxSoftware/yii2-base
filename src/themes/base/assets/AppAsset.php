@@ -11,8 +11,10 @@ class AppAsset extends AssetBundle
     public $css = [
         //'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css',
         'libs/font-awesome/css/font-awesome.min.css',
-        'http://fonts.googleapis.com/css?family=Open+Sans',
+        'https://fonts.googleapis.com/icon?family=Material+Icons',
         'css/stacktable.css',
+        'css/fonts.css',
+        'css/materialize.css',
         //'css/site.css',
         //'css/app.css',
         //'css/custom_app.css',

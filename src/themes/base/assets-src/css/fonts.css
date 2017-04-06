@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Elektra Text Pro';
+  font-weight: bold;
+  font-style: italic;
+  src: url("../fonts/ElektraTextPro-BoldItalic.eot");
+  src: url("../fonts/ElektraTextPro-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/ElektraTextPro-BoldItalic.woff2") format("woff2"), url("../fonts/ElektraTextPro-BoldItalic.woff") format("woff"), url("../fonts/ElektraTextPro-BoldItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Elektra Text Pro';
+  font-weight: bold;
+  font-style: normal;
+  src: url("../fonts/ElektraTextPro-Bold.eot");
+  src: url("../fonts/ElektraTextPro-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/ElektraTextPro-Bold.woff2") format("woff2"), url("../fonts/ElektraTextPro-Bold.woff") format("woff"), url("../fonts/ElektraTextPro-Bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Elektra Text Pro';
+  font-weight: normal;
+  font-style: italic;
+  src: url("../fonts/ElektraTextPro-Italic.eot");
+  src: url("../fonts/ElektraTextPro-Italic.eot?#iefix") format("embedded-opentype"), url("../fonts/ElektraTextPro-Italic.woff2") format("woff2"), url("../fonts/ElektraTextPro-Italic.woff") format("woff"), url("../fonts/ElektraTextPro-Italic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Elektra Text Pro';
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/ElektraTextPro.eot");
+  src: url("../fonts/ElektraTextPro.eot?#iefix") format("embedded-opentype"), url("../fonts/ElektraTextPro.woff2") format("woff2"), url("../fonts/ElektraTextPro.woff") format("woff"), url("../fonts/ElektraTextPro.ttf") format("truetype"); }
