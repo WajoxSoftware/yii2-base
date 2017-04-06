@@ -80,7 +80,7 @@ abstract class SessionControllerAbstract extends \wajox\yii2base\controllers\Con
 
     public function actionLogout()
     {
-        $this->userManager()->signOut();
+        $this->getUsersManager()->signOut();
 
         return $this->goHome();
     }

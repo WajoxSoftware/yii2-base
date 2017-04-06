@@ -144,7 +144,8 @@ class TrafficStreamBuilder extends Object
     protected function validateModel()
     {
         if (!$this->getModel()->validate()) {
-            print_r($this->getModel()->errors);die();
+            print_r($this->getModel()->errors);
+            die();
             throw new \Exception('Can not validate traffic stream model');
         }
 

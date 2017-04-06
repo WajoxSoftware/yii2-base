@@ -2,7 +2,7 @@
 namespace wajox\yii2base\services\events\listeners;
 
 use wajox\yii2base\models\User;
-use wajox\yii2base\services\events\types\UserEvent;
+use wajox\yii2base\events\UserEvent;
 use wajox\yii2base\models\UserActionLog;
 use wajox\yii2base\services\system\EventsManager;
 

@@ -74,7 +74,6 @@ class TrafficStreamStatisticController extends ApplicationController
                 'id' => $model->id,
                 'stat' => $stat->compute(),
             ];
-            
         }
 
         return $items;

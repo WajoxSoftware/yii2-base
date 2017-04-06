@@ -8,7 +8,6 @@ use wajox\yii2base\modules\payment\models\BillSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 
-
 class BillsController extends \wajox\yii2base\modules\account\controllers\ApplicationController
 {
     public function actionIndex()

@@ -21,7 +21,7 @@ class Command
 
         $cmd = 'php ' . \Yii::getAlias('@app/yii')
             . ' ' . $this->command
-            . ' ' . implode(' ', $params);
+            . ' ' . implode(' ', $params)
             . ($async ? ' >> /dev/null &' : '');
 
         return shell_exec($cmd);

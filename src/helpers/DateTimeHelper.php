@@ -119,7 +119,6 @@ class DateTimeHelper
 
         return $day . ' ' . self::getMonth($timestamp);
         */
-
     }
 
     public static function getDayTime($timestamp = null)

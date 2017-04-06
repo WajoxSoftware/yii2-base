@@ -2,7 +2,7 @@
 namespace wajox\yii2base\services\users;
 
 use wajox\yii2base\models\User;
-use wajox\yii2base\services\events\types\UserEvent;
+use wajox\yii2base\events\UserEvent;
 use wajox\yii2base\components\base\Object;
 
 class UsersManager extends Object

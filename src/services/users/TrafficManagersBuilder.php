@@ -123,7 +123,8 @@ class TrafficManagersBuilder extends Object
     protected function validate()
     {
         if (!$this->getUser()->validate()) {
-            print_r($this->getUser()->errors);die();
+            print_r($this->getUser()->errors);
+            die();
             throw new \Exception('Invalid user data');
         }
 

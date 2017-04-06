@@ -26,7 +26,7 @@ class LogsManager extends Component
     }
 
     public function log($typeId, $itemId = null, $user = null, $params = [])
-    {        
+    {
         $model = $this->buildModel($user);
 
         $model->type_id = $typeId;
@@ -41,14 +41,14 @@ class LogsManager extends Component
                 throw new \Exception('Can not save model');
             }
 
-            $this->saveParams($model, $params);    
+            $this->saveParams($model, $params);
         } catch (\Exception $e) {
             $ta->rollBack();
         }
 
         $ta->commit();
 
-        return true;  
+        return true;
     }
 
     protected function buildModel($user)
