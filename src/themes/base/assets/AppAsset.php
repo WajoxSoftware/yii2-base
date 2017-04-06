@@ -16,13 +16,15 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/app.css',
         'css/custom_app.css',
-        'libs/flatui/css/flat-ui.css',
+        // 'libs/flatui/css/flat-ui.css',
     ];
     public $js = [
         //'https://files-stackablejs.netdna-ssl.com/stacktable.min.js',
-        'libs/flatui/js/flat-ui.js',
+        // 'libs/flatui/js/flat-ui.js',
     ];
     public $depends = [
         'wajox\yii2base\assets\AppAsset',
+        'romdim\bootstrap\material\BootMaterialCssAsset',
+        'romdim\bootstrap\material\BootMaterialJsAsset',
     ];
 }

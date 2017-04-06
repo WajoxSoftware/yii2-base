@@ -108,11 +108,18 @@ class DateTimeHelper
 
     public static function getDayMonth($timestamp = null)
     {
+        /**
+         * @todo fix
+         */
+        return date('d.m', $timestamp);
+        /*
         $timestamp = $timestamp ?: time();
 
         $day = (int) date('d', $timestamp);
 
         return $day . ' ' . self::getMonth($timestamp);
+        */
+
     }
 
     public static function getDayTime($timestamp = null)
