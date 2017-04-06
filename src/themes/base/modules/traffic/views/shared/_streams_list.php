@@ -1,17 +1,17 @@
 <?php foreach ($streams[$parentId] as $stream):?>
-    <div>
+    <ul class="collection">
         <?= $this->render(
             '@app/modules/traffic/views/shared/_stream_item',
             ['model' => $stream]
         ) ?>
 
         <?php if (isset($streams[$stream->id])): ?>
-            <div class="list">
+            <ul class="collection">
                 <?= $this->render('_streams_list', [
                     'streams' => $streams,
                     'parentId' => $stream->id,
                 ]) ?>
-            </div>
+            </ul>
         <?php endif; ?>
-    </div>
+    </ul>
 <?php endforeach; ?>
