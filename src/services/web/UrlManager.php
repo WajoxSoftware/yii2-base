@@ -327,7 +327,7 @@ class UrlManager extends \codemix\localeurls\UrlManager
         }
 
         $params = [];
-        $suffix = $this->findSuffix($pathInfo);
+        $foundSuffix = $this->findSuffix($pathInfo);
 
         if ($foundSuffix) {
             $params[self::SUFFIX_QUERY_PARAM] = $foundSuffix;
