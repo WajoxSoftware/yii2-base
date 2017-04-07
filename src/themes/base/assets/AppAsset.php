@@ -23,13 +23,13 @@ class AppAsset extends AssetBundle
     public $js = [
         //'https://files-stackablejs.netdna-ssl.com/stacktable.min.js',
         // 'libs/flatui/js/flat-ui.js',
-        'materialize.js',
+        'js/materialize.js',
     ];
     public $depends = [
         'wajox\yii2base\assets\AppAsset',
-        // 'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap\BootstrapAsset',
         'yii\bootstrap\BootstrapPluginAsset',
-        'romdim\bootstrap\material\BootMaterialCssAsset',
-        'romdim\bootstrap\material\BootMaterialJsAsset',
+        //'romdim\bootstrap\material\BootMaterialCssAsset',
+        //'romdim\bootstrap\material\BootMaterialJsAsset',
     ];
 }

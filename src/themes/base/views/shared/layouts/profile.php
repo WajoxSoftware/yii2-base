@@ -36,43 +36,40 @@ $metaDescription = \Yii::$app->settings->get('app_meta_description');
 <body data-base-url="<?= Url::home()?>" class="dashboard-body">
 
 <?php $this->beginBody() ?>
-<div id="wrapper-loading">
-  <p class="loading-icon"><i class="fa fa-circle-o-notch fa-spin fa-fw fa-3x" aria-hidden="true"></i></p>
-  <p class="loading-hint"><?= \Yii::t('app/general', 'Loading...'); ?></p>
-</div>
-
-<div id="wrapper"<?php if (isset($sidebarWidgetOptions)): ?> class="with-sidebar"<?php endif; ?> style="display: none;">
-
-    <?php
-    if (isset($sidebarWidgetOptions)) {
-        echo SidebarWidget::widget($sidebarWidgetOptions);
-    }
-    ?>
-
-        <!-- Page content -->
-        <div id="page-content-wrapper">
-          <!-- Keep all page content within the page-content inset div! -->
-          <div class="page-content inset">
-              <div class="container-fluid">
-                <?= $this->render($header) ?>
-              </div>
-
-              <div class="container-fluid">
-                <?= $this->render('@app/views/shared/_flash') ?>
-                <?= $this->render($pageHeader) ?>
-                
-                <?= $this->render($pageContent, [
-                  'content' => $content,
-                ]) ?>
-              </div>
-          </div>
-
-          <?= $this->render($footer) ?>
-
+    <header data-page-loaded="true" class="hidden">
+      <?php
+      if (isset($sidebarWidgetOptions)) {
+          echo SidebarWidget::widget($sidebarWidgetOptions);
+      }
+      ?>
+      <?= $this->render($header) ?>
+    </header>
+    <main>
+        <div data-page-loading="true">
+            <div class="page-loading preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only center">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div><div class="gap-patch">
+                    <div class="circle"></div>
+                  </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+            </div>
         </div>
-</div>
-
-<?= $this->blocks['filter-modal'] ?>
+        <div data-page-loaded="true" class="hidden container-fluid">
+            <?= $this->render('@app/views/shared/_flash') ?>
+            <?= $this->render($pageHeader) ?>
+            <?= $this->render($pageContent, [
+              'content' => $content,
+            ]) ?>
+        </div>
+    </main>
+    <!--<footer data-page-loaded="true" class="hidden">
+      <?= $this->render($footer) ?>
+    </footer>-->
+    <?= $this->blocks['filter-modal'] ?>
 
 <?php $this->endBody() ?>
 </body>

@@ -1,19 +1,22 @@
-<?php
-
-?>
-<div id="topbar">
-	<div class="row">
-	  <div class="col-md-9 col-sm-12 col-xs-12">
-        <?= $this->render('@app/views/shared/_profile_breadcrumbs') ?>
-	  </div>
-	  <div class="col-md-3 col-sm-4 hidden-xs hidden-sm">
-	    <div class="topbar-right">
-	      <span>
-	        <sup class="fa fa-circle text-success"></sup>
-	        <?= \Yii::$app->user->identity->name ?>
-	        (<?= \Yii::$app->user->identity->email ?>)
-	      </span>
-	    </div>
-	  </div>
+<nav>
+    <div class="nav-wrapper"> 
+		<ul class="left">
+			<li>
+				<a href="#" data-activates="sidebar" class="button-collapse" id="sidebar-button"><i class="material-icons">menu</i></a>
+			</li>
+		</ul>
+		<a href="<?= \yii\helpers\Url::to(['/']) ?>" class="brand-logo">
+			<?= \Yii::t('app/general', 'App Name') ?>
+		</a>
+		<ul class="right">
+		  <li>
+		   	<a href="#" data-activates="apps-dropdown" class="dropdown-button"><i class="material-icons">search</i></a>
+		   	<ul id='apps-dropdown' class='dropdown-content'>
+			</ul>
+		  </li>
+		</ul>
 	</div>
-</div>
+</nav>
+
+<?= $this->render('@app/views/shared/_profile_breadcrumbs') ?>
+

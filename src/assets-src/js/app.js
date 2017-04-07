@@ -275,7 +275,11 @@ var HtmlWidgets = function() {
 
     this.init = function() {
         // $('table.table').stacktable();
-        $(function() { $.material.init(); });
+        //$(function() { $.material.init(); });
+        $("#sidebar-button").sideNav();
+        $('.tooltipped').tooltip({delay: 50});
+        $('ul.tabs').tabs();
+
         this.bindEvents();
         this.renderAll();
     };
@@ -440,8 +444,8 @@ window.App = {
 };
 
 $(document).ready(function() {
+    $('[data-page-loading="true"]').addClass('hidden');
+    $('[data-page-loaded="true"]').removeClass('hidden');
+
     window.App.run();
-    
-    $('#wrapper-loading').hide(0);
-    $('#wrapper').show(0);
 });
