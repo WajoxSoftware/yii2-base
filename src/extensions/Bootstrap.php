@@ -89,9 +89,7 @@ class Bootstrap extends Component implements BootstrapInterface
         $app->view->theme->basePath = $themesPath . $theme;
         $app->view->theme->baseUrl = $themesUrl . $theme;
 
-        $app->view->theme->pathMap = array_merge(
-            $app->view->theme->pathMap,
-            [
+        $app->view->theme->pathMap = [
                 //external
                 '@app/views' => [
                     '@themes/' . $theme . '/views',
@@ -129,8 +127,11 @@ class Bootstrap extends Component implements BootstrapInterface
                     '@themes/' . $theme . '/widgets',
                     $baseThemePath . '/widgets',
                 ],
-            ]
-        );
+                '@vendor' => [
+                    '@themes/' . $theme . '/vendor',
+                    $baseThemePath . '/vendor',
+                ],
+            ];
     }
 
     protected function setupAppIndexUrl($indexUrl, $app)
@@ -154,17 +155,11 @@ class Bootstrap extends Component implements BootstrapInterface
     protected function initControllersMap($app)
     {
         if ($app instanceof ConsoleApplication) {
-            $app->controllerMap = array_merge(
-                $app->controllerMap,
-                $this->commandsMap
-            );
+            $app->controllerMap = $this->commandsMap;
 
             return;
         }
 
-        $app->controllerMap = array_merge(
-            $app->controllerMap,
-            $this->controllersMap
-        );
+        $app->controllerMap = $this->controllersMap;
     }
 }
