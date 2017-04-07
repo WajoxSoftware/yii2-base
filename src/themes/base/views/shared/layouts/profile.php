@@ -58,17 +58,12 @@ $metaDescription = \Yii::$app->settings->get('app_meta_description');
               </div>
 
               <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-12">
-                    <?= $this->render('@app/views/shared/_flash') ?>
-                    <?= $this->render($pageHeader) ?>
-                    <div class="page-content-block">
-                      <?= $this->render($pageContent, [
-                        'content' => $content,
-                      ]) ?>
-                    </div>
-                  </div>
-                </div>
+                <?= $this->render('@app/views/shared/_flash') ?>
+                <?= $this->render($pageHeader) ?>
+                
+                <?= $this->render($pageContent, [
+                  'content' => $content,
+                ]) ?>
               </div>
           </div>
 
