@@ -2849,7 +2849,7 @@ small {
 
 .btn, .btn-large {
   text-decoration: none;
-  color: #fff;
+  color: #fff !important;
   background-color: #26a69a;
   text-align: center;
   letter-spacing: .5px;
@@ -2860,7 +2860,7 @@ small {
 
 .btn-floating {
   display: inline-block;
-  color: #fff;
+  color: #fff !important;
   position: relative;
   overflow: hidden;
   z-index: 1;
