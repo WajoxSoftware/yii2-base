@@ -69,11 +69,10 @@ class Bootstrap extends Component implements BootstrapInterface
 
     protected function setupAliases()
     {
-        /**
-         * @todo fix
-         */
-        \Yii::setAlias('@wajox/yii2base', '/home/wajox/dev/ws-yii2-modules/yii2-base/src');
-        // \Yii::setAlias('@wajox/yii2base', '@vendor/wajox/yii2base/src');
+        \Yii::setAlias(
+            '@wajox/yii2base',
+            '@vendor/wajox/yii2base/src'
+        );
     }
 
     protected function setupAppTheme($theme, $app)
@@ -90,45 +89,48 @@ class Bootstrap extends Component implements BootstrapInterface
         $app->view->theme->basePath = $themesPath . $theme;
         $app->view->theme->baseUrl = $themesUrl . $theme;
 
-        $app->view->theme->pathMap = [
+        $app->view->theme->pathMap = array_merge(
+            $app->view->theme->pathMap,
+            [
                 //external
                 '@app/views' => [
-                        '@themes/' . $theme . '/views',
-                        $baseThemePath . '/views',
-                    ],
+                    '@themes/' . $theme . '/views',
+                    $baseThemePath . '/views',
+                ],
                 '@app/modules' => [
-                        '@themes/' . $theme . '/modules',
-                        $baseThemePath . '/modules',
-                    ],
+                    '@themes/' . $theme . '/modules',
+                    $baseThemePath . '/modules',
+                ],
                 '@app/mail' => [
-                        '@themes/' . $theme . '/mail',
-                        $baseThemePath . '/mail',
-                        '@wajox/yii2base/mail',
-                    ],
+                    '@themes/' . $theme . '/mail',
+                    $baseThemePath . '/mail',
+                    '@wajox/yii2base/mail',
+                ],
                 '@app/widgets' => [
-                        '@themes/' . $theme . '/widgets',
-                        $baseThemePath . '/widgets',
-                    ],
+                    '@themes/' . $theme . '/widgets',
+                    $baseThemePath . '/widgets',
+                ],
 
                 // internal
                 '@wajox/yii2base/views' => [
-                        '@themes/' . $theme . '/views',
-                        $baseThemePath . '/views',
-                    ],
+                    '@themes/' . $theme . '/views',
+                    $baseThemePath . '/views',
+                ],
                 '@wajox/yii2base/modules' => [
-                        '@themes/' . $theme . '/modules',
-                        $baseThemePath . '/modules',
-                    ],
+                    '@themes/' . $theme . '/modules',
+                    $baseThemePath . '/modules',
+                ],
                 '@wajox/yii2base/mail' => [
-                        '@themes/' . $theme . '/mail',
-                        $baseThemePath . '/mail',
-                        '@wajox/yii2base/mail',
-                    ],
+                    '@themes/' . $theme . '/mail',
+                    $baseThemePath . '/mail',
+                    '@wajox/yii2base/mail',
+                ],
                 '@wajox/yii2base/widgets' => [
-                        '@themes/' . $theme . '/widgets',
-                        $baseThemePath . '/widgets',
-                    ],
-            ];
+                    '@themes/' . $theme . '/widgets',
+                    $baseThemePath . '/widgets',
+                ],
+            ]
+        );
     }
 
     protected function setupAppIndexUrl($indexUrl, $app)
@@ -152,10 +154,17 @@ class Bootstrap extends Component implements BootstrapInterface
     protected function initControllersMap($app)
     {
         if ($app instanceof ConsoleApplication) {
-            $app->controllerMap = $this->commandsMap;
+            $app->controllerMap = array_merge(
+                $app->controllerMap,
+                $this->commandsMap
+            );
+
             return;
         }
 
-        $app->controllerMap = $this->controllersMap;
+        $app->controllerMap = array_merge(
+            $app->controllerMap,
+            $this->controllersMap
+        );
     }
 }
