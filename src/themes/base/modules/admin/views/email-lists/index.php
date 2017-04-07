@@ -1,5 +1,4 @@
 <?php
-
 $this->title = \Yii::t('app/admin', 'Nav Email Lists');
 $this->params['breadcrumbs'][] = $this->title;
 $this->render('@app/modules/admin/views/shared/mailing/_tabs', ['current' => 'email-lists']);
