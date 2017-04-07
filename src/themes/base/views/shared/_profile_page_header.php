@@ -21,7 +21,7 @@ $controls = isset($this->params['pageControls']) ? $this->params['pageControls']
 	<?php endif; ?>
 
 	<?php if ($tabs !== null): ?>
-		<div class="tabs row">
+		<div class="row">
 		  <div class="col-md-12">
 		    <?= NavTabsWidget::widget($tabs) ?>
 		  </div>
