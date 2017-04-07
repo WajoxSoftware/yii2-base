@@ -42,7 +42,8 @@ $metaDescription = \Yii::$app->settings->get('app_meta_description');
           echo SidebarWidget::widget($sidebarWidgetOptions);
       }
       ?>
-      <?= $this->render($header) ?>
+      <div class=" container-fluid">
+      <?= $this->render($header) ?></div>
     </header>
     <main>
         <div data-page-loading="true">

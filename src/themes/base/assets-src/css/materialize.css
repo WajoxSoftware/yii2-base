@@ -5150,7 +5150,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .side-nav {
   position: fixed;
-  width: 300px;
+  width: 350px;
   left: 0;
   top: 0;
   margin: 0;
@@ -6502,17 +6502,17 @@ form {
 .row.breadcrumbs {
   margin-bottom: 0; }
 
-.breadcrumbs {
+.breadcrumb {
   margin-bottom: 0;
   padding: 10px 0 10px 0; }
-  .breadcrumbs .breadcrumb {
+  .breadcrumb .breadcrumb {
     color: #333; }
     .breadcrumbs .breadcrumb i,
     .breadcrumbs .breadcrumb [class^="mdi-"], .breadcrumbs .breadcrumb [class*="mdi-"],
     .breadcrumbs .breadcrumb i.material-icons {
       display: inline-block;
       float: left; }
-    .breadcrumbs .breadcrumb:before {
+    .breadcrumb .breadcrumb:before {
       content: '\E5CC';
       color: #555;
       vertical-align: top;
@@ -6523,9 +6523,9 @@ form {
       font-size: 14px;
       margin: 0 3x 0 3px;
       -webkit-font-smoothing: antialiased; }
-    .breadcrumbs .breadcrumb:first-child:before {
+    .breadcrumb .breadcrumb:first-child:before {
       display: none; }
-    .breadcrumbs .breadcrumb:last-child {
+    .breadcrumb .breadcrumb:last-child {
       color: #444; }
 
 .form-group.has-error .help-block {
@@ -6558,29 +6558,3 @@ form {
     text-align: right;
     position: static !important; } }
 
-.orgCard {
-  overflow: hidden; }
-
-.orgCard .gragient {
-  white-space: nowrap;
-  overflow: hidden;
-  position: relative; }
-
-.orgCard .gragient::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 40px;
-  height: 100%;
-  background: -moz-linear-gradient(left, rgba(255, 255, 255, 0.2), #fff 100%);
-  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.2), #fff 100%);
-  background: -o-linear-gradient(left, rgba(255, 255, 255, 0.2), #fff 100%);
-  background: -ms-linear-gradient(left, rgba(255, 255, 255, 0.2), #fff 100%);
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.2), #fff 100%); }
-
-.orgCard p {
-  padding-bottom: 1em; }
-
-#sortableList .chip {
-  cursor: move; }
