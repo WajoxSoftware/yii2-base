@@ -10,7 +10,7 @@ $signInView = isset($signInView) ? $signInView : '@app/views/shared/_sign_in_for
         <div class="modal-body">
           <div class="js-sign-up">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col m12">
                 <h3><?= \Yii::t('app/general', 'Sign Up') ?></h3>
                 <?= $this->render($signUpView, ['model' => $model_signup]) ?>
               </div>
@@ -19,7 +19,7 @@ $signInView = isset($signInView) ? $signInView : '@app/views/shared/_sign_in_for
 
           <div class="js-sign-in">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col m12">
                 <h3><?= \Yii::t('app/general', 'Sign In') ?></h3>
                 <?= $this->render($signInView, ['model' => $model_signin]) ?>
               </div>

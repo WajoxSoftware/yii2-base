@@ -3,28 +3,28 @@ use yii\helpers\Url;
 
 ?>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <label><?= \Yii::t('app/attributes', 'Order ID') ?>:</label>
         <span><?= $model->id ?></span>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <label><?= \Yii::t('app/attributes', 'Bill Payment Method') ?>:</label>
         <span><?= $model->bill->paymentMethod ?></span>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <label><?= \Yii::t('app/attributes', 'Created At') ?>:</label>
         <span><?= $model->createdDate ?></span>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <label><?= \Yii::t('app/attributes', 'Sum') ?>:</label>
         <span>
           <?=$model->sumRUR ?>
@@ -48,7 +48,7 @@ use yii\helpers\Url;
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <label><?= \Yii::t('app/attributes', 'Status') ?>:</label>
         <span>
           <?= $model->status ?>
@@ -66,7 +66,7 @@ use yii\helpers\Url;
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <label><?= \Yii::t('app/attributes', 'Delivery Status') ?>:</label>
         <span>
           <?= $model->deliveryStatus ?>
@@ -91,7 +91,7 @@ use yii\helpers\Url;
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <label><?= \Yii::t('app/attributes', 'Order Saler Comment') ?>:</label>
         <p><?= $model->saler_comment ?></p>
     </div>

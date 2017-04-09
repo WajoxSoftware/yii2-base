@@ -2,11 +2,11 @@
 
 ?>
 <div class="row">
-  <div class="col-md-8">
+  <div class="col m8">
     <h5><?= $method->getTitle() ?></h5>
   </div>
 
-  <div class="col-md-4">
+  <div class="col m4">
     <form action="https://money.yandex.ru/eshop.xml" target="_blank" method="post">
       <!-- required fields -->
       <input name="shopId" value="<?= $shopId ?>" type="hidden"/>

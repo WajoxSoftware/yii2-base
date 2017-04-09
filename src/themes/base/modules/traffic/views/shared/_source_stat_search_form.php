@@ -13,7 +13,7 @@ $userSubaccountApiUrl = \yii\helpers\Url::toRoute(['/api/user-subaccounts', 'use
 ?>
 
   <div class="row">
-      <div class="col-md-12">
+      <div class="col m12">
           <?= $form->field($model, 'interval')->dropDownList(
             $model::getIntervalsList(),
             [
@@ -28,7 +28,7 @@ $userSubaccountApiUrl = \yii\helpers\Url::toRoute(['/api/user-subaccounts', 'use
 
   <div id="custom-interval-fields">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'startDate')->widget(
                 DatePicker::className(), [
                     'inline' => false,
@@ -41,7 +41,7 @@ $userSubaccountApiUrl = \yii\helpers\Url::toRoute(['/api/user-subaccounts', 'use
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'finishDate')->widget(
                 DatePicker::className(), [
                     'inline' => false,

@@ -27,7 +27,7 @@ $previousLink = sizeof($breadcrumbs) >= 2 ? $breadcrumbs[sizeof($breadcrumbs) - 
 ?>
 
 <?php if (sizeof($breadcrumbs) > 1): ?>
-	<div class="hidden-xs hidden-sm">
+	<div class="hide-on-med-and-down">
 		<?= Breadcrumbs::widget([
           'homeLink' => $homeLink,
           'links' => $breadcrumbs,
@@ -36,7 +36,7 @@ $previousLink = sizeof($breadcrumbs) >= 2 ? $breadcrumbs[sizeof($breadcrumbs) - 
 <?php endif; ?>
 
 <?php if (is_array($previousLink)): ?>
-	<div class="hidden-md hidden-lg">
+	<div class="hide-on-large-only">
 		<a  href="<?= Url::toRoute($previousLink['url']) ?>"><i class="fa fa-arrow-left"></i> <?= $previousLink['label'] ?></a>
 	</div>
 <?php endif; ?>

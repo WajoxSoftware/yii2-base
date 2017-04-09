@@ -81,7 +81,7 @@ if ($orders_stat['count'] > 0) {
 
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <?php if ($model->isPartner): ?>
             <p>
                 <i class="fa fa-male"></i>

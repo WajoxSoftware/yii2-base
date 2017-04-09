@@ -4,12 +4,12 @@ use wajox\yii2base\helpers\GoodsHelper;
 
 ?>
 <a data-Good-id="<?=$model->id ?>" href="<?= Url::toRoute(['/admin/goods/view', 'id' => $model->id]) ?>" class="row js-good-item message-item good-status-<?=$model->status ?>">
-  <div class="col-sm-3 col-xs-12">
+  <div class="col s3">
     <?= GoodsHelper::getFormattedPrice($model) ?>P
   </div>
-  <div class="col-sm-4 col-xs-12">
+  <div class="col s4">
     <?=$model->title ?>
   </div>
 
-  <div class="col-sm-3 col-xs-12"><?= $model->status ?></span></div>
+  <div class="col s3"><?= $model->status ?></span></div>
 </a>

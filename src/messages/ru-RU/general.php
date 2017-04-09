@@ -146,7 +146,7 @@ return [
   'View Listing As' => 'Показать как',
 
   'Sort Listing By' => 'Сортировать по',
-
+  'Filters not selected' => 'Фильтры не выбраны',
   'Page About' => 'О нас',
   'Page Terms' => 'Соглашение',
   'Page Privacy' => 'Политика',

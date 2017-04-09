@@ -13,13 +13,13 @@ use yii\bootstrap\ActiveForm;
 ]); ?>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
          <?= $form->field($model, 'content')->textarea(['rows' => 2]) ?>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <div class="form-group text-right">
             <?= Html::submitButton(\Yii::t('app/general', 'Send'), ['class' => 'btn btn-default']) ?>
         </div>

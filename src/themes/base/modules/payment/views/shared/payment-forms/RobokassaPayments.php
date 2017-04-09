@@ -2,11 +2,11 @@
 
 ?>
 <div class="row">
-  <div class="col-md-8">
+  <div class="col m8">
     <h5><?= $method->getTitle() ?></h5>
   </div>
 
-  <div class="col-md-4">
+  <div class="col m4">
     <form action='https://merchant.roboxchange.com/Index.aspx' target="_blank" method="POST">
       <input type=hidden name="MrchLogin" value="<?= $login ?>">
       <input type=hidden name="OutSum" value="<?= $amount ?>">

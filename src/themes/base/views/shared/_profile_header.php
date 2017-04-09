@@ -17,6 +17,3 @@
 		</ul>
 	</div>
 </nav>
-
-<?= $this->render('@app/views/shared/_profile_breadcrumbs') ?>
-

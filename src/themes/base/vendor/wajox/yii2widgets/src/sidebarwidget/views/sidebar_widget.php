@@ -4,8 +4,8 @@ use yii\helpers\Url;
 ?>
 <ul id="sidebar" class="side-nav">
     <li><div class="userView">
-      <div class="background teal darken-1">
-        <img src="bg.png" width="350px">
+      <div class="background teal darken-4">
+        <!--<img src="bg.png" width="350px">-->
       </div>
       <a href="<?= Url::toRoute(['/account/account']) ?>" class="circle"><img src="<?= \Yii::$app->user->identity->avatarUrl ?>" class="sidebarAvatar"></a>
       <span class="name">

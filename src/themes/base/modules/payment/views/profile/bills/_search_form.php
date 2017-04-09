@@ -11,13 +11,13 @@ use wajox\yii2base\modules\payment\models\Bill;
 ]); ?>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'id') ?>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'status_id')
                     ->dropDownList($model->getStatusIdList(), ['prompt' => \Yii::t('app/general', 'Select')]); ?>
 

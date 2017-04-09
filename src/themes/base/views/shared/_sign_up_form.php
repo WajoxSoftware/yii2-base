@@ -22,7 +22,7 @@ $hasSessionController = \Yii::$app->controller->module->hasSessionController;
     </div>
     <?php if ($moduleId !== 'basic' && $hasSessionController): ?>
     <div class="form-group">
-        <div class="col-md-12 text-center">
+        <div class="col m12 text-center">
             <a href="<?= Url::toRoute('/' . $moduleId . '/session') ?>" class="js-sign-in-button"><?= \Yii::t('app/general', 'Already Have Account?') ?></a>
         </div>
     </div>

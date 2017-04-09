@@ -16,7 +16,7 @@ $trafficStreamsApiUrl = \yii\helpers\Url::toRoute(['/api/user-traffic-streams', 
   ]); ?>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <?= $form->field($model, 'interval')->dropDownList(
             DateTimeHelper::getIntervalsList(),
             [
@@ -31,7 +31,7 @@ $trafficStreamsApiUrl = \yii\helpers\Url::toRoute(['/api/user-traffic-streams', 
 
 <div id="custom-interval-fields">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'startDate')->widget(
                 DatePicker::className(), [
                     'inline' => false,
@@ -44,7 +44,7 @@ $trafficStreamsApiUrl = \yii\helpers\Url::toRoute(['/api/user-traffic-streams', 
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'finishDate')->widget(
                 DatePicker::className(), [
                     'inline' => false,
@@ -57,7 +57,7 @@ $trafficStreamsApiUrl = \yii\helpers\Url::toRoute(['/api/user-traffic-streams', 
     </div>
 
     <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <?= $form->field($model, 'stepType')->dropDownList(
             DateTimeHelper::getIntervalStepsList(),
             [
@@ -69,22 +69,22 @@ $trafficStreamsApiUrl = \yii\helpers\Url::toRoute(['/api/user-traffic-streams', 
 </div>
 
 <div class="row">
-    <div class="col-md-3">
+    <div class="col m3">
         <?= $form->field($model, 'userSubaccountTag1'); ?>
     </div>
-    <div class="col-md-3">
+    <div class="col m3">
         <?= $form->field($model, 'userSubaccountTag2'); ?>
     </div>
-    <div class="col-md-3">
+    <div class="col m3">
         <?= $form->field($model, 'userSubaccountTag3'); ?>
     </div>
-    <div class="col-md-3">
+    <div class="col m3">
         <?= $form->field($model, 'userSubaccountTag4'); ?>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <?= $form->field($model, 'partnerOfferId')->widget(Select2::classname(), [
                 'initValueText' => $model->partnerOfferTitle,
                 'options' => ['placeholder' => \Yii::t('app/general', 'Select')],
@@ -104,7 +104,7 @@ $trafficStreamsApiUrl = \yii\helpers\Url::toRoute(['/api/user-traffic-streams', 
 
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <?= $form->field($model, 'trafficStreamId')->widget(Select2::classname(), [
                 'initValueText' => $model->trafficStreamTitle,
                 'options' => ['placeholder' => \Yii::t('app/general', 'Select')],

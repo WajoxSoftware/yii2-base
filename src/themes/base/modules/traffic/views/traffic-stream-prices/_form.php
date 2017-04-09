@@ -12,7 +12,7 @@ use wajox\yii2base\helpers\FormHelper;
 
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($model, 'startedAt')
                 ->widget(
                     DatePicker::className(), [
@@ -24,7 +24,7 @@ use wajox\yii2base\helpers\FormHelper;
                 ]);?>
         </div>
 
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($model, 'finishedAt')
                 ->widget(
                     DatePicker::className(), [
@@ -38,10 +38,10 @@ use wajox\yii2base\helpers\FormHelper;
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($model, 'clicks_count')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-md-6">
+        <div class="col m6">
             <?= FormHelper::renderRurPriceField($form, $model, 'sum') ?>
         </div>
     </div>

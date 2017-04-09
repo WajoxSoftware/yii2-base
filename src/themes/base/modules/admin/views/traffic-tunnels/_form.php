@@ -8,7 +8,7 @@ use yii\bootstrap\ActiveForm;
     <?php $form = ActiveForm::begin(['options' => ['class' => 'js-remote-form']]); ?>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col m12">
                 <?= $form->field($model, 'title')->textInput() ?>
             </div>
         </div>

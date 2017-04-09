@@ -7,7 +7,7 @@ $deliveryPrice = GoodsHelper::getDeliveryPrice($model);
 $price = GoodsHelper::getPartnerPrice($model, \Yii::$app->visitor->partner);
 ?>
 <div class="row">
-	<div class="col-md-12">
+	<div class="col m12">
 		<h6>
 			<a href="<?= Url::toRoute(['/shop/goods/view', 'url' => $model->url]) ?>"><?= $model->title ?></a>
 			<strong><?= $price ?>Р</strong>

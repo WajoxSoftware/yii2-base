@@ -5,15 +5,15 @@ use yii\helpers\Url;
 
 <div class="list-item list-item-dark" data-GoodPartnerProgramLink-id="<?= $model->id ?>">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col m3">
       <?= $model->url ?>
     </div>
 
-    <div class="col-md-6">
+    <div class="col m6">
       <?= $model->description ?>
     </div>
 
-    <div class="col-md-3">
+    <div class="col m3">
       <div class="btn-group" role="group">
         <a href="<?= Url::toRoute(['/admin/good-partner-program-links/update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
           <i class="fa fa-pencil"></i>

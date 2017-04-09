@@ -1620,6 +1620,20 @@ html {
 body {
   margin: 0; }
 
+.page-header {
+  background: #fff;
+  margin-bottom: 1rem;
+}
+
+.page-header .row {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.page-header .row .tabs {
+  margin-bottom: 0;
+}
+
 /* HTML5 display definitions
    ========================================================================== */
 /**
@@ -1641,7 +1655,9 @@ menu,
 nav,
 section,
 summary {
-  display: block; }
+  display: block;
+}
+
 
 /**
  * 1. Correct `inline-block` display not defined in IE 8/9.
@@ -2079,31 +2095,6 @@ video.responsive-video {
       overflow: hidden;
       white-space: nowrap; } }
 
-.breadcrumb {
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.7); }
-  .breadcrumb i,
-  .breadcrumb [class^="mdi-"], .breadcrumb [class*="mdi-"],
-  .breadcrumb i.material-icons {
-    display: inline-block;
-    float: left;
-    font-size: 24px; }
-  .breadcrumb:before {
-    content: '\E5CC';
-    color: rgba(255, 255, 255, 0.7);
-    vertical-align: top;
-    display: inline-block;
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 25px;
-    margin: 0 10px 0 8px;
-    -webkit-font-smoothing: antialiased; }
-  .breadcrumb:first-child:before {
-    display: none; }
-  .breadcrumb:last-child {
-    color: #fff; }
-
 .parallax-container {
   position: relative;
   overflow: hidden;
@@ -2294,8 +2285,14 @@ td, th {
   border: 1px solid #e0e0e0;
   border-radius: 2px;
   overflow: hidden;
-  position: relative; }
-  .collection .collection-item {
+  position: relative;
+}
+
+.collection .collection {
+  margin: 0 0 0 1rem;
+}
+
+.collection .collection-item {
     background-color: #fff;
     line-height: 1.5rem;
     padding: 10px 20px;
@@ -3458,7 +3455,6 @@ small {
   height: 48px;
   width: 100%;
   background-color: #fff;
-  margin: 0 auto;
   white-space: nowrap; }
   .tabs.tabs-transparent {
     background-color: transparent; }
@@ -6466,10 +6462,6 @@ body {
   left: 50%;
   margin-left: -50px; }
 
-@media only screen and (min-width: 1125px) {
-  body.signed-in main, body.signed-in header, body.signed-in footer {
-    padding-left: 313px !important; } }
-
 .list-view .collection {
   margin-top: 0 !important; }
 
@@ -6499,20 +6491,17 @@ form {
 .hidden {
   display: none; }
 
-.row.breadcrumbs {
-  margin-bottom: 0; }
-
 .breadcrumb {
   margin-bottom: 0;
-  padding: 10px 0 10px 0; }
-  .breadcrumb .breadcrumb {
-    color: #333; }
-    .breadcrumbs .breadcrumb i,
-    .breadcrumbs .breadcrumb [class^="mdi-"], .breadcrumbs .breadcrumb [class*="mdi-"],
-    .breadcrumbs .breadcrumb i.material-icons {
-      display: inline-block;
-      float: left; }
-    .breadcrumb .breadcrumb:before {
+}
+
+.breadcrumb li, .breadcrumb li a {
+    color: #333;
+    display: inline-block;
+    font-size: 18px;
+}
+
+.breadcrumb li:before {
       content: '\E5CC';
       color: #555;
       vertical-align: top;
@@ -6520,13 +6509,18 @@ form {
       font-family: 'Material Icons';
       font-weight: normal;
       font-style: normal;
-      font-size: 14px;
+      font-size: 18px;
       margin: 0 3x 0 3px;
-      -webkit-font-smoothing: antialiased; }
-    .breadcrumb .breadcrumb:first-child:before {
-      display: none; }
-    .breadcrumb .breadcrumb:last-child {
-      color: #444; }
+      -webkit-font-smoothing: antialiased;
+}
+
+.breadcrumb li:first-child:before {
+      display: none;
+}
+
+.breadcrumb li:last-child {
+      color: #444;
+}
 
 .form-group.has-error .help-block {
   color: #770000;
@@ -6558,3 +6552,17 @@ form {
     text-align: right;
     position: static !important; } }
 
+.list-unstyled {
+    padding-left: 0;
+    list-style: none
+}
+.list-inline {
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none
+}
+.list-inline>li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px
+}

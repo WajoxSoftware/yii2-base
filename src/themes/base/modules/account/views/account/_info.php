@@ -2,12 +2,12 @@
 ?>
 
 <div class="row page-inner">
-    <div class="col-md-2">
+    <div class="col m2">
     	<a href="#" class="thumbnail thumbnail-dark">
     		<img class="media-object" src="<?= $model->avatarUrl ?>" style="max-height: 300px;"/>
     	</a>
     </div>
-    <div class="col-md-10">
+    <div class="col m10">
     	<p>
     		<strong><?= \Yii::t('app/attributes', 'Email') ?>:</strong>
     		<span><?= $model->email ?></span>

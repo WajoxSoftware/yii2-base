@@ -21,34 +21,34 @@ if ($model->isNew) {
 ?>
 
 <div class="row">
-    <div class="bill-view col-md-12">
+    <div class="bill-view col m12">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col m12">
                 <label><?= \Yii::t('app/attributes', 'Created At') ?>:</label>
                 <?= $model->createdDate ?>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col m12">
                 <label><?= \Yii::t('app/attributes', 'Sum') ?>:</label>
                 <?= $model->sumRUR ?> P
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col m12">
                 <label><?= \Yii::t('app/attributes', 'Status') ?>:</label>
                 <?= $model->status ?>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col m12">
                 <label><?= \Yii::t('app/attributes', 'Status At') ?>:</label>
                 <?= $model->statusDate ?>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col m12">
                 <label><?= \Yii::t('app/attributes', 'Bill Payment Destination') ?>:</label>
                 <?= $model->paymentDestination ?>
             </div>
@@ -56,7 +56,7 @@ if ($model->isNew) {
 
         <?php if ($model->isPaid): ?>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col m12">
                     <label><?= \Yii::t('app/attributes', 'Bill Payment Method') ?>:</label>
                     <?= $model->paymentMethod ?>
                 </div>

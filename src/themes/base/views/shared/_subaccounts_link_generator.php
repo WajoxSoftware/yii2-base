@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col m12">
             <div class="form-group">
               <input type="text" class="form-control js-link" data-original-link=""/>
             </div>

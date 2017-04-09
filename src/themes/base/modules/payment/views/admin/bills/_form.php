@@ -5,7 +5,7 @@ use yii\bootstrap\ActiveForm;
 
 ?>
 <div class="row">
-    <div class="message-form col-md-6">
+    <div class="message-form col m6">
 
         <div class="panel panel-default">
           <div class="panel-body">
@@ -14,25 +14,25 @@ use yii\bootstrap\ActiveForm;
             <input type="hidden" name="Bill[payment_destination]" value="account"/>
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col m4">
                      <?= $form->field($model, 'sum')->textInput() ?>
                 </div>
 
-                <div class="col-md-8">
+                <div class="col m8">
                      <?= $form->field($customer_model, 'phone')->textInput() ?>
                 </div>
 
-                <div class="col-md-12">
+                <div class="col m12">
                      <?= $form->field($customer_model, 'email')->textInput() ?>
                 </div>
 
-                <div class="col-md-12">
+                <div class="col m12">
                      <?= $form->field($customer_model, 'address')->textInput() ?>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col m12">
                     <div class="form-group">
                         <?= Html::submitButton(\Yii::t('app/general', 'Update Balance'), ['class' => 'btn btn-success pull-right']) ?>
                     </div>

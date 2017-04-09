@@ -30,14 +30,14 @@ if ($contactsManager->canSendRequestTo($model)) {
 ?>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col m8">
     <?php if ($viewAccess): ?>
       <?= $this->render('_info', [
           'model' => $model,
         ]); ?>
     <?php endif; ?>
   </div>
-  <div class="col-md-4">
+  <div class="col m4">
     <?php if ($viewContactsAccess): ?>
       <?= $this->render('_contacts', ['model' => $model]); ?>
     <?php endif; ?>

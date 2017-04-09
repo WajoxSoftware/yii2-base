@@ -24,7 +24,7 @@ $this->params['pageControls']['items'][] = [
 ?>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col m8">
     <div class="message-form messages-form">
       <?= $this->render('_message_form', [
         'dialog' => $model,
@@ -64,7 +64,7 @@ $this->params['pageControls']['items'][] = [
     <?php endif; ?>
   </div>
   <?php if ($membersCount > 1): ?>
-    <div class="col-md-4">
+    <div class="col m4">
       <?= $this->render('_dialog_members', ['models' => $members]) ?>
     </div>
   <?php endif; ?>

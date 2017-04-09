@@ -11,7 +11,7 @@ use yii\bootstrap\ActiveForm;
   ]); ?>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <?= $form->field($model, 'interval')->dropDownList(
             $model::getIntervalsList(),
             [
@@ -26,7 +26,7 @@ use yii\bootstrap\ActiveForm;
 
 <div id="custom-interval-fields">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'startDate')->widget(
                 DatePicker::className(), [
                     'inline' => false,
@@ -39,7 +39,7 @@ use yii\bootstrap\ActiveForm;
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'finishDate')->widget(
                 DatePicker::className(), [
                     'inline' => false,

@@ -9,35 +9,35 @@ use yii\bootstrap\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($modelUser, 'name')->textInput(['maxlength' => true]) ?>
         </div>
 
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($modelUser, 'email')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($modelUser, 'first_name')->textInput(['maxlength' => true]) ?>
         </div>
 
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($modelUser, 'last_name')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
 
     <?php if ($modelUser->isNewRecord): ?>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col m6">
                 <?= $form->field($modelUser, 'password')->passwordInput(['maxlength' => true]) ?>
             </div>
         </div>
     <?php endif; ?>
 
     <div class="row">
-        <div class="col-md-12 text-right">
+        <div class="col m12 text-right">
 
             <?php if (!$model->isNewRecord): ?>
                 <?= Html::a(\Yii::t('app/general', 'Delete'), ['delete', 'id' => $model->id], [

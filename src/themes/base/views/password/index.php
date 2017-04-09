@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'email')->textInput(['maxlength' => 255]) ?>
 
         <div class="form-group">
-            <?= Html::submitButton(\Yii::t('app/general', 'Send'), ['class' => 'btn btn-primary col-md-12 col-xs-12']) ?>
+            <?= Html::submitButton(\Yii::t('app/general', 'Send'), ['class' => 'btn btn-primary col m12 col-xs-12']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

@@ -2,11 +2,11 @@
 
 ?>
 <div class="row">
-  <div class="col-md-8">
+  <div class="col m8">
     <h5><?= $method->getTitle() ?></h5>
   </div>
 
-  <div class="col-md-4">
+  <div class="col m4">
     <form action="https://z-payment.com/merchant.php" method="POST" target="_blank" data-payment-form="zpayment">
       <input type="hidden" name="LMI_PAYEE_PURSE" value="<?= $id ?>">
       <input type="hidden" name="LMI_PAYMENT_AMOUNT" value="<?= $amount ?>">

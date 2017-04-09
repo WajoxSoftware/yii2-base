@@ -10,7 +10,7 @@ use wajox\yii2base\helpers\UsersHelper;
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <div class="row">
-        <div class="col-md-3">
+        <div class="col m3">
             <?= $form->field($model, 'role')
                 ->dropDownList(
                     $model::getEmployeesRoleList(),
@@ -18,34 +18,34 @@ use wajox\yii2base\helpers\UsersHelper;
                 ); ?>
         </div>
 
-        <div class="col-md-3">
+        <div class="col m3">
             <?= $form->field($model, 'email')->textInput(['maxlength' => 255]) ?>
         </div>
 
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($model, 'first_name')->textInput(['maxlength' => 255]) ?>
         </div>
 
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($model, 'last_name')->textInput(['maxlength' => 255]) ?>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-3">
+        <div class="col m3">
             <?= $form->field($model, 'gender')
                 ->dropDownList(
                     UsersHelper::getGenderList()
                 ); ?>
         </div>
 
-        <div class="col-md-3">
+        <div class="col m3">
             <?= $form->field($model, 'birthdate')->widget(
                 DatePicker::className(), [
                      'inline' => false,
@@ -56,7 +56,7 @@ use wajox\yii2base\helpers\UsersHelper;
             ]);?>
         </div>
 
-        <div class="col-md-3">
+        <div class="col m3">
             <?= $form->field($model, 'referal_user_id')
                 ->dropDownList(
                     UsersHelper::getUsersList(),
@@ -64,13 +64,13 @@ use wajox\yii2base\helpers\UsersHelper;
                 ); ?>
         </div>
 
-        <div class="col-md-3">
+        <div class="col m3">
             <?= $form->field($model, 'phone')->textInput(['maxlength' => 255]) ?>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <div class="form-group text-right">
                 <?php if (!$model->isNewRecord): ?>
 

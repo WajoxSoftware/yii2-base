@@ -13,27 +13,27 @@ $tagPrefix = $builder->getSource()->tag . $tagPrefix;
     <?= $form->field($builder->getModel(), 'user_id')->textInput()->hiddenInput()->label(false) ?>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($builder->getModel(), 'status_id')->dropDownList(
                     TrafficStream::getStatusIdList(),
                     ['prompt' => \Yii::t('app/general', 'Select')]
                 ); ?>
         </div>
 
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($builder->getModel(), 'title')->textInput(['maxlength' => true]) ?>
         </div>
 
     </div>
     <div class="row">
 
-        <div class="col-md-12">
+        <div class="col m12">
             <?= FormHelper::renderPrefixField($form, $builder->getModel(), 'tag', $tagPrefix) ?>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($builder->getModel(), 'content')->widget(\yii\redactor\widgets\Redactor::className()) ?>
         </div>
     </div>

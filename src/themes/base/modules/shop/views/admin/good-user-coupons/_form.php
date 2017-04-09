@@ -15,7 +15,7 @@ $goodsApiUrl = \yii\helpers\Url::toRoute(['/api/goods', 'suffix' => '.json'], tr
         <?= $form->field($model, 'typeId')->textInput()->hiddenInput()->label(false) ?>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col m12">
                 <?= $form->field($model, 'partnerId')->dropDownList(
                     \wajox\yii2base\helpers\GoodPartnersHelper::getPartnersList(),
                     [
@@ -26,14 +26,14 @@ $goodsApiUrl = \yii\helpers\Url::toRoute(['/api/goods', 'suffix' => '.json'], tr
         </div>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col m12">
                 <?= $form->field($model, 'sum')->textInput(['maxlength' => true]) ?>
             </div>
         </div>
 
         <?php if ($model->getModel()->isCoupon): ?>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col m12">
                     <?= $form->field($model, 'startDateTime')->widget(DateTimePicker::classname(), [
                             'options' => ['placeholder' => \Yii::t('app/general', 'Select')],
                             'pluginOptions' => [
@@ -46,7 +46,7 @@ $goodsApiUrl = \yii\helpers\Url::toRoute(['/api/goods', 'suffix' => '.json'], tr
         <?php endif; ?>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col m12">
                  <?= $form->field($model, 'finishDateTime')->widget(DateTimePicker::classname(), [
                             'options' => ['placeholder' => \Yii::t('app/general', 'Select')],
                             'pluginOptions' => [
@@ -59,7 +59,7 @@ $goodsApiUrl = \yii\helpers\Url::toRoute(['/api/goods', 'suffix' => '.json'], tr
         <?php if ($model->getModel()->isAction): ?>
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col m12">
                     <?= $form->field($model, 'finishTypeId')->dropDownList(
                         $model::getFinishTypeIdList(),
                         [
@@ -77,13 +77,13 @@ $goodsApiUrl = \yii\helpers\Url::toRoute(['/api/goods', 'suffix' => '.json'], tr
             </div>
 
             <div class="row" id="redirect-field">
-                <div class="col-md-12">
+                <div class="col m12">
                     <?= $form->field($model, 'redirectUrl')->textInput(['maxlength' => true]) ?>
                 </div>
             </div>
 
             <div class="row" id="redirect-good-field">
-                <div class="col-md-12">
+                <div class="col m12">
                     <?= $form->field($model, 'redirectGoodId')->widget(Select2::classname(), [
                             'initValueText' => $model->redirectGoodTitle,
                             'options' => ['placeholder' => \Yii::t('app/general', 'Select')],
@@ -102,7 +102,7 @@ $goodsApiUrl = \yii\helpers\Url::toRoute(['/api/goods', 'suffix' => '.json'], tr
             </div>
 
             <div class="row" id="finished-message-field">
-                <div class="col-md-12">
+                <div class="col m12">
                     <?= $form->field($model, 'finishedMessage')->widget(\yii\redactor\widgets\Redactor::className())  ?>
                 </div>
             </div>

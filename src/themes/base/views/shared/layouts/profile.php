@@ -42,8 +42,7 @@ $metaDescription = \Yii::$app->settings->get('app_meta_description');
           echo SidebarWidget::widget($sidebarWidgetOptions);
       }
       ?>
-      <div class=" container-fluid">
-      <?= $this->render($header) ?></div>
+      <?= $this->render($header) ?>
     </header>
     <main>
         <div data-page-loading="true">
@@ -59,19 +58,21 @@ $metaDescription = \Yii::$app->settings->get('app_meta_description');
                 </div>
             </div>
         </div>
-        <div data-page-loaded="true" class="hidden container-fluid">
-            <?= $this->render('@app/views/shared/_flash') ?>
+        <div data-page-loaded="true" class="hidden">
             <?= $this->render($pageHeader) ?>
             <?= $this->render($pageContent, [
               'content' => $content,
             ]) ?>
         </div>
     </main>
-    <!--<footer data-page-loaded="true" class="hidden">
-      <?= $this->render($footer) ?>
-    </footer>-->
-    <?= $this->blocks['filter-modal'] ?>
 
+    <!--
+    footer data-page-loaded="true" class="page-footer hidden">
+      <?= $this->render($footer) ?>
+    </footer>
+    -->
+
+<?= $this->blocks['filter-modal'] ?>
 <?php $this->endBody() ?>
 </body>
 </html>

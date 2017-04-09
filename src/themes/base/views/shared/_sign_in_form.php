@@ -24,7 +24,7 @@ $hasRegistrationController = \Yii::$app->controller->module->hasRegistrationCont
     <?= Html::submitButton(\Yii::t('app/general', 'Sign In'), ['class' => 'btn btn-primary btn-block', 'name' => 'login-button']) ?>
 </div>
 <div class="form-group">
-    <div class="col-md-12 text-center">
+    <div class="col m12 text-center">
         <p>
           <?php if ($hasRegistrationController): ?>
           <a href="<?= Url::toRoute('/' . $moduleId . '/registration') ?>" class="js-sign-up-button"><?= \Yii::t('app/general', 'Sign Up') ?></a>
@@ -36,7 +36,7 @@ $hasRegistrationController = \Yii::$app->controller->module->hasRegistrationCont
 </div>
 
 <div class="form-group">
-  <div class="col-md-12">
+  <div class="col m12">
     <?= $this->render('@app/views/shared/_social_buttons', [
       'moduleId' => $moduleId,
     ]); ?>

@@ -1,13 +1,7 @@
-<?php
-use yii\bootstrap\NavBar;
-use yii\helpers\Url;
-
-NavBar::begin([
-        'brandLabel' => \Yii::t('app/general', 'App Name'),
-        'brandUrl' => Url::home(),
-        'options' => [
-            'class' => 'navbar-inverse',
-        ],
-    ]);
-
-    NavBar::end();
+<nav>
+    <div class="nav-wrapper"> 
+        <a href="<?= \yii\helpers\Url::to(['/']) ?>" class="brand-logo">
+            <?= \Yii::t('app/general', 'App Name') ?>
+        </a>
+    </div>
+</nav>

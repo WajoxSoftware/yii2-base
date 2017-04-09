@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col m10 col moffset-1">
             <h1><?= Html::encode($this->title) ?></h1>
 
             <?php if (\Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
                 ]) ?>
                 <div class="form-group row">
-                    <?= Html::submitButton(\Yii::t('app/general', 'Send'), ['class' => 'btn btn-primary col-md-12 col-xs-12', 'name' => 'contact-button']) ?>
+                    <?= Html::submitButton(\Yii::t('app/general', 'Send'), ['class' => 'btn btn-primary col m12 col-xs-12', 'name' => 'contact-button']) ?>
                 </div>
             <?php ActiveForm::end(); ?>
 

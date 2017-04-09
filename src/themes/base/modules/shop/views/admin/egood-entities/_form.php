@@ -11,20 +11,20 @@ $modelFile = $model->uploadedFile ?: new \wajox\yii2base\models\UploadedFile();
     <?= $form->field($model, 'type_id')->textInput()->hiddenInput()->label(false) ?>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'description')->textarea(['rows' => 3])  ?>
         </div>
     </div>
 
     <?php if ($model->isText): ?>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col m12">
                 <?= $form->field($model, 'content')->widget(\yii\redactor\widgets\Redactor::className())  ?>
             </div>
         </div>
@@ -36,7 +36,7 @@ $modelFile = $model->uploadedFile ?: new \wajox\yii2base\models\UploadedFile();
                 || $model->isArchive
     ): ?>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col m12">
                 <?= $form->field($modelFile, 'file')->fileInput() ?>
             </div>
         </div>
@@ -44,7 +44,7 @@ $modelFile = $model->uploadedFile ?: new \wajox\yii2base\models\UploadedFile();
 
     <?php if ($model->isLink): ?>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col m12">
                 <?= $form->field($model, 'file_url')->textInput(['maxlength' => true]) ?>
             </div>
         </div>

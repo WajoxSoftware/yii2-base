@@ -270,15 +270,27 @@ var HtmlWidgets = function() {
 
             return false;
         });
+
+        /*$('[data-toggle="modal"]').on('click touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+
+            var target = $(this).attr('data-target');
+
+            target.modal('open')
+        });*/
     };
 
 
     this.init = function() {
         // $('table.table').stacktable();
         //$(function() { $.material.init(); });
+        $('select:not([data-krajee-select2])').material_select();
         $("#sidebar-button").sideNav();
         $('.tooltipped').tooltip({delay: 50});
         $('ul.tabs').tabs();
+        $('.modal').modal();
 
         this.bindEvents();
         this.renderAll();
@@ -411,7 +423,8 @@ window.App = {
             return;
         }
 
-        $(modal_id).modal('show');
+        $(modal_id).modal();
+        $(modal_id).modal('open');
 
         $(modal_id).find('script').each(function() {
             eval(this.html());
@@ -424,7 +437,7 @@ window.App = {
         var modal = $(content);
         var modal_id = '#' + modal.attr('id');
 
-        $(modal_id).modal('hide');
+        $(modal_id).modal('close');
     },
 
     importAssets: function(content) {

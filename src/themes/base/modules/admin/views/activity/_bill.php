@@ -4,19 +4,19 @@ use yii\helpers\Url;
 ?>
 
 <a data-Bill-id="<?=$model->id ?>" href="<?= Url::toRoute(['/admin/bills/view', 'id' => $model->id]) ?>" class="row bill-item bill-status-<?=$model->status_id ?>">
-  <div class="col-md-2 hidden-xs col-sm-2 status">
+  <div class="col m2status">
     <?=$model->status ?>
   </div>
-  <div class="col-md-2 col-xs-3 col-sm-2 sum">
+  <div class="col m2 s2 sum">
     <?=$model->sumRUR ?> P
   </div>
-  <div class="col-md-3 col-xs-5 col-sm-4">
+  <div class="col m3 s4">
     <?= $model->customer->email ?>
   </div>
-  <div class="col-md-3 col-xs-5 col-sm-4 destination">
+  <div class="col m3 s4 destination">
     <?=$model->paymentDestination ?>
   </div>
-  <div class="col-md-2 col-xs-4 col-sm-4 date">
+  <div class="col m2 s4 date">
     <?= $model->statusDate ?>
   </div>
 </a>

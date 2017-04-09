@@ -10,14 +10,14 @@ use wajox\yii2base\helpers\FormHelper;
     <?php $form = ActiveForm::begin(['options' => ['class' => 'js-remote-form']]); ?>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
 
     <?php if (!$model->isNewRecord): ?>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col m12">
                 <?= FormHelper::renderUrlPartField($form, $model, 'url', [GoodCategory::VIEW_ROUTE, 'url' => '...']) ?>
             </div>
         </div>

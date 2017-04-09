@@ -11,10 +11,10 @@ use yii\helpers\Url;
 
     <span class="secondary-content">
 		<a href="<?= Url::toRoute(['/traffic/traffic-sources/update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
-	      <i class="fa fa-pencil"><?= \Yii::t('app/general', 'Edit') ?></i>
+	      <i class="fa fa-pencil"></i>
 	    </a>
 	    <a href="<?= Url::toRoute(['/traffic/traffic-sources/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
-	      <i class="fa fa-trash"><?= \Yii::t('app/general', 'Delete') ?></i>
+	      <i class="fa fa-trash"></i>
 	    </a>
     </span>
 </li>

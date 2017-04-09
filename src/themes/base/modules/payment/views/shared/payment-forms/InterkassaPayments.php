@@ -1,9 +1,9 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col m8">
     <h5><?= $method->getTitle() ?></h5>
   </div>
 
-  <div class="col-md-4">
+  <div class="col m4">
     <form name="payment" method="post" action="https://sci.interkassa.com/" target="_blank"  accept-charset="UTF-8">
       <input type="hidden" name="ik_co_id" value="<?= $id ?>" />
       <input type="hidden" name="ik_pm_no" value="<?= $bill_id ?>" />

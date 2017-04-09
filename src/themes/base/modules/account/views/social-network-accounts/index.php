@@ -8,7 +8,7 @@ $this->render('@app/modules/account/views/shared/_tabs', ['current' => 'networks
 ?>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <h6><?= \Yii::t('app/account', 'Connect Social Network Account') ?></h6>
         <div id="uLogin" class="well" data-ulogin="display=panel;fields=first_name,last_name;optional=photo;providers=vkontakte,odnoklassniki,mailru,facebook;hidden=other;redirect_uri=<?= urlencode(Url::toRoute(['create'], true)) ?>"></div>
         <script src="//ulogin.ru/js/ulogin.js"></script>

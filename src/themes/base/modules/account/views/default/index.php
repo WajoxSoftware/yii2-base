@@ -5,7 +5,7 @@ $this->title = \Yii::t('app/profile', 'Nav Home');
 ?>
 
 <div class="row">
-  <div class="col-md-3 col-sm-6">
+  <div class="col m3 col s6">
     <div class="tile">
       <div class="tile-image">
         <i class="fa fa-money"></i>
@@ -17,7 +17,7 @@ $this->title = \Yii::t('app/profile', 'Nav Home');
     </div>
   </div>
 
-  <div class="col-md-3 col-sm-6">
+  <div class="col m3 col s6">
     <div class="tile">
       <div class="tile-image">
         <i class="fa fa-envelope-o"></i>

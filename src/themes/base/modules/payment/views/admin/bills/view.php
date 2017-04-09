@@ -7,25 +7,25 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <label><?= \Yii::t('app/attributes', 'Bill ID') ?>:</label>
         <span><?= $model->id ?></span>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <label><?= \Yii::t('app/attributes', 'Created At') ?>:</label>
         <span><?= $model->createdDateTime ?></span>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <label><?= \Yii::t('app/attributes', 'Sum') ?>:</label>
         <span><?= $model->sumRUR ?> P</span>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <label><?= \Yii::t('app/attributes', 'Status') ?>:</label>
         <span>
           <?= $model->status ?>
@@ -44,14 +44,14 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <label><?= \Yii::t('app/attributes', 'Status At') ?>:</label>
         <span><?= $model->statusDateTime ?></span>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <label><?= \Yii::t('app/attributes', 'Bill Payment Destination') ?>:</label>
         <span>
           <?= $model->paymentDestination ?>
@@ -67,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php if ($model->isPaid): ?>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <label><?= \Yii::t('app/attributes', 'Bill Payment Method') ?>:</label>
             <span><?= $model->paymentMethod ?></span>
         </div>

@@ -9,17 +9,17 @@ use wajox\yii2base\modules\payment\models\Order;
 ]); ?>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($model, 'id') ?>
         </div>
 
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($model, 'bill_id') ?>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'status_id')
                     ->dropDownList(Order::getStatusIdList(), ['prompt' => \Yii::t('app/general', 'Select')]); ?>
 
@@ -27,7 +27,7 @@ use wajox\yii2base\modules\payment\models\Order;
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'delivery_status_id')
                     ->dropDownList(Order::getDeliveryStatusIdList(), ['prompt' => \Yii::t('app/general', 'Select')]); ?>
 

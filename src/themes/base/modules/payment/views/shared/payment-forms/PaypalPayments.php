@@ -4,11 +4,11 @@ use yii\helpers\Url;
 ?>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col m8">
     <h5><?= $method->getTitle() ?></h5>
   </div>
 
-  <div class="col-md-4">
+  <div class="col m4">
     <form  target="_blank" action="https://www.paypal.com/ru/cgi-bin/webscr" method="post" data-payment-form="paypal">
       <input name="cmd" type="hidden" value="_xclick" />
       <input name="business" type="hidden" value="<?= $login ?>" />

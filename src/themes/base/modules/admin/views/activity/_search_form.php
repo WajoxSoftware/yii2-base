@@ -11,7 +11,7 @@ $userApiUrl = \yii\helpers\Url::toRoute(['/api/users', 'suffix' => '.json'], tru
 ]); ?>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($model, 'user_id')->widget(Select2::classname(), [
                     'initValueText' => $model->userName,
                     'options' => ['placeholder' => \Yii::t('app/general', 'Select')],
@@ -28,7 +28,7 @@ $userApiUrl = \yii\helpers\Url::toRoute(['/api/users', 'suffix' => '.json'], tru
                 ]); ?>
         </div>
 
-        <div class="col-md-6">
+        <div class="col m6">
             <?= $form->field($model, 'referal_user_id')->widget(Select2::classname(), [
                     'initValueText' => $model->referalUserName,
                     'options' => ['placeholder' => \Yii::t('app/general', 'Select')],
@@ -48,7 +48,7 @@ $userApiUrl = \yii\helpers\Url::toRoute(['/api/users', 'suffix' => '.json'], tru
 
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'type_id')
                     ->dropDownList($model::getActionTypeIdList(), ['prompt' => \Yii::t('app/general', 'Select')]); ?>
         </div>

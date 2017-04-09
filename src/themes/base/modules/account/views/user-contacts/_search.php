@@ -13,13 +13,13 @@ use yii\bootstrap\ActiveForm;
     ]*/); ?>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'query')->textInput(['placeholder' => \Yii::t('app/general', 'Search')]) ?>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12 text-right">
+        <div class="col m12 text-right">
             <?= Html::submitButton(\Yii::t('app/general', 'Search'), ['class' => 'btn btn-primary']) ?>
             <?= Html::resetButton(\Yii::t('app/general', 'Reset'), ['class' => 'btn btn-default']) ?>
         </div>

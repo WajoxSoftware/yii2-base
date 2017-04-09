@@ -7,7 +7,7 @@ use yii\bootstrap\ActiveForm;
 <?php $form = ActiveForm::begin(); ?>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col m12">
     <?= $form->field($model, 'saler_comment')->textarea(['rows' => 5]) ?>
   </div>
 </div>
