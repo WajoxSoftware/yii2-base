@@ -11,8 +11,7 @@ use yii\helpers\Url;
 
     <span class="secondary-content">
       <a href="<?= Url::toRoute(['/admin/good-email-lists/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
-        <i class="fa fa-trash"></i>
-        <?= \Yii::t('app/general', 'Delete') ?>
+        <i class="material-icons">delete</i>
       </a>
     </span>
 </li>

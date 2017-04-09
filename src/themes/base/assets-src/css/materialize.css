@@ -6507,9 +6507,12 @@ form {
 }
 
 .breadcrumb li, .breadcrumb li a {
-    color: #333;
     display: inline-block;
     font-size: 18px;
+}
+
+.breadcrumb li a {
+  color: #2196F3;
 }
 
 .breadcrumb li:before {
@@ -6599,4 +6602,90 @@ form {
 
 .traffic-stream-level-5 {
   padding-left: 5rem;
+}
+
+/**
+ * Tiles
+ */
+
+.tile {
+  background: #fff;
+  border: 1px solid #E3E3E3;
+  border-radius: 4px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-bottom: 1rem;
+}
+
+.tile.sm {
+  padding: 1rem;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.tile.sm p {
+  margin-bottom: 0px;
+}
+
+.tile.sm .tile-title {
+  font-weight: normal;
+  /*color: #ecf0f1;*/
+  font-size: 12px;
+  padding: 0px;
+}
+
+.tile .tile-image {
+  font-size: 100px;
+  line-height: 1.0;
+  text-align: center;
+  color: #bdc3c7;
+}
+
+.media-tile.active {
+  background: #16a085;
+}
+
+.media-tile {
+  width: 200px;
+  height: 150px;
+  background: #2980b9;
+  display: inline-block;
+  margin: 0 10px 10px 0;
+}
+
+.media-tile .preview {  
+  width: 200px;
+  height: 150px;
+  overflow: hidden;
+  z-index: 100;
+  text-align: center;
+}
+
+.media-tile .preview img {
+  min-width: 200px;
+  min-height: 150px;
+  opacity: 0.4;
+}
+
+.media-tile .type-icon {
+  position: absolute;
+  z-index: 200;
+  font-size: 20px;
+  line-height: 20px;
+  margin: -140px 0 0 10px;
+  padding: 5px;
+  color: #eef;
+  background: #d35400;
+}
+
+.media-tile .title {
+  position: absolute;
+  margin: -90px 0 0 0px;
+  padding: 10px;
+  width: 200px;
+  overflow: hidden;
+  color: #fff;
+  font-size: 12px;
+  line-height: 14px;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 300;
 }

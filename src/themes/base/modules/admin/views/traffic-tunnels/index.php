@@ -2,7 +2,6 @@
 $this->title = \Yii::t('app/admin', 'Nav Traffic tunnels');
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['pageControls']['items'][] = [
-
   'url' => [
     'create',
     'suffix' => '.js',

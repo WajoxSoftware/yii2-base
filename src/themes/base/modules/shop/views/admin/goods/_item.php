@@ -3,7 +3,8 @@ use yii\helpers\Url;
 use wajox\yii2base\helpers\GoodsHelper;
 
 ?>
-<li class="collection-item" data-Good-id="<?=$model->id ?>">
+<li class="collection-item avatar" data-Good-id="<?=$model->id ?>">
+    <i class="material-icons circle">shopping_basket</i>
     <span class="title">
       <a href="<?= Url::toRoute(['/admin/goods/view', 'id' => $model->id]) ?>">
           <?=$model->title ?> (<?= $model->goodType ?>)

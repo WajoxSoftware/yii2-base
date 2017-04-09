@@ -102,8 +102,8 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
     public static function getStatusIdList()
     {
         return [
-            self::STATUS_ID_INACTIVE => \Yii::t('app/attributes', 'Traffic Stream Status Inactive'),
             self::STATUS_ID_ACTIVE => \Yii::t('app/attributes', 'Traffic Stream Status Active'),
+            self::STATUS_ID_INACTIVE => \Yii::t('app/attributes', 'Traffic Stream Status Inactive'),
         ];
     }
 

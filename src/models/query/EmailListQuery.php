@@ -5,7 +5,7 @@ use wajox\yii2base\components\db\ActiveQuery;
 
 class EmailListQuery extends ActiveQuery
 {
-    public function byUrl($id)
+    public function byUrl($url)
     {
         return $this->where([
             'url' => htmlspecialchars($url),

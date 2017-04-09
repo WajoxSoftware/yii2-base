@@ -2,38 +2,29 @@
 use yii\helpers\Url;
 
 ?>
-<div  class="row list-item message-item" data-PartnerFee-id="<?= $model->id ?>">
-  <div class="col m2">
-    <?= $model->createdDateTime ?>
-  </div>
+<li  class="collection-item" data-PartnerFee-id="<?= $model->id ?>">
+  <span class="title">
+    <?= $model->createdDateTime ?>, <?=$model->sumRUR ?> P
+  </spun>
 
-  <div class="col m2">
-    <?=$model->sumRUR ?> P
-  </div>
-
-  <div class="col m3">
+  <p>
     <?php $order_url = Url::toRoute(['/admin/orders/view', 'id' => $model->order_id]); ?>
     <a href="<?= $order_url ?>"><?= \Yii::t('app/models', 'Order') ?> #<?= $model->order_id ?></a>
-  </div>
+  </p>
 
-  <div class="col m2">
+  <p><?=$model->status ?></p>
 
-      <?=$model->status ?>
-  </div>
-
-  <div class="col m3">
-      <div class="btn-group" role="group">
+  <span class="secondary-content">
         <?php if ($model->isNew || $model->isCancelled): ?>
-          <a href="<?= Url::toRoute(['/admin/partner-fees/confirm', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
-            <?= \Yii::t('app/general', 'Confirm') ?>
+          <a href="<?= Url::toRoute(['/admin/partner-fees/confirm', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
+            <i class="material-icons">check</i>
           </a>
         <?php endif; ?>
 
         <?php if ($model->isNew): ?>
-          <a href="<?= Url::toRoute(['/admin/partner-fees/cancel', 'id' => $model->id, 'suffix' => '.js']) ?>"  class="btn btn-xs btn-default js-remote-link">
-            <?= \Yii::t('app/general', 'Cancel') ?>
+          <a href="<?= Url::toRoute(['/admin/partner-fees/cancel', 'id' => $model->id, 'suffix' => '.js']) ?>"  class="js-remote-link">
+            <i class="material-icons">cancel</i>
           </a>
         <?php endif; ?>
-      </div>
-  </div>
-</div>
+  </span>
+</li>

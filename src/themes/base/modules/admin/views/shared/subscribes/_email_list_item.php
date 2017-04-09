@@ -3,32 +3,24 @@ use yii\helpers\Url;
 
 ?>
 
-<div class="list-item" data-EmailList-id="<?= $model->id ?>">
-  <div class="row">
-    <div class="col m3">
-      <a href="<?= $model->subscribeUrl ?>" target="_blank"><?= $model->url ?></a>
-    </div>
+<li class="collection-item avatar" data-EmailList-id="<?= $model->id ?>">
+  <i class="material-icons circle">email</i>
+  <span class="title">
+    <?= $model->title ?>
+  </span>
 
-    <div class="col m3">
-      <?= $model->title ?>
-    </div>
+  <p><a href="<?= $model->subscribeUrl ?>" target="_blank"><?= $model->url ?></a></p>
 
-    <div class="col m3">
-      <?= $model->description ?>
-    </div>
+  <p><?= $model->description ?></p>
 
-    <div class="col m3">
-      <div class="btn-group" role="group">
-        <a href="<?= Url::toRoute(['/admin/email-lists/update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
-          <i class="fa fa-pencil"></i>
-          <?= \Yii::t('app/general', 'Edit') ?>
+  <span class="secondary-content">
+        <a href="<?= Url::toRoute(['/admin/email-lists/update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
+          <i class="material-icons">edit</i>
         </a>
 
-        <a href="<?= Url::toRoute(['/admin/email-lists/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="btn btn-xs btn-default js-remote-link">
-          <i class="fa fa-trash"></i>
-          <?= \Yii::t('app/general', 'Delete') ?>
+        <a href="<?= Url::toRoute(['/admin/email-lists/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
+          <i class="material-icons">delete</i>
         </a>
-      </div>
-    </div>
-  </div>
-</div>
+  </span>
+</li>
+

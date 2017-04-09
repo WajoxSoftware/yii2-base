@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\services\traffic;
 
-class TrafficTunnelSources
+class TrafficTunnelSources extends \wajox\yii2base\components\base\Object
 {
     public function getSourceData($source)
     {

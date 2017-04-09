@@ -15,8 +15,7 @@ $tagPrefix = $builder->getSource()->tag . $tagPrefix;
     <div class="row">
         <div class="col m6">
             <?= $form->field($builder->getModel(), 'status_id')->dropDownList(
-                    TrafficStream::getStatusIdList(),
-                    ['prompt' => \Yii::t('app/general', 'Select')]
+                    TrafficStream::getStatusIdList()
                 ); ?>
         </div>
 

@@ -11,13 +11,11 @@ use yii\helpers\Url;
 
     <span class="secondary-content">
         <a href="<?= Url::toRoute(['/admin/egood-entities/update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
-          <i class="fa fa-pencil"></i>
-          <?= \Yii::t('app/general', 'Edit') ?>
+          <i class="material-icons">edit</i>
         </a>
 
         <a href="<?= Url::toRoute(['/admin/egood-entities/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
-          <i class="fa fa-trash"></i>
-          <?= \Yii::t('app/general', 'Delete') ?>
+          <i class="material-icons">delete</i>
         </a>
     </span>
 </li>

@@ -1,5 +1,5 @@
 
-<table class="table table-striped">
+<table class="table bordered striped">
 		<tr>
 			<th></th>
 			<?php foreach ($steps as $step): ?>
