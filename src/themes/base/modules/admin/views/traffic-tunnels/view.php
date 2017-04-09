@@ -17,7 +17,7 @@ $this->params['pageControls']['items'][] = [
     'suffix' => '.js',
   ],
   'title' => \Yii::t('app/general', 'Update'),
-  'icon' => 'fa-plus',
+  'icon' => 'edit',
   'class' => 'js-remote-link',
 ];
 
@@ -30,7 +30,7 @@ $this->params['pageControls']['items'][] = [
   'title' => \Yii::t('app/general', 'Add {model}', [
     'model' => \Yii::t('app/models', 'TrafficTunnelStep'),
   ]),
-  'icon' => 'fa-plus',
+  'icon' => 'add',
   'class' => 'js-remote-link',
 ];
 
@@ -38,7 +38,7 @@ if ($listing->back) {
     $this->params['pageControls']['items'][] = [
     'url' => array_merge(['view', 'id' => $model->id], $listing->back),
     'title' => \Yii::t('app/general', 'Back'),
-    'icon' => 'fa-plus',
+    'icon' => 'arrow_back',
     'class' => 'js-arrow-left',
   ];
 }

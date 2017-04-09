@@ -8,7 +8,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->params['pageControls']['items'][] = [
   'title' => \Yii::t('app/general', 'Edit'),
   'url' => ['update', 'id' => $model->id, 'suffix' => '.js'],
-  'icon' => 'fa-pencil',
+  'icon' => 'edit',
   'class' => 'js-remote-link',
 ];
 

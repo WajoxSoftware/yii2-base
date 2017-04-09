@@ -5,7 +5,7 @@ $this->render('@app/modules/admin/views/shared/mailing/_tabs', ['current' => 'em
 $this->params['pageControls']['items'][] = [
   'url' => ['create', 'suffix' => '.js'],
   'title' => \Yii::t('app/general', 'Add'),
-  'icon' => 'fa-plus',
+  'icon' => 'add',
   'class' => 'js-remote-link',
 ];
 

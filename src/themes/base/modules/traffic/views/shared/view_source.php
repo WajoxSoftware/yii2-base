@@ -18,7 +18,7 @@ $this->params['pageControls']['items'][] = [
     'title' => \Yii::t('app/general', 'Add {model}', [
       'model' => \Yii::t('app/models', 'TrafficStream'),
     ]),
-    'icon' => 'fa-plus',
+    'icon' => 'add',
     'class' => 'js-remote-link',
   ];
 

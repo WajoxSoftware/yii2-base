@@ -8,7 +8,7 @@ $this->params['pageControls']['items'][] = [
     'suffix' => '.js',
   ],
   'title' => \Yii::t('app/general', 'Add'),
-  'icon' => 'fa-plus',
+  'icon' => 'add',
   'class' => 'js-remote-link',
 ];
 

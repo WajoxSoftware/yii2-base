@@ -5,20 +5,20 @@ use wajox\yii2base\models\Good;
 $this->params['pageControls']['items'][] = [
   'url' => $model->getModel()->orderUrl,
   'title' => \Yii::t('app/general', 'View'),
-  'icon' => 'fa-eye',
+  'icon' => 'open_in_browser',
 ];
 
 $this->params['pageControls']['items'][] = [
   'url' => ['draft', 'id' => $model->getModel()->id, 'cloneMode' => true],
   'title' => \Yii::t('app/general', 'Clone'),
-  'icon' => 'fa-copy',
+  'icon' => 'content_copy',
 ];
 
 if (!$model->getModel()->isActive && !$model->getModel()->isDraft) {
     $this->params['pageControls']['items'][] = [
       'url' => ['status', 'id' => $model->getModel()->id, 'statusId' => Good::STATUS_ID_ACTIVE],
       'title' => \Yii::t('app/general', 'Enable'),
-      'icon' => 'fa-plus',
+      'icon' => 'check',
     ];
 }
 
@@ -26,7 +26,7 @@ if (!$model->getModel()->isInactive && !$model->getModel()->isDraft) {
     $this->params['pageControls']['items'][] = [
       'url' => ['status', 'id' => $model->getModel()->id, 'statusId' => Good::STATUS_ID_INACTIVE] ,
       'title' => \Yii::t('app/general', 'Disable'),
-      'icon' => 'fa-minus',
+      'icon' => 'cancel',
     ];
 }
 
@@ -34,7 +34,7 @@ if (!$model->getModel()->isArchive && !$model->getModel()->isDraft) {
     $this->params['pageControls']['items'][] = [
       'url' => ['status', 'id' => $model->getModel()->id, 'statusId' => Good::STATUS_ID_ARCHIVE] ,
       'title' => \Yii::t('app/general', 'Archivate'),
-      'icon' => 'fa-plus',
+      'icon' => 'archive',
     ];
 }
 ?>

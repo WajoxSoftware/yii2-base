@@ -4,7 +4,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->params['pageControls']['items'][] = [
   'url' => ['create'],
   'title' => \Yii::t('app/general', 'Add'),
-  'icon' => 'fa-plus',
+  'icon' => 'add',
 ];
 
 $this->params['filter'] = [

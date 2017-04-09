@@ -10,12 +10,12 @@ if ($model->isNew) {
     $this->params['pageControls']['items'][] = [
       'title' => \Yii::t('app/general', 'Pay'),
       'url' => ['/payment/default/index', 'id' => $model->id],
-      'icon' => 'fa-credit-card',
+      'icon' => 'payment',
     ];
     $this->params['pageControls']['items'][] = [
       'title' => \Yii::t('app/general', 'Cancel'),
       'url' => ['cancel', 'id' => $model->id],
-      'icon' => 'fa-close',
+      'icon' => 'cancel',
     ];
 }
 ?>

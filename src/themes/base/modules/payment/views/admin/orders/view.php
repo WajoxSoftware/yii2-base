@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->params['pageControls']['items'][] = [
   'title' => \Yii::t('app/general', 'Edit {model}', ['model' => \Yii::t('app/models', 'Customer')]),
   'url' => ['/admin/customers/update', 'id' => $model->customer->id, 'suffix' => '.js'],
-  'icon' => 'fa-pencil',
+  'icon' => 'edit',
   'class' => 'js-remote-link',
 ];
 ?>

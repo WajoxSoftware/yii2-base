@@ -29,14 +29,14 @@ if ($categoryId
     $this->params['pageControls']['items'][] = [
       'url' => ['create', 'suffix' => '.js', 'id' => $category->id, 'typeId' => Good::TYPE_ID_ELECTRONIC],
       'title' => \Yii::t('app/general', 'Add Electronic Good'),
-      'icon' => 'fa-plus',
+      'icon' => 'note_add',
       'class' => 'js-remote-link',
     ];
 
     $this->params['pageControls']['items'][] = [
       'url' => ['create', 'suffix' => '.js', 'id' => $category->id, 'typeId' => Good::TYPE_ID_PHYSICAL],
       'title' => \Yii::t('app/general', 'Add Physical Good'),
-      'icon' => 'fa-plus',
+      'icon' => 'library_add',
       'class' => 'js-remote-link',
     ];
 
@@ -66,7 +66,7 @@ if ($categoryId
     $this->params['pageControls']['items'][] = [
     'url' => ['/shop/admin/good-categories/create', 'id' => $categoryId, 'suffix' => '.js'],
     'title' => \Yii::t('app/general', 'Add Good Category'),
-    'icon' => 'fa-plus',
+    'icon' => 'create_new_folder',
     'class' => 'js-remote-link',
   ];
 

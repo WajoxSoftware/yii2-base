@@ -11,7 +11,7 @@ if ($writeMessageAccess) {
         '/profile/dialogs/create',
         'userIds' => $model->id,
     ],
-    'icon' => 'fa-envelope-o',
+    'icon' => 'message',
   ];
 }
 
@@ -23,7 +23,7 @@ if ($contactsManager->canSendRequestTo($model)) {
         'id' => $model->id,
         'suffix' => '.js',
     ],
-    'icon' => 'fa-user-plus',
+    'icon' => 'add',
     'class' => 'js-remote-link',
   ];
 }

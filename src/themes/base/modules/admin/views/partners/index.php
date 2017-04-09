@@ -7,7 +7,7 @@ $this->render('_tabs', ['current' => 'index']);
 $this->params['pageControls']['items'][] = [
   'url' => ['create'],
   'title' => \Yii::t('app/general', 'Add'),
-  'icon' => 'fa-plus',
+  'icon' => 'add',
 ];
 
 $this->params['sort'] = [

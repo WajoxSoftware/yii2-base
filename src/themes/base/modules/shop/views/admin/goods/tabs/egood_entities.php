@@ -5,7 +5,7 @@ foreach (EGoodEntity::getTypeIdList() as $typeId => $typeName) {
     $this->params['pageControls']['items'][] = [
       'title' => $typeName,
       'url' => ['/shop/admin/egood-entities/create', 'id' => $model->getModel()->id, 'typeId' => $typeId, 'suffix' => '.js'],
-      'icon' => 'fa-plus',
+      'icon' => 'add',
       'class' => 'js-remote-link',
     ];
 }

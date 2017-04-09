@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->params['pageControls']['items'][] = [
   'title' => \Yii::t('app/dialogs', 'Leave Dialog'),
   'url' => ['delete', 'id' => $model->id],
-  'icon' => 'fa-sign-out',
+  'icon' => 'exit_to_app',
 ];
 
 ?>

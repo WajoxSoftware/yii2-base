@@ -8,7 +8,7 @@ $this->render('_tabs', ['current' => 'index']);
 $this->params['pageControls']['items'][] = [
   'title' => \Yii::t('app/general', 'Update Balance'),
   'url' => ['create'],
-  'icon' => 'fa-plus',
+  'icon' => 'add',
 ];
 
 echo $this->render('_tabs', ['current' => 'index']);
