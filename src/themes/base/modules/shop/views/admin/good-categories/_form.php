@@ -1,6 +1,6 @@
 <?php
 use yii\bootstrap\ActiveForm;
-use wajox\yii2base\models\GoodCategory;
+use wajox\yii2base\modules\shop\models\GoodCategory;
 use wajox\yii2base\helpers\FormHelper;
 
 ?>

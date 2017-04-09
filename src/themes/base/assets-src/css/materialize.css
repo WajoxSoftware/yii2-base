@@ -2324,7 +2324,7 @@ td, th {
         background-color: #999;
         text-align: center; }
       .collection .collection-item.avatar .title {
-        font-size: 16px; }
+        font-size: 18px; }
       .collection .collection-item.avatar p {
         margin: 0; }
       .collection .collection-item.avatar .secondary-content {
@@ -2352,6 +2352,10 @@ td, th {
     padding-left: 30px; }
   .collection.with-header .collection-item.avatar {
     padding-left: 72px; }
+
+.collection .collection-item > .title {
+  font-size: 18px;
+}
 
 .secondary-content {
   float: right;

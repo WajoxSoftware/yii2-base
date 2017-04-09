@@ -9,6 +9,7 @@ class GoodCategoriesBuilder extends Object
 {
     protected $goodCategory = null;
     protected $parentCategoryId = null;
+    protected $request = null;
 
     public function __construct($goodCategory = null)
     {

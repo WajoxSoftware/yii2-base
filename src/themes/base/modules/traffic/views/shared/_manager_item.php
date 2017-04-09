@@ -2,7 +2,8 @@
 use yii\helpers\Url;
 
 ?>
-<li class="collection-item" data-TrafficManager-id="<?= $model->id ?>">
+<li class="collection-item avatar" data-TrafficManager-id="<?= $model->id ?>">
+    <i class="material-icons circle">account_box</i>
     <span class="title">
       <a href="<?= Url::toRoute(['view-user', 'id' => $model->user_id]) ?>">
         <?=$model->user->name ?>
@@ -11,10 +12,10 @@ use yii\helpers\Url;
 
     <span class="secondary-content">
 		<a href="<?= Url::toRoute(['/admin/traffic-managers/update', 'id' => $model->id]) ?>">
-		      <i class="fa fa-pencil"><?= \Yii::t('app/general', 'Edit') ?></i>
+		      <i class="fa fa-pencil"></i>
 		    </a>
 		    <a href="<?= Url::toRoute(['/admin/traffic-managers/delete', 'id' => $model->id, 'suffix' => '.js']) ?>">
-		      <i class="fa fa-trash"><?= \Yii::t('app/general', 'Delete') ?></i>
+		      <i class="fa fa-trash"></i>
 		    </a>
     </span>
 </li>

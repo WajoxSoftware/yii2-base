@@ -3,8 +3,8 @@
 
 <div class="row page-inner">
     <div class="col m2">
-    	<a href="#" class="thumbnail thumbnail-dark">
-    		<img class="media-object" src="<?= $model->avatarUrl ?>" style="max-height: 300px;"/>
+    	<a href="#">
+    		<img class="responsive" style="max-width: 100%" src="<?= $model->avatarUrl ?>"/>
     	</a>
     </div>
     <div class="col m10">

@@ -2,7 +2,8 @@
 use yii\helpers\Url;
 
 ?>
-<li class="collection-item" data-TrafficStream-id="<?= $model->id ?>">
+<li class="collection-item avatar" data-TrafficStream-id="<?= $model->id ?>">
+    <i class="material-icons circle">subdirectory_arrow_right</i>
     <span class="title">
       <a href="<?= Url::toRoute(['view-stream', 'id' => $model->id]) ?>"><?= $model->title ?></a>
     </span>

@@ -11,6 +11,9 @@ abstract class ModuleAbstract extends \yii\base\Module
     public $hasRegistrationController = false;
     public $layouts = [];
 
+    protected $moduleNamespace;
+    protected $moduleHomeBreadcrumbs = [];
+
     public function init()
     {
         parent::init();
@@ -19,35 +22,62 @@ abstract class ModuleAbstract extends \yii\base\Module
 
     protected function initModule()
     {
-        $this->getApp()->user->loginUrl = ['/'.$this->id.'/session'];
+        $this
+            ->getApp()
+            ->user
+            ->loginUrl = ['/'.$this->id.'/session'];
     }
 
     public function getModuleHomeBreadcrumbs()
     {
-        return [
-            'label' => $this->t('app/'.$this->id, 'Module Home'),
-            'url' => ['/'.$this->id],
-        ];
+        return $this->moduleHomeBreadcrumbs;
     }
 
     public function beforeAction($action)
     {
-        $this->setLayoutByControllerId($action->controller->id);
+        $this
+            ->loadModuleNamespace($action->controller->id)
+            ->setModuleLayout()
+            ->setModuleHomeBreadcrumbs();
 
         return parent::beforeAction($action);
     }
 
-    protected function setLayoutByControllerId($controllerId)
+    protected function setModuleLayout()
     {
         if (sizeof($this->layouts) == 0) {
-            return;
+            return $this;
         }
 
-        $parts = explode('/', $controllerId);
-        $layoutId = sizeof($parts) > 1 ? array_shift($parts) : 'default';
+        $layoutId = $this->moduleNamespace ?
+            $this->moduleNamespace : 'default';
 
         if (isset($this->layouts[$layoutId])) {
             $this->layout = $this->layouts[$layoutId];
         }
+
+        return $this;
+    }
+
+    protected function setModuleHomeBreadcrumbs()
+    {
+        $moduleNamespace = $this->moduleNamespace ?
+            '/' . $this->moduleNamespace . '/default/index' : '';
+
+        $this->moduleHomeBreadcrumbs = [
+            'label' => $this->t('app/'.$this->id, 'Module Home'),
+            'url' => ['/'. $this->id . $moduleNamespace],
+        ];
+
+        return $this;
+    }
+
+    protected function loadModuleNamespace($controllerId)
+    {
+        $parts = explode('/', $controllerId);
+
+        $this->moduleNamespace = sizeof($parts) > 1 ? array_shift($parts) : null;
+
+        return $this;
     }
 }

@@ -3,7 +3,8 @@ use yii\helpers\Url;
 
 ?>
 
-<li class="collection-item" data-user-id="<?=$model->id ?>" >
+<li class="collection-item avatar" data-user-id="<?=$model->id ?>" >
+    <i class="material-icons circle">account_box</i>
     <span class="title">
       <a href="<?= Url::toRoute(['view', 'id' => $model->id]) ?>">
         <?= $model->name ?> (<?=$model->email ?>)

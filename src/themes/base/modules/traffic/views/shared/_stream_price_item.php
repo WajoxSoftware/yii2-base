@@ -2,7 +2,8 @@
 use yii\helpers\Url;
 
 ?>
-<li class="collection-item" data-TrafficStreamPrice-id="<?= $model->id ?>">
+<li class="collection-item avatar" data-TrafficStreamPrice-id="<?= $model->id ?>">
+    <i class="material-icons circle">attach_money</i>
     <span class="title">
       <?= $model->timeInterval ?> (<?= $model->sum ?>P)
     </span>

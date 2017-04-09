@@ -46,7 +46,7 @@ class AccountController extends ApplicationController
             $this->signInRedirect();
         }
 
-        return $this->redirect(['/account/default/view', 'id' => $this->getApp()->user->id]);
+        return $this->redirect(['view', 'id' => $this->getApp()->user->id]);
     }
 
     public function actionView($id)
