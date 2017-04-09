@@ -1,25 +1,11 @@
-<div id="subaccounts_link_generator_modal" class="js-subaccounts-link-generator-modal modal">
-  <div class="modal-dialog">
+<div id="subaccounts_link_generator_modal" class="modal  js-subaccounts-link-generator-modal">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"><?= \Yii::t('app/general', 'Generate link') ?></h4>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col m12">
-            <div class="form-group">
-              <input type="text" class="form-control js-link" data-original-link=""/>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><?= \Yii::t('app/general', 'Close') ?></button>
-      </div>
+      <h4><?= \Yii::t('app/general', 'Generate link') ?></h4>
+      <input type="text" class="form-control js-link" data-original-link=""/>
     </div>
-  </div>
+    <div class="modal-footer">
+        <a href="#" class="modal-action modal-close btn-flat"><?= \Yii::t('app/general', 'Close') ?></a>
+    </div>
 </div>
 
 <?php
@@ -89,7 +75,7 @@ var UserSubaccountsLinkGenerator = function(){
 
   this.showModal = function()
   {
-    this.getModal().modal('show');
+    this.getModal().modal('open');
   };
 
   this.setOriginalLink = function(link)

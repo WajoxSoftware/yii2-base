@@ -12,7 +12,13 @@ class TrafficStreamsController extends ApplicationController
     {
         $request = $this->getApp()->request;
         $modelSource = $this->findModelSource($sourceId);
-        $modelStream = $this->findModel($streamId);
+
+        try {
+            $modelStream = $this->findModel($streamId);
+            $modelSource = $modelStream->source;
+        } catch (\Exception $e) {
+            $modelStream = null;
+        }
 
         $this->requireUserAccess($modelSource->user_id);
 

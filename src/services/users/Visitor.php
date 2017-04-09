@@ -212,11 +212,14 @@ class Visitor extends Component
     {
         $offerTypeId = intval($this->getParam(self::OFFER_TYPE_PARAM, Log::OFFER_TYPE_ID_NONE));
         $offerItemId = intval($this->getParam(self::OFFER_ID_PARAM, 0));
-
-        if ($this->trafficStream != null && $this->trafficStream->good != null) {
+        /**
+         * @todo  fix
+         * @deprecated
+         */
+        /*if ($this->trafficStream != null && $this->trafficStream->good != null) {
             $offerTypeId = Log::OFFER_TYPE_ID_GOOD;
             $offerItemId = $this->trafficStream->good->id;
-        }
+        }*/
 
         $this->setOfferTypeId($offerTypeId);
         $this->setOfferItemId($offerItemId);

@@ -44,6 +44,8 @@ class LogsManager extends Component
             $this->saveParams($model, $params);
         } catch (\Exception $e) {
             $ta->rollBack();
+
+            return false;
         }
 
         $ta->commit();
@@ -137,8 +139,10 @@ class LogsManager extends Component
 
     protected function saveParams($model, $params = [])
     {
+        $visitor = $this->getApp()->visitor;
+
         $defaultParams = [
-            LogParam::PARAM_TRAFFIC_STREAM_Id => $visitor->trafficStreamId,
+            LogParam::PARAM_ID_TRAFFIC_STREAM_ID => $visitor->trafficStreamId,
             LogParam::PARAM_ID_OFFER_TYPE_ID => $visitor->offerTypeId,
             LogParam::PARAM_ID_OFFER_ITEM_ID => $visitor->offerItemId,
         ];
