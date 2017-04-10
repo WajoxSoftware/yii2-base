@@ -22,7 +22,7 @@ $this->render('@app/modules/traffic/views/shared/_stream_tabs', [
 ]);
 ?>
 
-<table class="table table-striped">
+<table class="table bordered striped">
     <thead>
         <tr>
             <th>Дата</th>

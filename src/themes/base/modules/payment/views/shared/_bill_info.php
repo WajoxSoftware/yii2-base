@@ -2,7 +2,7 @@
     return;
 } ?>
 
-<table class="table table-striped table-bordered">
+<table class="table striped bordered">
   <tbody>
     <tr>
       <td><?= \Yii::t('app/attributes', 'Date') ?></td>

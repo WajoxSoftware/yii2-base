@@ -1,5 +1,5 @@
 <?php if ($parentId == 0): ?>
-    <table class="table table-striped">
+    <table class="table bordered striped">
       <thead>
         <tr>
             <th>Поток</th>

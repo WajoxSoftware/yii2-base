@@ -9,7 +9,7 @@ $this->params['filter'] = [
   ]),
 ];
 ?>
-<table class="table table-striped">
+<table class="table bordered striped">
 	<th>
 		  <?php foreach (current($stat)['items'] as $key => $value): ?>
 		    <td class="text-center">
