@@ -3,6 +3,8 @@ namespace wajox\yii2base\models;
 
 use yii\web\IdentityInterface;
 use wajox\yii2base\models\query\UserQuery;
+use wajox\yii2base\modules\payment\models\Customer;
+use wajox\yii2base\modules\payment\models\Order;
 
 class User extends \wajox\yii2base\components\db\ActiveRecord implements IdentityInterface
 {
