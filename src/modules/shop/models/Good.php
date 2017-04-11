@@ -1,7 +1,10 @@
 <?php
 namespace wajox\yii2base\modules\shop\models;
 
+use wajox\yii2base\models\User;
 use wajox\yii2base\modules\shop\models\query\GoodQuery;
+use wajox\yii2base\modules\payment\models\GoodDeliveryMethod;
+use wajox\yii2base\modules\payment\models\GoodPaymentMethod;
 
 class Good extends \wajox\yii2base\components\db\ActiveRecord
 {
@@ -250,6 +253,11 @@ class Good extends \wajox\yii2base\components\db\ActiveRecord
     public function getParentGood()
     {
         return $this->hasOne(self::className(), ['id' => 'parent_good_id']);
+    }
+
+    public function getAuthor()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     public function getGoods()

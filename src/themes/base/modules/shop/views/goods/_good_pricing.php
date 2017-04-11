@@ -1,5 +1,5 @@
 <?php
-use wajox\yii2base\helpers\GoodsHelper;
+use wajox\yii2base\modules\shop\helpers\GoodsHelper;
 
 $originalPrice = $model->sum;
 $deliveryPrice = GoodsHelper::getDeliveryPrice($model);

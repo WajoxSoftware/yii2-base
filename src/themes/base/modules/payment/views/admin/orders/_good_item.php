@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Url;
-use wajox\yii2base\helpers\GoodsHelper;
+use wajox\yii2base\modules\shop\helpers\GoodsHelper;
 
 ?>
 <li class="collection-item" data-Good-id="<?=$model->id ?>">

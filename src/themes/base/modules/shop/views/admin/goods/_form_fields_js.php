@@ -1,6 +1,6 @@
 <?php
 use wajox\yii2base\helpers\FormHelper;
-use wajox\yii2base\models\Good;
+use wajox\yii2base\modules\shop\models\Good;
 
 ?>
 

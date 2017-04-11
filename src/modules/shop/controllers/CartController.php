@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\modules\shop\controllers;
 
-use wajox\yii2base\services\shop\ShopCartManager;
+use wajox\yii2base\modules\shop\services\shop\ShopCartManager;
 
 class CartController extends ApplicationController
 {

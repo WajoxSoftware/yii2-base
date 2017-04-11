@@ -1,7 +1,7 @@
 <?php
-namespace wajox\yii2base\services\delivery;
+namespace wajox\yii2base\modules\payment\services\delivery;
 
-use wajox\yii2base\models\GoodDeliveryMethod;
+use wajox\yii2base\modules\payment\models\GoodDeliveryMethod;
 use wajox\yii2base\components\base\Object;
 
 abstract class BaseDeliveryAbstract extends Object

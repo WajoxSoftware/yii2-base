@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\modules\shop\traits;
 
-use wajox\yii2base\helpers\GoodsHelper;
+use wajox\yii2base\modules\shop\helpers\GoodsHelper;
 
 trait CouponTrait
 {

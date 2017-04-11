@@ -8,12 +8,8 @@ $parts[] = [
     'title' => \Yii::t('app/profile', 'Nav Title'),
     'url' => Url::toRoute(['/account']),
     'items' => [
-      ['title' => \Yii::t('app/profile', 'Nav Contacts'),'url' => Url::toRoute('/account/user-contacts'), 'icon' => 'fa-book'],
-        ['title' => \Yii::t('app/profile', 'Nav Dialogs'), 'url' => Url::toRoute('/account/dialogs'), 'icon' => 'fa-envelope'],
         ['title' => \Yii::t('app/profile', 'Nav Purchases'), 'url' => Url::toRoute('/account/purchases'), 'icon' => 'fa-shopping-cart'],
         ['title' => \Yii::t('app/profile', 'Nav Bills'), 'url' => Url::toRoute('/payment/profile/bills'), 'icon' => 'fa-credit-card'],
-        ['title' => \Yii::t('app/profile', 'Nav Notifications'), 'url' => Url::toRoute('/account/notifications'), 'icon' => 'fa-exclamation-circle'],
-        ['title' => \Yii::t('app/profile', 'Nav Logout'), 'url' => Url::toRoute('/account/session/logout'), 'icon' => 'fa-sign-out'],
     ],
   ];
 

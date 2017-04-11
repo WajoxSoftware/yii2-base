@@ -1,9 +1,9 @@
 <?php
-namespace wajox\yii2base\services\delivery;
+namespace wajox\yii2base\modules\payment\services\delivery;
 
 class CodDelivery extends BaseDeliveryAbstract
 {
-    public function processNewOrder($order)
+    public function processNewOrder($order): bool
     {
         $bill = $order->bill;
         $bill->payment_method = 'CodPayments';

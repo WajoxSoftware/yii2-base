@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Url;
 use yii\widgets\ListView;
-use wajox\yii2base\models\Good;
+use wajox\yii2base\modules\shop\models\Good;
 
 if ($categoryId == 0) {
     $this->title = \Yii::t('app/admin', 'Nav Goods and Categories');
@@ -70,7 +70,7 @@ if ($categoryId
     'class' => 'js-remote-link',
   ];
 
-    echo $this->render('_categories', [
+  echo $this->render('_categories', [
       'dataProvider' => $categoriesDataProvider,
     ]);
 }

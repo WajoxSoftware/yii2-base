@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Url;
-use wajox\yii2base\models\Good;
+use wajox\yii2base\modules\shop\models\Good;
 
 $this->params['pageControls']['items'][] = [
   'url' => $model->getModel()->orderUrl,

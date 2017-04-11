@@ -1,12 +1,11 @@
 <?php
+namespace wajox\yii2base\modules\shop\services\goods\builders;
 
-namespace wajox\yii2base\services\shop\goods\builders;
-
-use wajox\yii2base\models\Good;
-use wajox\yii2base\models\GoodLetter;
-use wajox\yii2base\models\GoodPartnerProgram;
+use wajox\yii2base\modules\shop\models\Good;
+use wajox\yii2base\modules\shop\models\GoodLetter;
+use wajox\yii2base\modules\shop\models\GoodPartnerProgram;
 use wajox\yii2base\helpers\TextHelper;
-use wajox\yii2base\services\delivery\DeliveryMethodsManager;
+use wajox\yii2base\modules\payment\services\delivery\DeliveryMethodsManager;
 use wajox\yii2base\components\base\Object;
 
 abstract class GoodsBuilderAbstract extends Object
@@ -99,6 +98,8 @@ abstract class GoodsBuilderAbstract extends Object
 
     public function save($request = null)
     {
+        $ta = $this->getApp()->db->beginTransaction();
+
         try {
             $this->buildForm()
                  ->load($request)
@@ -106,8 +107,12 @@ abstract class GoodsBuilderAbstract extends Object
                  ->buildModels()
                  ->saveModels();
         } catch (\Exception $e) {
+            $ta->rollBack();
+            //print_r($e->getMessage());die();
             return false;
         }
+
+        $ta->commit();
 
         return true;
     }

@@ -31,14 +31,14 @@ class GoodsController extends AdminApplicationController
         $categoryId = null;
 
         if ($id) {
-            $category = $this->findCategoryModel($id);
+            $category = $this->findCategoryModel((int) $id);
             $categoryId = $category->id;
-        }
+        } 
 
         $categoriesQuery = $this
             ->getRepository()
             ->find(GoodCategory::className())
-            ->byParentId((int) $categoryId);
+            ->byParentId($categoryId);
 
         $query = $this
             ->getRepository()

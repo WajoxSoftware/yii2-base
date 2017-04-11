@@ -1,5 +1,5 @@
 <?php
-use wajox\yii2base\models\GoodUserCoupon;
+use wajox\yii2base\modules\shop\models\GoodUserCoupon;
 
 $this->params['pageControls']['items'][] = [
   'title' => \Yii::t('app/attributes', 'Good User Coupon Type ID Finish'),
@@ -17,7 +17,7 @@ $this->params['pageControls']['items'][] = [
 
 echo \wajox\yii2widgets\crudwidget\ListWidget::widget([
     'layout' => '<ul class="collection">{items}</ul><div>{pager}</div>',
-    'itemView' => '@app/modules/admin/views/shared/good-coupons/_good_user_coupon_item',
+    'itemView' => '@app/modules/shop/views/admin/shared/good-coupons/_good_user_coupon_item',
     'query' => $model->getModel()->getCoupons(),
     'modelName' => 'GoodUserCoupon',
 ]);

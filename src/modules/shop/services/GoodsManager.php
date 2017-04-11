@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\services\shop;
+namespace wajox\yii2base\modules\shop\services;
 
 use wajox\yii2base\modules\shop\models\Good;
 use wajox\yii2base\components\base\Object;
@@ -75,8 +75,8 @@ class GoodsManager extends Object
     public function getBuildersList()
     {
         return [
-            Good::TYPE_ID_ELECTRONIC => \wajox\yii2base\services\shop\goods\builders\GoodsBuilderElectronic::className(),
-            Good::TYPE_ID_PHYSICAL => \wajox\yii2base\services\shop\goods\builders\GoodsBuilderPhysical::className(),
+            Good::TYPE_ID_ELECTRONIC => \wajox\yii2base\modules\shop\services\goods\builders\GoodsBuilderElectronic::className(),
+            Good::TYPE_ID_PHYSICAL => \wajox\yii2base\modules\shop\services\goods\builders\GoodsBuilderPhysical::className(),
         ];
     }
 }

@@ -2,7 +2,7 @@
 namespace wajox\yii2base\modules\api\controllers;
 
 use yii\filters\AccessControl;
-use wajox\yii2base\models\Good;
+use wajox\yii2base\modules\shop\models\Good;
 
 class GoodsController extends ApplicationController
 {

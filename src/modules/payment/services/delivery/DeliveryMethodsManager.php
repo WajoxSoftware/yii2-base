@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\services\delivery;
+namespace wajox\yii2base\modules\payment\services\delivery;
 
 use wajox\yii2base\components\base\Object;
 

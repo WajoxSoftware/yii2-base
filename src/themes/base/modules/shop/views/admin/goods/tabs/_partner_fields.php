@@ -12,7 +12,7 @@ use wajox\yii2base\helpers\FormHelper;
 
     <div class="col m6">
         <?= $form->field($model, 'partnerPartnerId')->dropDownList(
-            \wajox\yii2base\helpers\GoodPartnersHelper::getPartnersList()
+            \wajox\yii2base\modules\shop\helpers\GoodPartnersHelper::getPartnersList()
         ); ?>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <?php
-namespace wajox\yii2base\services\shop\goods\builders;
+namespace wajox\yii2base\modules\shop\services\goods\builders;
 
-use wajox\yii2base\models\form\goods\PhysicalGoodForm;
+use wajox\yii2base\modules\shop\models\form\goods\PhysicalGoodForm;
 
 class GoodsBuilderPhysical extends GoodsBuilderAbstract
 {
@@ -18,6 +18,6 @@ class GoodsBuilderPhysical extends GoodsBuilderAbstract
 
     protected function getGoodTypeId()
     {
-        return \wajox\yii2base\models\Good::TYPE_ID_PHYSICAL;
+        return \wajox\yii2base\modules\shop\models\Good::TYPE_ID_PHYSICAL;
     }
 }

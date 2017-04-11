@@ -1,8 +1,8 @@
 <?php
 namespace wajox\yii2base\modules\shop\controllers;
 
-use wajox\yii2base\models\form\OrderForm;
-use wajox\yii2base\services\shop\ShopCartManager;
+use wajox\yii2base\modules\shop\models\form\OrderForm;
+use wajox\yii2base\modules\shop\services\shop\ShopCartManager;
 use yii\web\ForbiddenHttpException;
 
 class OrderController extends ApplicationController

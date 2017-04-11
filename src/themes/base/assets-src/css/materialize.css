@@ -3035,7 +3035,7 @@ nav {
     nav .brand-logo i,
     nav .brand-logo [class^="mdi-"], nav .brand-logo [class*="mdi-"],
     nav .brand-logo i.material-icons {
-      float: left;
+      display: inline-block;
       margin-right: 15px; }
   nav .nav-title {
     display: inline-block;

@@ -1,5 +1,5 @@
 <?php
-use wajox\yii2base\models\EGoodEntity;
+use wajox\yii2base\modules\shop\models\EGoodEntity;
 
 foreach (EGoodEntity::getTypeIdList() as $typeId => $typeName) {
     $this->params['pageControls']['items'][] = [
@@ -12,7 +12,7 @@ foreach (EGoodEntity::getTypeIdList() as $typeId => $typeName) {
 
 echo \wajox\yii2widgets\crudwidget\ListWidget::widget([
     'layout' => '<ul class="collection">{items}</ul><div>{pager}</div>',
-    'itemView' => '@app/modules/admin/views/shared/egood-entities/_egood_entity_item',
+    'itemView' => '@app/modules/shop/views/admin/shared/egood-entities/_egood_entity_item',
     'query' => $model->getModel()->getEntities(),
     'modelName' => 'EGoodEntity',
 ]);

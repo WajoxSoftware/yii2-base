@@ -5,7 +5,7 @@ namespace wajox\yii2base\services\partner;
 use wajox\yii2base\models\User;
 use wajox\yii2base\models\Partner;
 use wajox\yii2base\models\PartnerFee;
-use wajox\yii2base\helpers\GoodsHelper;
+use wajox\yii2base\modules\shop\helpers\GoodsHelper;
 use wajox\yii2base\components\base\Object;
 
 class PartnerFeeManager extends Object

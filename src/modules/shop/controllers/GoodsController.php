@@ -1,8 +1,8 @@
 <?php
 namespace wajox\yii2base\modules\shop\controllers;
 
-use wajox\yii2base\models\Good;
-use wajox\yii2base\models\GoodCategory;
+use wajox\yii2base\modules\shop\models\Good;
+use wajox\yii2base\modules\shop\models\GoodCategory;
 use yii\data\ActiveDataProvider;
 use yii\data\Sort;
 use yii\web\NotFoundHttpException;

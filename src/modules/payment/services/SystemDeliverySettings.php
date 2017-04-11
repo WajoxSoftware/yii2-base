@@ -1,6 +1,5 @@
 <?php
-
-namespace wajox\yii2base\services\shop;
+namespace wajox\yii2base\modules\payment\services;
 
 use wajox\yii2base\components\base\Component;
 
@@ -13,7 +12,7 @@ class SystemDeliverySettings extends Component
     {
         $this->settings = $params['settings'];
         foreach ($this->settings as $className => $options) {
-            $fullClassName = 'wajox\yii2base\services\delivery\\' . $className;
+            $fullClassName = 'wajox\yii2base\modules\payment\services\delivery\\' . $className;
             $this->items[$className] = $this->createObject($fullClassName);
         }
     }

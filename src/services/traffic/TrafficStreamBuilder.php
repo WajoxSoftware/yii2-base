@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\services\traffic;
 
-use wajox\yii2base\models\Good;
+use wajox\yii2base\modules\shop\models\Good;
 use wajox\yii2base\models\TrafficStream;
 use wajox\yii2base\models\TrafficStreamGood;
 use wajox\yii2base\models\TrafficCompany;

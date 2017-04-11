@@ -1,6 +1,6 @@
 <?php
 use yii\bootstrap\ActiveForm;
-use wajox\yii2base\models\GoodUserCoupon;
+use wajox\yii2base\modules\shop\models\GoodUserCoupon;
 use kartik\widgets\Select2;
 use kartik\widgets\DateTimePicker;
 use yii\web\JsExpression;
@@ -17,7 +17,7 @@ $goodsApiUrl = \yii\helpers\Url::toRoute(['/api/goods', 'suffix' => '.json'], tr
         <div class="row">
             <div class="col m12">
                 <?= $form->field($model, 'partnerId')->dropDownList(
-                    \wajox\yii2base\helpers\GoodPartnersHelper::getPartnersList(),
+                    \wajox\yii2base\modules\shop\helpers\GoodPartnersHelper::getPartnersList(),
                     [
                           'prompt' => \Yii::t('app/general', 'Select'),
                     ]

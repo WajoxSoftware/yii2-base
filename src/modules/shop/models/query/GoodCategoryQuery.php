@@ -12,10 +12,10 @@ class GoodCategoryQuery extends ActiveQuery
         ]);
     }
 
-    public function byParentId(int $parentId)
+    public function byParentId($parentId)
     {
         return $this->where([
-            'parent_id' => intval($parentId),
+            'parent_id' => $parentId,
         ]);
     }
 }

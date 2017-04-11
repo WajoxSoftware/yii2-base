@@ -3,8 +3,8 @@ namespace wajox\yii2base\modules\shop\helpers;
 
 use wajox\yii2base\models\User;
 use wajox\yii2base\modules\shop\models\GoodPartnerProgram;
-use wajox\yii2base\modules\shop\models\GoodPaymentMethod;
-use wajox\yii2base\modules\shop\models\GoodDeliveryMethod;
+use wajox\yii2base\modules\payment\models\GoodPaymentMethod;
+use wajox\yii2base\modules\payment\models\GoodDeliveryMethod;
 
 class GoodsHelper
 {

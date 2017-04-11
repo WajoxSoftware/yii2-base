@@ -3,7 +3,7 @@ namespace wajox\yii2base\modules\partner\controllers;
 
 use wajox\yii2base\models\GoodPartnerProgram;
 use yii\data\ActiveDataProvider;
-use wajox\yii2base\models\Good;
+use wajox\yii2base\modules\shop\models\Good;
 
 class OffersController extends ApplicationController
 {

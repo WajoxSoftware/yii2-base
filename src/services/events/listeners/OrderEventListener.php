@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\services\events\listeners;
 
-use wajox\yii2base\models\Good;
+use wajox\yii2base\modules\shop\models\Good;
 use wajox\yii2base\models\Order;
 use wajox\yii2base\models\UserActionLog;
 use wajox\yii2base\services\order\OrderMailer;
