@@ -50,7 +50,7 @@ class TrafficStreamStatisticAnalyzer extends Object
             'cpc' => number_format($this->cpc, 2),
             'roi' => number_format($this->roi, 2),
             'bills_count' => $this->billsCount,
-            'bills_aid_count' => $this->billsPaidCount,
+            'bills_paid_count' => $this->billsPaidCount,
             'bill_sum' => number_format($this->billSum, 2),
             'start_date' => $this->start_date,
             'finish_date' => $this->finish_date,
