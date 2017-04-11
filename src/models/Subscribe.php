@@ -19,7 +19,7 @@ class Subscribe extends \wajox\yii2base\components\db\ActiveRecord
             [['email', 'name', 'phone'], 'filter', 'filter' => 'strip_tags'],
             [['email', 'name', 'phone'], 'filter', 'filter' => 'trim'],
             ['email', 'email'],
-            [['email_list_id', 'user_id', 'created_at', 'referal_user_id', 'partner_subaccount_id', 'status_id'], 'integer'],
+            [['email_list_id', 'user_id', 'created_at', 'user_id', 'status_id'], 'integer'],
             [['email_list_id', 'name', 'phone', 'email', 'created_at', 'guid', 'status_id'], 'required'],
             [['guid', 'name', 'phone', 'email'], 'string', 'max' => 255],
             ['email', 'unique', 'targetAttribute' => ['email_list_id', 'email']],

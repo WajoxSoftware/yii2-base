@@ -17,10 +17,17 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
         $request = $this->getApp()->request;
 
         if ($request->isPost) {
-            $model = $this->getSubscribesManager()->subscribeGuest($request->post, $emailList);
+            $model = $this
+                ->getSubscribesManager()
+                ->subscribeGuest($request->post(), $emailList);
+
             $success = $model->isNewRecord;
+
             if ($success) {
-                $this->getApp()->session->setFlash('success', \Yii::t('app/general', 'You subscribed successfully'));
+                $this
+                    ->getApp()
+                    ->session
+                    ->setFlash('success', \Yii::t('app/general', 'You subscribed successfully'));
             }
         }
 

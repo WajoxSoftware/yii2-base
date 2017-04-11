@@ -5,7 +5,7 @@ use wajox\yii2base\models\User;
 use wajox\yii2base\models\Subscribe;
 use wajox\yii2base\models\EmailList;
 use wajox\yii2base\helpers\UsersHelper;
-use wajox\yii2base\services\events\types\EmailListEvent;
+use wajox\yii2base\events\EmailListEvent;
 use wajox\yii2base\components\base\Object;
 
 class SubscribesManager extends Object
@@ -103,7 +103,7 @@ class SubscribesManager extends Object
     {
         $model->status_id = Subscribe::STATUS_ID_NEW;
         $model->guid = $this->getApp()->visitor->guid;
-        $model->user_id = $visitor->userId;
+        $model->user_id = $this->getApp()->visitor->userId;
         $model->created_at = time();
 
         if ($this->getApp()->user->isGuest) {
@@ -113,11 +113,14 @@ class SubscribesManager extends Object
         return $model;
     }
 
-    public static function triggerEvent($model, $type)
+    public function triggerEvent($model, $type)
     {
         $event = $this->createObject(EmailListEvent::className());
         $event->emailList = $model->emailList;
-        $event->subscrbe = $model;
-        $this->getApp()->eventsManager->trigger(EmailList::className(), $type, $event);
+        $event->subscribe = $model;
+        $this
+            ->getApp()
+            ->eventsManager
+            ->trigger(EmailList::className(), $type, $event);
     }
 }
