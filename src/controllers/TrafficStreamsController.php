@@ -23,6 +23,7 @@ class TrafficStreamsController extends Controller
         $source = $this->findSourceByTag($sourceTag);
 
         $streamTag = implode('/', $tags);
+
         $stream = $this->findStreamByTag($source, $streamTag);
 
         $this->registerStream($stream);

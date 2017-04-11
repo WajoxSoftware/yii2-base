@@ -67,6 +67,7 @@ class LogsManager extends Component
             $model->guid = $user->guid;
         }
 
+        $model->traffic_stream_id = $visitor->trafficStreamId;
         $model->cookie_id = $visitor->cookieId;
         $model->referal_user_id = $visitor->referalId;
         $model->request_uri = $visitor->requestUri;
