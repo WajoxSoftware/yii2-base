@@ -20,6 +20,8 @@ class TrafficStreamStatisticAnalyzer extends Object
     public $cpc = 0.0;
     public $roi = 0;
     public $billSum = 0.0;
+    public $billsCount = 0;
+    public $billsPaidCount = 0;
     public $clicksSum = 0.0;
     public $paidClicksCount = 0;
     public $extParams = [];
@@ -35,6 +37,8 @@ class TrafficStreamStatisticAnalyzer extends Object
     {
         $this->computeClicksCount();
         $this->computeSubscribesCount();
+        $this->computeBillsCount();
+        $this->computeBillsPaidCount();
         $this->computeBillsSum();
         $this->computeClicksSum();
         $this->computeExtParams();
@@ -45,6 +49,8 @@ class TrafficStreamStatisticAnalyzer extends Object
             'ecpc' => number_format($this->ecpc, 2),
             'cpc' => number_format($this->cpc, 2),
             'roi' => number_format($this->roi, 2),
+            'bills_count' => $this->billsCount,
+            'bills_aid_count' => $this->billsPaidCount,
             'bill_sum' => number_format($this->billSum, 2),
             'start_date' => $this->start_date,
             'finish_date' => $this->finish_date,
@@ -75,6 +81,48 @@ class TrafficStreamStatisticAnalyzer extends Object
         $this->subscribesCount = $this->getApp()->actionLogs->getSubscribeNewLogs($this->extParams)
             ->andWhere(['traffic_stream_id' => $this->model->id])
             ->andWhere('[[created_at]] >= :start AND [[created_at]] < :finish', $this->getTimeCond())
+            ->count();
+    }
+
+    protected function computeBillsCount()
+    {
+        $traffic_stream_id = $this->model->id;
+        $billLogs = $this->getApp()->actionLogs->getBillNewLogs($this->extParams)
+            ->andWhere(['traffic_stream_id' => $this->model->id])
+            ->andWhere('[[created_at]] >= :start AND [[created_at]] < :finish', $this->getTimeCond())
+            ->indexBy('id');
+
+        $billIds = [];
+
+        foreach ($billLogs->each() as $billLog) {
+            $billIds[] = $billLog->item_id;
+        }
+
+        $this->billsCount = $this
+            ->getRepository()
+            ->find(Bill::className())
+            ->where(['id' => $billIds])
+            ->count();
+    }
+
+    protected function computeBillsPaidCount()
+    {
+        $traffic_stream_id = $this->model->id;
+        $billLogs = $this->getApp()->actionLogs->getBillPayLogs($this->extParams)
+            ->andWhere(['traffic_stream_id' => $this->model->id])
+            ->andWhere('[[created_at]] >= :start AND [[created_at]] < :finish', $this->getTimeCond())
+            ->indexBy('id');
+
+        $billIds = [];
+
+        foreach ($billLogs->each() as $billLog) {
+            $billIds[] = $billLog->item_id;
+        }
+
+        $this->billsPaidCount = $this
+            ->getRepository()
+            ->find(Bill::className())
+            ->where(['id' => $billIds])
             ->count();
     }
 

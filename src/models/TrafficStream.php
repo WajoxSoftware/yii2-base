@@ -75,8 +75,7 @@ class TrafficStream extends \wajox\yii2base\components\db\ActiveRecord
     {
         return str_replace('%2F', '/', Url::toRoute([
             '/traffic-streams/view',
-            'sourceTag' => $this->source->tag,
-            'streamTag' => $this->full_tag,
+            'tag' => $this->source->tag . '/' . $this->full_tag,
         ], true));
     }
 

@@ -9,10 +9,16 @@ use yii\helpers\Url;
       </div>
   </td>
   <td>
+    <span data-role="stat" data-target="clicks_count">0</span>
+  </td>
+  <td>
     <span data-role="stat" data-target="subscribes_count">0</span>
   </td>
   <td>
-    <span data-role="stat" data-target="clicks_count">0</span>
+    <span data-role="stat" data-target="bills_count">0</span>
+  </td>
+  <td>
+    <span data-role="stat" data-target="bills_paid_count">0</span>
   </td>
   <td>
     <span data-role="stat" data-target="bill_sum">0.00</span>

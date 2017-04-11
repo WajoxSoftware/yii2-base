@@ -3,10 +3,12 @@
       <thead>
         <tr>
             <th>Поток</th>
+            <th>Уники</th>
             <th>Подписчики</th>
-            <th>Клики</th>
-            <th>Сумма</th>
-            <th>eCPC</th>
+            <th>Заказы</th>
+            <th>Оплаченные</th>
+            <th>На сумму</th>
+            <th>ECPC</th>
             <th>CPC</th>
             <th>ROI</th>
         </tr>

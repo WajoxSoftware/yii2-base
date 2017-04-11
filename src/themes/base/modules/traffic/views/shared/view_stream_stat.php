@@ -27,11 +27,13 @@ $this->render('@app/modules/traffic/views/shared/_stream_tabs', [
         <tr>
             <th>Дата</th>
             <th>Уники</th>
-            <th>Подписки</th>
-            <th>eCPC</th>
+            <th>Подписчики</th>
+            <th>Заказы</th>
+            <th>Оплаченные</th>
+            <th>На сумму</th>
+            <th>ECPC</th>
             <th>CPC</th>
             <th>ROI</th>
-            <th>Сумма</th>
         </tr>
     </thead>
     <tbody>
@@ -47,6 +49,15 @@ $this->render('@app/modules/traffic/views/shared/_stream_tabs', [
               <?= $row['stat']['subscribes_count'] ?>
             </td>
             <td>
+              <?= $row['stat']['bills_count'] ?>
+            </td>
+            <td>
+              <?= $row['stat']['bills_paid_count'] ?>
+            </td>
+            <td>
+              <?= $row['stat']['bill_sum'] ?>
+            </td>
+            <td>
               <?= $row['stat']['ecpc'] ?>
             </td>
             <td>
@@ -54,9 +65,6 @@ $this->render('@app/modules/traffic/views/shared/_stream_tabs', [
             </td>
             <td>
               <?= $row['stat']['roi'] ?>
-            </td>
-            <td>
-              <?= $row['stat']['bill_sum'] ?>
             </td>
           </tr>
         <?php endforeach; ?>
