@@ -93,7 +93,7 @@ abstract class BasePaymentsAbstract extends Object
         return $form_data;
     }
 
-    public function hasForm()
+    public function hasForm(): bool
     {
         return true;
     }

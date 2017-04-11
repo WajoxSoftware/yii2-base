@@ -27,7 +27,14 @@ class EventsManager extends Object
             ->setHandlers($handlers);
     }
 
-    public function on(string $className, string $typeId, callable $callback): EventsManager
+    /**
+     * bind event handler
+     * @param  string $className event class name
+     * @param  string $typeId event type id
+     * @param  mixed $callback callback
+     * @return EventsManager
+     */
+    public function on(string $className, string $typeId, $callback): EventsManager
     {
         Event::on($className, $typeId, $callback);
 

@@ -3,14 +3,14 @@ namespace wajox\yii2base\modules\payment\services\adapter;
 
 class PaypalPayments extends BasePaymentsAbstract
 {
-    public function getSettings()
+    public function getSettings(): array
     {
         return [
             'login' => $this->getApp()->settings->get('app_payments_PaypalPayments_login'),
         ];
     }
 
-    public function getIsEnabled()
+    public function getIsEnabled(): bool
     {
         return $this->getApp()->settings->get('app_payments_PaypalPayments_on');
     }

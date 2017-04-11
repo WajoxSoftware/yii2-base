@@ -3,7 +3,7 @@ namespace wajox\yii2base\modules\payment\services\adapter;
 
 class YandexPayments extends BasePaymentsAbstract
 {
-    public function getSettings()
+    public function getSettings(): array
     {
         return [
             'shopId' => $this->getApp()->settings->get('app_payments_YandexPayments_shopId'),
@@ -12,7 +12,7 @@ class YandexPayments extends BasePaymentsAbstract
         ];
     }
 
-    public function getIsEnabled()
+    public function getIsEnabled(): bool
     {
         return $this->getApp()->settings->get('app_payments_YandexPayments_on');
     }

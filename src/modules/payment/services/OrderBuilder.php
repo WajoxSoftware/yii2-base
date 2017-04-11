@@ -10,6 +10,7 @@ class OrderBuilder extends Object
 {
     protected $bill;
     protected $order;
+    protected $orderGoods;
     protected $cartManager;
     protected $customer;
     protected $deliveryMethod;
@@ -19,21 +20,28 @@ class OrderBuilder extends Object
 
     public function __construct($cartManager, $customer, $deliveryMethod)
     {
-        $this->setCartManager($cartManager)
-             ->setCustomer($customer)
-             ->setDeliveryMethod($deliveryMethod);
+        $this
+            ->setCartManager($cartManager)
+            ->setCustomer($customer)
+            ->setDeliveryMethod($deliveryMethod);
     }
 
     public function save()
     {
+        $ta = $this->getApp()->db->beginTransaction();
+
         try {
             $this->createBill()
                  ->buildOrder()
                  ->saveOrder()
                  ->saveOrderGoods();
         } catch (\Exception $e) {
+            $ta->rollBack();
+
             return false;
         }
+
+        $ta->commit();
 
         return true;
     }
@@ -192,5 +200,10 @@ class OrderBuilder extends Object
     protected function getBillsManager()
     {
         return $this->getApp()->billsManager;
+    }
+
+    protected function getOrderGoods()
+    {
+        return $this->orderGoods;
     }
 }

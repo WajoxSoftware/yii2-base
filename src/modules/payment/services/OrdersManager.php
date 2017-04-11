@@ -1,6 +1,7 @@
 <?php
 namespace wajox\yii2base\modules\payment\services;
 
+use wajox\yii2base\modules\shop\services\ShopCartManager;
 use wajox\yii2base\modules\payment\models\Order;
 use wajox\yii2base\modules\payment\models\GoodDeliveryMethod;
 use wajox\yii2base\modules\payment\events\OrderEvent;
@@ -42,7 +43,8 @@ class OrdersManager extends Object
                     );
             }
 
-            $count = $cartItems[$goodId];
+            $count = $cartItems[$goodId]['count'];
+
             $groups[$method->delivery_method]->addItem($goodId, $count);
         }
 

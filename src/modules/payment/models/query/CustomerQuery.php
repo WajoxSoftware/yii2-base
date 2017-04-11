@@ -6,14 +6,14 @@ use wajox\yii2base\modules\payment\models\Customer;
 
 class CustomerQuery extends ActiveQuery
 {
-    public function byUniqid($id)
+    public function byUniqid(string $uniqId): CustomerQuery
     {
         return $this->where([
             'uniqid' => htmlspecialchars($uniqId),
         ]);
     }
 
-    public function blockedByEmailOrPhone($email, $phone)
+    public function blockedByEmailOrPhone($email, $phone): CustomerQuery
     {
         return $this->orWhere([
                 'email' => htmlspecialchars($email),

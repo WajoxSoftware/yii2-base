@@ -3,7 +3,7 @@ namespace wajox\yii2base\modules\payment\services\adapter;
 
 class CodPayments extends BasePaymentsAbstract
 {
-    public function hasForm()
+    public function hasForm(): bool
     {
         return false;
     }
@@ -13,7 +13,7 @@ class CodPayments extends BasePaymentsAbstract
         return $this->errorResponse();
     }
 
-    public function getIsEnabled()
+    public function getIsEnabled(): bool
     {
         return $this->getApp()->settings->get('app_payments_CodPayments_on');
     }

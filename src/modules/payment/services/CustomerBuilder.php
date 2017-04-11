@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\modules\payment\services;
 
-use wajox\yii2base\modules\paymentmodels\Customer;
+use wajox\yii2base\modules\payment\models\Customer;
 use wajox\yii2base\components\base\Object;
 
 class CustomerBuilder extends Object

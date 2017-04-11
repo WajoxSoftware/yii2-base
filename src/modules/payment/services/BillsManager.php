@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\modules\payment\services\bill;
+namespace wajox\yii2base\modules\payment\services;
 
 use wajox\yii2base\modules\payment\models\Bill;
 use wajox\yii2base\modules\payment\events\BillEvent;

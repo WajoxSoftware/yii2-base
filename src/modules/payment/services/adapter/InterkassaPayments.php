@@ -3,7 +3,7 @@ namespace wajox\yii2base\modules\payment\services\adapter;
 
 class InterkassaPayments extends BasePaymentsAbstract
 {
-    public function getSettings()
+    public function getSettings(): array
     {
         return [
             'id' => $this->getApp()->settings->get('app_payments_InterkassaPayments_id'),
@@ -11,7 +11,7 @@ class InterkassaPayments extends BasePaymentsAbstract
         ];
     }
 
-    public function getIsEnabled()
+    public function getIsEnabled(): bool
     {
         return $this->getApp()->settings->get('app_payments_InterkassaPayments_on');
     }
