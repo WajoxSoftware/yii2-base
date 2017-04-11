@@ -2,6 +2,7 @@
 namespace wajox\yii2base\modules\payment\models;
 
 use wajox\yii2base\models\User;
+use wajox\yii2base\models\Log;
 use wajox\yii2base\modules\payment\models\query\CustomerQuery;
 
 class Customer extends \wajox\yii2base\components\db\ActiveRecord
