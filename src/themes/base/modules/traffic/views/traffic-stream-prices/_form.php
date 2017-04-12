@@ -1,6 +1,6 @@
 <?php
 use yii\bootstrap\ActiveForm;
-use dosamigos\datepicker\DatePicker;
+use wajox\yii2base\widgets\datepicker\Datepicker;
 use wajox\yii2base\helpers\FormHelper;
 
 ?>
@@ -14,26 +14,20 @@ use wajox\yii2base\helpers\FormHelper;
     <div class="row">
         <div class="col m6">
             <?= $form->field($model, 'startedAt')
-                ->widget(
-                    DatePicker::className(), [
-                        'inline' => false,
-                        'clientOptions' => [
-                            'autoclose' => true,
+                ->widget(Datepicker::className(), [
+                        'datepickerOptions' => [
                             'format' => 'dd.mm.yyyy',
                         ],
-                ]);?>
-        </div>
+                ]) ?>
+        </div>  
 
         <div class="col m6">
             <?= $form->field($model, 'finishedAt')
-                ->widget(
-                    DatePicker::className(), [
-                        'inline' => false,
-                        'clientOptions' => [
-                            'autoclose' => true,
-                            'format' => 'dd.mm.yyyy',
-                        ],
-                ]);?>
+                ->widget(Datepicker::className(), [
+                    'datepickerOptions' => [
+                        'format' => 'dd.mm.yyyy',
+                    ],
+                ]) ?>
         </div>
     </div>
 
@@ -42,7 +36,7 @@ use wajox\yii2base\helpers\FormHelper;
             <?= $form->field($model, 'clicks_count')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col m6">
-            <?= FormHelper::renderRurPriceField($form, $model, 'sum') ?>
+            <?= $form->field($model, 'sum') ?>
         </div>
     </div>
 

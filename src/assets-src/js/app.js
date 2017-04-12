@@ -292,6 +292,16 @@ var HtmlWidgets = function() {
         $('ul.tabs').tabs();
         $('.modal').modal();
 
+        $('.datepicker').each(function(){
+            $(this).pickadate(
+                JSON.parse(
+                    decodeURIComponent(
+                        $(this).attr('data-datepicker-settings')
+                    )
+                )
+            ); 
+        });
+
         this.bindEvents();
         this.renderAll();
     };

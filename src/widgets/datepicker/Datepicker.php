@@ -1,5 +1,5 @@
 <?php
-namespace app\widgets\datepicker;
+namespace wajox\yii2base\widgets\datepicker;
 
 class Datepicker extends \yii\widgets\InputWidget
 {

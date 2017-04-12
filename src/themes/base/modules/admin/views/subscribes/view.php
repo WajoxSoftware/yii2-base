@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Url;
 
-$this->title = $model->fullName;
+$this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => \Yii::t('app/admin', 'Nav Subscribes'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 

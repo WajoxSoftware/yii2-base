@@ -108,7 +108,7 @@ abstract class GoodsBuilderAbstract extends Object
                  ->saveModels();
         } catch (\Exception $e) {
             $ta->rollBack();
-            //print_r($e->getMessage());die();
+            
             return false;
         }
 

@@ -8,7 +8,7 @@ $this->params['pageControls']['items'][] = [
 
 echo \wajox\yii2widgets\crudwidget\ListWidget::widget([
     'layout' => '<ul class="collection">{items}</ul><div>{pager}</div>',
-    'itemView' => '@app/modules/admin/views/shared/good-partner-programs/_good_partner_program_link_item',
-    'query' => $model->getModel()->partnerProgram->getLinks(),
+    'itemView' => '@app/modules/admin/views/admin/shared/good-partner-programs/_good_partner_program_link_item',
+    'query' => $model->getModel()->goodPartner->getLinks(),
     'modelName' => 'GoodPartnerProgramLink',
 ]);

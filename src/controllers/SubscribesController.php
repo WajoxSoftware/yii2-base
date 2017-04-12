@@ -21,7 +21,7 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
                 ->getSubscribesManager()
                 ->subscribeGuest($request->post(), $emailList);
 
-            $success = $model->isNewRecord;
+            $success = !$model->isNewRecord;
 
             if ($success) {
                 $this

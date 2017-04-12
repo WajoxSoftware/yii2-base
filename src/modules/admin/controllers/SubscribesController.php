@@ -4,6 +4,7 @@ namespace wajox\yii2base\modules\admin\controllers;
 use wajox\yii2base\models\Subscribe;
 use wajox\yii2base\models\search\SubscribeSearch;
 use yii\web\NotFoundHttpException;
+use yii\data\ActiveDataProvider;
 use yii\data\Sort;
 
 class SubscribesController extends ApplicationController
