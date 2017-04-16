@@ -1,6 +1,7 @@
 <?php
 use wajox\yii2widgets\sortwidget\SortWidget;
 use wajox\yii2widgets\filterwidget\FilterWidget;
+
 ?>
 <div class="row">
     <div class="col m12">

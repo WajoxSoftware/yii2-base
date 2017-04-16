@@ -33,7 +33,7 @@ class GoodsController extends AdminApplicationController
         if ($id) {
             $category = $this->findCategoryModel((int) $id);
             $categoryId = $category->id;
-        } 
+        }
 
         $categoriesQuery = $this
             ->getRepository()

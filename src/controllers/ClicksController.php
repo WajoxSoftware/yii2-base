@@ -14,7 +14,7 @@ class ClicksController extends Controller
         ]);
     }
 
-    protected function registerClick($url))
+    protected function registerClick($url)
     {
         if ($url) {
             $this

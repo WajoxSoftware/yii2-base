@@ -14,7 +14,7 @@ class TrafficStreamsController extends Controller
 
         if (sizeof($tags) < 2) {
             throw new \NotFoundHttpException();
-        } 
+        }
 
         $sourceTag = array_shift($tags);
         $source = $this->findSourceByTag($sourceTag);

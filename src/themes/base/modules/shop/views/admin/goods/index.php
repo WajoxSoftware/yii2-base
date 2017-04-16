@@ -70,7 +70,7 @@ if ($categoryId
     'class' => 'js-remote-link',
   ];
 
-  echo $this->render('_categories', [
+    echo $this->render('_categories', [
       'dataProvider' => $categoriesDataProvider,
     ]);
 }
