@@ -2,12 +2,9 @@
 namespace wajox\yii2base\controllers;
 
 use yii\web\NotFoundHttpException;
-use yii\helpers\Url;
 use wajox\yii2base\models\TrafficStream;
 use wajox\yii2base\models\TrafficSource;
 use wajox\yii2base\services\traffic\ClicksManager;
-use wajox\yii2base\services\subaccounts\SubaccountsManager;
-use wajox\yii2base\services\web\UrlConverter;
 
 class TrafficStreamsController extends Controller
 {
