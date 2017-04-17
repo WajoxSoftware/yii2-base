@@ -48,6 +48,7 @@ class Bootstrap extends Component implements BootstrapInterface
         'password' => 'wajox\yii2base\controllers\PasswordController',
         'subscribes' => 'wajox\yii2base\controllers\SubscribesController',
         'traffic-streams' => 'wajox\yii2base\controllers\TrafficStreamsController',
+        'clicks' => 'wajox\yii2base\controllers\ClicksController',
     ];
 
     public function bootstrap($app)

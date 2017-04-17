@@ -93,7 +93,8 @@ class Controller extends \yii\web\Controller
 
     public function renderJs($template, $data = [])
     {
-        $this->layout = '@app/views/layouts/js';
+        $this->layout = $this->layout === false ?
+            false : '@app/views/layouts/js';
 
         return parent::render($template.'_js', $data);
     }
