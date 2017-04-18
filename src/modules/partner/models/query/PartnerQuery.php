@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\modules\partner\models\query;
 
-use wajox\yii2base\modules\partner\models\Partner; 
+use wajox\yii2base\modules\partner\models\Partner;
 use wajox\yii2base\components\db\ActiveQuery;
 
 class PartnerQuery extends ActiveQuery
