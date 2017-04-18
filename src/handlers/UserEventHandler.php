@@ -16,7 +16,6 @@ class UserEventHandler extends BaseHandler
         );
     }
 
-
     public static function signedOut($event)
     {
         \Yii::$app->actionLogs->log(

@@ -1,10 +1,8 @@
 <?php
+namespace wajox\yii2base\modules\partner\services;
 
-namespace wajox\yii2base\services\partner;
-
-use wajox\yii2base\models\User;
-use wajox\yii2base\models\Partner;
-use wajox\yii2base\models\PartnerFee;
+use wajox\yii2base\modules\partner\models\Partner;
+use wajox\yii2base\modules\partner\models\PartnerFee;
 use wajox\yii2base\modules\shop\helpers\GoodsHelper;
 use wajox\yii2base\components\base\Object;
 

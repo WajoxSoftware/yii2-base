@@ -2,6 +2,7 @@
 namespace wajox\yii2base\modules\payment\models;
 
 use wajox\yii2base\modules\shop\models\Good;
+use wajox\yii2base\modules\partner\models\PartnerFee;
 
 class Order extends \wajox\yii2base\components\db\ActiveRecord
 {

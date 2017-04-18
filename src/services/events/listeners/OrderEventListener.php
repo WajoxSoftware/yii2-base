@@ -2,13 +2,13 @@
 namespace wajox\yii2base\services\events\listeners;
 
 use wajox\yii2base\modules\shop\models\Good;
-use wajox\yii2base\models\Order;
+use wajox\yii2base\modules\payment\models\Order;
 use wajox\yii2base\models\UserActionLog;
 use wajox\yii2base\services\order\OrderMailer;
 use wajox\yii2base\modules\payment\events\types\OrderEvent;
 use wajox\yii2base\services\events\types\GoodEvent;
 use wajox\yii2base\services\order\OrderDeliveryManager;
-use wajox\yii2base\services\partner\PartnerFeeManager;
+use wajox\yii2base\modules\partner\partner\services\PartnerFeeManager;
 use wajox\yii2base\services\subscribes\SubscribesManager;
 use wajox\yii2base\services\shop\GoodLettersBuilder;
 use wajox\yii2base\services\shop\PurchasesManager;

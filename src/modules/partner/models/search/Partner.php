@@ -1,8 +1,8 @@
 <?php
-namespace wajox\yii2base\models\search;
+namespace wajox\yii2base\modules\partner\models\search;
 
 use yii\data\ActiveDataProvider;
-use wajox\yii2base\models\Partner as PartnerModel;
+use wajox\yii2base\modules\partner\models\Partner as PartnerModel;
 
 class Partner extends PartnerModel
 {

@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\models;
+namespace wajox\yii2base\modules\partner\models;
 
 class PartnerFee extends \wajox\yii2base\components\db\ActiveRecord
 {

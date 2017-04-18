@@ -2,6 +2,7 @@
 namespace wajox\yii2base\modules\partner\controllers;
 
 use yii\data\ActiveDataProvider;
+use wajox\yii2base\modules\partner\models\PartnerFee;
 
 class FeesController extends ApplicationController
 {

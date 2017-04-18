@@ -8,7 +8,7 @@ $parts[] = [
     'title' => \Yii::t('app/profile', 'Nav Title'),
     'url' => Url::toRoute(['/account']),
     'items' => [
-        ['title' => \Yii::t('app/profile', 'Nav Purchases'), 'url' => Url::toRoute('/account/purchases'), 'icon' => 'fa-shopping-cart'],
+        ['title' => \Yii::t('app/profile', 'Nav Purchases'), 'url' => Url::toRoute('/shop/profile/purchases'), 'icon' => 'fa-shopping-cart'],
         ['title' => \Yii::t('app/profile', 'Nav Bills'), 'url' => Url::toRoute('/payment/profile/bills'), 'icon' => 'fa-credit-card'],
     ],
   ];
@@ -26,7 +26,7 @@ if ($user->isAdmin) {
           ['url' => Url::toRoute('/payment/admin/customers'), 'title' => \Yii::t('app/admin', 'Nav Customers'), 'icon' => 'fa-mobile-phone'],
           ['url' => Url::toRoute('/payment/admin/orders'), 'title' => \Yii::t('app/admin', 'Nav Orders'), 'icon' => 'fa-shopping-cart'],
           ['url' => Url::toRoute('/payment/admin/bills'), 'title' => \Yii::t('app/admin', 'Nav Bills'), 'icon' => 'fa-credit-card'],
-          ['url' => Url::toRoute('/admin/partners'), 'title' => \Yii::t('app/admin', 'Nav Partners'), 'icon' => 'fa-male'],
+          ['url' => Url::toRoute('/partner/admin/default'), 'title' => \Yii::t('app/admin', 'Nav Partners'), 'icon' => 'fa-male'],
           ['url' => Url::toRoute('/admin/traffics'), 'title' => \Yii::t('app/admin', 'Nav Traffics'), 'icon' => 'fa-exchange'],
           ['url' => Url::toRoute('/admin/traffic-tunnels'), 'title' => \Yii::t('app/admin', 'Nav Traffic tunnels'), 'icon' => 'fa-filter'],
           ['url' => Url::toRoute('/admin/email-lists'), 'title' => \Yii::t('app/admin', 'Nav Email Lists'), 'icon' => 'fa-send'],

@@ -1,5 +1,8 @@
 <?php
-namespace wajox\yii2base\services\events\listeners;
+/**
+ * @todo  remove deprecated & commented code
+ */
+namespace wajox\yii2base\modules\payment\handlers;
 
 use wajox\yii2base\modules\payment\models\Bill;
 use wajox\yii2base\models\Log;
@@ -19,11 +22,12 @@ class BillEventHandler extends BaseHandler
 
     public static function returned(BillEvent $event)
     {
+        /*
         if ($event->bill->isWithOrder) {
             $order = $event->bill->order;
             \Yii::$app->ordersManager->money_returned($order);
         }
-
+        */
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_RETURN_BILL,
             $event->bill,
@@ -33,10 +37,12 @@ class BillEventHandler extends BaseHandler
 
     public static function paid(BillEvent $event)
     {
+        /*
         if ($event->bill->isWithOrder) {
             $order = $event->bill->order;
             \Yii::$app->ordersManager->paid($order);
         }
+        */
       
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_PAY_BILL,
@@ -44,14 +50,15 @@ class BillEventHandler extends BaseHandler
             $event->bill->user
         );
     }
-
   
     public static function cancelled(BillEvent $event)
     {
+        /*
         if ($event->bill->isWithOrder) {
             $order = $event->bill->order;
             \Yii::$app->ordersManager->cancelled($order);
         }
+        */
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_CANCEL_BILL,

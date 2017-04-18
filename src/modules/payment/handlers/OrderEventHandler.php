@@ -1,27 +1,50 @@
 <?php
-namespace wajox\yii2base\services\events\listeners;
+namespace wajox\yii2base\modules\payment\handlers;
 
-use wajox\yii2base\modules\shop\models\Good;
 use wajox\yii2base\modules\payment\models\Order;
 use wajox\yii2base\models\Log;
-use wajox\yii2base\services\order\OrderMailer;
+use wajox\yii2base\modules\payment\services\OrderMailer;
 use wajox\yii2base\modules\payment\events\events\OrderEvent;
-use wajox\yii2base\modules\shop\events\GoodEvent;
-use wajox\yii2base\modules\payment\servicesOrderDeliveryManager;
-use wajox\yii2base\services\partner\PartnerFeeManager;
-use wajox\yii2base\services\subscribes\SubscribesManager;
-use wajox\yii2base\modules\shop\services\GoodLettersBuilder;
-use wajox\yii2base\modules\shop\services\PurchasesManager;
+use wajox\yii2base\modules\payment\events\BillEvent;
+use wajox\yii2base\modules\payment\events\OrderEvent;
+use wajox\yii2base\modules\payment\services\OrderDeliveryManager;
+use wajox\yii2base\modules\partner\services\PartnerFeeManager;
 use wajox\yii2base\services\notifications\UserNotificationsManager;
 use wajox\yii2base\handlers\BaseHandler;
 
 class OrderEventHandler extends BaseHandler
 {
+    public static function billPaid(BillEvent $event)
+    {
+        if (!$event->bill->isWithOrder) {
+            return;
+        }
+
+        \Yii::$app->ordersManager->paid($event->bill->order);
+    }
+
+    public static function billCancelled(BillEvent $event)
+    {
+        if (!$event->bill->isWithOrder) {
+            return;
+        }
+        
+        \Yii::$app->ordersManager->cancelled($event->bill->order);
+    }
+
+    public static function billReturned(BillEvent $event)
+    {
+        if (!$event->bill->isWithOrder) {
+            return;
+        }
+
+        \Yii::$app->ordersManager->money_returned($event->bill->order);
+    }
+
     public static function created(OrderEvent $event)
     {
         //after create callbacks
         OrderDeliveryManager::processNewOrder($event->order);
-        SubscribesManager::subscribeOrder($event->order);
         OrderEventHandler::onEvent($event);
 
         \Yii::$app->actionLogs->log(
@@ -29,17 +52,6 @@ class OrderEventHandler extends BaseHandler
             $event->order,
             $event->order->user
         );
-
-        foreach ($event->order->goods as $good) {
-            $event = new GoodEvent();
-            $event->good = $good;
-
-            \Yii::$app->eventsManager->trigger(
-                Good::className(),
-                GoodEvent::EVENT_ORDERED,
-                $event
-            );
-        }
     }
 
     public static function paid(OrderEvent $event)
@@ -48,23 +60,11 @@ class OrderEventHandler extends BaseHandler
         PartnerFeeManager::processOrder($event->order);
         OrderEventHandler::onEvent($event);
 
-        (new PurchasesManager($event->order->user))->addOrder($event->order);
-
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_PAY_ORDER,
             $event->order,
             $event->order->user
         );
-
-        foreach ($event->order->goods as $good) {
-            $event = new GoodEvent();
-            $event->good = $good;
-            \Yii::$app->eventsManager->trigger(
-                Good::className(),
-                GoodEvent::EVENT_PAID,
-                $event
-            );
-        }
     }
 
 
@@ -73,6 +73,7 @@ class OrderEventHandler extends BaseHandler
         OrderDeliveryManager::processCancelledOrder($event->order);
         OrderEventHandler::onEvent($event);
         OrderEventHandler::logEvent(Log::TYPE_ID_CANCEL_ORDER, $event);
+
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_RETURN_ORDER,
             $event->order,
@@ -85,8 +86,6 @@ class OrderEventHandler extends BaseHandler
     {
         OrderDeliveryManager::processMoneyReturnedOrder($event->order);
         PartnerFeeManager::dropOrder($event->order);
-        PurchasesManager::dropOrder($event->order);
-
         OrderEventHandler::onEvent($event);
 
         \Yii::$app->actionLogs->log(
@@ -112,6 +111,7 @@ class OrderEventHandler extends BaseHandler
     {
         OrderDeliveryManager::processDeliveredOrder($event->order);
         OrderEventHandler::onEvent($event);
+
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_DELIVER_ORDER,
             $event->order,
@@ -123,6 +123,7 @@ class OrderEventHandler extends BaseHandler
     {
         OrderDeliveryManager::processUndeliveredOrder($event->order);
         OrderEventHandler::onEvent($event);
+
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_UNDELIVER_ORDER,
             $event->order,
@@ -134,6 +135,7 @@ class OrderEventHandler extends BaseHandler
     {
         OrderDeliveryManager::processReturnedOrder($event->order);
         OrderEventHandler::onEvent($event);
+
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_RETURN_ORDER,
             $event->order,
@@ -143,9 +145,6 @@ class OrderEventHandler extends BaseHandler
 
     public static function onEvent(OrderEvent $event)
     {
-        $lettersBuilder = new GoodLettersBuilder($event->order);
-        $lettersBuilder->processDeliveryStatus();
-
         (new UserNotificationsManager($event->order->user))->orderStatusNotification($event->order);
 
         $om = new OrderMailer($event->order);

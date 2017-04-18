@@ -1,8 +1,8 @@
 <?php
-namespace wajox\yii2base\services\users;
+namespace wajox\yii2base\modules\partner\services;
 
 use wajox\yii2base\models\User;
-use wajox\yii2base\models\Partner;
+use wajox\yii2base\modules\partner\models\Partner;
 use wajox\yii2base\components\base\Object;
 
 class PartnersBuilder extends Object

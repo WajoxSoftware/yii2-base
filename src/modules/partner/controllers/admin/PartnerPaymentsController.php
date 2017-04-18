@@ -1,11 +1,12 @@
 <?php
-namespace wajox\yii2base\modules\admin\controllers;
+namespace wajox\yii2base\modules\partner\controllers\admin;
 
+use wajox\yii2base\modules\admin\controllers\ApplicationController as AdminApplicationController;
 use wajox\yii2base\modules\payment\models\Payment;
 use wajox\yii2base\models\User;
 use yii\web\NotFoundHttpException;
 
-class PartnerPaymentsController extends ApplicationController
+class PartnerPaymentsController extends AdminApplicationController
 {
     public function actionCreate($id)
     {

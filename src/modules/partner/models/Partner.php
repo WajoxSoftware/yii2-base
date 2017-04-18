@@ -1,5 +1,7 @@
 <?php
-namespace wajox\yii2base\models;
+namespace wajox\yii2base\modules\partner\models;
+
+use wajox\yii2base\modules\partner\models\query\PartnerQuery;
 
 class Partner extends \wajox\yii2base\components\db\ActiveRecord
 {
@@ -14,6 +16,14 @@ class Partner extends \wajox\yii2base\components\db\ActiveRecord
     public static function tableName()
     {
         return 'partner';
+    }
+
+    public static function find()
+    {
+        return self::createObject(
+            PartnerQuery::className(),
+            [get_called_class()]
+        );
     }
 
     public function rules()

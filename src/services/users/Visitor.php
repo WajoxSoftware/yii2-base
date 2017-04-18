@@ -5,7 +5,6 @@ use wajox\yii2base\components\base\Component;
 use wajox\yii2base\services\web\HttpReferer;
 use wajox\yii2base\services\web\AddressByIp;
 use wajox\yii2base\models\User;
-use wajox\yii2base\models\Partner;
 use wajox\yii2base\models\TrafficStream;
 use wajox\yii2base\models\Log;
 
@@ -196,9 +195,10 @@ class Visitor extends Component
     protected function loadDirectPartnerUser()
     {
         $partner = $this
-            ->getRepository()
-            ->find(Partner::className())
-            ->where(['type_id' => Partner::TYPE_ID_DIRECT])
+            ->getApp()
+            ->partnersManager
+            ->find()
+            ->direct()
             ->one();
 
         if ($partner != null) {

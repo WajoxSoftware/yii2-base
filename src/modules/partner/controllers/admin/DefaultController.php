@@ -1,19 +1,20 @@
 <?php
-namespace wajox\yii2base\modules\admin\controllers;
+namespace wajox\yii2base\modules\partner\controllers\admin;
 
+use wajox\yii2base\modules\admin\controllers\ApplicationController as AdminApplicationController;
 use yii\data\ActiveDataProvider;
 use wajox\yii2base\models\User;
-use wajox\yii2base\models\Partner;
-use wajox\yii2base\models\PartnerFee;
+use wajox\yii2base\modules\partner\models\Partner;
+use wajox\yii2base\modules\partner\models\PartnerFee;
 use wajox\yii2base\modules\payment\models\Payment;
-use wajox\yii2base\models\Order;
-use wajox\yii2base\models\search\Partner as PartnerSearch;
-use wajox\yii2base\services\users\PartnersBuilder;
+use wajox\yii2base\modules\payment\models\Order;
+use wajox\yii2base\modules\partner\models\search\Partner as PartnerSearch;
+use wajox\yii2base\modules\partner\services\PartnersBuilder;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\Sort;
 
-class PartnersController extends ApplicationController
+class DefaultController extends AdminApplicationController
 {
     public function behaviors()
     {

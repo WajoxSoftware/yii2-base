@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\modules\account\controllers;
+namespace wajox\yii2base\modules\shop\controllers\profile;
 
 use wajox\yii2base\modules\shop\models\UserPaidGood;
 use yii\data\ActiveDataProvider;

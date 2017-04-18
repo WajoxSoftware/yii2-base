@@ -3,7 +3,7 @@ namespace wajox\yii2base\modules\shop\services;
 
 use wajox\yii2base\modules\shop\models\GoodLetter;
 use wajox\yii2base\modules\shop\models\GoodLetterEmail;
-use wajox\yii2base\modules\shop\models\Order;
+use wajox\yii2base\modules\payment\models\Order;
 use wajox\yii2base\components\base\Object;
 
 class GoodLettersBuilder extends Object

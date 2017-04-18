@@ -3,7 +3,7 @@ namespace wajox\yii2base\services\traffic;
 
 use wajox\yii2base\components\base\Object;
 use wajox\yii2base\modules\payment\models\Bill;
-use wajox\yii2base\models\PartnerFee;
+use wajox\yii2base\modules\partner\models\PartnerFee;
 
 class StatisticComputer extends Object
 {

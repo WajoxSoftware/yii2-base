@@ -1,14 +1,15 @@
 <?php
-namespace wajox\yii2base\modules\admin\controllers;
+namespace wajox\yii2base\modules\partner\controllers\admin;
 
-use wajox\yii2base\models\PartnerFee;
-use wajox\yii2base\services\partner\PartnerFeeManager;
+use wajox\yii2base\modules\admin\controllers\ApplicationController as AdminApplicationController;
+use wajox\yii2base\modules\partner\models\PartnerFee;
+use wajox\yii2base\modules\partner\services\PartnerFeeManager;
 use yii\web\NotFoundHttpException;
 
 /**
  * GoodPartnerProgramsController implements the CRUD actions for GoodPartnerProgram model.
  */
-class PartnerFeesController extends ApplicationController
+class PartnerFeesController extends AdminApplicationController
 {
     public function actionConfirm($id)
     {
