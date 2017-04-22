@@ -11,7 +11,7 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
 {
     public function actionView($url, $redirect = null)
     {
-        $success = true;
+        $success = false;
         $emailList = $this->findModelByUrl($url);
         $model = $this->createObject(Subscribe::className());
         $request = $this->getApp()->request;
@@ -37,6 +37,7 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
         }
 
         return $this->render('view', [
+            'success' => $success,
             'emailList' => $emailList,
             'model' => $model,
             'redirect' => $redirect,
