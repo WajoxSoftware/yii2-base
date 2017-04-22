@@ -9,12 +9,17 @@ use wajox\yii2base\services\subscribes\SubscribesManager;
 
 class SubscribesController extends \wajox\yii2base\controllers\Controller
 {
-    public function actionView($url)
+    public function actionView($url, $redirect = null)
     {
         $success = true;
         $emailList = $this->findModelByUrl($url);
         $model = $this->createObject(Subscribe::className());
         $request = $this->getApp()->request;
+        $redirect = $redirect ?: $this->getApp()->request->referer;
+
+        if ($redirect) {
+            $redirect = rawurlencode(strip_tags($redirect));
+        }
 
         if ($request->isPost) {
             $model = $this
@@ -34,6 +39,7 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
         return $this->render('view', [
             'emailList' => $emailList,
             'model' => $model,
+            'redirect' => $redirect,
         ]);
     }
 

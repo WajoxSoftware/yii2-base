@@ -8,6 +8,19 @@ $this->title = $emailList->title;
     <h6 class="text-lead text-center"><?= $emailList->description ?></h6>
   </div>
 </div>
-<div class="subscribe-create">
-    <?= $this->render('_form', ['model' => $model]) ?>
-</div>
+
+<?php if ($success): ?>
+    <p><?= \Yii::t('app/general', 'You subscribed successfully') ?></p>
+    <?php if ($redirect): ?>
+        <p><?= \Yii::t('app/general', 'Please wait, you will be redirected') ?></p>
+        <script type="text/javascript">
+            setTimeout(function(){
+                window.location.href = decodeURIComponent('<?= $redirect ?>');    
+            }, 1500);
+        </script>
+    <?php endif; ?>
+<?php else: ?>
+    <div class="subscribe-create">
+        <?= $this->render('_form', ['model' => $model]) ?>
+    </div>
+<?php endif; ?>

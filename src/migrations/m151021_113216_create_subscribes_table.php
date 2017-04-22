@@ -12,12 +12,12 @@ class m151021_113216_create_subscribes_table extends Migration
         }
         $this->createTable('{{%subscribe}}', [
             'id' => Schema::TYPE_PK,
-            'user_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'user_id' => Schema::TYPE_INTEGER . ' NULL',
             'guid' => Schema::TYPE_STRING . ' NOT NULL',
             'email_list_id' => Schema::TYPE_INTEGER . ' NOT NULL',
             'status_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'name' => Schema::TYPE_STRING . ' NOT NULL',
-            'phone' => Schema::TYPE_STRING . ' NOT NULL',
+            'name' => Schema::TYPE_STRING . ' NULL',
+            'phone' => Schema::TYPE_STRING . ' NULL',
             'email' => Schema::TYPE_STRING . ' NOT NULL',
             'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
