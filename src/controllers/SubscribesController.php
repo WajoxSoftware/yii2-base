@@ -11,6 +11,8 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
 {
     public function actionView($url, $redirect = null)
     {
+        $this->enableCsrfValidation = false;
+
         $success = false;
         $emailList = $this->findModelByUrl($url);
         $model = $this->createObject(Subscribe::className());
