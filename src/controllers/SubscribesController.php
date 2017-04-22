@@ -15,7 +15,7 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
         $emailList = $this->findModelByUrl($url);
         $model = $this->createObject(Subscribe::className());
         $request = $this->getApp()->request;
-        $redirect = $redirect ?: $this->getApp()->request->referer;
+        $redirect = $redirect ?: $this->getApp()->request->referrer;
 
         if ($redirect) {
             $redirect = rawurlencode(strip_tags($redirect));
