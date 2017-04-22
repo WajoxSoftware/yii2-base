@@ -8,7 +8,7 @@
             <th>Заказы</th>
             <th>Оплаченные</th>
             <th>На сумму</th>
-            <th>ECPC</th>
+            <th>EPC</th>
             <th>CPC</th>
             <th>ROI</th>
         </tr>
