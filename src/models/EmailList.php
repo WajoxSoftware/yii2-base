@@ -15,11 +15,11 @@ class EmailList extends \wajox\yii2base\components\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'api_id', 'url'], 'filter', 'filter' => 'strip_tags'],
-            [['title', 'description', 'api_id', 'url'], 'filter', 'filter' => 'htmlentities'],
-            [['title', 'description', 'url', 'api_id'], 'filter', 'filter' => 'trim'],
-            [['url', 'api_id', 'title', 'description'], 'required'],
-            [['title', 'api_id', 'description', 'url'], 'string', 'max' => 255],
+            [['title', 'api_id', 'url'], 'filter', 'filter' => 'strip_tags'],
+            [['title', 'api_id', 'url'], 'filter', 'filter' => 'htmlentities'],
+            [['title', 'url', 'api_id'], 'filter', 'filter' => 'trim'],
+            [['url', 'api_id', 'title', 'redirect_url'], 'required'],
+            [['title', 'api_id', 'redirect_url', 'url'], 'string', 'max' => 255],
             ['url', 'unique'],
             ['redurect_url', 'url'],
         ];
