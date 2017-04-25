@@ -9,7 +9,7 @@ use wajox\yii2base\services\subscribes\SubscribesManager;
 
 class SubscribesController extends \wajox\yii2base\controllers\Controller
 {
-    public function actionView($url, $redirect = null)
+    public function actionView($url)
     {
         $this->enableCsrfValidation = false;
 
@@ -17,7 +17,9 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
         $emailList = $this->findModelByUrl($url);
         $model = $this->createObject(Subscribe::className());
         $request = $this->getApp()->request;
-        $redirect = $redirect ?: $this->getApp()->request->referrer;
+
+        $redirect = empty($emailList->redirect_url) ?
+            $this->getApp()->request->referrer : $emailList->redirect_url;
 
         if ($redirect) {
             $redirect = rawurlencode(strip_tags($redirect));
@@ -36,6 +38,13 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
                     ->session
                     ->setFlash('success', \Yii::t('app/general', 'You subscribed successfully'));
             }
+        }
+
+        /**
+         * @todo  fix
+         */
+        if ($success && $redirect) {
+            return $this->redirect($redirect);
         }
 
         return $this->render('view', [

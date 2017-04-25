@@ -16,7 +16,7 @@ class m150327_020003_create_email_list_table extends Migration
             'title' => Schema::TYPE_STRING . ' NOT NULL DEFAULT \'\'',
             'api_id' => Schema::TYPE_STRING . ' NOT NULL DEFAULT \'\'',
             'title' => Schema::TYPE_STRING . ' NOT NULL',
-            'description' => Schema::TYPE_STRING . ' NOT NULL',
+            'redirect_url' => Schema::TYPE_STRING . ' NOT NULL',
         ], $tableOptions);
 
         $this->createIndex('url', '{{%email_list}}', 'url', true);

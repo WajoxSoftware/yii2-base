@@ -21,6 +21,7 @@ class EmailList extends \wajox\yii2base\components\db\ActiveRecord
             [['url', 'api_id', 'title', 'description'], 'required'],
             [['title', 'api_id', 'description', 'url'], 'string', 'max' => 255],
             ['url', 'unique'],
+            ['redurect_url', 'url'],
         ];
     }
 
@@ -30,7 +31,7 @@ class EmailList extends \wajox\yii2base\components\db\ActiveRecord
             'id' => \Yii::t('app/attributes', 'ID'),
             'title' => \Yii::t('app/attributes', 'Title'),
             'api_id' => \Yii::t('app/attributes', 'Api ID'),
-            'description' => \Yii::t('app/attributes', 'Description'),
+            'redirect_url' => \Yii::t('app/attributes', 'Redirect URL'),
         ];
     }
 
