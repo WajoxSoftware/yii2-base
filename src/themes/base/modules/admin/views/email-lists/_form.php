@@ -35,7 +35,7 @@ use wajox\yii2base\helpers\FormHelper;
 
     <div class="row">
         <div class="col m12">
-            <?= $form->field($model, 'description')->textarea(['rows' => 3])  ?>
+            <?= $form->field($model, 'redirect_url')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
 
