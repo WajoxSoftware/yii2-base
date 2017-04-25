@@ -11,7 +11,9 @@ use yii\helpers\Url;
 
   <p><a href="<?= $model->subscribeUrl ?>" target="_blank"><?= $model->url ?></a></p>
 
-  <p><?= $model->description ?></p>
+  <?php if ($model->redirect_url): ?>
+    <p><?= $model->redirect_url ?></p>
+  <?php endif; ?>
 
   <span class="secondary-content">
         <a href="<?= Url::toRoute(['/admin/email-lists/update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
