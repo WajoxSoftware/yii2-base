@@ -1,6 +1,8 @@
 <?php
 namespace wajox\yii2base\modules\payment\models;
 
+use wajox\yii2base\models\UploadedFile;
+
 class OrderStatus extends \wajox\yii2base\components\db\ActiveRecord
 {
     use \wajox\yii2base\traits\CreatedAtTrait;

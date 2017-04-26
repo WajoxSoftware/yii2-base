@@ -8,7 +8,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $this->params['pageControls']['items'][] = [
   'title' => \Yii::t('app/general', 'Edit {model}', ['model' => \Yii::t('app/models', 'Customer')]),
-  'url' => ['/admin/customers/update', 'id' => $model->customer->id, 'suffix' => '.js'],
+  'url' => ['/payment/admin/customers/update', 'id' => $model->customer->id, 'suffix' => '.js'],
   'icon' => 'edit',
   'class' => 'js-remote-link',
 ];
@@ -19,7 +19,7 @@ $this->params['pageControls']['items'][] = [
 
   <?= CollapsibleWidget::widget([
       'title' => \Yii::t('app/general', 'Edit'),
-      'render' => '@app/modules/admin/views/orders/_form',
+      'render' => '@app/modules/payment/views/admin/orders/_form',
       'data' => ['model' => $model],
   ]); ?>
 

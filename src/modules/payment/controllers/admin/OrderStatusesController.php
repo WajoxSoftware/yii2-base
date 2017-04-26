@@ -1,13 +1,14 @@
 <?php
 namespace wajox\yii2base\modules\payment\controllers\admin;
 
-use wajox\yii2base\models\Order;
-use wajox\yii2base\models\OrderStatus;
+use wajox\yii2base\modules\payment\models\Order;
+use wajox\yii2base\modules\payment\models\OrderStatus;
 use wajox\yii2base\models\UploadedFile;
 use wajox\yii2base\services\uploads\UploadsManager;
 use yii\web\NotFoundHttpException;
+use wajox\yii2base\modules\admin\controllers\ApplicationController as AdminApplicationController;
 
-class OrderStatusesController extends ApplicationController
+class OrderStatusesController extends AdminApplicationController
 {
     public function actionCreate($id, $status)
     {
@@ -135,7 +136,7 @@ class OrderStatusesController extends ApplicationController
 
     protected function getUploadsManager()
     {
-        return $this->createObject(UploadsManager(), [$this->getUser()]);
+        return $this->createObject(UploadsManager::className(), [$this->getUser()]);
     }
 
     protected function getOrdersManager()

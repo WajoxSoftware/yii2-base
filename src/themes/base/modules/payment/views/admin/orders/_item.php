@@ -4,7 +4,7 @@ use yii\helpers\Url;
 ?>
 <li class="collection-item" data-Order-id="<?=$model->id ?>">
     <span class="title">
-      <a href="<?= Url::toRoute(['/admin/orders/view', 'id' => $model->id]) ?>">
+      <a href="<?= Url::toRoute(['/payment/admin/orders/view', 'id' => $model->id]) ?>">
         Order #<?= $model->id ?>
       </a>
     </span>
