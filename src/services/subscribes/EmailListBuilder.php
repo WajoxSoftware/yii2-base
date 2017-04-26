@@ -47,7 +47,8 @@ class EmailListBuilder extends Object
     public function validate()
     {
         if (!$this->getEmailList()->validate()) {
-            throw new \Exception('Invalid email list data');
+            $message = \json_encode($this->emailList->errors);
+            throw new \Exception($message);
         }
 
         return $this;
@@ -81,7 +82,7 @@ class EmailListBuilder extends Object
     protected function saveEmailList()
     {
         if (!$this->emailList->save()) {
-            $message = implode(', '.$this->emailList->errors);
+            $message = \json_encode($this->emailList->errors);
             throw new \Exception($message);
         }
 

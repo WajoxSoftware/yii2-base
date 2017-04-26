@@ -21,7 +21,7 @@ class EmailList extends \wajox\yii2base\components\db\ActiveRecord
             [['url', 'api_id', 'title', 'redirect_url'], 'required'],
             [['title', 'api_id', 'redirect_url', 'url'], 'string', 'max' => 255],
             ['url', 'unique'],
-            ['redurect_url', 'url'],
+            ['redirect_url', 'url'],
         ];
     }
 

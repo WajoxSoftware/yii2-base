@@ -5,7 +5,7 @@ class FormHelper
 {
     public static function renderRurPriceField($form, $model, $field)
     {
-        $tpl = '<div class="input-group">{input}<span class="input-group-addon">P</span></div>';
+        $tpl = '<table border="0" cellpadding="0" cellspacing="0"><tr><td>{input}</td><td>P</td></tr></table>';
 
         return $form->field($model, $field, ['inputTemplate' => $tpl]);
     }
@@ -14,14 +14,14 @@ class FormHelper
     {
         $url = \yii\helpers\Url::toRoute($routeParams, true);
 
-        $tpl = '<div class="input-group"><span class="input-group-addon">' . $url . '</span>{input}</div>';
+        $tpl = '<table border="0" cellpadding="0" cellspacing="0"><tr><td>' . $url . '</td><td>{input}</td></tr></table>';
 
         return $form->field($model, $field, ['inputTemplate' => $tpl]);
     }
 
     public static function renderPrefixField($form, $model, $field, $prefix)
     {
-        $tpl = '<div class="input-group"><span class="input-group-addon">' . $prefix . '</span>{input}</div>';
+        $tpl = '<table border="0" cellpadding="0" cellspacing="0"><tr><td>' . $prefix . '</td><td>{input}</td></tr></table>';
 
         return $form->field($model, $field, ['inputTemplate' => $tpl]);
     }

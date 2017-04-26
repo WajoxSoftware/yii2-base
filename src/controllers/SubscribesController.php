@@ -17,13 +17,7 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
         $emailList = $this->findModelByUrl($url);
         $model = $this->createObject(Subscribe::className());
         $request = $this->getApp()->request;
-
-        $redirect = empty($emailList->redirect_url) ?
-            $this->getApp()->request->referrer : $emailList->redirect_url;
-
-        if ($redirect) {
-            $redirect = rawurlencode(strip_tags($redirect));
-        }
+        $redirect = $emailList->redirect_url;
 
         if ($request->isPost) {
             $model = $this
@@ -32,12 +26,13 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
 
             $success = !$model->isNewRecord;
 
+            /*
             if ($success) {
                 $this
                     ->getApp()
                     ->session
                     ->setFlash('success', \Yii::t('app/general', 'You subscribed successfully'));
-            }
+            }*/
         }
 
         /**

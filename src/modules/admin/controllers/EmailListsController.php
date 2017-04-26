@@ -53,7 +53,6 @@ class EmailListsController extends ApplicationController
             $success = true;
         }
 
-
         return $this->renderJs('update', [
             'model' => $builder->getEmailList(),
             'success' => $success,

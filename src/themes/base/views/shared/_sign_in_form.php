@@ -23,6 +23,7 @@ $hasRegistrationController = \Yii::$app->controller->module->hasRegistrationCont
 <div class="form-group">
     <?= Html::submitButton(\Yii::t('app/general', 'Sign In'), ['class' => 'btn btn-primary btn-block', 'name' => 'login-button']) ?>
 </div>
+
 <div class="form-group">
     <div class="col m12 text-center">
         <p>
