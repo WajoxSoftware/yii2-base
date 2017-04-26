@@ -5,7 +5,7 @@ $this->title = \Yii::t('app/partner', 'Partner Sign Up');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="content-header"><?= Html::encode($this->title) ?></div>
+<h1><?= Html::encode($this->title) ?></h1>
 <div class="site-signup">
     <?= $this->render('_form', ['model' => $model]) ?>
 </div>

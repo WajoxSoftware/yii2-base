@@ -6,7 +6,7 @@ $this->title = \Yii::t('app/general', 'Forgot Password?');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="content-header"><?= Html::encode($this->title) ?></div>
+<h1><?= Html::encode($this->title) ?></h1>
 
 <div class="site-password">
 
