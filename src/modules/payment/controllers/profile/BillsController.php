@@ -7,7 +7,7 @@ use wajox\yii2base\modules\payment\models\Customer;
 use wajox\yii2base\modules\payment\models\BillSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
-use wajox\yii2base\modules\account\controllers\AccountApplicationController;
+use wajox\yii2base\modules\account\controllers\ApplicationController as AccountApplicationController;
 
 class BillsController extends AccountApplicationController
 {
