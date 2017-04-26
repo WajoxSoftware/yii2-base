@@ -4,8 +4,9 @@ namespace wajox\yii2base\modules\shop\controllers\profile;
 use wajox\yii2base\modules\shop\models\UserPaidGood;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
+use wajox\yii2base\modules\account\controllers\AccountApplicationController;
 
-class PurchasesController extends ApplicationController
+class PurchasesController extends AccountApplicationController
 {
     public function actionIndex()
     {
