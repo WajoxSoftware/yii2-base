@@ -66,7 +66,7 @@ class Repository extends Component
         );
     }
 
-    public function deleteAll(string $name, string $condition = '', array $params = [])
+    public function deleteAll(string $name, $condition = '', array $params = [])
     {
         $className = $this->get($name);
 

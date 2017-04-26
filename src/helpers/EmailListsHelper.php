@@ -1,6 +1,7 @@
 <?php
 namespace wajox\yii2base\helpers;
 
+use wajox\yii2base\models\EmailList;
 use yii\helpers\ArrayHelper;
 
 class EmailListsHelper

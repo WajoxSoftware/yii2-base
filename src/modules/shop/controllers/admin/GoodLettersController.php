@@ -2,7 +2,7 @@
 namespace wajox\yii2base\modules\shop\controllers\admin;
 
 use wajox\yii2base\modules\shop\models\Good;
-use wajox\yii2base\modules\shopmodels\GoodLetter;
+use wajox\yii2base\modules\shop\models\GoodLetter;
 use wajox\yii2base\modules\admin\controllers\ApplicationController as AdminApplicationController;
 use yii\web\NotFoundHttpException;
 

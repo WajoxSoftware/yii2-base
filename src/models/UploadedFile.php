@@ -35,7 +35,6 @@ class UploadedFile extends \wajox\yii2base\components\db\ActiveRecord
 
     public function behaviors()
     {
-        $uploadsDir = \Yii::$app->params['uploadsDir'];
         return [
             [
                 'class' => '\yiidreamteam\upload\FileUploadBehavior',

@@ -7,7 +7,7 @@ use yii\helpers\Url;
       <?= $model->emailList->title ?>
     </span>
 
-    <p><?= $model->emailList->description ?></p>
+    <p><?= $model->emailList->redirect_url ?></p>
 
     <span class="secondary-content">
       <a href="<?= Url::toRoute(['/admin/good-email-lists/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">

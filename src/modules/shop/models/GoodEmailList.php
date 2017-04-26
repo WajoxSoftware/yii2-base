@@ -1,6 +1,8 @@
 <?php
 namespace wajox\yii2base\modules\shop\models;
 
+use wajox\yii2base\models\EmailList;
+
 class GoodEmailList extends \wajox\yii2base\components\db\ActiveRecord
 {
     public static function tableName()
