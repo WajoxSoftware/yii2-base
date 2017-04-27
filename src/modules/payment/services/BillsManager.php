@@ -31,19 +31,29 @@ class BillsManager extends Object
             return false;
         }
 
-        if ($model->isAccountUpdateDestination) {
-            $balanceUpdated = $model
-                ->customer
-                ->user
-                ->updateBalance($model->sum);
+        $ta = $this->getApp()->db->beginTransaction();
 
-            if (!$balanceUpdated) {
-                return false;
+        try {
+            if ($model->isAccountUpdateDestination) {
+                $balanceUpdated = $model
+                    ->customer
+                    ->user
+                    ->updateBalance($model->sum);
+
+                if (!$balanceUpdated) {
+                    throw new \Exception('Can not update balance');
+                }
             }
-        }
 
-        $model->payment_method = $paymentMethod;
-        $model->saveStatusPaid();
+            $model->payment_method = $paymentMethod;
+            
+            if (!$model->saveStatusPaid()) {
+                throw new \Exception('Can not save status');
+            } 
+
+        } catch (\Exception $e) {
+            return false;
+        }
 
         $this->triggerEvent($model, BillEvent::EVENT_PAID);
 

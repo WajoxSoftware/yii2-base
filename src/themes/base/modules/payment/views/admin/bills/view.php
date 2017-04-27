@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
           <?= $model->paymentDestination ?>
           <?php if ($model->isWithOrder): ?>
             #<?= $model->order->id ?><br/>
-            <?php $order_url = Url::toRoute(['/admin/orders/view', 'id' => $model->order->id], true) ?>
+            <?php $order_url = Url::toRoute(['/payment/admin/orders/view', 'id' => $model->order->id], true) ?>
             <a href="<?= $order_url ?>" target="_blank"><?= $order_url ?></a>
           <?php endif; ?>
         </span>

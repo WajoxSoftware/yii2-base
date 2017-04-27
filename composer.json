@@ -29,7 +29,6 @@
         "picodi-lab/expertsender-api-client": "*",
         "wajox/yii2widgets": "dev-master",
         "codemix/yii2-localeurls": "*",
-        "romdim/yii2-bootstrap-material": "dev-master"
     },
     "autoload": {
         "psr-4": {

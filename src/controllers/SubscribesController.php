@@ -9,10 +9,15 @@ use wajox\yii2base\services\subscribes\SubscribesManager;
 
 class SubscribesController extends \wajox\yii2base\controllers\Controller
 {
-    public function actionView($url)
-    {
+    public function beforeAction($action)
+    {            
         $this->enableCsrfValidation = false;
 
+        return parent::beforeAction($action);
+    }
+
+    public function actionView($url)
+    {
         $success = false;
         $emailList = $this->findModelByUrl($url);
         $model = $this->createObject(Subscribe::className());
