@@ -28,7 +28,7 @@
         "kartik-v/yii2-widgets": "dev-master",
         "picodi-lab/expertsender-api-client": "*",
         "wajox/yii2widgets": "dev-master",
-        "codemix/yii2-localeurls": "*",
+        "codemix/yii2-localeurls": "*"
     },
     "autoload": {
         "psr-4": {
