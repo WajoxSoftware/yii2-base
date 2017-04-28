@@ -1,7 +1,6 @@
 <?php
 namespace wajox\yii2base\controllers;
 
-use Yii;
 use yii\web\NotFoundHttpException;
 use wajox\yii2base\models\EmailList;
 use wajox\yii2base\models\Subscribe;
@@ -61,7 +60,13 @@ class SubscribesController extends \wajox\yii2base\controllers\Controller
 
         $this->getSubscribesManager()->unsubscribe($email, $emailList);
 
-        $this->getApp()->session->setFlash('success', \Yii::t('app/general', 'You unsubscribed successfully'));
+        $this
+            ->getApp()
+            ->session
+            ->setFlash(
+                'success',
+                \Yii::t('app/general', 'You unsubscribed successfully')
+            );
 
         return $this->render('delete');
     }
