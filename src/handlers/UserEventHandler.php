@@ -29,7 +29,7 @@ class UserEventHandler extends BaseHandler
     {
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_SIGN_UP,
-            $event->user,
+            $event->user->id,
             $event->user
         );
     }

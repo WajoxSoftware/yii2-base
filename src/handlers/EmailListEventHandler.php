@@ -17,7 +17,7 @@ class EmailListEventHandler extends BaseHandler
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_NEW_SUBSCRIBE,
-            $event->emailList,
+            $event->emailList->id,
             $user
         );
     }
@@ -31,7 +31,7 @@ class EmailListEventHandler extends BaseHandler
         }
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_UNSUBSCRIBE,
-            $event->emailList,
+            $event->emailList->id,
             $user
         );
     }

@@ -49,7 +49,7 @@ class OrderEventHandler extends BaseHandler
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_NEW_ORDER,
-            $event->order,
+            $event->order->id,
             $event->order->user
         );
     }
@@ -62,7 +62,7 @@ class OrderEventHandler extends BaseHandler
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_PAY_ORDER,
-            $event->order,
+            $event->order->id,
             $event->order->user
         );
     }
@@ -76,7 +76,7 @@ class OrderEventHandler extends BaseHandler
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_RETURN_ORDER,
-            $event->order,
+            $event->order->id,
             $event->order->user
         );
     }
@@ -90,7 +90,7 @@ class OrderEventHandler extends BaseHandler
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_MONEYBACK_ORDER,
-            $event->order,
+            $event->order->id,
             $event->order->user
         );
     }
@@ -114,7 +114,7 @@ class OrderEventHandler extends BaseHandler
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_DELIVER_ORDER,
-            $event->order,
+            $event->order->id,
             $event->order->user
         );
     }
@@ -126,7 +126,7 @@ class OrderEventHandler extends BaseHandler
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_UNDELIVER_ORDER,
-            $event->order,
+            $event->order->id,
             $event->order->user
         );
     }
@@ -138,7 +138,7 @@ class OrderEventHandler extends BaseHandler
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_RETURN_ORDER,
-            $event->order,
+            $event->order->id,
             $event->order->user
         );
     }

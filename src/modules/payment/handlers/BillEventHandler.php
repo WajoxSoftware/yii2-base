@@ -15,7 +15,7 @@ class BillEventHandler extends BaseHandler
     {
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_NEW_BILL,
-            $event->bill,
+            $event->bill->id,
             $event->bill->user
         );
     }
@@ -30,7 +30,7 @@ class BillEventHandler extends BaseHandler
         */
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_RETURN_BILL,
-            $event->bill,
+            $event->bill->id,
             $event->bill->user
         );
     }
@@ -46,7 +46,7 @@ class BillEventHandler extends BaseHandler
       
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_PAY_BILL,
-            $event->bill,
+            $event->bill->id,
             $event->bill->user
         );
     }
@@ -62,7 +62,7 @@ class BillEventHandler extends BaseHandler
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_CANCEL_BILL,
-            $event->bill,
+            $event->bill->id,
             $event->bill->user
         );
     }

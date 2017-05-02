@@ -11,7 +11,7 @@ class StatisticEventHandler extends BaseHandler
     {
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_VISIT_NEW,
-            $event->statistic
+            $event->statistic->id
         );
     }
 }

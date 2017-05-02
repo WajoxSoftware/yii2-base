@@ -53,7 +53,7 @@ class GoodEventHandler extends BaseHandler
     {
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_GOOD_ORDER,
-            $event->good
+            $event->good->id
         );
     }
     
@@ -61,7 +61,7 @@ class GoodEventHandler extends BaseHandler
     {
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_GOOD_PAY,
-            $event->good
+            $event->good->id
         );
     }
 }
