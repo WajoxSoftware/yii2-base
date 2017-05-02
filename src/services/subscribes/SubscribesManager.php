@@ -119,7 +119,7 @@ class SubscribesManager extends Object
             $q->orWhere([
                 'email_list_id' => $model->email_list_id,
                 'user_id' => $model->user_id,
-            ])
+            ]);
         }
 
         return $q->one();
