@@ -49,8 +49,7 @@ class BillsManager extends Object
             
             if (!$model->saveStatusPaid()) {
                 throw new \Exception('Can not save status');
-            } 
-
+            }
         } catch (\Exception $e) {
             return false;
         }

@@ -9,7 +9,7 @@ use wajox\yii2base\services\subscribes\SubscribesManager;
 class SubscribesController extends \wajox\yii2base\controllers\Controller
 {
     public function beforeAction($action)
-    {            
+    {
         $this->enableCsrfValidation = false;
 
         return parent::beforeAction($action);

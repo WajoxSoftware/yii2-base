@@ -73,19 +73,56 @@ class SubscribesManager extends Object
 
     protected function createModel($model)
     {
+        $subscribed = false;
         $model = $this->setSubscriptionExternalData($model);
 
+        $equalModel = $this->findEqualModel($model);
+
+        if ($equalModel) {
+            $model = $equalModel;
+            
+            $subscribed = true;
+        }
+
         if ($model->save()) {
+            $subscribed = true;
+
+            $this->synchronizeSubscription($model);
+        }
+
+        if ($subscribed) {
             $this->triggerEvent(
                 $model,
                 EmailListEvent::EVENT_SUBSCRIBE,
                 $model->user
             );
-            
-            $this->synchronizeSubscription($model);
         }
 
         return $model;
+    }
+
+    protected function findEqualModel($model)
+    {
+        $q = Subscribe::find()
+            ->orWhere([
+                'email_list_id' => $model->email_list_id,
+                'email' => $model->email,
+            ]);
+
+        if ($model->guid) {
+            $q->orWhere([
+                'email_list_id' => $model->email_list_id,
+                'guid' => $model->guid,
+            ]);
+        }
+        if ($model->user_id) {
+            $q->orWhere([
+                'email_list_id' => $model->email_list_id,
+                'user_id' => $model->user_id,
+            ])
+        }
+
+        return $q->one();
     }
 
     protected function synchronizeSubscription($model)
