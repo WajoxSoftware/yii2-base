@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\events;
+namespace wajox\yii2base\handlers;
 
 use wajox\yii2base\services\subscribes\SubscribesManager;
 

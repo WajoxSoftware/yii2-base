@@ -1,7 +1,7 @@
 <?php
 namespace wajox\yii2base\handlers;
 
-use wajox\yii2base\services\events\StatisticEvent;
+use wajox\yii2base\events\StatisticEvent;
 use wajox\yii2base\models\Log;
 use wajox\yii2base\models\Statistic;
 

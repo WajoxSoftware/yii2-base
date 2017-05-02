@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\events;
+namespace wajox\yii2base\handlers;
 
 use wajox\yii2base\models\EmailList;
 use wajox\yii2base\events\EmailListEvent;

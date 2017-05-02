@@ -2,7 +2,7 @@
 namespace wajox\yii2base\handlers;
 
 use wajox\yii2base\models\User;
-use wajox\yii2base\services\events\UserEvent;
+use wajox\yii2base\events\UserEvent;
 use wajox\yii2base\models\Log;
 
 class UserEventHandler extends BaseHandler

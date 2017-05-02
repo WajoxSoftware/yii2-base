@@ -32,18 +32,19 @@ class LogsManager extends Component
         $model->type_id = $typeId;
         $model->item_id = $itemId;
 
-        $model->validate();
-
         $ta = \Yii::$app->db->beginTransaction();
 
         try {
             if (!$model->save()) {
-                throw new \Exception('Can not save model');
+                throw new \Exception('Can not save model ' . print_r($model->errors, true));
             }
 
             $this->saveParams($model, $params);
         } catch (\Exception $e) {
             $ta->rollBack();
+
+            print_r($e->getMessage());
+            die();
 
             return false;
         }
@@ -168,7 +169,7 @@ class LogsManager extends Component
         }
 
         if (!$model->save()) {
-            throw new \Exception('Can not save param');
+            throw new \Exception('Can not save param ' . print_r($model->errors, true));
         }
     }
 }
