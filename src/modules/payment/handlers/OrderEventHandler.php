@@ -4,7 +4,6 @@ namespace wajox\yii2base\modules\payment\handlers;
 use wajox\yii2base\modules\payment\models\Order;
 use wajox\yii2base\models\Log;
 use wajox\yii2base\modules\payment\services\OrderMailer;
-use wajox\yii2base\modules\payment\events\events\OrderEvent;
 use wajox\yii2base\modules\payment\events\BillEvent;
 use wajox\yii2base\modules\payment\events\OrderEvent;
 use wajox\yii2base\modules\payment\services\OrderDeliveryManager;
