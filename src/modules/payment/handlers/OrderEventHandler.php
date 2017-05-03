@@ -43,7 +43,7 @@ class OrderEventHandler extends BaseHandler
     public static function created(OrderEvent $event)
     {
         //after create callbacks
-        OrderDeliveryManager::processNewOrder($event->order);
+        self::getDeliveryManager()->processNewOrder($event->order);
         OrderEventHandler::onEvent($event);
 
         \Yii::$app->actionLogs->log(
@@ -55,8 +55,8 @@ class OrderEventHandler extends BaseHandler
 
     public static function paid(OrderEvent $event)
     {
-        OrderDeliveryManager::processPaidOrder($event->order);
-        PartnerFeeManager::processOrder($event->order);
+        self::getDeliveryManager()->processPaidOrder($event->order);
+        self::getFeeyManager()->processOrder($event->order);
         OrderEventHandler::onEvent($event);
 
         \Yii::$app->actionLogs->log(
@@ -69,7 +69,7 @@ class OrderEventHandler extends BaseHandler
 
     public static function cancelled(OrderEvent $event)
     {
-        OrderDeliveryManager::processCancelledOrder($event->order);
+        self::getDeliveryManager()->processCancelledOrder($event->order);
         OrderEventHandler::onEvent($event);
         OrderEventHandler::logEvent(Log::TYPE_ID_CANCEL_ORDER, $event);
 
@@ -83,8 +83,8 @@ class OrderEventHandler extends BaseHandler
     
     public static function moneyback(OrderEvent $event)
     {
-        OrderDeliveryManager::processMoneyReturnedOrder($event->order);
-        PartnerFeeManager::dropOrder($event->order);
+        self::getDeliveryManager()->processMoneyReturnedOrder($event->order);
+        self::getFeeyManager()->dropOrder($event->order);
         OrderEventHandler::onEvent($event);
 
         \Yii::$app->actionLogs->log(
@@ -96,19 +96,19 @@ class OrderEventHandler extends BaseHandler
 
     public static function prepared(OrderEvent $event)
     {
-        OrderDeliveryManager::processPreparedOrder($event->order);
+        self::getDeliveryManager()->processPreparedOrder($event->order);
         OrderEventHandler::onEvent($event);
     }
 
     public static function send(OrderEvent $event)
     {
-        OrderDeliveryManager::processSendOrder($event->order);
+        self::getDeliveryManager()->processSendOrder($event->order);
         OrderEventHandler::onEvent($event);
     }
 
     public static function delivered(OrderEvent $event)
     {
-        OrderDeliveryManager::processDeliveredOrder($event->order);
+        self::getDeliveryManager()->processDeliveredOrder($event->order);
         OrderEventHandler::onEvent($event);
 
         \Yii::$app->actionLogs->log(
@@ -120,7 +120,7 @@ class OrderEventHandler extends BaseHandler
 
     public static function undelivered(OrderEvent $event)
     {
-        OrderDeliveryManager::processUndeliveredOrder($event->order);
+        self::getDeliveryManager()->processUndeliveredOrder($event->order);
         OrderEventHandler::onEvent($event);
 
         \Yii::$app->actionLogs->log(
@@ -132,7 +132,7 @@ class OrderEventHandler extends BaseHandler
 
     public static function returned(OrderEvent $event)
     {
-        OrderDeliveryManager::processReturnedOrder($event->order);
+        self::getDeliveryManager()->processReturnedOrder($event->order);
         OrderEventHandler::onEvent($event);
 
         \Yii::$app->actionLogs->log(
@@ -148,5 +148,15 @@ class OrderEventHandler extends BaseHandler
 
         $om = new OrderMailer($event->order);
         $om->new_status();
+    }
+
+    public static function getDeliveryManager()
+    {
+        return self::getDependency(OrderDeliveryManager::className());
+    }
+
+    public static function getFeeManager()
+    {
+        return self::getDependency(PartnerFeeManager::className());
     }
 }
