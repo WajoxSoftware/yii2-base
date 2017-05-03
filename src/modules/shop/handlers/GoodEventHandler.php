@@ -1,11 +1,11 @@
 <?php
-namespace wajox\yii2base\services\events\listeners;
+namespace wajox\yii2base\modules\shop\handlers;
 
 use wajox\yii2base\modules\shop\models\Good;
 use wajox\yii2base\modules\shop\events\GoodEvent;
 use wajox\yii2base\modules\shop\services\GoodLettersBuilder;
 use wajox\yii2base\models\Log;
-use wajpx\yii2base\handlers\BaseHandler;
+use wajox\yii2base\handlers\BaseHandler;
 
 class GoodEventHandler extends BaseHandler
 {
