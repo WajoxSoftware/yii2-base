@@ -1,6 +1,8 @@
 <?php
 namespace wajox\yii2base\modules\payment\models;
 
+use wajox\yii2base\models\User;
+use wajox\yii2base\models\EautopayOrder;
 use wajox\yii2base\modules\shop\models\Good;
 use wajox\yii2base\modules\partner\models\PartnerFee;
 
