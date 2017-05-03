@@ -1,6 +1,7 @@
 <?php
 namespace wajox\yii2base\modules\payment\models;
 
+use wajox\yii2base\models\User;
 use wajox\yii2base\modules\payment\models\query\BillQuery;
 
 class Bill extends \wajox\yii2base\components\db\ActiveRecord
