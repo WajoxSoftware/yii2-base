@@ -39,9 +39,6 @@ class UserNotification extends \wajox\yii2base\components\db\ActiveRecord
             [['user_id', 'created_at', 'type_id', 'status_id'], 'integer'],
             ['status_id', 'in', 'range' => array_keys($this::getStatusIdList())],
             ['type_id', 'in', 'range' => array_keys($this::getTypeIdList())],
-            [['content'], 'filter', 'filter' => 'strip_tags'],
-            [['content'], 'filter', 'filter' => 'htmlentities'],
-            [['content'], 'filter', 'filter' => 'trim'],
             [['content'], 'string', 'max' => 5000],
         ];
     }

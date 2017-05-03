@@ -13,7 +13,7 @@ class UserNotificationsManager extends Object
         $this->user = $user;
     }
 
-    public function createSystemMessage($subject, $message)
+    public function createSystemMessage(string $subject, string $message)
     {
         return $this->create(
             $subject,
@@ -22,7 +22,7 @@ class UserNotificationsManager extends Object
         );
     }
 
-    public function createAccountMessage($subject, $message)
+    public function createAccountMessage(string $subject, string $message)
     {
         return $this->create(
             $subject,
@@ -31,9 +31,14 @@ class UserNotificationsManager extends Object
         );
     }
 
-    public function createOrderMessage($subject, $message, $orderId)
+    public function createOrderMessage(string $subject, string $message, int $orderId)
     {
-        return $this->create($subject, $message, UserNotification::TYPE_ID_SYSTEM, ['orderId' => $orderId]);
+        return $this->create(
+            $subject,
+            $message,
+            UserNotification::TYPE_ID_SYSTEM,
+            ['orderId' => $orderId]
+        );
     }
 
     public function readAll()
@@ -50,7 +55,7 @@ class UserNotificationsManager extends Object
             );
     }
 
-    public function read($id)
+    public function read(int $id)
     {
         $this
             ->getRepository()
@@ -111,7 +116,7 @@ class UserNotificationsManager extends Object
         return $this->createAccountMessage($subject, $content);
     }
 
-    protected function create($subject, $message, $typeId, $params = [])
+    protected function create(string $subject, string $message, int $typeId, array $params = [])
     {
         $model = $this->buildModel($typeId);
 
@@ -123,7 +128,7 @@ class UserNotificationsManager extends Object
         return $model->save();
     }
 
-    protected function buildModel($typeId)
+    protected function buildModel(int $typeId)
     {
         $model = $this->createObject(UserNotification::className());
         $model->status_id = UserNotification::STATUS_ID_NEW;
