@@ -30,6 +30,13 @@ class SiteController extends \wajox\yii2base\controllers\Controller
         ];
     }
 
+    public function beforeAction($action)
+    {
+        $this->enableCsrfValidation = false;
+
+        return parent::beforeAction($action);
+    }
+
     public function actions()
     {
         return [
@@ -46,6 +53,28 @@ class SiteController extends \wajox\yii2base\controllers\Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionSendQuestion()
+    {
+        if (!$this->getApp()->request->isPost) {
+            throw new \Exception();
+        }
+
+        $message = $this->getApp()->request->post('message');
+        $from = $this->getApp()->request->post('email');
+        $to = 'wajox@mail.ru';//$this->getApp()->params['adminEmail'];
+
+        $subject = 'Сообщение с сайта';
+
+        $content = 'Message: ' . $message . PHP_EOL . 'E-mail: ' . $from;
+
+        $this
+            ->getApp()
+            ->mailer
+            ->sendTransactional($to, $subject, $content, $content);
+
+        return $this->render('send-question');
     }
 
     public function actionContact()

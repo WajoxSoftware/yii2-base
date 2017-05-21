@@ -31,13 +31,9 @@ $metaDescription = \Yii::$app->settings->get('app_meta_description');
 <?php $this->beginBody() ?>
     <div class="wrap">
         <?= $this->render($header) ?>
-        <div class="container">
+        <div class="container-fluid">
             <?= $this->render('@app/views/shared/_flash') ?>
-            <div class="row">
-                <div class="col m10 col moffset-1">
-                    <?= $content ?>
-                </div>
-            </div>
+            <?= $content ?>
         </div>
     </div>
     <?= $this->render($footer) ?>

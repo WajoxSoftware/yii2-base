@@ -13,7 +13,7 @@ trait AppTrait
         return \Yii::$app;
     }
 
-    public static function getAppRequest()
+    public static function getAppRequest(): \yii\web\Request
     {
         return \Yii::$app->request;
     }
@@ -36,5 +36,10 @@ trait AppTrait
     public static function getDb(): DbConnection
     {
         return \Yii::$app->db;
+    }
+
+    public static function getAppSession(): \yii\web\session
+    {
+        return \Yii::$app->session;
     }
 }

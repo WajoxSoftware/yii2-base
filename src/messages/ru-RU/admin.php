@@ -20,6 +20,7 @@ return [
     'Nav Email Lists' => 'Рассылка',
     'Nav Subscribes' => 'Подписчики',
     'Nav Content Nodes' => 'Страницы',
+    'Nav Webinars' => 'Вебинары',
     'Nav Settings' => 'Настройки',
     'Nav Logout' => 'Выйти',
 
@@ -119,5 +120,4 @@ return [
     'Settings app_mail_adapter_class' => 'Адаптер E-mail',
     'Settings app_mail_adapter_params' => 'Параметры адаптера',
     'Settings app_mail_adapter_from' => 'Отправитель',
-
 ];

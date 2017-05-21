@@ -37,7 +37,6 @@ $metaDescription = \Yii::$app->settings->get('app_meta_description');
             <?= $this->render('@app/views/shared/_flash') ?>
             <div class="row">
                 <div class="content col m6 col moffset-3">
-
                     <?= $content ?>
                 </div>
             </div>

@@ -27,6 +27,7 @@ if ($user->isAdmin) {
           ['url' => Url::toRoute('/payment/admin/orders'), 'title' => \Yii::t('app/admin', 'Nav Orders'), 'icon' => 'fa-shopping-cart'],
           ['url' => Url::toRoute('/payment/admin/bills'), 'title' => \Yii::t('app/admin', 'Nav Bills'), 'icon' => 'fa-credit-card'],
           ['url' => Url::toRoute('/partner/admin/default'), 'title' => \Yii::t('app/admin', 'Nav Partners'), 'icon' => 'fa-male'],
+          ['url' => Url::toRoute('/webinar/admin/default'), 'title' => \Yii::t('app/admin', 'Nav Webinars'), 'icon' => 'fa-video-camera'],
           ['url' => Url::toRoute('/admin/traffics'), 'title' => \Yii::t('app/admin', 'Nav Traffics'), 'icon' => 'fa-exchange'],
           ['url' => Url::toRoute('/admin/traffic-tunnels'), 'title' => \Yii::t('app/admin', 'Nav Traffic tunnels'), 'icon' => 'fa-filter'],
           ['url' => Url::toRoute('/admin/email-lists'), 'title' => \Yii::t('app/admin', 'Nav Email Lists'), 'icon' => 'fa-send'],

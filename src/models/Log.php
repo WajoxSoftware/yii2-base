@@ -32,6 +32,9 @@ class Log extends \wajox\yii2base\components\db\ActiveRecord
     const TYPE_ID_RETURN_BILL = 701;
     const TYPE_ID_PAY_BILL = 702;
     const TYPE_ID_CANCEL_BILL = 703;
+    const TYPE_ID_WEBINAR_START = 800;
+    const TYPE_ID_WEBINAR_FINISH = 801;
+    const TYPE_ID_WEBINAR_ADVERT = 802;
 
     const OFFER_TYPE_ID_NONE = 100;
     const OFFER_TYPE_ID_GOOD = 200;
@@ -104,6 +107,9 @@ class Log extends \wajox\yii2base\components\db\ActiveRecord
 
             self::TYPE_ID_GOOD_ORDER => \Yii::t('app/attributes', 'Action Log Type Good Order'),
             self::TYPE_ID_GOOD_PAY => \Yii::t('app/attributes', 'Action Log Type Good Pay'),
+            self::TYPE_ID_WEBINAR_START => \Yii::t('app/attributes', 'Action Log Type Webinar Viewer Start'),
+            self::TYPE_ID_WEBINAR_FINISH => \Yii::t('app/attributes', 'Action Log Type  Webinar Viewer Finish'),
+        self::TYPE_ID_WEBINAR_ADVERT => \Yii::t('app/attributes', 'Action Log Type  Webinar Viewer Advert'),
         ];
     }
 
