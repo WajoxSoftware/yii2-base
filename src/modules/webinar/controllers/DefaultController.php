@@ -47,7 +47,10 @@ class DefaultController extends ApplicationController
             ]);
         }
 
-        return $this->render('sign-in', ['model' => $viewer]);
+        return $this->render('sign-in', [
+            'model' => $viewer,
+            'webinar' => $webinar,
+        ]);
     }
 
     protected function getManager()

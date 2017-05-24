@@ -4,7 +4,7 @@ use wajox\yii2widgets\filterwidget\FilterWidget;
 
 ?>
 <div class="row">
-    <div class="col m12">
+    <div class="col s12">
         <?php if (isset($this->params['filter'])): ?>
             <div>
                 <?= FilterWidget::widget($this->params['filter']) ?>

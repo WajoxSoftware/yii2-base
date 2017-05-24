@@ -193,17 +193,26 @@ class WebinarManager extends Object
             return 0;
         }
 
-        $minP = $params[0];
-        $maxP = $params[1];
-        $step = $params[2];
-        $posP = $params[3];
-
+        $minP = $params[0] / 100.0;
+        $maxP = $params[1] / 100.0;
         $sizeP = $maxP - $minP;
-        $currentP = bcadd($minP, bcmul($sizeP, $posP));
-        $countF = bcadd(
-            bcmul($webinar->max_viewers_count, $currentP),
-            bcmul($step, sin((float) $currentP))
-        );
+        $step = $params[2];
+
+        if (isset($params[3])) {
+            $posP = $params[3];    
+        } else {
+            $completedP = $webinar->currentTime / $webinar->duration;
+            $k = $completedP / $step;
+            $posP = $minP + $sizeP * sin(deg2rad(($k == 0 ? 1 : -1) * 90)) / 2;
+        }
+
+        $stepP = (time() % 11 - 5) * 0.2;
+        $stepSizeP = sin(deg2rad(90 * $stepP));
+        $stepSize = $stepSizeP * $step;
+        $currentP = $sizeP * $posP;
+        $resultP = $minP + $currentP + $currentP * $stepSize;
+
+        $countF = $webinar->max_viewers_count * $resultP;
 
         return intval($countF);
     }
@@ -217,7 +226,7 @@ class WebinarManager extends Object
                 $minP = 1;
                 $maxP = 3;
                 $step = 0.2;
-                $posP = 0.5;
+                $posP = rand(1, 100) / 100;
 
                 return [$minP, $maxP, $step, $posP];
             }
@@ -231,7 +240,6 @@ class WebinarManager extends Object
                 return [$minP, $maxP, $step, $posP];
             }
 
-            
             if ($timeLeft < 1200 && $timeLeft > 600) {
                 $minP = 15;
                 $maxP = 30;
@@ -251,14 +259,13 @@ class WebinarManager extends Object
             }
         }
 
-        if ($webinar->isStarted && !$webinar->isFinished) {
+        if ($webinar->isActive) {
             $timeLeft = $webinar->currentTime;
             $minP = 90;
             $maxP = 100;
             $step = 0.2;
-            $posP = 0.5;
             
-            return [$minP, $maxP, $step, $posP];
+            return [$minP, $maxP, $step];
         }
 
         if ($webinar->isFinished) {

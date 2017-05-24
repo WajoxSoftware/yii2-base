@@ -38,7 +38,7 @@ class Webinar extends \wajox\yii2base\components\db\ActiveRecord
             [['advert'], 'string'],
             [['title', 'start_datetime', 'finish_datetime'], 'string', 'max' => 255],
             [['video'], 'string', 'max' => 800],
-            [['names_dictionary', 'timeline_map'], 'string', 'max' => 65000],
+            [['names_dictionary'], 'string', 'max' => 65000],
         ];
     }
 
@@ -48,19 +48,18 @@ class Webinar extends \wajox\yii2base\components\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => \Yii::t('app', 'ID'),
-            'user_id' => \Yii::t('app', 'User ID'),
-            'title' => \Yii::t('app', 'Title'),
-            'start_datetime' => \Yii::t('app', 'Start Datetime'),
-            'finish_datetime' => \Yii::t('app', 'Finish Datetime'),
-            'video' => \Yii::t('app', 'Video'),
-            'advert_time' => \Yii::t('app', 'Advert Time'),
-            'advert' => \Yii::t('app', 'Advert'),
-            'max_viewers_count' => \Yii::t('app', 'Max Viewers Count'),
-            'views_count' => \Yii::t('app', 'Views Count'),
-            'created_at' => \Yii::t('app', 'Created At'),
-            /*'names_dictionary' => \Yii::t('app', 'Names Dictionary'),
-            'timeline_map' => \Yii::t('app', 'Timeline Map'),*/
+            'id' => \Yii::t('app/attributes', 'ID'),
+            'user_id' => \Yii::t('app/attributes', 'User ID'),
+            'title' => \Yii::t('app/attributes', 'Title'),
+            'start_datetime' => \Yii::t('app/attributes', 'Start Datetime'),
+            'finish_datetime' => \Yii::t('app/attributes', 'Finish Datetime'),
+            'video' => \Yii::t('app/attributes', 'Video'),
+            'advert_time' => \Yii::t('app/attributes', 'Advert Time'),
+            'advert' => \Yii::t('app/attributes', 'Advert'),
+            'max_viewers_count' => \Yii::t('app/attributes', 'Max Viewers Count'),
+            'views_count' => \Yii::t('app/attributes', 'Views Count'),
+            'created_at' => \Yii::t('app/attributes', 'Created At'),
+            'names_dictionary' => \Yii::t('app/attributes', 'Names Dictionary'),
         ];
     }
 
@@ -135,6 +134,11 @@ class Webinar extends \wajox\yii2base\components\db\ActiveRecord
     public function getCurrentTime(): int
     {
         return time() - $this->getStartAt();
+    }
+
+    public function getIsActive(): bool
+    {
+        return $this->isStarted && !$this->isFinished;
     }
 
     public function getIsAdvertEnabled(): bool

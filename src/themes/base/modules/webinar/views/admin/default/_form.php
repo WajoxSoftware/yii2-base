@@ -17,7 +17,7 @@ use yii\bootstrap\ActiveForm;
           </div>
 
           <div class="col m6">
-               <?= $form->field($model, 'start_datetime')->textInput(['maxlength' => true]) ?>
+               <?= $form->field($model, 'finish_datetime')->textInput(['maxlength' => true]) ?>
           </div>
       </div>
 
@@ -39,6 +39,12 @@ use yii\bootstrap\ActiveForm;
       <div class="row">
           <div class="col m12">
               <?= $form->field($model, 'advert')->widget(\yii\redactor\widgets\Redactor::className())  ?>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col m12">
+              <?= $form->field($model, 'names_dictionary')->textarea(['rows' => 7, 'class' => 'materialize-textarea']) ?>
           </div>
       </div>
     <?php ActiveForm::end(); ?>

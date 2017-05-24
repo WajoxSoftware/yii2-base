@@ -1,3 +1,5 @@
+<h3><?= $model->title ?></h3>
+
 <div class="webinar-video-player">
     <?= $model->video ?>
 </div>

@@ -5,6 +5,7 @@ $attribute = $input->attribute;
 $checked = $input->model->$attribute;
 ?>
 <div class="switch">
+  <input type="hidden" value="0" name="<?= $name ?>"/>
   <label>
     Off
     <input type="checkbox" value="1" id="<?= $id ?>" name="<?= $name ?>" <?= $input->disabled ? 'disabled"' : '' ?> <?= $checked ? 'checked' : '' ?>>

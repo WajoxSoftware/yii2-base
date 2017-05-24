@@ -4,6 +4,7 @@ namespace wajox\yii2base\controllers;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use wajox\yii2base\models\form\ContactForm;
+use wajox\yii2base\models\form\QuestionForm;
 
 class SiteController extends \wajox\yii2base\controllers\Controller
 {
@@ -55,26 +56,13 @@ class SiteController extends \wajox\yii2base\controllers\Controller
         return $this->render('index');
     }
 
-    public function actionSendQuestion()
+    public function actionQuestion()
     {
-        if (!$this->getApp()->request->isPost) {
-            throw new \Exception();
-        }
+        $model = new QuestionForm();
+        $request = $this->getApp()->request;
+        $success = $model->send($request);
 
-        $message = $this->getApp()->request->post('message');
-        $from = $this->getApp()->request->post('email');
-        $to = 'wajox@mail.ru';//$this->getApp()->params['adminEmail'];
-
-        $subject = 'Сообщение с сайта';
-
-        $content = 'Message: ' . $message . PHP_EOL . 'E-mail: ' . $from;
-
-        $this
-            ->getApp()
-            ->mailer
-            ->sendTransactional($to, $subject, $content, $content);
-
-        return $this->render('send-question');
+        return $this->renderJs('question', ['success' => $success]);
     }
 
     public function actionContact()

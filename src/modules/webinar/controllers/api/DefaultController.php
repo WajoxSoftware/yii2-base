@@ -23,6 +23,8 @@ class DefaultController extends ApplicationController
             ->online()
             ->all();
 
+        $viewersCount += sizeof($viewers);
+
         return $this->renderJson('view', [
             'model' => $model,
             'viewers' => $viewers,

@@ -2,7 +2,7 @@
 namespace wajox\yii2base\services\traffic;
 
 use wajox\yii2base\models\Statistic;
-use wajox\yii2base\services\events\types\StatisticEvent;
+use wajox\yii2base\events\StatisticEvent;
 use wajox\yii2base\components\base\Object;
 
 class StatisticManager extends Object
