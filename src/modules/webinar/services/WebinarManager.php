@@ -172,6 +172,9 @@ class WebinarManager extends Object
 
     public function setWebinarStarted(Webinar $webinar)
     {
+        $webinar->views_count++;
+        $webinar->save();
+
         return $this->setWebinarStatus($webinar, self::WEBINAR_STATUS_STARTED);
     }
 

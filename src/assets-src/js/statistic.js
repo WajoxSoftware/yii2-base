@@ -47,14 +47,6 @@ var StatisticsManager = function()
     $(window).unload(function(e){
       self.send();
     });
-
-/* Just for debug reason
-
-    $(document).on('click touchstart', function(e){
-      self.send();
-    });
-/**/
-
   };
 
   this.bindEvents();
