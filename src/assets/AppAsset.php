@@ -9,12 +9,11 @@ class AppAsset extends AssetBundle
 
     public $css = [];
 
-    public $js = [
-        'js/app.js',
-    ];
+    public $js = [];
 
     public $depends = [
         'yii\web\YiiAsset',
+        'wajox\yii2base\assets\AppJSAsset',
         'wajox\yii2base\assets\StatisticAsset',
         'wajox\yii2base\assets\RemoteAsset',
         'wajox\yii2base\assets\FormAsset',

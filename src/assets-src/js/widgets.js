@@ -112,24 +112,6 @@ var HtmlWidgets = function() {
 
 
     this.init = function() {
-        // $('table.table').stacktable();
-        //$(function() { $.material.init(); });
-        $('select:not([data-krajee-select2])').material_select();
-        $("#sidebar-button").sideNav();
-        $('.tooltipped').tooltip({delay: 50});
-        $('ul.tabs').tabs();
-        $('.modal').modal();
-
-        $('.datepicker').each(function(){
-            $(this).pickadate(
-                JSON.parse(
-                    decodeURIComponent(
-                        $(this).attr('data-datepicker-settings')
-                    )
-                )
-            ); 
-        });
-
         this.bindEvents();
         this.renderAll();
     };

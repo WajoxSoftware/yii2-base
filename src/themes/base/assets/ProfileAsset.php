@@ -7,18 +7,13 @@ class ProfileAsset extends AssetBundle
 {
     public $sourcePath = '@wajox/yii2base/themes/base/assets-src';
 
-    public $css = [
-        //'css/messages.css',
-        //'css/bills.css',
-        //'css/profile.css',
-        //'css/users.css',
-    ];
+    public $css = [];
 
-    public $js = [
-        //'js/sidebar.js',
-    ];
+    public $js = [];
 
     public $depends = [
-        'wajox\yii2base\themes\base\assets\AppAsset',
+        'wajox\yii2base\assets\AppAsset',
+        'wajox\yii2base\themes\base\assets\FontsAsset',
+        'wajox\yii2base\themes\base\assets\MaterializeAsset',
     ];
 }
