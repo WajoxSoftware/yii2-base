@@ -61,22 +61,25 @@ class Bootstrap extends Component implements BootstrapInterface
         $theme = $app->settings->get('app_theme', 'base');
         $indexUrl = $app->settings->get('app_index_url', 'site/index');
 
-        $this->setupAliases();
-        $this->setupAppTheme($theme, $app);
-        $this->setupAppIndexUrl($indexUrl, $app);
-        $this->initI18n($app);
-        $this->initControllersMap($app);
+        $this
+            ->setupAliases()
+            ->setupAppTheme($theme, $app)
+            ->setupAppIndexUrl($indexUrl, $app)
+            ->initI18n($app)
+            ->initControllersMap($app);
     }
 
-    protected function setupAliases()
+    protected function setupAliases(): Bootstrap
     {
         \Yii::setAlias(
             '@wajox/yii2base',
             '@vendor/wajox/yii2base/src'
         );
+
+        return $this;
     }
 
-    protected function setupAppTheme($theme, $app)
+    protected function setupAppTheme($theme, $app): Bootstrap
     {
         $themesPath = 'themes/';
         $themesUrl = '@themes/';
@@ -91,59 +94,63 @@ class Bootstrap extends Component implements BootstrapInterface
         $app->view->theme->baseUrl = $themesUrl . $theme;
 
         $app->view->theme->pathMap = [
-                //external
-                '@app/views' => [
-                    '@themes/' . $theme . '/views',
-                    $baseThemePath . '/views',
-                ],
-                '@app/modules' => [
-                    '@themes/' . $theme . '/modules',
-                    $baseThemePath . '/modules',
-                ],
-                '@app/mail' => [
-                    '@themes/' . $theme . '/mail',
-                    $baseThemePath . '/mail',
-                    '@wajox/yii2base/mail',
-                ],
-                '@app/widgets' => [
-                    '@themes/' . $theme . '/widgets',
-                    $baseThemePath . '/widgets',
-                ],
+            //external
+            '@app/views' => [
+                '@themes/' . $theme . '/views',
+                $baseThemePath . '/views',
+            ],
+            '@app/modules' => [
+                '@themes/' . $theme . '/modules',
+                $baseThemePath . '/modules',
+            ],
+            '@app/mail' => [
+                '@themes/' . $theme . '/mail',
+                $baseThemePath . '/mail',
+                '@wajox/yii2base/mail',
+            ],
+            '@app/widgets' => [
+                '@themes/' . $theme . '/widgets',
+                $baseThemePath . '/widgets',
+            ],
 
-                // internal
-                '@wajox/yii2base/views' => [
-                    '@themes/' . $theme . '/views',
-                    $baseThemePath . '/views',
-                ],
-                '@wajox/yii2base/modules' => [
-                    '@themes/' . $theme . '/modules',
-                    $baseThemePath . '/modules',
-                ],
-                '@wajox/yii2base/mail' => [
-                    '@themes/' . $theme . '/mail',
-                    $baseThemePath . '/mail',
-                    '@wajox/yii2base/mail',
-                ],
-                '@wajox/yii2base/widgets' => [
-                    '@themes/' . $theme . '/widgets',
-                    $baseThemePath . '/widgets',
-                ],
-                '@vendor' => [
-                    '@themes/' . $theme . '/vendor',
-                    $baseThemePath . '/vendor',
-                ],
-            ];
+            // internal
+            '@wajox/yii2base/views' => [
+                '@themes/' . $theme . '/views',
+                $baseThemePath . '/views',
+            ],
+            '@wajox/yii2base/modules' => [
+                '@themes/' . $theme . '/modules',
+                $baseThemePath . '/modules',
+            ],
+            '@wajox/yii2base/mail' => [
+                '@themes/' . $theme . '/mail',
+                $baseThemePath . '/mail',
+                '@wajox/yii2base/mail',
+            ],
+            '@wajox/yii2base/widgets' => [
+                '@themes/' . $theme . '/widgets',
+                $baseThemePath . '/widgets',
+            ],
+            '@vendor' => [
+                '@themes/' . $theme . '/vendor',
+                $baseThemePath . '/vendor',
+            ],
+        ];
+
+        return $this;
     }
 
-    protected function setupAppIndexUrl($indexUrl, $app)
+    protected function setupAppIndexUrl($indexUrl, $app): Bootstrap
     {
         $app->urlManager->addRules(['/' => $indexUrl], false);
+
+        return $this;
     }
 
-    protected function initI18n($app)
+    protected function initI18n($app): Bootstrap
     {
         if (isset($app->i18n->translations['app*'])) {
-            return;
+            return $this;
         }
 
         $app->i18n->translations['app*'] = [
@@ -151,16 +158,20 @@ class Bootstrap extends Component implements BootstrapInterface
             'basePath' => __DIR__ . '/../messages',
             'fileMap' => $this->i18nMap,
         ];
+
+        return $this;
     }
 
-    protected function initControllersMap($app)
+    protected function initControllersMap($app): Bootstrap
     {
         if ($app instanceof ConsoleApplication) {
             $app->controllerMap = $this->commandsMap;
 
-            return;
+            return $this;
         }
 
         $app->controllerMap = $this->controllersMap;
+
+        return $this;
     }
 }

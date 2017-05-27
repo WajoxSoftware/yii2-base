@@ -4,7 +4,6 @@ namespace wajox\yii2base\controllers;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use wajox\yii2base\models\form\ContactForm;
-use wajox\yii2base\models\form\QuestionForm;
 
 class SiteController extends \wajox\yii2base\controllers\Controller
 {
@@ -54,15 +53,6 @@ class SiteController extends \wajox\yii2base\controllers\Controller
     public function actionIndex()
     {
         return $this->render('index');
-    }
-
-    public function actionQuestion()
-    {
-        $model = new QuestionForm();
-        $request = $this->getApp()->request;
-        $success = $model->send($request);
-
-        return $this->renderJs('question', ['success' => $success]);
     }
 
     public function actionContact()

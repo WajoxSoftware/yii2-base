@@ -202,7 +202,7 @@ class WebinarManager extends Object
         $step = $params[2];
 
         if (isset($params[3])) {
-            $posP = $params[3];    
+            $posP = $params[3];
         } else {
             $completedP = $webinar->currentTime / $webinar->duration;
             $k = $completedP / $step;

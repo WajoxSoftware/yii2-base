@@ -17,7 +17,7 @@ class AppAsset extends AssetBundle
         'wajox\yii2base\assets\StatisticAsset',
         'wajox\yii2base\assets\RemoteAsset',
         'wajox\yii2base\assets\FormAsset',
-        'wajox\yii2base\assets\WidgetsAsset',  
+        'wajox\yii2base\assets\WidgetsAsset',
         //'yii\bootstrap\BootstrapAsset',
     ];
 }
