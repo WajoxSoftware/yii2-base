@@ -13,9 +13,5 @@ use yii\helpers\Url;
     <div class="col m3">
       <?= $model->title ?>
     </div>
-
-    <div class="col m6">
-      <?= $model->description ?>
-    </div>
   </div>
 </div>
