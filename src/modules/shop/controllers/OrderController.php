@@ -54,7 +54,7 @@ class OrderController extends ApplicationController
 
             return $this->redirect([
                     '/payment',
-                    'id' => $order->id,
+                    'id' => $order->bill_id,
                 ]);
         }
 
