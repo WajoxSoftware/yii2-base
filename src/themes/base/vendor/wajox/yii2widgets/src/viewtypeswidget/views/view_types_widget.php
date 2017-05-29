@@ -9,13 +9,17 @@ $icons = [
 ?>
 
 <?php if (sizeof($items) > 0): ?>
-    <label><?= \Yii::t('app/general', 'View Listing As') ?>:</label>
-    <div>
+    <ul class="list list-inline">
+        <li><?= \Yii::t('app/general', 'View Listing As') ?>:</li>
         <?php foreach ($items as $item): ?>
-            <a class="btn <?php if ($item == $current): ?>disabled<?php endif; ?>" href="?listingViewType=<?=$item ?>">
-                <i class="fa <?= $icons[$item] ?>"></i>
-                <?= ViewTypesHelper::getViewTypesList()[$item]; ?>
-            </a>
+            <li <?php if ($item == $current): ?>class="active"<?php endif; ?>>
+                <a href="?listingViewType=<?=$item ?>">
+                <?php if (isset($selected[$item])): ?>
+                    <i class="fa <?= $icons[$item] ?>"></i>
+                <?php endif; ?>
+                    <?= ViewTypesHelper::getViewTypesList()[$item]; ?>
+                </a>
+            </li>                
         <?php endforeach; ?>
-    </div>
+    </ul>
 <?php endif; ?>

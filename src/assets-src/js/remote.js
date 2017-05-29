@@ -59,6 +59,6 @@ var RemoteFormsManager = function() {
     });
 };
 
-$(function(){
+$(document).on('app:load', function(){
     new RemoteFormsManager();
 });

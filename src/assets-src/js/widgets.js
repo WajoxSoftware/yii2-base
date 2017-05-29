@@ -119,6 +119,6 @@ var HtmlWidgets = function() {
     this.init();
 };
 
-$(function(){
+$(document).on('app:load', function(){
     new HtmlWidgets();
 });

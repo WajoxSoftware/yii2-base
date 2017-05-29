@@ -9,9 +9,9 @@ use yii\helpers\Url;
 				<a href="#" data-activates="sidebar" class="button-collapse" id="sidebar-button"><i class="material-icons">menu</i></a>
 			</li>
 		</ul>
-		<a href="<?= \yii\helpers\Url::to(['/']) ?>" class="brand-logo">
-			<?= \Yii::t('app/general', 'App Name') ?>
-		</a>
+		
+		<?= $this->render('@app/views/shared/_profile_breadcrumbs') ?>
+
 		<ul class="right">
 		  <li><a href="<?= Url::toRoute('/account/notifications') ?>" ><i class="material-icons">notifications</i></a></li>
 		  <li>

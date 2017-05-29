@@ -99,7 +99,7 @@ var ModalFormSubmitter = function() {
     });
 };
 
-$(function(){
+$(document).on('app:load', function(){
     new OnChangeFormSubmitter();
     new ModalFormSubmitter();
     new ImageUploadForm();

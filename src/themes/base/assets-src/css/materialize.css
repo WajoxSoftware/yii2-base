@@ -1618,27 +1618,15 @@ html {
  * Remove default margin.
  */
 body {
-  margin: 0; }
+  margin: 0;
+}
 
-.page-header {
+.page-content {
   background: #fff;
-  margin-bottom: 1rem;
 }
 
-.page-header .row {
-  margin-top: 0;
+.page-content.with-tabs > .tabs {
   margin-bottom: 0;
-  padding-bottom: 0.5rem;
-}
-
-.page-header .row .tabs {
-  margin-bottom: 0;
-}
-
-.page-header .row.with-tabs {
-  margin-top: -0.5rem;
-  margin-bottom: 0;
-  padding-bottom: 0;
 }
 
 /* HTML5 display definitions
@@ -3003,7 +2991,8 @@ nav {
     position: relative;
     z-index: 1;
     height: 56px;
-    margin: 0 18px; }
+    margin: 0;
+}
     nav .button-collapse i {
       height: 56px;
       line-height: 56px; }
@@ -6474,10 +6463,12 @@ body {
   margin-left: -50px; }
 
 .list-view .collection {
-  margin-top: 0 !important; }
+  margin-top: 0 !important;
+}
 
 .block {
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+}
 
 .heading:hover {
   text-decoration: underline; }
@@ -6492,32 +6483,65 @@ body {
   padding: 0; }
 
 form {
-  margin: 0 0 1rem 0;
-  border: 1px solid #e0e0e0;
-  border-radius: 2px;
-  background-color: #fff;
   line-height: 1.5rem;
-  padding: 10px 20px; }
-
-.hidden {
-  display: none; }
-
-.breadcrumb {
-  margin-bottom: 0;
+  margin: 1em;
 }
 
-.breadcrumb li, .breadcrumb li a {
+.hidden {
+  display: none;
+}
+
+a.breadcrumb {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+a.breadcrumb i,
+  a.breadcrumb [class^="mdi-"], a.breadcrumb [class*="mdi-"],
+  a.breadcrumb i.material-icons {
+    display: inline-block;
+    float: left;
+    font-size: 24px;
+}
+
+a.breadcrumb:before {
+    content: '\E5CC';
+    color: rgba(255, 255, 255, 0.7);
+    vertical-align: top;
+    display: inline-block;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 25px;
+    margin: 0 10px 0 8px;
+    -webkit-font-smoothing: antialiased;
+}
+
+a.breadcrumb:first-child:before {
+    display: none;
+}
+
+a.breadcrumb:last-child {
+    color: #fff;
+}
+
+ul.breadcrumb {
+  margin-bottom: 0;
+  margin-left: 0;
+}
+
+ul.breadcrumb li, ul.breadcrumb li a {
     display: inline-block;
     font-size: 18px;
 }
 
-.breadcrumb li a {
-  color: #2196F3;
+ul.breadcrumb li a {
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.breadcrumb li:before {
+ul.breadcrumb li:before {
       content: '\E5CC';
-      color: #555;
+      color: rgba(255, 255, 255, 0.7);
       vertical-align: top;
       display: inline-block;
       font-family: 'Material Icons';
@@ -6528,12 +6552,15 @@ form {
       -webkit-font-smoothing: antialiased;
 }
 
-.breadcrumb li:first-child:before {
+ul.breadcrumb li:first-child:before {
       display: none;
 }
 
-.breadcrumb li:last-child {
-      color: #444;
+ul.breadcrumb li.active,
+ul.breadcrumb li a:hover,
+ul.breadcrumb li:last-child {
+      color: #fff;
+      background: transparent !important;
 }
 
 .form-group.has-error .help-block {
@@ -6579,6 +6606,10 @@ form {
     display: inline-block;
     padding-right: 5px;
     padding-left: 5px
+}
+.list li.active {
+  font-weight: bold;
+  background: #ccc;
 }
 
 /**

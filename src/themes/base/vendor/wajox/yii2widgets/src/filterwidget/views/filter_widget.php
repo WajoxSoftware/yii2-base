@@ -17,8 +17,8 @@
     <?php endif; ?>
 
     <li>
-      <a href="#filter-widget-modal" class="waves-effect waves-light btn">
-        <i class="material-icons tiny">settings</i>
+      <a href="#filter-widget-modal" class="waves-effect waves-light">
+        <i class="material-icons">edit</i>
       </a>
     </li>
   </ul>

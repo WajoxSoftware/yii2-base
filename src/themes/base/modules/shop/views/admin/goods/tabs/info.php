@@ -39,30 +39,30 @@ if (!$model->getModel()->isArchive && !$model->getModel()->isDraft) {
 }
 ?>
 
-<div>
-  <div>
+<ul class="collection">
+  <li class="collection-item">
     <label><?= \Yii::t('app/attributes', 'Created At') ?>:</label>
     <?= $model->getModel()->createdDate ?>
-  </div>
+  </li>
 
-  <div>
+  <li class="collection-item">
     <label><?= \Yii::t('app/attributes', 'Updated At') ?>:</label>
     <?= $model->getModel()->updatedDate ?>
-  </div>
+  </li>
 
-  <div>
+  <li class="collection-item">
     <label><?= \Yii::t('app/attributes', 'Author') ?>:</label>
     <?= $model->getModel()->authorName ?>
-  </div>
+  </li>
 
-  <div>
+  <li class="collection-item">
     <label><?= \Yii::t('app/attributes', 'Status') ?>:</label>
     <?= $model->getModel()->status ?>
-  </div>
+  </li>
 
-  <div>
+  <li class="collection-item">
     <?php $orderUrl = Url::toRoute($model->getModel()->orderUrl) ?>
     <label><?= \Yii::t('app/attributes', 'Url') ?>:</label>
     <a href="<?= $orderUrl ?>" class="btn btn-default btn-xs" target="_blank"><?= \Yii::t('app/general', 'View') ?></a>
-  </div>
-</div>
+  </li>
+</ul>
