@@ -1,5 +1,4 @@
 <?php
-
 $this->title = \Yii::t('app/admin', 'Nav Home');
 $this->params['filter'] = [
   'model' => $model,

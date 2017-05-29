@@ -11,7 +11,7 @@ $hasFilter = isset($this->params['filter']);
 $hasViewTypes = isset($this->params['listingViewTypes']);
 ?>
 <?php if ($hasSort || $hasFilter || $hasViewTypes): ?>
-<div class="row">
+<div class="row unspaced">
     <div class="col s12">
         <?php if ($hasFilter): ?>
             <div>
