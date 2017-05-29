@@ -10,33 +10,34 @@ $hasSort = isset($this->params['sort']);
 $hasFilter = isset($this->params['filter']);
 $hasViewTypes = isset($this->params['listingViewTypes']);
 ?>
+
 <?php if ($hasSort || $hasFilter || $hasViewTypes): ?>
-<div class="row unspaced">
-    <div class="col s12">
-        <?php if ($hasFilter): ?>
-            <div>
-                <?= FilterWidget::widget($this->params['filter']) ?>
-            </div>
-        <?php endif; ?>
+    <div class="row topspaced page-content-header">
+        <div class="col s12">
+            <?php if ($hasFilter): ?>
+                <div>
+                    <?= FilterWidget::widget($this->params['filter']) ?>
+                </div>
+            <?php endif; ?>
 
-        <?php if ($hasSort): ?>
-            <div>
-                <?= SortWidget::widget($this->params['sort']) ?>
-            </div>
-        <?php endif; ?>
+            <?php if ($hasSort): ?>
+                <div>
+                    <?= SortWidget::widget($this->params['sort']) ?>
+                </div>
+            <?php endif; ?>
 
-        <?php if ($hasViewTypes): ?>
-            <div>
-                <?= ViewTypesWidget::widget($this->params['listingViewTypes']) ?>
-            </div>
-        <?php endif; ?>
+            <?php if ($hasViewTypes): ?>
+                <div>
+                    <?= ViewTypesWidget::widget($this->params['listingViewTypes']) ?>
+                </div>
+            <?php endif; ?>
 
-        <?= $this->render('@app/views/shared/_flash') ?>
+            <?= $this->render('@app/views/shared/_flash') ?>
+        </div>
     </div>
-</div>
 <?php endif; ?>
 
-<div class="row">
+<div class="row topspaced">
     <div class="col s12 m12">
         <div class="page-content <?= $tabs !== null ? 'with-tabs' : '' ?>">
             <?php if ($tabs !== null): ?>

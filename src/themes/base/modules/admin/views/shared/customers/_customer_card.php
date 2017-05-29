@@ -1,32 +1,26 @@
-<div class="row">
-    <div class="col m12">
+<ul class="collection">
+    <li class="collection-item">
         <label><?= \Yii::t('app/attributes', 'Status') ?>:</label>
         <span><?= $model->status ?></span>
-    </div>
-</div>
-<div class="row">
-    <div class="col m12">
+    </li>
+
+    <li class="collection-item">
         <label><?= \Yii::t('app/attributes', 'Name') ?>:</label>
         <span><?= $model->fullName ?></span>
-    </div>
-</div>
-<div class="row">
-    <div class="col m12">
+    </li>
+
+    <li class="collection-item">
         <label><?= \Yii::t('app/attributes', 'Email') ?>:</label>
         <span><?= $model->email ?></span>
-    </div>
-</div>
+    </li>
 
-<div class="row">
-    <div class="col m12">
+    <li class="collection-item">
         <label><?= \Yii::t('app/attributes', 'Phone') ?>:</label>
         <span><?= $model->phone ?></span>
-    </div>
-</div>
+    </li>
 
-<div class="row">
-    <div class="col m12">
+    <li class="collection-item">
         <label><?= \Yii::t('app/attributes', 'Address') ?>:</label>
         <span><?= $model->fullAddress ?></span>
-    </div>
-</div>
+    </li>
+</ul>

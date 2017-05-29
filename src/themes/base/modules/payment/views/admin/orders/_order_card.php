@@ -2,29 +2,23 @@
 use yii\helpers\Url;
 
 ?>
-<div class="row">
-    <div class="col m12">
+<ul class="collection">
+    <li class="collection-item">
         <label><?= \Yii::t('app/attributes', 'Order ID') ?>:</label>
         <span><?= $model->id ?></span>
-    </div>
-</div>
+    </li>
 
-<div class="row">
-    <div class="col m12">
+    <li class="collection-item">
         <label><?= \Yii::t('app/attributes', 'Bill Payment Method') ?>:</label>
         <span><?= $model->bill->paymentMethod ?></span>
-    </div>
-</div>
+    </li>
 
-<div class="row">
-    <div class="col m12">
+    <li class="collection-item">
         <label><?= \Yii::t('app/attributes', 'Created At') ?>:</label>
         <span><?= $model->createdDate ?></span>
-    </div>
-</div>
+    </li>
 
-<div class="row">
-    <div class="col m12">
+    <li class="collection-item">
         <label><?= \Yii::t('app/attributes', 'Sum') ?>:</label>
         <span>
           <?=$model->sumRUR ?>
@@ -44,11 +38,9 @@ use yii\helpers\Url;
           <?php $bill_payment_url = Url::toRoute(['/payment', 'id' => $model->bill_id], true) ?>
           <a href="<?= $bill_payment_url ?>" target="_blank"><?= $bill_payment_url ?></a>
         </span>
-    </div>
-</div>
+    </li>
 
-<div class="row">
-    <div class="col m12">
+    <li class="collection-item">
         <label><?= \Yii::t('app/attributes', 'Status') ?>:</label>
         <span>
           <?= $model->status ?>
@@ -62,11 +54,9 @@ use yii\helpers\Url;
             <a href="<?= Url::toRoute(['/payment/admin/order-statuses/create', 'status' => 'returnMoney', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-danger"><?= \Yii::t('app/general', 'Return') ?></a>
           <?php endif; ?>
         </span>
-    </div>
-</div>
+    </li>
 
-<div class="row">
-    <div class="col m12">
+    <li class="collection-item">
         <label><?= \Yii::t('app/attributes', 'Delivery Status') ?>:</label>
         <span>
           <?= $model->deliveryStatus ?>
@@ -87,12 +77,11 @@ use yii\helpers\Url;
             <a href="<?= Url::toRoute(['/payment/admin/order-statuses/create', 'status' => 'returned', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link btn btn-xs btn-danger"><?= \Yii::t('app/general', 'Return') ?></a>
           <?php endif; ?>
         </span>
-    </div>
-</div>
+    </li>
 
-<div class="row">
-    <div class="col m12">
+    <li class="collection-item">
         <label><?= \Yii::t('app/attributes', 'Order Saler Comment') ?>:</label>
         <p><?= $model->saler_comment ?></p>
-    </div>
-</div>
+    </li>
+</ul>
+

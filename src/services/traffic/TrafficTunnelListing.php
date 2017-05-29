@@ -3,7 +3,7 @@ namespace wajox\yii2base\services\traffic;
 
 use wajox\yii2base\components\base\Component;
 use wajox\yii2base\models\User;
-use wajox\yii2base\models\Partner;
+use wajox\yii2base\modules\partner\models\Partner;
 use wajox\yii2base\models\TrafficManager;
 use wajox\yii2base\models\TrafficSource;
 use wajox\yii2base\models\TrafficStream;

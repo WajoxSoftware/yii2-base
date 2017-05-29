@@ -2,7 +2,8 @@
 use yii\helpers\Url;
 
 ?>
-<li class="collection-item" data-Webinar-id="<?= $model->id ?>">
+<li class="collection-item avatar" data-Webinar-id="<?= $model->id ?>">
+    <i class="material-icons circle">videocam</i>
     <span class="title">
       <a href="<?= Url::to(['/webinar/default/view', 'id' => $model->id]) ?>" target="_blank"><?= $model->title ?></a>
     </span>

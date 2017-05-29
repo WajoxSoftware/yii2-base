@@ -1,6 +1,9 @@
 <?php
 namespace wajox\yii2base\models;
 
+use wajox\yii2base\modules\payment\models\Order;
+use wajox\yii2base\modules\payment\models\Bill;
+use wajox\yii2base\modules\shop\models\Good;
 use wajox\yii2base\models\query\LogQuery;
 
 class Log extends \wajox\yii2base\components\db\ActiveRecord

@@ -1621,6 +1621,10 @@ body {
   margin: 0;
 }
 
+.page-content-header .list {
+  line-height: 1.0;
+}
+
 .page-content {
   background: #fff;
 }
@@ -2551,6 +2555,11 @@ nav ul a span.badge {
 
 .row.unspaced {
   margin-bottom: 0;
+}
+
+.row.topspaced {
+  margin-bottom: 0;
+  margin-top: 1rem;
 }
 
   .row:after {
@@ -6470,6 +6479,10 @@ body {
 
 .list-view .collection {
   margin-top: 0 !important;
+}
+
+.list-view .empty {
+  padding: 1rem;
 }
 
 .block {

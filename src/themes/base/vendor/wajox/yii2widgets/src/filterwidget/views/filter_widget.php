@@ -18,7 +18,7 @@
 
     <li>
       <a href="#filter-widget-modal" class="waves-effect waves-light">
-        <i class="material-icons">edit</i>
+        <i class="material-icons tiny">edit</i>
       </a>
     </li>
   </ul>
