@@ -7,4 +7,9 @@
         $viewers
     ),
     'enableAdvert' => $model->isAdvertEnabled,
+    'isActive' => $model->isActive,
+    'isFinished' => $model->isFinished,
+    'isStarted' => $model->isStarted,
+    'duration' => $model->duration,
+    'currentTime' => $model->currentTime,
 ]);
