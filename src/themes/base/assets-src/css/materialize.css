@@ -2213,7 +2213,34 @@ table {
     text-align: center; }
 
 thead {
-  border-bottom: 1px solid #d0d0d0; }
+  border-bottom: 1px solid #d0d0d0;
+}
+
+td, th {
+  padding: 15px 5px;
+  display: table-cell;
+  text-align: left;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+
+.table.unstyled td,
+.table.unstyled th,
+.table.unstyled tr,
+.table.unstyled tbody,
+.table.unstyled thead {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.field-prefix, .field-postfix {
+  background: #eef;
+  padding: 5px;
+  margin: 0px 2px 10px 2px;
+}
 
 @media only screen and (max-width: 1124px) {
   table.responsive-table {
@@ -6477,7 +6504,11 @@ body {
 }
 
 .list-view .empty {
-  padding: 1rem;
+  padding: 0.75rem;
+}
+
+.grid-view {
+  padding: 0.75rem;
 }
 
 .block {
@@ -6576,35 +6607,6 @@ ul.breadcrumb li:last-child,
 ul.breadcrumb li:last-child a {
       color: #fff;
       background: transparent !important;
-}
-
-a.breadcrumb,
-ul.breadcrumb li {
-  max-width: 100px;
-  overflow: hidden;
-}
-
-@media only screen and (max-width: 960px) {
-  a.breadcrumb {
-    font-size: 12px;
-  }
-
-  a.breadcrumb:before {
-      margin: 0 2px 0 1px;
-  }
-
-  ul.breadcrumb li, ul.breadcrumb li a {
-      font-size: 12px;
-  }
-
-  ul.breadcrumb li a {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  ul.breadcrumb li:before {
-        font-size: 18px;
-        margin: 0 2px 0 1px;
-  }
 }
 
 .form-group.has-error .help-block {
