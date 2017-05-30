@@ -18,16 +18,14 @@ use wajox\yii2base\helpers\FormHelper;
 </div>
 
 <div class="row">
-    <div class="col m6">
+    <div class="col m3">
         <?= FormHelper::renderRurPriceField($form, $model, 'partnerFee1Level') ?>
     </div>
-    <div class="col m6">
+    <div class="col m3">
         <?= FormHelper::renderRurPriceField($form, $model, 'partnerFee2Level') ?>
     </div>
-</div>
 
-<div class="row">
-    <div class="col m12">
+    <div class="col m6">
         <?= $form->field($model, 'partnerLink') ?>
     </div>
 </div>

@@ -2215,13 +2215,6 @@ table {
 thead {
   border-bottom: 1px solid #d0d0d0; }
 
-td, th {
-  padding: 15px 5px;
-  display: table-cell;
-  text-align: left;
-  vertical-align: middle;
-  border-radius: 2px; }
-
 @media only screen and (max-width: 1124px) {
   table.responsive-table {
     width: 100%;
@@ -2602,12 +2595,14 @@ nav ul a span.badge {
       width: 50%;
       margin-left: auto;
       left: auto;
-      right: auto; }
+      right: auto;
+    }
     .row .col.s7 {
       width: 58.33333%;
       margin-left: auto;
       left: auto;
-      right: auto; }
+      right: auto;
+    }
     .row .col.s8 {
       width: 66.66667%;
       margin-left: auto;
@@ -6503,7 +6498,7 @@ body {
 
 form {
   line-height: 1.5rem;
-  margin: 1em;
+  margin: 0.75rem;
 }
 
 .hidden {
@@ -6577,7 +6572,8 @@ ul.breadcrumb li:first-child:before {
 
 ul.breadcrumb li.active,
 ul.breadcrumb li a:hover,
-ul.breadcrumb li:last-child {
+ul.breadcrumb li:last-child 
+ul.breadcrumb li:last-child a {
       color: #fff;
       background: transparent !important;
 }
