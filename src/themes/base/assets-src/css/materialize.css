@@ -6572,7 +6572,7 @@ ul.breadcrumb li:first-child:before {
 
 ul.breadcrumb li.active,
 ul.breadcrumb li a:hover,
-ul.breadcrumb li:last-child 
+ul.breadcrumb li:last-child,
 ul.breadcrumb li:last-child a {
       color: #fff;
       background: transparent !important;
