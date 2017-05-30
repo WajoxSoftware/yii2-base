@@ -6562,7 +6562,7 @@ ul.breadcrumb li:before {
       font-weight: normal;
       font-style: normal;
       font-size: 18px;
-      margin: 0 3x 0 3px;
+      margin: 0 10px 0 8px;
       -webkit-font-smoothing: antialiased;
 }
 
@@ -6576,6 +6576,35 @@ ul.breadcrumb li:last-child,
 ul.breadcrumb li:last-child a {
       color: #fff;
       background: transparent !important;
+}
+
+a.breadcrumb,
+ul.breadcrumb li {
+  max-width: 100px;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 960px) {
+  a.breadcrumb {
+    font-size: 12px;
+  }
+
+  a.breadcrumb:before {
+      margin: 0 2px 0 1px;
+  }
+
+  ul.breadcrumb li, ul.breadcrumb li a {
+      font-size: 12px;
+  }
+
+  ul.breadcrumb li a {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  ul.breadcrumb li:before {
+        font-size: 18px;
+        margin: 0 2px 0 1px;
+  }
 }
 
 .form-group.has-error .help-block {
@@ -6606,7 +6635,8 @@ ul.breadcrumb li:last-child a {
     display: block;
     float: none;
     text-align: right;
-    position: static !important; } }
+    position: static !important; }
+}
 
 .list-unstyled {
     padding-left: 0;
