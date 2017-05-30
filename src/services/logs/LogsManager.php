@@ -30,7 +30,10 @@ class LogsManager extends Component
         $model = $this->buildModel($user);
 
         $model->type_id = $typeId;
-        $model->item_id = $itemId;
+
+        if ($model->item_id !== null) {
+            $model->item_id = $itemId;
+        }
 
         $ta = \Yii::$app->db->beginTransaction();
 
