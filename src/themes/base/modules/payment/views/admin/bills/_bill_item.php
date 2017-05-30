@@ -2,7 +2,9 @@
 use yii\helpers\Url;
 
 ?>
-<li class="collection-item"  data-Bill-id="<?=$model->id ?>" >
+<li class="collection-item avatar"  data-Bill-id="<?=$model->id ?>" >
+    <i class="material-icons circle green">payment</i>
+
     <span class="title">
       <a href="<?= Url::toRoute(['view', 'id' => $model->id]) ?>">
         <?=$model->paymentDestination ?>

@@ -145,4 +145,14 @@ class Webinar extends \wajox\yii2base\components\db\ActiveRecord
     {
         return $this->getStartAt() + $this->advert_time < time();
     }
+
+    public function getStartDateTime(): string
+    {
+        return date('d.m.Y H:i:s', $this->startAt);
+    }
+
+    public function getFinishDateTime(): string
+    {
+        return date('d.m.Y H:i:s', $this->finishAt);
+    }
 }

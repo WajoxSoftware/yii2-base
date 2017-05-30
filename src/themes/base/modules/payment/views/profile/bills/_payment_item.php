@@ -1,4 +1,6 @@
-<li class="collection-item">
+<li class="collection-item avatar">
+     <i class="material-icons circle blue">payment</i>
+
     <span class="title">
       <?=$model->paymentDestination ?>
     </span>
