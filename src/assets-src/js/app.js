@@ -6,7 +6,7 @@ window.App = {
     bindEvents: function() {
         var self = this;
         
-        $(document).on('app:loaded', 'body', function() {
+        $(document).on('app:loaded', function() {
             self.init();
         });
     },
@@ -43,7 +43,7 @@ window.App = {
             eval(this.html());
         });
 
-        $('body').trigger('loaded');
+        $(document).trigger('app:loaded');
     },
 
     hideModal: function(content) {
