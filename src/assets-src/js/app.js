@@ -33,6 +33,8 @@ window.App = {
         }
 
         if ($(modal_id).is(':visible')) {
+            $(document).trigger('app:loaded');
+
             return;
         }
 
@@ -66,7 +68,6 @@ window.App = {
         //$.pjax.reload('[data-pjax-container]');
         window.location.reload();
     }
-
 };
 
 $(document).ready(function() {
