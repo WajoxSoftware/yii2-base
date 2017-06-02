@@ -1,6 +1,8 @@
 <?php
 namespace wajox\yii2base\modules\webinar\models;
 
+use wajox\yii2base\models\User;
+
 /**
  * This is the model class for table "webinar_message".
  *
@@ -62,6 +64,26 @@ class WebinarMessage extends \wajox\yii2base\components\db\ActiveRecord
     {
         return $this->hasOne(Webinar::className(), ['id' => 'webinar_id']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getWebinarViewer()
+    {
+        return $this->hasOne(WebinarViewer::className(), [
+            'guid' => 'guid',
+            'email' => 'email',
+        ]);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
 
     /**
      * @inheritdoc

@@ -45,10 +45,7 @@ class LogsManager extends Component
             $this->saveParams($model, $params);
         } catch (\Exception $e) {
             $ta->rollBack();
-
-            print_r($e->getMessage());
-            die();
-
+            
             return false;
         }
 

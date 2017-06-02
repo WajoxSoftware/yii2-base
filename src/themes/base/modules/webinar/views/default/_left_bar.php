@@ -17,5 +17,5 @@
     </ul>
 </div>
 <div class="webinar-message message">
-    <?= $this->render('_message_form', ['model' => $model]) ?>
+    <?= $this->render('_message_form', ['webinar' => $model]) ?>
 </div>
