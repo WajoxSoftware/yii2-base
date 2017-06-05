@@ -44,7 +44,7 @@ class OrderEventHandler extends BaseHandler
     {
         //after create callbacks
         self::getDeliveryManager()->processNewOrder($event->order);
-        OrderEventHandler::onEvent($event);
+        self::onEvent($event);
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_NEW_ORDER,
@@ -56,8 +56,8 @@ class OrderEventHandler extends BaseHandler
     public static function paid(OrderEvent $event)
     {
         self::getDeliveryManager()->processPaidOrder($event->order);
-        self::getFeeyManager()->processOrder($event->order);
-        OrderEventHandler::onEvent($event);
+        self::getFeeManager()->processOrder($event->order);
+        self::onEvent($event);
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_PAY_ORDER,
@@ -70,8 +70,8 @@ class OrderEventHandler extends BaseHandler
     public static function cancelled(OrderEvent $event)
     {
         self::getDeliveryManager()->processCancelledOrder($event->order);
-        OrderEventHandler::onEvent($event);
-        OrderEventHandler::logEvent(Log::TYPE_ID_CANCEL_ORDER, $event);
+        self::onEvent($event);
+        self::logEvent(Log::TYPE_ID_CANCEL_ORDER, $event);
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_RETURN_ORDER,
@@ -84,7 +84,7 @@ class OrderEventHandler extends BaseHandler
     public static function moneyback(OrderEvent $event)
     {
         self::getDeliveryManager()->processMoneyReturnedOrder($event->order);
-        self::getFeeyManager()->dropOrder($event->order);
+        self::getFeeManager()->dropOrder($event->order);
         OrderEventHandler::onEvent($event);
 
         \Yii::$app->actionLogs->log(
@@ -103,13 +103,13 @@ class OrderEventHandler extends BaseHandler
     public static function send(OrderEvent $event)
     {
         self::getDeliveryManager()->processSendOrder($event->order);
-        OrderEventHandler::onEvent($event);
+        self::onEvent($event);
     }
 
     public static function delivered(OrderEvent $event)
     {
         self::getDeliveryManager()->processDeliveredOrder($event->order);
-        OrderEventHandler::onEvent($event);
+        self::onEvent($event);
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_DELIVER_ORDER,
@@ -121,7 +121,7 @@ class OrderEventHandler extends BaseHandler
     public static function undelivered(OrderEvent $event)
     {
         self::getDeliveryManager()->processUndeliveredOrder($event->order);
-        OrderEventHandler::onEvent($event);
+        self::onEvent($event);
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_UNDELIVER_ORDER,
@@ -133,7 +133,7 @@ class OrderEventHandler extends BaseHandler
     public static function returned(OrderEvent $event)
     {
         self::getDeliveryManager()->processReturnedOrder($event->order);
-        OrderEventHandler::onEvent($event);
+        self::onEvent($event);
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_RETURN_ORDER,
