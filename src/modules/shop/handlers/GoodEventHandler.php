@@ -10,7 +10,7 @@ use wajox\yii2base\handlers\BaseHandler;
 
 class GoodEventHandler extends BaseHandler
 {
-    public static function orderStatusUpdated($event)
+    public static function orderStatusChanged($event)
     {
         $lettersBuilder = new GoodLettersBuilder($event->order);
         $lettersBuilder->processDeliveryStatus();
