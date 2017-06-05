@@ -23,6 +23,7 @@ class OrderStatusesController extends AdminApplicationController
         if ($request->isPost) {
             $model = $this->uploadFile($request);
             $this->updateStatus($order, $status);
+
             $modelStatus = $this->buildStatus($order, $model, $request);
 
             if (!$modelStatus->isNewRecord) {

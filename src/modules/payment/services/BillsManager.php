@@ -50,7 +50,11 @@ class BillsManager extends Object
             if (!$model->saveStatusPaid()) {
                 throw new \Exception('Can not save status');
             }
+
+            $ta->commit();
         } catch (\Exception $e) {
+            $ta->rollBack();
+    
             return false;
         }
 
