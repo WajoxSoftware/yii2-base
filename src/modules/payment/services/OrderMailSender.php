@@ -3,7 +3,7 @@ namespace wajox\yii2base\modules\payment\services;
 
 use wajox\yii2base\components\base\Object;
 
-class OrderMailSender
+class OrderMailSender extends Object
 {
     public $order = null;
     public $status = 'unstarted';

@@ -123,8 +123,14 @@ class Bill extends \wajox\yii2base\components\db\ActiveRecord
     public static function getPaymentDestinationIdList(): array
     {
         return [
-            self::DESTINATION_ID_ACCOUNT => \Yii::t('app/attributes', 'Bill Payment Destination Account'),
-            self::DESTINATION_ID_ORDER => \Yii::t('app/attributes', 'Bill Payment Destination Order'),
+            self::DESTINATION_ID_ACCOUNT => \Yii::t(
+                'app/attributes',
+                'Bill Payment Destination Account'
+            ),
+            self::DESTINATION_ID_ORDER => \Yii::t(
+                'app/attributes',
+                'Bill Payment Destination Order'
+            ),
         ];
     }
 
@@ -132,7 +138,9 @@ class Bill extends \wajox\yii2base\components\db\ActiveRecord
     {
         $list = self::getPaymentDestinationIdList();
 
-        return $list[$this->payment_destination_id];
+        if (isset($list[$this->payment_destination_id])) {
+            return $list[$this->payment_destination_id] . ' #' . $this->id;
+        }
     }
 
     public function getIsAccountUpdateDestination(): string
@@ -147,7 +155,10 @@ class Bill extends \wajox\yii2base\components\db\ActiveRecord
 
     public function getPaymentMethod(): string
     {
-        return \Yii::t('app/payment', 'Payment Method ' . $this->payment_method);
+        return \Yii::t(
+            'app/payment',
+            'Payment Method ' . $this->payment_method
+        );
     }
     
     //relations
