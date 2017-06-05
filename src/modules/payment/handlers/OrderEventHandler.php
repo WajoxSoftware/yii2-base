@@ -85,7 +85,7 @@ class OrderEventHandler extends BaseHandler
     {
         self::getDeliveryManager()->processMoneyReturnedOrder($event->order);
         self::getFeeManager()->dropOrder($event->order);
-        OrderEventHandler::onEvent($event);
+        self::onEvent($event);
 
         \Yii::$app->actionLogs->log(
             Log::TYPE_ID_MONEYBACK_ORDER,

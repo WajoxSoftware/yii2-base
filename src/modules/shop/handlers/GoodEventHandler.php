@@ -4,6 +4,7 @@ namespace wajox\yii2base\modules\shop\handlers;
 use wajox\yii2base\modules\shop\models\Good;
 use wajox\yii2base\modules\shop\events\GoodEvent;
 use wajox\yii2base\modules\shop\services\GoodLettersBuilder;
+use wajox\yii2base\modules\shop\services\PurchasesManager;
 use wajox\yii2base\models\Log;
 use wajox\yii2base\handlers\BaseHandler;
 
