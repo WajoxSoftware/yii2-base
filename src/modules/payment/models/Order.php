@@ -211,7 +211,7 @@ class Order extends \wajox\yii2base\components\db\ActiveRecord
             return true;
         }
 
-        if ($this->isNewRecord && !$this->save()) {
+        if ($this->isNewRecord && !$this->save(false)) {
             return false;
         }
 
@@ -220,7 +220,7 @@ class Order extends \wajox\yii2base\components\db\ActiveRecord
             return false;
         }
 
-        return $this->save();
+        return $this->save(false);
     }
 
     public function updateDeliveryStatus($new_delivery_status_id)

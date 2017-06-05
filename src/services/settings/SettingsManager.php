@@ -8,6 +8,11 @@ class SettingsManager extends Component
 {
     public $items = [];
 
+    public function init()
+    {
+        $this->load();
+    }
+
     public function saveStr($key, $value)
     {
         return $this->save($key, $value, SettingOption::TYPE_ID_STRING);
@@ -36,16 +41,16 @@ class SettingsManager extends Component
     public function get($key, $default = '')
     {
         if (isset($this->items[$key])) {
-            return $this->items[$key];
+            $model = $this->items[$key];
+            ;
+        } else {
+            $model = $this->find($key);
+            $this->add($model);
         }
-
-        $model = $this->find($key);
 
         if ($model == null) {
             return $default;
         }
-
-        $this->add($model);
 
         return $model->value;
     }
