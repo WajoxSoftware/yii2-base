@@ -85,7 +85,7 @@ class HttpReferer extends Object
             }
 
             $qparam = $params['param'];
-            $typeId = $id;
+ 
             $searchQuery = isset($queryParams[$qparam]) ? $queryParams[$qparam] : null;
 
             $this->setTypeId($typeId)->setSearchQuery($searchQuery);

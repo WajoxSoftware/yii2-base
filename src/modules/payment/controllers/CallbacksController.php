@@ -15,10 +15,10 @@ class CallbacksController extends ApplicationController
                 ->find(Bill::className())
                 ->byId($id)
                 ->one();
-        }
 
-        if (!$bill) {
-            throw new \Exception('Unknown bill id');
+            if (!$bill) {
+                throw new \Exception('Unknown bill id');
+            }
         }
 
         $paymentMethod = $this
@@ -26,13 +26,17 @@ class CallbacksController extends ApplicationController
             ->systemPaymentSettings
             ->getItem($method);
 
-        $data = $this->getApp()->request->isPost ? $this->getApp()->request->post() : null;
+        $data = $this->getApp()->request->isPost ?
+            $this->getApp()->request->post() : null;
 
         $params = $paymentMethod->processPayment($action, $data);
 
         $params['payment_method'] = $paymentMethod;
         $params['action'] = $action;
-        $params['bill'] = $bill;
+
+        if ($bill) {
+            $params['bill'] = $bill;
+        }
 
         return $this->render($paymentMethod->getId(), $params);
     }
