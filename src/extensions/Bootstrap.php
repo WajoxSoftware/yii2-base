@@ -26,6 +26,7 @@ class Bootstrap extends Component implements BootstrapInterface
         'app/trafficmanager' => 'trafficmanager.php',
         'app/validation' => 'validation.php',
         'app/error' => 'error.php',
+        'app/mailer' => 'mailer.php',
     ];
 
     protected $commandsMap = [
