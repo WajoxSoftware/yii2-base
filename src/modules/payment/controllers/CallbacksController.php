@@ -5,7 +5,7 @@ use wajox\yii2base\modules\payment\models\Bill;
 
 class CallbacksController extends ApplicationController
 {
-    public function actionIndex($method, $action = 'process', $id = 0)
+    public function actionIndex(string $method, string $action = 'process', int $id = 0)
     {
         $bill = null;
 
@@ -27,7 +27,7 @@ class CallbacksController extends ApplicationController
             ->getItem($method);
 
         $data = $this->getApp()->request->isPost ?
-            $this->getApp()->request->post() : null;
+            $this->getApp()->request->post() : [];
 
         $params = $paymentMethod->processPayment($action, $data);
 

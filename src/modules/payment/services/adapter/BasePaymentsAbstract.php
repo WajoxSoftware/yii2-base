@@ -60,7 +60,7 @@ abstract class BasePaymentsAbstract extends Object
             ->paid($bill, $this->getId());
     }
 
-    public function errorResponse($message = '')
+    public function errorResponse(string $message = '')
     {
         return [
           'success' => false,
@@ -69,7 +69,7 @@ abstract class BasePaymentsAbstract extends Object
         ];
     }
 
-    public function successResponse($message = '')
+    public function successResponse(string $message = '')
     {
         return [
           'success' => true,

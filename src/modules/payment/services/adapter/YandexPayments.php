@@ -17,12 +17,8 @@ class YandexPayments extends BasePaymentsAbstract
         return $this->getApp()->settings->get('app_payments_YandexPayments_on');
     }
 
-    public function processPayment($action, $data)
-    {
-        if ($action != 'process') {
-            return;
-        }
-        
+    public function processPayment(string $action, array $data = [])
+    {   
         $settings = $this->getSettings();
 
         $str = $data['action'].';'.$data['orderSumAmount'].';'.$data['orderSumCurrencyPaycash']
