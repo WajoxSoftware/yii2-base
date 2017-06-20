@@ -18,7 +18,7 @@ class YandexPayments extends BasePaymentsAbstract
     }
 
     public function processPayment(string $action, array $data = [])
-    {   
+    {
         $settings = $this->getSettings();
 
         $str = $data['action'].';'.$data['orderSumAmount'].';'.$data['orderSumCurrencyPaycash']
