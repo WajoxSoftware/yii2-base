@@ -21,9 +21,14 @@ class YandexPayments extends BasePaymentsAbstract
     {
         $settings = $this->getSettings();
 
-        $str = $data['action'].';'.$data['orderSumAmount'].';'.$data['orderSumCurrencyPaycash']
-      .';'.$data['orderSumBankPaycash'].';'.$data['shopId'].';'.$data['invoiceId']
-      .';'.$data['customerNumber'].';'.$settings['shopPass'];
+        $str = (isset($data['action']) ? $data['action'] : $action)
+            . ';' . $data['orderSumAmount']
+            . ';' . $data['orderSumCurrencyPaycash']
+            . ';' . $data['orderSumBankPaycash']
+            . ';' . $data['shopId']
+            . ';' . $data['invoiceId']
+            . ';' . $data['customerNumber']
+            . ';' . $settings['shopPass'];
 
         $md5 = strtoupper(md5($str));
         if ($md5 != strtoupper($data['md5'])) {
