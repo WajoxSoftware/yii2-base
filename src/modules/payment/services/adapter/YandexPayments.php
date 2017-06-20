@@ -62,7 +62,7 @@ class YandexPayments extends BasePaymentsAbstract
         $response = '<?xml version="1.0" encoding="UTF-8"?><'.$functionName.'Response performedDatetime="'.$performedDatetime.
             '" code="'.$result_code.'" '.($message != null ? 'message="'.$message.'"' : '').' invoiceId="'.$invoiceId.'" shopId="'.$settings['shopId'].'"/>';
 
-        \Yii::trace($response);
+        \Yii::info($response);
 
         return $response;
     }
