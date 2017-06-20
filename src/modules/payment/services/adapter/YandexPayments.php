@@ -54,7 +54,7 @@ class YandexPayments extends BasePaymentsAbstract
         return $this->successResponse($responseText);
     }
 
-    public function responseText($functionName, $invoiceId, $result_code, $message = null)
+    public function responseText(string $functionName, int $invoiceId, int $result_code, string $message = '')
     {
         $settings = $this->getSettings();
         $performedDatetime = date("Y-m-d") . "T"
@@ -65,7 +65,7 @@ class YandexPayments extends BasePaymentsAbstract
         header("Content-Type: application/xml");
 
         $response = '<?xml version="1.0" encoding="UTF-8"?><'.$functionName.'Response performedDatetime="'.$performedDatetime.
-            '" code="'.$result_code.'" '.($message != null ? 'message="'.$message.'"' : '').' invoiceId="'.$invoiceId.'" shopId="'.$settings['shopId'].'"/>';
+            '" code="'.$result_code.'"'.($message != '' ? ' message="'.$message.'"' : '').' invoiceId="'.$invoiceId.'" shopId="'.$settings['shopId'].'"/>';
 
         \Yii::info($response);
 
