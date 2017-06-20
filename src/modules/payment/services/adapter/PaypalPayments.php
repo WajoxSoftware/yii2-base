@@ -28,7 +28,7 @@ class PaypalPayments extends BasePaymentsAbstract
         return $form_data;
     }
 
-    public function processPayment($action, $data)
+    public function processPayment(string $action, array $data = [])
     {
         if ($action != 'process') {
             return;

@@ -8,7 +8,7 @@ class SystemPayments extends BasePaymentsAbstract
         return [];
     }
 
-    public function processPayment($action, $data)
+    public function processPayment(string $action, array $data = [])
     {
         return $this->errorResponse();
     }

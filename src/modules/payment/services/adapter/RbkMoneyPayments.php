@@ -16,7 +16,7 @@ class RbkMoneyPayments extends BasePaymentsAbstract
         return $this->getApp()->settings->get('app_payments_RbkMoneyPayments_on');
     }
 
-    public function processPayment($action, $data)
+    public function processPayment(string $action, array $data = [])
     {
         if ($action != 'process') {
             return;

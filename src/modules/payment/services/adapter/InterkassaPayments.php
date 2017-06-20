@@ -16,7 +16,7 @@ class InterkassaPayments extends BasePaymentsAbstract
         return $this->getApp()->settings->get('app_payments_InterkassaPayments_on');
     }
 
-    public function processPayment($action, $data)
+    public function processPayment(string $action, array $data = [])
     {
         if ($action != 'process') {
             return;

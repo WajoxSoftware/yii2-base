@@ -8,7 +8,7 @@ class CashPayments extends BasePaymentsAbstract
         return false;
     }
 
-    public function processPayment($action, $data)
+    public function processPayment(string $action, array $data = [])
     {
         return $this->errorResponse();
     }

@@ -41,7 +41,7 @@ abstract class BasePaymentsAbstract extends Object
             ->getSettings($this->getId());
     }
 
-    public function getBill($id): Bill
+    public function getBill(int $id): Bill
     {
         return $this
             ->getRepository()
@@ -50,7 +50,7 @@ abstract class BasePaymentsAbstract extends Object
             ->one();
     }
 
-    public function payBill($id)
+    public function payBill(int $id)
     {
         $bill = $this->getBill($id);
 
@@ -98,12 +98,12 @@ abstract class BasePaymentsAbstract extends Object
         return true;
     }
 
-    public function processPayment($action, $data)
+    public function processPayment(string $action, array $data = [])
     {
         return true;
     }
 
-    public function attachGood($good, $params = [])
+    public function attachGood($good, array $params = [])
     {
         $method = $this->createObject(GoodPaymentMethod::className());
         $method->good_id = $good->id;
@@ -128,7 +128,7 @@ abstract class BasePaymentsAbstract extends Object
         $this->afterDetach($good);
     }
 
-    protected function afterAttach($good, $params)
+    protected function afterAttach($good, array $params = [])
     {
         ;
     }
