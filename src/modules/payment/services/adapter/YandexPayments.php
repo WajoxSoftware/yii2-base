@@ -27,24 +27,24 @@ class YandexPayments extends BasePaymentsAbstract
 
         $md5 = strtoupper(md5($str));
         if ($md5 != strtoupper($data['md5'])) {
-            $responseText = $this->responseText($data['action'], $data['invoiceId'], 1);
+            $responseText = $this->responseText($action, $data['invoiceId'], 1);
 
             return $this->errorResponse($responseText);
         }
 
-        if ($data['action'] == 'checkOrder') {
-            $responseText = $this->responseText($data['action'], $data['invoiceId'], 0);
+        if ($action == 'checkOrder') {
+            $responseText = $this->responseText($action, $data['invoiceId'], 0);
 
             return $this->successResponse($responseText);
         }
 
         if (!$this->payBill($data['orderNumber'])) {
-            $responseText = $this->responseText($data['action'], $data['invoiceId'], 100);
+            $responseText = $this->responseText($action, $data['invoiceId'], 100);
 
             return $this->errorResponse($responseText);
         }
 
-        $responseText = $this->responseText($data['action'], $data['invoiceId'], 0);
+        $responseText = $this->responseText($action, $data['invoiceId'], 0);
 
         return $this->successResponse($responseText);
     }
