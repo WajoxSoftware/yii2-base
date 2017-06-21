@@ -7,6 +7,7 @@ class CallbacksController extends ApplicationController
 {
     public function actionIndex(string $method, string $action = 'process', int $id = 0)
     {
+        $this->layout = false;
         $bill = null;
 
         if ($id != 0) {
