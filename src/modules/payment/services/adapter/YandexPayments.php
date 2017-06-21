@@ -19,6 +19,10 @@ class YandexPayments extends BasePaymentsAbstract
 
     public function processPayment(string $action, array $data = [])
     {
+        if (!in_array($action, ['process', 'checkOrder', 'paymentAviso'])) {
+            return;
+        }
+
         $settings = $this->getSettings();
 
         $str = (isset($data['action']) ? $data['action'] : $action)
