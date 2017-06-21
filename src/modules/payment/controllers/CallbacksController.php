@@ -27,7 +27,7 @@ class CallbacksController extends ApplicationController
             ->getItem($method);
 
         $data = $this->getApp()->request->isPost ?
-            $this->getApp()->request->post() : [];
+            $this->getApp()->request->post() : $this->getApp()->request->get();
 
         $params = $paymentMethod->processPayment($action, $data);
 
