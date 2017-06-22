@@ -1,5 +1,6 @@
 <?php
 return [
+  'Module Home' => 'Биллинг',
   'Payment Method CashPayments' => 'Наличными',
   'Payment Method CodPayments' => 'Наложенным платежом',
   'Payment Method InterkassaPayments' => 'Интеркасса',

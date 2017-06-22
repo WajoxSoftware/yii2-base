@@ -1,5 +1,6 @@
 <?php
 return [
+    'Module Home' => 'Магазин',
     'Create New Order' => 'Оформление заказа',
     'Orders Collection Created' => 'Ваши заказы сформированы, теперь Вы можете оплатить каждый из них',
 
