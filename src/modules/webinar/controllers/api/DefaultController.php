@@ -13,10 +13,14 @@ class DefaultController extends ApplicationController
         $model = $manager->findModel($id);
         $viewersCount = $manager->getViewersCount($model);
 
-        // update viewer time
-        $viewer = $manager->getCurrentViewer($model);
-        $viewer->last_at = time();
-        $viewer->save();
+        try {
+            // update viewer time
+            $viewer = $manager->getCurrentViewer($model);
+            $viewer->last_at = time();
+            $viewer->save();
+        } catch (\Exception $e) {
+            \Yii::trace($e->getMessage());
+        }
 
         $viewers = $model
             ->getWebinarViewers()

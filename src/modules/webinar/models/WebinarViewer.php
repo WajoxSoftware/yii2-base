@@ -30,6 +30,10 @@ class WebinarViewer extends \wajox\yii2base\components\db\ActiveRecord
             [['webinar_id', 'name', 'email', 'guid'], 'required'],
             [['user_id', 'webinar_id', 'created_at'], 'integer'],
             [['name', 'guid', 'email'], 'string', 'max' => 255],
+            [['email', 'name'], 'filter', 'filter' => 'strip_tags'],
+            [['email', 'name'], 'filter', 'filter' => 'htmlentities'],
+            [['email', 'name'], 'filter', 'filter' => 'trim'],
+            [['email'], 'email'],
         ];
     }
 
