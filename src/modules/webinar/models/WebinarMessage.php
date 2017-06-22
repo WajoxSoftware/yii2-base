@@ -33,10 +33,20 @@ class WebinarMessage extends \wajox\yii2base\components\db\ActiveRecord
     public function rules()
     {
         return [
+            [['message'], 'required'],
             [['webinar_id', 'user_id', 'created_at'], 'integer'],
+            [
+                ['webinar_id'],
+                'exist',
+                'skipOnError' => true,
+                'targetClass' => Webinar::className(),
+                'targetAttribute' => ['webinar_id' => 'id'],
+            ],
+            [['email', 'name', 'message', 'guid'], 'filter', 'filter' => 'strip_tags'],
+            [['email', 'name', 'message', 'guid'], 'filter', 'filter' => 'htmlentities'],
+            [['email', 'name', 'message', 'guid'], 'filter', 'filter' => 'trim'],
             [['guid', 'name', 'email'], 'string', 'max' => 255],
-            [['message'], 'string', 'max' => 500],
-            [['webinar_id'], 'exist', 'skipOnError' => true, 'targetClass' => Webinar::className(), 'targetAttribute' => ['webinar_id' => 'id']],
+            [['message'], 'string', 'max' => 500, 'min' => 1],
         ];
     }
 
@@ -52,7 +62,7 @@ class WebinarMessage extends \wajox\yii2base\components\db\ActiveRecord
             'guid' => \Yii::t('app', 'Guid'),
             'name' => \Yii::t('app', 'Name'),
             'email' => \Yii::t('app', 'Email'),
-            'message' => \Yii::t('app', 'Message'),
+            'message' => \Yii::t('app/attributes', 'Message'),
             'created_at' => \Yii::t('app', 'Created At'),
         ];
     }

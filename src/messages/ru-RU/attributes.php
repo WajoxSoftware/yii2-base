@@ -88,6 +88,7 @@ return [
   'Type ID' => 'Тип',
   'User Subaccount ID' => 'Субаккаунт',
 
+  'Message' => 'Сообщение',
   'Message Status Sending' => 'Отправляется',
   'Message Status Send' => 'Отправлено',
 

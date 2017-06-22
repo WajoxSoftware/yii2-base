@@ -43,14 +43,14 @@ class WebinarViewer extends \wajox\yii2base\components\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => \Yii::t('app', 'ID'),
-            'name' => \Yii::t('app', 'Name'),
-            'guid' => \Yii::t('app', 'Guid'),
-            'email' => \Yii::t('app', 'Email'),
-            'user_id' => \Yii::t('app', 'User ID'),
-            'webinar_id' => \Yii::t('app', 'Webinar ID'),
-            'created_at' => \Yii::t('app', 'Created At'),
-            'last_at' => \Yii::t('app', 'Created At'),
+            'id' => \Yii::t('app/attributes', 'ID'),
+            'name' => \Yii::t('app/attributes', 'Name'),
+            'guid' => \Yii::t('app/attributes', 'Guid'),
+            'email' => \Yii::t('app/attributes', 'Email'),
+            'user_id' => \Yii::t('app/attributes', 'User ID'),
+            'webinar_id' => \Yii::t('app/attributes', 'Webinar ID'),
+            'created_at' => \Yii::t('app/attributes', 'Created At'),
+            'last_at' => \Yii::t('app/attributes', 'Last At'),
         ];
     }
 
