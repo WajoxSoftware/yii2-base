@@ -12,21 +12,20 @@ class DefaultController extends ApplicationController
         $manager = $this->getManager();
         $model = $manager->findModel($id);
         $viewersCount = $manager->getViewersCount($model);
+        $viewersQuery = $model->getWebinarViewers()->online();
 
         try {
             // update viewer time
             $viewer = $manager->getCurrentViewer($model);
             $viewer->last_at = time();
             $viewer->save();
+
+            $viewersQuery->exceptId($viewer->id);
         } catch (\Exception $e) {
             \Yii::trace($e->getMessage());
         }
 
-        $viewers = $model
-            ->getWebinarViewers()
-            ->online()
-            ->all();
-
+        $viewers = $viewersQuery->all();
         $viewersCount += sizeof($viewers);
 
         return $this->renderJson('view', [

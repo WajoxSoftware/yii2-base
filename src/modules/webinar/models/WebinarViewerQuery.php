@@ -43,6 +43,11 @@ class WebinarViewerQuery extends ActiveQuery
         return $this->andWhere(['email' => htmlspecialchars($email)]);
     }
 
+    public function exceptId(int $id): WebinarViewerQuery
+    {
+        return $this->andWhere(['!=', 'id', $id]);
+    }
+
     public function byUserId(int $userId): WebinarViewerQuery
     {
         return $this->andWhere(['user_id' => $userId]);
