@@ -23,9 +23,11 @@ class YandexPayments extends BasePaymentsAbstract
             return;
         }
 
+        $data['action'] = isset($data['action']) ? $data['action'] : $action;
+
         $settings = $this->getSettings();
 
-        $str = (isset($data['action']) ? $data['action'] : $action)
+        $str = $data['action']
             . ';' . $data['orderSumAmount']
             . ';' . $data['orderSumCurrencyPaycash']
             . ';' . $data['orderSumBankPaycash']
@@ -36,26 +38,30 @@ class YandexPayments extends BasePaymentsAbstract
 
         $md5 = strtoupper(md5($str));
         if ($md5 != strtoupper($data['md5'])) {
-            $responseText = $this->responseText($action, $data['invoiceId'], 1);
+            $responseText = $this->responseText($data['action'], $data['invoiceId'], 1);
 
             return $this->errorResponse($responseText);
         }
 
-        if ($action == 'checkOrder') {
-            $responseText = $this->responseText($action, $data['invoiceId'], 0);
+        if ($data['action'] == 'checkOrder') {
+            $responseText = $this->responseText('checkOrder', $data['invoiceId'], 0);
 
             return $this->successResponse($responseText);
         }
 
-        if (!$this->payBill($data['orderNumber'])) {
-            $responseText = $this->responseText($action, $data['invoiceId'], 100);
+        if ($data['action'] == 'paymentAviso') {
+            if (!$this->payBill($data['orderNumber'])) {
+                $responseText = $this->responseText($data['action'], $data['invoiceId'], 100);
 
-            return $this->errorResponse($responseText);
+                return $this->errorResponse($responseText);
+            }
+
+            $responseText = $this->responseText($data['action'], $data['invoiceId'], 0);
+
+            return $this->successResponse($responseText);
         }
 
-        $responseText = $this->responseText($action, $data['invoiceId'], 0);
-
-        return $this->successResponse($responseText);
+        return $this->errorResponse('');
     }
 
     public function responseText(string $functionName, int $invoiceId, int $result_code, string $message = '')
