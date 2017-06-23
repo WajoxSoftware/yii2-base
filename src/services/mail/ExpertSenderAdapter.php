@@ -25,7 +25,12 @@ class ExpertSenderAdapter extends SenderAdapterAbstract
         $this->apiSender = new ExpertSenderApi($this->apiKey, $this->endpointUrl);
     }
 
-    public function sendTransactional($to, $subject, $content_text, $content_html)
+    public function sendTransactional(
+        $to,
+        $subject,
+        $content_text,
+        $content_html
+    )
     {
         $this->addSubscriber($to, $to);
 
@@ -41,7 +46,7 @@ class ExpertSenderAdapter extends SenderAdapterAbstract
                 $to,
                 $params,
                 $this->transactional_id
-            );
+            ) !== false;
     }
 
     public function send($to, $subject, $template, $data = [], $options = [])
@@ -110,6 +115,6 @@ class ExpertSenderAdapter extends SenderAdapterAbstract
         return $this
             ->apiSender
             ->Subscribers()
-            ->add($subscriber, $data['list_id']);
+            ->add($subscriber, $data['list_id'], ['Force' => true]);
     }
 }

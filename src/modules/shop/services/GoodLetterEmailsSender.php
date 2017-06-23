@@ -37,10 +37,8 @@ class GoodLetterEmailsSender extends Object
             GoodLettersMailer::className(),
             [$model]
         );
-        
-        $result = $mailer->send();
 
-        $model->status_id = $result ? GoodLetterEmail::STATUS_ID_SEND : GoodLetterEmail::STATUS_ID_ERROR;
+        $model->status_id = $mailer->send() ? GoodLetterEmail::STATUS_ID_SEND : GoodLetterEmail::STATUS_ID_ERROR;
         $model->send_at = time();
         
         return $model->save();

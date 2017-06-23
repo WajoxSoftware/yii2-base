@@ -31,7 +31,7 @@ class GoodLetter extends \wajox\yii2base\components\db\ActiveRecord
     {
         return [
             [['title', 'content_text'], 'filter', 'filter' => 'strip_tags'],
-            [['title', 'content_text', 'content_html'], 'filter', 'filter' => 'htmlentities'],
+            [['title', 'content_text'], 'filter', 'filter' => 'htmlentities'],
             [['title', 'content_text', 'content_html'], 'filter', 'filter' => 'trim'],
             [['good_id', 'type_id'], 'required'],
             [['good_id', 'type_id'], 'integer'],

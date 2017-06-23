@@ -1,6 +1,8 @@
 <?php
 namespace wajox\yii2base\modules\shop\models;
 
+use wajox\yii2base\modules\payment\models\Order;
+
 class GoodLetterEmail extends \wajox\yii2base\components\db\ActiveRecord
 {
     const STATUS_ID_NEW = 100;
@@ -35,5 +37,10 @@ class GoodLetterEmail extends \wajox\yii2base\components\db\ActiveRecord
     public function getLetter()
     {
         return $this->hasOne(GoodLetter::className(), ['id' => 'good_email_id']);
+    }
+
+    public function getOrder()
+    {
+        return $this->hasOne(Order::className(), ['id' => 'order_id']);
     }
 }
