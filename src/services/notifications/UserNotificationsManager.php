@@ -13,7 +13,7 @@ class UserNotificationsManager extends Object
         $this->user = $user;
     }
 
-    public function createSystemMessage(string $subject, string $message)
+    public function createSystemMessage(string $subject, string $message): bool
     {
         return $this->create(
             $subject,
@@ -22,7 +22,7 @@ class UserNotificationsManager extends Object
         );
     }
 
-    public function createAccountMessage(string $subject, string $message)
+    public function createAccountMessage(string $subject, string $message): bool
     {
         return $this->create(
             $subject,
@@ -31,7 +31,7 @@ class UserNotificationsManager extends Object
         );
     }
 
-    public function createOrderMessage(string $subject, string $message, int $orderId)
+    public function createOrderMessage(string $subject, string $message, int $orderId): bool
     {
         return $this->create(
             $subject,
@@ -60,7 +60,7 @@ class UserNotificationsManager extends Object
         $this
             ->getRepository()
             ->update(
-                UserNotification::classNameName(),
+                UserNotification::className(),
                 ['status_id' => UserNotification::STATUS_ID_READ],
                 [
                     'user_id' => $this->user->id,
@@ -70,7 +70,7 @@ class UserNotificationsManager extends Object
             );
     }
 
-    public function orderStatusNotification($order)
+    public function orderStatusNotification($order): bool
     {
         $newStatus = $order->status . '/' . $order->deliveryStatus;
 
@@ -95,7 +95,7 @@ class UserNotificationsManager extends Object
         );
     }
 
-    public function messageStatusNotification($messageUserStatus)
+    public function messageStatusNotification($messageUserStatus): bool
     {
         $message = $messageUserStatus->message;
 
@@ -116,7 +116,12 @@ class UserNotificationsManager extends Object
         return $this->createAccountMessage($subject, $content);
     }
 
-    protected function create(string $subject, string $message, int $typeId, array $params = [])
+    protected function create(
+        string $subject,
+        string $message,
+        int $typeId,
+        array $params = []
+    ): bool
     {
         $model = $this->buildModel($typeId);
 
@@ -124,11 +129,11 @@ class UserNotificationsManager extends Object
             ->setSubject($subject)
             ->setMessage($message)
             ->setContentParams($params);
-
+    
         return $model->save();
     }
 
-    protected function buildModel(int $typeId)
+    protected function buildModel(int $typeId): UserNotification
     {
         $model = $this->createObject(UserNotification::className());
         $model->status_id = UserNotification::STATUS_ID_NEW;

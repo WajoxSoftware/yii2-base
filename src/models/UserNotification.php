@@ -35,11 +35,10 @@ class UserNotification extends \wajox\yii2base\components\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'content', 'type_id', 'status_id', 'created_at'], 'required'],
+            [['user_id', 'type_id', 'status_id', 'created_at'], 'required'],
             [['user_id', 'created_at', 'type_id', 'status_id'], 'integer'],
             ['status_id', 'in', 'range' => array_keys($this::getStatusIdList())],
             ['type_id', 'in', 'range' => array_keys($this::getTypeIdList())],
-            [['content'], 'string', 'max' => 5000],
         ];
     }
 

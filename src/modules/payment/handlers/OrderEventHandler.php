@@ -144,10 +144,11 @@ class OrderEventHandler extends BaseHandler
 
     public static function onEvent(OrderEvent $event)
     {
-        (new UserNotificationsManager($event->order->user))->orderStatusNotification($event->order);
+        (new OrderMailer($event->order))
+            ->new_status();
 
-        $om = new OrderMailer($event->order);
-        $om->new_status();
+        (new UserNotificationsManager($event->order->user))
+            ->orderStatusNotification($event->order);
     }
 
     public static function getDeliveryManager()

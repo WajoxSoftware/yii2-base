@@ -73,17 +73,17 @@ class Order extends \wajox\yii2base\components\db\ActiveRecord
         return $this->delivery_sum;
     }
 
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this::getStatusIdList()[$this->status_id];
     }
 
-    public function getDeliveryStatus()
+    public function getDeliveryStatus(): string
     {
         return $this::getDeliveryStatusIdList()[$this->delivery_status_id];
     }
 
-    public function getIsNew()
+    public function getIsNew(): bool
     {
         return $this->status_id == self::STATUS_ID_NEW;
     }
@@ -93,47 +93,47 @@ class Order extends \wajox\yii2base\components\db\ActiveRecord
         return $this->status_id == self::STATUS_ID_PAID;
     }
 
-    public function getIsCancelled()
+    public function getIsCancelled(): bool
     {
         return $this->status_id == self::STATUS_ID_CANCELLED;
     }
 
-    public function getIsMoneyReturned()
+    public function getIsMoneyReturned(): bool
     {
         return $this->status == self::STATUS_ID_RETURNED;
     }
 
-    public function getIsDeliveryWaiting()
+    public function getIsDeliveryWaiting(): bool
     {
         return $this->delivery_status_id == self::DELIVERY_STATUS_ID_WAITING;
     }
 
-    public function getIsPrepared()
+    public function getIsPrepared(): bool
     {
         return $this->delivery_status_id == self::DELIVERY_STATUS_ID_PREPARED;
     }
 
-    public function getIsSend()
+    public function getIsSend(): bool
     {
         return $this->delivery_status_id == self::DELIVERY_STATUS_ID_SEND;
     }
 
-    public function getIsUndelivered()
+    public function getIsUndelivered(): bool
     {
         return $this->delivery_status_id == self::DELIVERY_STATUS_ID_UNDELIVERED;
     }
 
-    public function getIsDelivered()
+    public function getIsDelivered(): bool
     {
         return $this->delivery_status_id == self::DELIVERY_STATUS_ID_DELIVERED;
     }
 
-    public function getIsReturned()
+    public function getIsReturned(): bool
     {
         return $this->delivery_status_id == self::DELIVERY_STATUS_ID_RETURNED;
     }
 
-    public static function getStatusIdList()
+    public static function getStatusIdList(): array
     {
         return [
             self::STATUS_ID_NEW => \Yii::t('app/attributes', 'Order Status New'),
@@ -143,7 +143,7 @@ class Order extends \wajox\yii2base\components\db\ActiveRecord
         ];
     }
 
-    public static function getDeliveryStatusIdList()
+    public static function getDeliveryStatusIdList(): array
     {
         return [
             self::DELIVERY_STATUS_ID_WAITING => \Yii::t('app/attributes', 'Order Delivery Status Waiting'),
@@ -197,9 +197,13 @@ class Order extends \wajox\yii2base\components\db\ActiveRecord
         return $this->hasOne(EautopayOrder::className(), ['id' => 'id']);
     }
 
-    public function updateStatus($new_status_id, $new_delivery_status_id = null, $save = true)
+    public function updateStatus(
+        int $new_status_id,
+        int $new_delivery_status_id = 0,
+        $save = true
+    ) : bool
     {
-        if ($new_delivery_status_id == null) {
+        if ($new_delivery_status_id == 0) {
             $new_delivery_status_id = $this->delivery_status_id;
         }
 
@@ -223,7 +227,7 @@ class Order extends \wajox\yii2base\components\db\ActiveRecord
         return $this->save(false);
     }
 
-    public function updateDeliveryStatus($new_delivery_status_id)
+    public function updateDeliveryStatus(int $new_delivery_status_id): bool
     {
         if (!$this->createNewDeliveryStatus($new_delivery_status_id)) {
             return false;
@@ -235,7 +239,7 @@ class Order extends \wajox\yii2base\components\db\ActiveRecord
         return $this->save();
     }
 
-    public function isOwner($user_id)
+    public function isOwner(int $user_id): bool
     {
         if ($this->user_id == $user_id) {
             return true;
@@ -252,9 +256,12 @@ class Order extends \wajox\yii2base\components\db\ActiveRecord
         return true;
     }
 
-    protected function createNewStatus($new_status_id, $new_delivery_status_id = null)
+    protected function createNewStatus(
+        int $new_status_id,
+        int $new_delivery_status_id = 0
+    ): bool
     {
-        if ($new_delivery_status_id == null) {
+        if ($new_delivery_status_id == 0) {
             $new_delivery_status_id = $this->delivery_status_id;
         }
 
@@ -267,7 +274,7 @@ class Order extends \wajox\yii2base\components\db\ActiveRecord
         return $status->save();
     }
 
-    protected function createNewDeliveryStatus($new_delivery_status_id)
+    protected function createNewDeliveryStatus(int $new_delivery_status_id): bool
     {
         $status = $this->createObject(OrderStatus::className());
         $status->order_id = $this->id;
