@@ -96,14 +96,20 @@ class ExpertSenderAdapter extends SenderAdapterAbstract
     {
         $names = explode(' ', $data['name']);
 
+        $firstName = isset($names[0]) ? $names[0] : '';
+        $lastName = isset($names[1]) ? $names[1] : '';
+
         $subscriber = new Subscriber(
             $data['email'],
             [
-                'firstname' => array_shift($names),
-                'lastname' => array_shift($names),
+                'firstname' => $firstName,
+                'lastname' => $lastName,
             ]
         );
 
-        $this->apiSender->Subscribers()->add($subscriber, $data['list_id']);
+        return $this
+            ->apiSender
+            ->Subscribers()
+            ->add($subscriber, $data['list_id']);
     }
 }
