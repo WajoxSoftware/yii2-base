@@ -103,4 +103,9 @@ class WebinarMessage extends \wajox\yii2base\components\db\ActiveRecord
     {
         return new WebinarMessageQuery(get_called_class());
     }
+
+    public function getCreatedAtDateTime(): string
+    {
+        return date('d.m.Y H:i:s', $this->created_at);
+    }
 }

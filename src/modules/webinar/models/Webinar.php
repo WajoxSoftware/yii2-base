@@ -84,7 +84,6 @@ class Webinar extends \wajox\yii2base\components\db\ActiveRecord
             ['webinar_id' => 'id']
         );
     }
-    
 
     /**
      * @inheritdoc
@@ -143,7 +142,8 @@ class Webinar extends \wajox\yii2base\components\db\ActiveRecord
 
     public function getIsAdvertEnabled(): bool
     {
-        return $this->getStartAt() + $this->advert_time < time();
+        return $this->getStartAt() + $this->advert_time < time()
+            && $this->getFinishAt() + 60 * 15 < time();
     }
 
     public function getStartDateTime(): string
@@ -154,5 +154,10 @@ class Webinar extends \wajox\yii2base\components\db\ActiveRecord
     public function getFinishDateTime(): string
     {
         return date('d.m.Y H:i:s', $this->finishAt);
+    }
+
+    public function getNamesDictionaryJson(): string
+    {
+        return json_encode(explode("\n", $this->names_dictionary));
     }
 }

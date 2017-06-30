@@ -18,6 +18,7 @@ class DefaultController extends AdminApplicationController
         return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 
+
     public function actionCreate()
     {
         $request = $this->getApp()->request;
@@ -34,6 +35,13 @@ class DefaultController extends AdminApplicationController
         return $this->renderJs('create', [
             'model' => $model,
             'success' => $success,
+        ]);
+    }
+
+    public function actionView(int $id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
         ]);
     }
 

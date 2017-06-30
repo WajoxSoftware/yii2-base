@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Url;
 
-$login_link = Url::toRoute(['/profile/session'], true);
+$login_link = Url::toRoute(['/account/session'], true);
 ?>
 Your password was changed
 

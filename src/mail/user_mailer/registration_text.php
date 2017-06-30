@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 
 $link = Url::toRoute(['/confirmation/confirm', 'token' => $user->confirmation_token], true);
-$login_link = Url::toRoute(['/profile/session'], true);
+$login_link = Url::toRoute(['/account/session'], true);
 ?>
 
 Thank you sor sign up!

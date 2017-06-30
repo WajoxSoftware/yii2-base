@@ -66,7 +66,6 @@ $sidebarWidget = [
   'title' => '',
   'icon' => 'fa-bars',
   'parts' => $parts,
-  //'viewFilePath' => '@wajox/yii2base/themes/base/widgets/sidebarwidget/views/sidebar_widget.php',
 ];
 
 $layoutOptions = [
