@@ -18,7 +18,7 @@ class DefaultController extends ApplicationController
             return $this->redirect([
                 'sign-in',
                 'id' => $id,
-                'email' => $email,
+                'email' => htmlspecialchars($email),
             ]);
         }
         

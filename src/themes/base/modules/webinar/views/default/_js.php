@@ -4,8 +4,6 @@ use yii\helpers\Url;
 ob_start();
 ?>
 var WebinarViewer = function() {
-  this.namesDictionary = '<?= $model->names_dictionary ?>';
-  this.namesList = this.namesDictionary.split(',');
   this.prevViewersCount = 0;
   this.advertEnabled = false;
   this.activeNames = [];
@@ -27,14 +25,14 @@ var WebinarViewer = function() {
     var viewers = '';
     for (var i in data.viewers) {
       var viewer = data.viewers[i];
-      viewers = viewers + '<li class="collection-item">' + viewer + '</li>';
+      viewers = viewers + '<li class="webinar-viewers-item">' + viewer + '</li>';
     }
 
     $('#webinar-viewers-count').html(data.viewersCount);
     $('#webinar-viewers ul .a').html(viewers);
 
     if (data.enableAdvert) {
-      $('#webinar-advert').removeClass('hide');
+      $('#webinar-advert').removeClass('hidden');
     }
 
     this.renderViewers(data.viewersCount);
@@ -55,17 +53,22 @@ var WebinarViewer = function() {
   };
 
   this.addViewers = function(vCount) {
-    var items = '';
     for (var i = 0; i < vCount; i++) {
-        items = items + '<li class="collection-item vg">' + this.getViewerName() + '</li>';
+        var item = $('#webinar-viewers ul .g li.hidden:first');
+        if (item.length == 0) {
+          return;
+        }
+        item.removeClass('hidden').addClass('visible');
     }
-
-    $('#webinar-viewers ul .g').append($(items));
   };
 
   this.dropViewers = function(vCount) {
     for (var i = 0; i < vCount; i++) {
-      $('#webinar-viewers ul .g li.vg:last').hide(0).remove();
+        var item = $('#webinar-viewers ul .g li.visible:first');
+        if (item.length == 0) {
+          return;
+        }
+        item.removeClass('visible').addClass('hidden');
     }
   }
 

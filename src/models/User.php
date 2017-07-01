@@ -14,7 +14,7 @@ class User extends \wajox\yii2base\components\db\ActiveRecord implements Identit
 
     const DEFAULT_AVATAR_PATH = '@noImagePath';
 
-    const VIEW_ROUTE = '/account/default/view';
+    const VIEW_ROUTE = '/account/account/view';
 
     const ROLE_USER = 'user';
     const ROLE_PARTNER = 'partner';

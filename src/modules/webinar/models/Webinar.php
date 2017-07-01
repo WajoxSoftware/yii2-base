@@ -156,8 +156,8 @@ class Webinar extends \wajox\yii2base\components\db\ActiveRecord
         return date('d.m.Y H:i:s', $this->finishAt);
     }
 
-    public function getNamesDictionaryJson(): string
+    public function getNamesDictionaryArray(): array
     {
-        return json_encode(explode("\n", $this->names_dictionary));
+        return array_map('trim', explode("\n", $this->names_dictionary));
     }
 }

@@ -13,7 +13,13 @@
 <div class="viewers hide-on-small-only" id="webinar-viewers">
     <ul class="collection webinar-viewers-list">
       <div class="a"></div>
-      <div class="g"></div>
+      <div class="g">
+        <?php foreach ($model->namesDictionaryArray as $name): ?>
+          <li class="webinar-viewers-item vg hidden">
+            <?= $name ?>  
+          </li>
+        <?php endforeach; ?>
+      </div>
     </ul>
 </div>
 <div class="webinar-message message">

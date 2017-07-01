@@ -2,6 +2,7 @@
 namespace wajox\yii2base\modules\webinar\services;
 
 use yii\web\Request;
+use yii\web\NotFoundHttpException;
 use wajox\yii2base\components\base\Object;
 use wajox\yii2base\modules\webinar\models\Webinar;
 use wajox\yii2base\modules\webinar\models\WebinarViewer;
