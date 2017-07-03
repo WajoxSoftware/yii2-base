@@ -28,7 +28,7 @@ class WebinarMessageController extends ApplicationController
         }
 
         if ($success) {
-            $this->getMailer()->sendQuestion();
+            $this->getMailer($model)->sendQuestion();
         }
 
         return $this->renderJs('create', [
