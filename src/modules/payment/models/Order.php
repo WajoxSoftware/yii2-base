@@ -201,8 +201,7 @@ class Order extends \wajox\yii2base\components\db\ActiveRecord
         int $new_status_id,
         int $new_delivery_status_id = 0,
         $save = true
-    ) : bool
-    {
+    ) : bool {
         if ($new_delivery_status_id == 0) {
             $new_delivery_status_id = $this->delivery_status_id;
         }
@@ -259,8 +258,7 @@ class Order extends \wajox\yii2base\components\db\ActiveRecord
     protected function createNewStatus(
         int $new_status_id,
         int $new_delivery_status_id = 0
-    ): bool
-    {
+    ): bool {
         if ($new_delivery_status_id == 0) {
             $new_delivery_status_id = $this->delivery_status_id;
         }

@@ -30,8 +30,7 @@ class ExpertSenderAdapter extends SenderAdapterAbstract
         $subject,
         $content_text,
         $content_html
-    )
-    {
+    ) {
         $this->addSubscriber($to, $to);
 
         $params = [

@@ -121,8 +121,7 @@ class UserNotificationsManager extends Object
         string $message,
         int $typeId,
         array $params = []
-    ): bool
-    {
+    ): bool {
         $model = $this->buildModel($typeId);
 
         $model

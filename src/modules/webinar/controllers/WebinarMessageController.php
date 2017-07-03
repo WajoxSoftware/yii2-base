@@ -27,6 +27,10 @@ class WebinarMessageController extends ApplicationController
             $success = $model->save();
         }
 
+        if ($success) {
+            $this->getMailer()->sendQuestion();
+        }
+
         return $this->renderJs('create', [
             'success' => $success,
             'model' => $model,
@@ -35,6 +39,16 @@ class WebinarMessageController extends ApplicationController
 
     protected function getManager()
     {
-        return $this->createObject(\wajox\yii2base\modules\webinar\services\WebinarManager::className());
+        return $this->createObject(
+            \wajox\yii2base\modules\webinar\services\WebinarManager::className()
+        );
+    }
+
+    protected function getMailer($message)
+    {
+        return $this->createObject(
+            \wajox\yii2base\modules\webinar\services\WebinarMessageMailer::className(),
+            [$message]
+        );
     }
 }
