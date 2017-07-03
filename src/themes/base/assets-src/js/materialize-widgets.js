@@ -34,4 +34,9 @@ var MaterializeWidgets = function() {
 
 $(function(){
     new MaterializeWidgets();
-});
+
+    $(document).on('app:loaded', function(){
+        new MaterializeWidgets();
+    });
+
+})
