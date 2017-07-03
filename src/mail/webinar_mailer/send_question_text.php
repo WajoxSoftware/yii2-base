@@ -1,4 +1,4 @@
-Author: <?= $message->name ?> <<?= $message->email ?>>
+Author: <?= $message->name ?> (<?= $message->email ?>)
 
 <?= $message->message ?>
 

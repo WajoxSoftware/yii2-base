@@ -1,14 +1,6 @@
-<?php
-use yii\helpers\Url;
+<p>Author: <?= $message->name ?> (<?= $message->email ?>)</p>
 
-?>
+<p><?= $message->message ?></p>
 
-<h1>Question for bill #<?= $bill->id ?></h1>
 
-<p>
-Author: <?= $bill->customer->name ?> <<?= $bill->customer->email ?>>
-</p>
-<p>
-  Question: <?= $question ?>
-</p>
 

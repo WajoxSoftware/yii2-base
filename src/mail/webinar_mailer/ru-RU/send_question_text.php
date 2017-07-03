@@ -1,4 +1,4 @@
-Отправитель: <?= $message->name ?> <<?= $message->email ?>>
+Отправитель: <?= $message->name ?> (<?= $message->email ?>)
 
 <?= $message->message ?>
 
