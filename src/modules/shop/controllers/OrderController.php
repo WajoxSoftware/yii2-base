@@ -7,11 +7,15 @@ use yii\web\ForbiddenHttpException;
 
 class OrderController extends ApplicationController
 {
-    public function actionCreate($cart)
+    public function actionCreate()
     {
-        $cartManager = $this->getCartManager($cart)->loadGoods();
+        $this
+            ->getApp()
+            ->shopCart
+            ->loadGoods();
+
         $model = $this->createObject(OrderForm::className());
-        $model->setGoods($cartManager->getGoods());
+        $model->setGoods($this->getApp()->shopCart->getGoods());
         
         $request = $this->getApp()->request;
 
@@ -25,7 +29,10 @@ class OrderController extends ApplicationController
             && $model->load($request->post())
             && $model->validate()
         ) {
-            $orders = $this->createOrders($model, $cartManager);
+            $orders = $this->createOrders(
+                $model,
+                $this->getApp()->shopCart
+            );
 
             if (sizeof($orders) > 0) {
                 return $this->renderOrdersPayment($orders);
@@ -34,7 +41,7 @@ class OrderController extends ApplicationController
 
         return $this->render('create', [
             'model' => $model,
-            'cartManager' => $cartManager,
+            'cart' => $this->getApp()->shopCart,
         ]);
     }
 
@@ -65,7 +72,7 @@ class OrderController extends ApplicationController
             ]);
     }
 
-    protected function createOrders($model, $cartManager)
+    protected function createOrders($model, $cart)
     {
         $builder = $this->getCustomersBuilder();
 
@@ -81,16 +88,9 @@ class OrderController extends ApplicationController
         }
 
         return $this->getOrdersManager()->createOrders(
-                $cartManager,
+                $cart,
                 $builder->getCustomer()
             );
-    }
-
-    protected function getCartManager($json)
-    {
-        $manager = $this->createObject(ShopCartManager::className(), [$this->getUser(), false]);
-
-        return $manager->parseCartJson($json);
     }
 
     protected function getCustomersBuilder()

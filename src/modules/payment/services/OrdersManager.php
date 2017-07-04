@@ -37,7 +37,6 @@ class OrdersManager extends Object
                     ->createObject(
                         ShopCartManager::className(),
                         [
-                            $customer->user,
                             false,
                         ]
                     );

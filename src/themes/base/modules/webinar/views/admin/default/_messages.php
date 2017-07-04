@@ -1,4 +1,4 @@
-<ul class="collection">
+<ul class="collection with-header">
     <li class="collection-header">
         <h4>Сообщения</h4>
     </li>

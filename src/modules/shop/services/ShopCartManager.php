@@ -7,7 +7,6 @@ use wajox\yii2base\components\base\Object;
 
 class ShopCartManager extends Object
 {
-    protected $user = null;
     protected $items = [];
     protected $saveMode = true;
     protected $goods = [];
@@ -19,10 +18,9 @@ class ShopCartManager extends Object
 
     const SHOP_CART_PARAM = '__shop_cart';
 
-    public function __construct($user, bool $saveMode = true)
+    public function __construct(bool $saveMode = true)
     {
         $this->setActual()
-             ->setUser($user)
              ->loadFromSession()
              ->saveToSession();
     }
@@ -37,13 +35,6 @@ class ShopCartManager extends Object
     public function getSaveMode(): bool
     {
         return $this->saveMode;
-    }
-
-    public function setUser($user): ShopCartManager
-    {
-        $this->user = $user;
-
-        return $this;
     }
 
     public function setGoods(array $goods): ShopCartManager

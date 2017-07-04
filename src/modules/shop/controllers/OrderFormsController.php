@@ -9,7 +9,7 @@ class OrderFormsController extends ApplicationController
 {
     use \wajox\yii2base\modules\shop\traits\CouponTrait;
 
-    public function actionGood($url)
+    public function actionGood(string $url)
     {
         $this->getClicksManager()->save();
 
@@ -19,18 +19,15 @@ class OrderFormsController extends ApplicationController
             return $result;
         }
 
-        $cart = json_encode([
-                'items' => [
-                    [
-                        'id' => $good->id,
-                        'count' => 1,
-                    ],
-                ],
-            ]);
+        $this
+            ->getApp()
+            ->shopCart
+            ->dropItems()
+            ->addItem($good->id, 1);
 
         return $this->redirect([
                 '/shop/order/create',
-                'cart' => $cart,
+                'tag' => $good->url,
             ]);
     }
 
