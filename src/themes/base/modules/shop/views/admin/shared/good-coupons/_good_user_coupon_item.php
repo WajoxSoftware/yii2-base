@@ -15,11 +15,11 @@ use yii\helpers\Url;
     <p><?= $model->shortMessage ?></p>
 
     <span class="secondary-content">
-        <a href="<?= Url::toRoute(['/admin/good-user-coupons/update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
+        <a href="<?= Url::toRoute(['/shop/admin/good-user-coupons/update', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
           <i class="material-icons">edit</i>
         </a>
 
-        <a href="<?= Url::toRoute(['/admin/good-user-coupons/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
+        <a href="<?= Url::toRoute(['/shop/admin/good-user-coupons/delete', 'id' => $model->id, 'suffix' => '.js']) ?>" class="js-remote-link">
           <i class="material-icons">delete</i>
         </a>
     </span>
