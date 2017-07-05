@@ -17,8 +17,8 @@ use yii\helpers\Url;
       <input type="hidden" name="user_name" value="<?= $customer_full_name ?>">
       <input type="hidden" name="user_email" value="<?= $customer_email ?>">
 
-      <input type="hidden" name="successUrl" value="<?= Url::toRoute(['/payment/callbacks', 'method' => 'RbkMoneyPayments', 'action' => 'success']) ?>">
-      <input type="hidden" name="failUrl" value="<?= Url::toRoute(['/payment/callbacks', 'method' => 'RbkMoneyPayments', 'action' => 'fail']) ?>">
+      <input type="hidden" name="successUrl" value="<?= Url::toRoute(['/payment/callbacks', 'method' => 'RbkMoneyPayments', 'action' => 'success'], true) ?>">
+      <input type="hidden" name="failUrl" value="<?= Url::toRoute(['/payment/callbacks', 'method' => 'RbkMoneyPayments', 'action' => 'fail'], true) ?>">
 
       <input type="submit" value="<?= \Yii::t('app/general', 'Pay') ?>" class="btn btn-primary"/>
     </form>
