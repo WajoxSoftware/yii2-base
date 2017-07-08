@@ -20,7 +20,8 @@ class WebinarMessageMailer extends Object
             . '<p>Сообщение: ' . $message->message . '</p>';
 
         $email = $this->getApp()->params['webinarAdminEmail'];
-        $headers = 'From: ' . $message->email . "\r\n";
+        $headers = 'From: ' . $message->email . "\r\n"
+            . 'Content-type: text/html; charset=utf-8' . "\r\n";
 
         mail($email, $subject, $message, $headers);
 

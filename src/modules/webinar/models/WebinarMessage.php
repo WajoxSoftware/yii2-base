@@ -45,6 +45,7 @@ class WebinarMessage extends \wajox\yii2base\components\db\ActiveRecord
             [['email', 'name', 'message', 'guid'], 'filter', 'filter' => 'strip_tags'],
             [['email', 'name', 'message', 'guid'], 'filter', 'filter' => 'htmlentities'],
             [['email', 'name', 'message', 'guid'], 'filter', 'filter' => 'trim'],
+            [['email'], 'email'],
             [['guid', 'name', 'email'], 'string', 'max' => 255],
             [['message'], 'string', 'max' => 500, 'min' => 1],
         ];
