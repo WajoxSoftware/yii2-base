@@ -14,12 +14,16 @@ class WebinarMessageMailer extends Object
 
     public function sendQuestion()
     {
-        $subject = \Yii::t('app/mailer', 'Webinar Mailer Send Question');
-        $template = 'webinar_mailer/send_question';
+        $subject = 'Сообщение участника вебинара';
+        $message = '<p>Имя: ' . $message->name . '</p>'
+            . '<p>Эл. почта: ' . $message->email . '</p>'
+            . '<p>Сообщение: ' . $message->message . '</p>';
+
         $email = $this->getApp()->params['webinarAdminEmail'];
+        $headers = 'From: ' . $message->email . "\r\n";
 
-        $data = ['message' => $this->message];
+        mail($email, $subject, $message, $headers);
 
-        return $this->getApp()->mailer->send($email, $subject, $template, $data);
+        return true;
     }
 }
