@@ -15,15 +15,15 @@ class WebinarMessageMailer extends Object
     public function sendQuestion()
     {
         $subject = 'Сообщение участника вебинара';
-        $message = '<p>Имя: ' . $message->name . '</p>'
-            . '<p>Эл. почта: ' . $message->email . '</p>'
-            . '<p>Сообщение: ' . $message->message . '</p>';
+        $body = '<p>Имя: ' . $this->message->name . '</p>'
+            . '<p>Эл. почта: ' . $this->message->email . '</p>'
+            . '<p>Сообщение: ' . $this->message->message . '</p>';
 
         $email = $this->getApp()->params['webinarAdminEmail'];
-        $headers = 'From: ' . $message->email . "\r\n"
+        $headers = 'From: ' . $this->message->email . "\r\n"
             . 'Content-type: text/html; charset=utf-8' . "\r\n";
 
-        mail($email, $subject, $message, $headers);
+        mail($email, $subject, $body, $headers);
 
         return true;
     }
