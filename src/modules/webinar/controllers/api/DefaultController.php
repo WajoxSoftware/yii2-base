@@ -26,12 +26,12 @@ class DefaultController extends ApplicationController
         }
 
         $viewers = $viewersQuery->all();
-        $viewersCount += sizeof($viewers);
+        $viewersCount += sizeof($viewers) + 1;
 
         return $this->renderJson('view', [
             'model' => $model,
             'viewers' => $viewers,
-            'viewersCount' => $viewersCount + 1,
+            'viewersCount' => $viewersCount,
         ]);
     }
 
