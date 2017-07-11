@@ -28,7 +28,7 @@ var WebinarViewer = function() {
       viewers = viewers + '<li class="webinar-viewers-item">' + viewer + '</li>';
     }
 
-    $('#webinar-viewers-count').html(data.viewersCount);
+    $('#webinar-viewers-count').html(data.viewersCount + 1);
     $('#webinar-viewers ul .a').html(viewers);
 
     if (data.enableAdvert) {
