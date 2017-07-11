@@ -31,7 +31,7 @@ class DefaultController extends ApplicationController
         return $this->renderJson('view', [
             'model' => $model,
             'viewers' => $viewers,
-            'viewersCount' => $viewersCount,
+            'viewersCount' => $viewersCount + 1,
         ]);
     }
 
