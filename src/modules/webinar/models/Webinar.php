@@ -143,7 +143,7 @@ class Webinar extends \wajox\yii2base\components\db\ActiveRecord
     public function getIsAdvertEnabled(): bool
     {
         return $this->getStartAt() + $this->advert_time < time()
-            && $this->getFinishAt() + 60 * 15 < time();
+            && $this->getFinishAt() + 60 * 15 > time();
     }
 
     public function getStartDateTime(): string
