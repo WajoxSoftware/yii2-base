@@ -7,7 +7,7 @@ class m160330_132540_create_user_action_log_table extends Migration
     public function up()
     {
         $this->createTable('{{%log_param}}', [
-            'id' => $this->primaryKey,
+            'id' => $this->primaryKey(),
             'log_id' =>  Schema::TYPE_INTEGER . ' NOT NULL',
             'param_id' =>  Schema::TYPE_INTEGER . ' NOT NULL',
             'int_value' => Schema::TYPE_INTEGER . ' NULL',
